@@ -43,7 +43,11 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
                 DashboardTab.Activity ->
                     ActivityPage(state, { onEvent(DashboardEvent.RefreshRequested) })
                 DashboardTab.Account ->
-                    AccountPage(state, { onEvent(DashboardEvent.SignOutRequested) })
+                    AccountPage(
+                        state,
+                        { onEvent(DashboardEvent.SignOutRequested) },
+                        { onEvent(DashboardEvent.NotificationsRequested) },
+                    )
             }
         }
         AppBottomNavigation(

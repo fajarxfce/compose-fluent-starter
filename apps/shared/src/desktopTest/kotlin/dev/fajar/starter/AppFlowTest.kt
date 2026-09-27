@@ -18,7 +18,10 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
+import dev.fajar.starter.database.createInboxStore
 import dev.fajar.starter.datastore.createUserPreferences
+import dev.fajar.starter.notifications.data.datasources.*
+import dev.fajar.starter.notifications.data.dto.*
 import java.io.File
 import java.nio.file.Files
 import kotlin.test.assertEquals
@@ -27,6 +30,7 @@ import kotlinx.coroutines.runBlocking
 import org.jetbrains.skia.Image
 import org.junit.Rule
 import org.junit.Test
+import org.koin.dsl.module
 
 class AppFlowTest {
     @get:Rule val compose = createComposeRule()
@@ -35,7 +39,26 @@ class AppFlowTest {
     fun onboardingLoginTabsAndLogout() {
         val directory = Files.createTempDirectory("fluent-ui").toFile()
         val preferences = createUserPreferences(directory)
-        val container = createAppContainer(preferences)
+        val container =
+            createAppContainer(
+                preferences,
+                createInboxStore(directory),
+                module {
+                    single<NotificationPermissionSource> {
+                        object : NotificationPermissionSource {
+                            override suspend fun check() = NotificationPermission.Granted
+
+                            override suspend fun request() = NotificationPermission.Granted
+                        }
+                    }
+                    single<NotificationDisplaySource> {
+                        object : NotificationDisplaySource {
+                            override suspend fun show(payload: NotificationPayload) = Unit
+                        }
+                    }
+                    single<PushTokenSource> { UnavailablePushTokenSource() }
+                },
+            )
         val generation = mutableStateOf(0)
         try {
             compose.setContent {
@@ -82,6 +105,21 @@ class AppFlowTest {
             }
             compose.onNode(hasText("Account") and hasClickAction()).performClick()
             compose.onNodeWithText("Alex Morgan").assertExists()
+            compose.onNodeWithText("Notifications").performClick()
+            compose.waitUntil(15_000) {
+                compose
+                    .onAllNodesWithText("Send test notification")
+                    .fetchSemanticsNodes()
+                    .isNotEmpty()
+            }
+            compose.onNodeWithText("Send test notification").performClick()
+            compose.waitUntil(15_000) {
+                compose
+                    .onAllNodesWithText("Test notification sent.")
+                    .fetchSemanticsNodes()
+                    .isNotEmpty()
+            }
+            compose.onNodeWithText("Back").performClick()
             compose.onNodeWithText("Sign out").performClick()
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Use demo account").fetchSemanticsNodes().isNotEmpty()

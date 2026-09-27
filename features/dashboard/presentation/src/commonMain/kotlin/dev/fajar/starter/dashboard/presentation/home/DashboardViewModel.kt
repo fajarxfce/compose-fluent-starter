@@ -15,10 +15,15 @@ class DashboardViewModel(
     private val loadDashboard: LoadDashboard,
     private val observeUser: ObserveUser,
     private val signOut: SignOut,
-) : MviViewModel<DashboardState, DashboardEvent, Nothing>(DashboardState()) {
+    @org.koin.core.annotation.InjectedParam initialTab: DashboardTab = DashboardTab.Overview,
+) :
+    MviViewModel<DashboardState, DashboardEvent, DashboardEffect>(
+        DashboardState(tab = initialTab)
+    ) {
     private var refreshJob: Job? = null
 
     init {
+        on<DashboardEvent.NotificationsRequested>(::onNotificationsRequested)
         on<DashboardEvent.TabSelected>(::onTabSelected)
         on<DashboardEvent.RefreshRequested>(::onRefreshRequested)
         on<DashboardEvent.SignOutRequested>(::onSignOutRequested)
@@ -56,5 +61,9 @@ class DashboardViewModel(
                     updateState { it.copy(signingOut = false, error = result.failure.message) }
             }
         }
+    }
+
+    private fun onNotificationsRequested(event: DashboardEvent.NotificationsRequested) {
+        viewModelScope.launch { emitEffect(DashboardEffect.OpenNotifications) }
     }
 }

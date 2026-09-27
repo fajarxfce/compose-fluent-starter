@@ -12,7 +12,10 @@ import org.koin.compose.KoinIsolatedContext
 import org.koin.core.KoinApplication
 
 @Composable
-fun StarterApp(container: KoinApplication) {
+fun StarterApp(
+    container: KoinApplication,
+    incomingLinks: kotlinx.coroutines.flow.Flow<String> = kotlinx.coroutines.flow.emptyFlow(),
+) {
     KoinIsolatedContext(context = container) {
         AppViewModelOwner {
             AppTheme {
@@ -26,7 +29,7 @@ fun StarterApp(container: KoinApplication) {
                         )
                         .imePadding()
                 ) {
-                    AppNavigation()
+                    AppNavigation(incomingLinks)
                 }
             }
         }

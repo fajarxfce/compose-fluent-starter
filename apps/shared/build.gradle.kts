@@ -4,12 +4,16 @@ plugins {
     id("starter.compose")
     id("starter.serialization")
     id("starter.di")
+    id("starter.firebase.web")
 }
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
         api(libs.koin.core)
         implementation(projects.core.designsystem)
+        api(projects.core.database)
+        api(projects.core.notifications.data)
+        implementation(projects.features.notifications.presentation)
         api(projects.core.datastore)
         api(projects.core.common)
         implementation(projects.core.network)
@@ -38,6 +42,7 @@ kotlin {
         binaries.framework {
             baseName = "StarterKit"
             isStatic = true
+            export(projects.core.notifications.data)
         }
     }
     wasmJs {

@@ -10,7 +10,7 @@ import dev.fajar.starter.designsystem.theme.AppColors
 import io.github.composefluent.FluentTheme
 
 @Composable
-fun AccountPage(state: DashboardState, onSignOut: () -> Unit) {
+fun AccountPage(state: DashboardState, onSignOut: () -> Unit, onNotifications: () -> Unit) {
     AppPage(maxWidth = 600.dp) {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
             AppText("Account", style = FluentTheme.typography.title)
@@ -28,6 +28,7 @@ fun AccountPage(state: DashboardState, onSignOut: () -> Unit) {
             Spacer(Modifier.height(8.dp))
             AppText("Personal workspace", color = AppColors.muted)
         }
+        AppButton("Notifications", onNotifications, Modifier.fillMaxWidth(), primary = false)
         if (state.error != null) AppFeedback(state.error)
         AppButton(
             "Sign out",

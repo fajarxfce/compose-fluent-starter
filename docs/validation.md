@@ -2,13 +2,16 @@
 
 Local validation on Linux:
 
-- Architecture checks for 17 modules and Kotlin formatting.
-- 21 tests, including cancellation, stale refreshes, buffered effects, storage failures,
-  session behavior, and the assembled Fluent UI flow through logout.
-- Android debug APK build and Android 15 emulator smoke test: onboarding, sign-in,
-  dashboard tabs, logout, and stored onboarding after a process restart.
-- Editor task JSON and native runner metadata validation.
+- Architecture checks for 22 modules and Kotlin formatting.
+- 39 tests covering cancellation, stale refreshes, permission recovery, pending deep
+  links, DataStore corruption and persistence, actual SQLite operations, error boundaries,
+  and the assembled UI flow from onboarding through sign-in, inbox, and logout.
+- Android dev debug APK build, plus Desktop and Web Kotlin compilation.
 
 UI test captures are generated under `apps/shared/build/reports/screenshots`.
-The CI workflow also defines an unsigned iOS simulator build and Windows desktop
-compilation. Neither substitutes for a physical Apple device or Windows UI test.
+The CI workflow builds Android flavors, the Web distribution, an unsigned iOS simulator
+application, and the Windows desktop classes. Platform compilation does not replace
+physical-device notification, APNs/FCM delivery, or browser permission testing.
+
+Firebase configuration and credentials are excluded from Git. CI builds without local
+Firebase configuration; configured push delivery needs separate environment validation.

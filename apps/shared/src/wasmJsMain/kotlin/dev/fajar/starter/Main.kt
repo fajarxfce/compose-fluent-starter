@@ -1,16 +1,86 @@
+@file:OptIn(kotlin.js.ExperimentalWasmJsInterop::class)
+
 package dev.fajar.starter
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.ComposeViewport
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
+import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.common.config.BuildEnvironment
+import dev.fajar.starter.database.createInboxStore
 import dev.fajar.starter.datastore.createUserPreferences
+import dev.fajar.starter.notifications.data.datasources.*
+import dev.fajar.starter.notifications.domain.entities.NotificationMessage
+import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
+import kotlin.time.Clock
 import kotlinx.browser.document
+import kotlinx.browser.window
+import kotlinx.coroutines.*
+import org.koin.dsl.module
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
+    val environment = BuildEnvironment.current
+    val namespace = "fluent-starter.${environment.id}"
+    val links = AppLinkChannel()
+    val push = BrowserPushTokenSource()
+    val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     val container =
-        createAppContainer(createUserPreferences("fluent-starter.${BuildEnvironment.current.id}"))
-    ComposeViewport(document.body!!) { StarterApp(container) }
+        createAppContainer(
+            createUserPreferences(namespace),
+            createInboxStore(namespace),
+            module {
+                single<NotificationPermissionSource> { BrowserNotificationPermissionSource() }
+                single<NotificationDisplaySource> { BrowserNotificationDisplaySource() }
+                single<PushTokenSource> { push }
+            },
+            environment,
+        )
+    val receive = container.koin.get<ReceiveNotification>()
+    scope.launch {
+        try {
+            push.messages().collect { payload ->
+                receive(
+                    NotificationMessage(
+                        payload.id,
+                        payload.title,
+                        payload.body,
+                        payload.destination,
+                        Clock.System.now().toEpochMilliseconds(),
+                    )
+                )
+            }
+        } catch (error: CancellationException) {
+            throw error
+        } catch (error: Exception) {
+            println("Push listener: ${error::class.simpleName}")
+        }
+    }
+    links.receive(window.location.hash)
+    window.addEventListener("hashchange", { links.receive(window.location.hash) })
+    bindNotificationLinks(links::receive)
+    onPageClosed {
+        scope.cancel()
+        links.close()
+        container.close()
+    }
+    ComposeViewport(document.body!!) { StarterApp(container, links.links) }
 }
+
+@JsFun(
+    """(receive) => {
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.addEventListener('message', (event) => {
+        if (event.data?.type !== 'open-link') return;
+        const url = new URL(event.data.url, location.href);
+        if (url.origin === location.origin && url.pathname === location.pathname) receive(url.hash);
+    });
+}"""
+)
+private external fun bindNotificationLinks(receive: (String) -> Unit)
+
+@JsFun(
+    "(close) => window.addEventListener('pagehide', event => { if (!event.persisted) close(); })"
+)
+private external fun onPageClosed(close: () -> Unit)
