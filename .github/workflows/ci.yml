@@ -26,14 +26,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: xvfb-run -a ./gradlew :check :apps:android:assembleDebug :apps:shared:wasmJsBrowserDistribution
+      - run: xvfb-run -a ./gradlew :check :apps:android:assembleDevDebug :apps:android:assembleStagingDebug :apps:android:assembleProdRelease :apps:shared:wasmJsBrowserDistribution
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: reports-and-android
           path: |
             **/build/reports/
-            apps/android/build/outputs/apk/debug/*.apk
+            apps/android/build/outputs/apk/**/*.apk
       - uses: actions/upload-artifact@v4
         with:
           name: web

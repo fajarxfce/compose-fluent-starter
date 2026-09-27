@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
-    <application android:name="dev.fajar.fluent.StarterApplication" android:label="Fluent Starter"
+    <application android:name="dev.fajar.fluent.StarterApplication" android:label="@string/app_name"
         android:theme="@style/AppTheme" android:allowBackup="false" android:icon="@drawable/ic_launcher" android:supportsRtl="true">
         <activity android:name="dev.fajar.fluent.MainActivity" android:exported="true" android:windowSoftInputMode="adjustResize">
             <intent-filter>

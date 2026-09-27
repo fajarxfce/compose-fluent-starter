@@ -9,7 +9,7 @@ plugins {
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
         api(libs.koin.core)
-        implementation(projects.core.common)
+        api(projects.core.common)
         implementation(projects.core.designsystem)
         api(projects.core.storage)
         implementation(projects.core.network)

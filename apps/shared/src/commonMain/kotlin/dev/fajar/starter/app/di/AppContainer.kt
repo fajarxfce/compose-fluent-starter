@@ -1,6 +1,8 @@
 package dev.fajar.starter.app.di
 
 import dev.fajar.starter.auth.presentation.di.AuthPresentationModule
+import dev.fajar.starter.common.config.AppEnvironment
+import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.dashboard.data.di.DashboardDataModule
 import dev.fajar.starter.dashboard.presentation.di.DashboardPresentationModule
 import dev.fajar.starter.demo.createDemoEngine
@@ -16,9 +18,13 @@ import org.koin.dsl.onClose
 import org.koin.ksp.generated.module
 
 /** Platform entry points own this isolated container and its lifetime. */
-fun createAppContainer(preferences: PreferenceStore) = koinApplication {
+fun createAppContainer(
+    preferences: PreferenceStore,
+    environment: AppEnvironment = BuildEnvironment.current,
+) = koinApplication {
     modules(
         module {
+            single { environment }
             single<PreferenceStore> { preferences }
             single<HttpClient> {
                     createHttpClient(createDemoEngine(), "https://demo.fluent.local/")

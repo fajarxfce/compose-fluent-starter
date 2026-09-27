@@ -1,4 +1,7 @@
-plugins { id("starter.android.application") }
+plugins {
+    id("starter.android.application")
+    id("starter.android.flavors")
+}
 
 dependencies {
     implementation(projects.apps.shared)

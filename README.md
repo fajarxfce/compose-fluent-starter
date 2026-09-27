@@ -9,7 +9,7 @@ Android builds also require Android SDK 36.
 
 ```sh
 ./gradlew :apps:shared:run                       # Desktop
-./gradlew :apps:android:installDebug             # Connected Android device
+./gradlew :apps:android:installDevDebug             # Connected Android device
 ./gradlew :apps:shared:wasmJsBrowserDevelopmentRun # Web
 ```
 
@@ -47,7 +47,7 @@ See [architecture](docs/architecture.md), [development](docs/development.md), an
 
 ```sh
 ./gradlew :check
-./gradlew :apps:android:assembleDebug
+./gradlew :apps:android:assembleDevDebug
 ./gradlew :apps:shared:wasmJsBrowserDistribution
 ./gradlew :apps:shared:packageDistributionForCurrentOS
 ```
