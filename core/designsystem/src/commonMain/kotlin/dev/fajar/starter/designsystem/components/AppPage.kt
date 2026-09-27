@@ -18,7 +18,10 @@ fun AppPage(
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Box(
-        modifier.fillMaxSize().background(AppColors.canvas),
+        modifier
+            .fillMaxSize()
+            .background(AppColors.canvas)
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom)),
         contentAlignment = Alignment.TopCenter,
     ) {
         Column(

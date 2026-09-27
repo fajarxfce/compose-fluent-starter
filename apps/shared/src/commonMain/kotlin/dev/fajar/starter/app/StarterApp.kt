@@ -19,7 +19,11 @@ fun StarterApp(container: KoinApplication) {
                 Box(
                     Modifier.fillMaxSize()
                         .background(AppColors.canvas)
-                        .safeDrawingPadding()
+                        .windowInsetsPadding(
+                            WindowInsets.safeDrawing.only(
+                                WindowInsetsSides.Top + WindowInsetsSides.Horizontal
+                            )
+                        )
                         .imePadding()
                 ) {
                     AppNavigation()

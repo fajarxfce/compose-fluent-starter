@@ -81,6 +81,11 @@ their entries and reacts to onboarding/session state. Authentication transitions
 the root stack, so sign-out removes protected screens. Dashboard owns its three tab
 states; tab selection does not create independent navigation histories in this starter.
 
+The app host handles top/side safe areas and keyboard insets. AppPage handles the bottom
+safe area for standalone pages; dashboard's bottom navigation owns that inset instead,
+and its content marks the inset consumed. The bar draws its surface beneath the system
+navigation area. Android window icon/contrast configuration stays in the platform runner.
+
 ## Checks
 
 The architecture script checks module direction, cycles, dependency declarations, selected

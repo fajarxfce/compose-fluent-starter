@@ -12,6 +12,9 @@ import dev.fajar.starter.dashboard.presentation.home.DashboardTab
 import dev.fajar.starter.designsystem.components.*
 import dev.fajar.starter.designsystem.theme.AppColors
 import io.github.composefluent.icons.Icons
+import io.github.composefluent.icons.filled.History
+import io.github.composefluent.icons.filled.Home
+import io.github.composefluent.icons.filled.Person
 import io.github.composefluent.icons.regular.History
 import io.github.composefluent.icons.regular.Home
 import io.github.composefluent.icons.regular.Person
@@ -29,7 +32,7 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
             AppBrand()
             AppBadge("Demo")
         }
-        Box(Modifier.weight(1f)) {
+        Box(Modifier.weight(1f).consumeWindowInsets(WindowInsets.navigationBars)) {
             when (state.tab) {
                 DashboardTab.Overview ->
                     OverviewPage(
@@ -46,9 +49,24 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
         AppBottomNavigation(
             items =
                 listOf(
-                    AppNavigationItem(DashboardTab.Overview, "Overview", Icons.Regular.Home),
-                    AppNavigationItem(DashboardTab.Activity, "Activity", Icons.Regular.History),
-                    AppNavigationItem(DashboardTab.Account, "Account", Icons.Regular.Person),
+                    AppNavigationItem(
+                        DashboardTab.Overview,
+                        "Overview",
+                        Icons.Regular.Home,
+                        Icons.Filled.Home,
+                    ),
+                    AppNavigationItem(
+                        DashboardTab.Activity,
+                        "Activity",
+                        Icons.Regular.History,
+                        Icons.Filled.History,
+                    ),
+                    AppNavigationItem(
+                        DashboardTab.Account,
+                        "Account",
+                        Icons.Regular.Person,
+                        Icons.Filled.Person,
+                    ),
                 ),
             selected = state.tab,
             onSelected = { onEvent(DashboardEvent.TabSelected(it)) },
