@@ -68,7 +68,11 @@ bodies, credentials, or exception messages in UI/log output.
 Sign-in drops duplicate submissions and freezes credential edits until completion.
 Clearing its ViewModel cancels the request. The repository checks cancellation before
 publishing a successful session. Dashboard refresh cancels the previous request and
-retains existing data when a later refresh fails.
+retains its database snapshot when a later refresh fails. `SyncDashboard` is a singleton use case
+that serializes sync executions; repositories do not own sync scheduling or UI loading state.
+Workers are platform application entry points that invoke feature `SyncTask` use cases. Local
+mutation and outbox insertion share a transaction; background execution is independently scheduled.
+See [sync](sync.md) for delivery and platform guarantees.
 
 The typed preference store already serves as a datasource contract. Onboarding consumes
 Proto DataStore through that port; its repository maps the protobuf field to a domain value.

@@ -16,6 +16,10 @@ import dev.fajar.starter.notifications.data.di.NotificationDataModule
 import dev.fajar.starter.notifications.presentation.di.NotificationPresentationModule
 import dev.fajar.starter.onboarding.data.di.OnboardingDataModule
 import dev.fajar.starter.onboarding.presentation.di.OnboardingPresentationModule
+import dev.fajar.starter.sync.data.datasources.WorkScheduler
+import dev.fajar.starter.sync.data.di.SyncDataModule
+import dev.fajar.starter.sync.domain.SyncTask
+import dev.fajar.starter.worker.ForegroundWorkScheduler
 import io.ktor.client.HttpClient
 import org.koin.core.module.Module
 import org.koin.dsl.koinApplication
@@ -29,13 +33,20 @@ fun createAppContainer(
     database: AppDatabase,
     notificationPlatform: Module,
     environment: AppEnvironment = BuildEnvironment.current,
+    workScheduler: WorkScheduler? = null,
 ) = koinApplication {
     modules(
         notificationPlatform,
+        SyncDataModule().module,
         NotificationDataModule().module,
         NotificationPresentationModule().module,
         module {
             single { environment }
+            single<WorkScheduler> {
+                    workScheduler
+                        ?: ForegroundWorkScheduler(getAll<SyncTask>().map { it.key }.toSet())
+                }
+                .onClose { (it as? ForegroundWorkScheduler)?.close() }
             single<AppDatabase>(createdAtStart = true) { database }.onClose { it?.close() }
             single<InboxStore> { get<AppDatabase>().inbox }
             single<DashboardStore> { get<AppDatabase>().dashboard }

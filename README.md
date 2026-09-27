@@ -15,7 +15,7 @@ Android builds also require Android SDK 36.
 
 Open `apps/ios/FluentStarter.xcodeproj` on macOS for iOS. Select a simulator or configure your signing team for a physical device.
 
-Demo account: **demo@example.com / Demo123!**. The default transport is an in-process Ktor MockEngine; no authentication requests leave the device. Onboarding preferences persist. The demo session is memory-only and sign-in is required after a process restart. Dashboard content is sample data.
+Demo account: **demo@example.com / Demo123!**. The default transport is an in-process Ktor MockEngine; no authentication requests leave the device. Onboarding preferences persist. The demo session is memory-only and sign-in is required after a process restart. Dashboard content is sample data, cached locally. Saved activities persist and use a transactional outbox for the demo sync flow.
 
 Light and dark appearance follow the system theme automatically.
 
@@ -31,7 +31,9 @@ core/presentation            MviViewModel and lifecycle-aware effect collection
 core/network                 Ktor client factory and HTTP failure boundary
 core/storage                 Storage error boundaries
 core/datastore               Reactive protobuf preferences and migration
-core/database                Room / IndexedDB inbox persistence
+core/database                Room / IndexedDB, dashboard cache, inbox and outbox
+core/sync                    domain / data; task contracts and scheduling boundary
+core/worker                  WorkManager and foreground execution
 core/notifications           domain / data; local delivery and FCM adapters
 core/designsystem            Fluent theme and AppXxx composables
 core/identity/domain         User, repository contract, authentication use cases
@@ -46,6 +48,7 @@ build-logic                  Gradle convention plugins
 Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dependencies use type-safe accessors such as `implementation(projects.core.common)`. Koin annotations generate registrations during normal Gradle builds.
 
 See [architecture](docs/architecture.md), [development](docs/development.md), and [validation](docs/validation.md).
+See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
 See [local storage](docs/storage.md) and [build environments](docs/environments.md) for platform setup. See [notifications and deep links](docs/notifications.md) for Firebase configuration.
 
 ## Check and build

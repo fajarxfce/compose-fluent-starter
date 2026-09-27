@@ -4,12 +4,15 @@ import androidx.compose.ui.window.ComposeUIViewController
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
+import dev.fajar.starter.app.work.startForegroundSync
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
+import dev.fajar.starter.sync.domain.*
+import dev.fajar.starter.worker.runSyncTask
 import kotlin.time.Clock
 import kotlinx.coroutines.*
 import org.koin.dsl.module
@@ -29,6 +32,35 @@ class AppleAppHost(firebase: AppleFirebaseClient) {
                 single<PushTokenSource> { push }
             },
         )
+
+    private var foregroundWorker: Job? = null
+
+    fun startForegroundWork() {
+        if (foregroundWorker?.isActive == true) return
+        foregroundWorker = startForegroundSync(container, scope)
+    }
+
+    fun stopForegroundWork() {
+        foregroundWorker?.cancel()
+        foregroundWorker = null
+    }
+
+    fun runBackgroundSync(completion: (Boolean) -> Unit): AppleSyncExecution {
+        val execution =
+            scope.launch(start = CoroutineStart.UNDISPATCHED) {
+                var complete = false
+                try {
+                    complete =
+                        container.koin
+                            .getAll<SyncTask>()
+                            .map { runSyncTask(it) }
+                            .all { it == SyncResult.Complete }
+                } finally {
+                    completion(complete)
+                }
+            }
+        return AppleSyncExecution(execution)
+    }
 
     fun viewController() = ComposeUIViewController { StarterApp(container, links.links) }
 
@@ -73,5 +105,12 @@ class AppleAppHost(firebase: AppleFirebaseClient) {
         scope.cancel()
         links.close()
         container.close()
+    }
+}
+
+/** Swift cancels this handle when BGTaskScheduler expires the execution window. */
+class AppleSyncExecution internal constructor(private val job: Job) {
+    fun cancel() {
+        job.cancel()
     }
 }

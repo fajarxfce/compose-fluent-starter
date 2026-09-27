@@ -41,7 +41,11 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
                         { onEvent(DashboardEvent.TabSelected(DashboardTab.Activity)) },
                     )
                 DashboardTab.Activity ->
-                    ActivityPage(state, { onEvent(DashboardEvent.RefreshRequested) })
+                    ActivityPage(
+                        state,
+                        { onEvent(DashboardEvent.RefreshRequested) },
+                        { id, saved -> onEvent(DashboardEvent.ActivitySavedChanged(id, saved)) },
+                    )
                 DashboardTab.Account ->
                     AccountPage(
                         state,

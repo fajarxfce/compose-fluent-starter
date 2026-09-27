@@ -7,12 +7,15 @@ import androidx.compose.ui.window.ComposeViewport
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
+import dev.fajar.starter.app.work.startForegroundSync
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
+import dev.fajar.starter.sync.data.datasources.WorkScheduler
+import dev.fajar.starter.sync.domain.SyncTask
 import kotlin.time.Clock
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -37,6 +40,17 @@ fun main() {
             },
             environment,
         )
+    startForegroundSync(container, scope)
+    window.addEventListener(
+        "online",
+        {
+            scope.launch {
+                container.koin.getAll<SyncTask>().forEach {
+                    container.koin.get<WorkScheduler>().enqueue(it.key)
+                }
+            }
+        },
+    )
     val receive = container.koin.get<ReceiveNotification>()
     scope.launch {
         try {

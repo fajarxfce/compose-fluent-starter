@@ -8,10 +8,12 @@ import androidx.compose.ui.window.rememberWindowState
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
+import dev.fajar.starter.app.work.startForegroundSync
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.notifications.data.datasources.*
+import kotlinx.coroutines.*
 import org.koin.dsl.module
 import org.koin.dsl.onClose
 
@@ -36,9 +38,12 @@ fun main(args: Array<String>) {
                 single<PushTokenSource> { UnavailablePushTokenSource() }
             },
         )
+    val workerScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    startForegroundSync(container, workerScope)
     application {
         DisposableEffect(container) {
             onDispose {
+                workerScope.cancel()
                 links.close()
                 container.close()
             }

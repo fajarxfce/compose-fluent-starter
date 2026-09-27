@@ -15,9 +15,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
+import dev.fajar.starter.dashboard.presentation.home.DashboardTab
+import dev.fajar.starter.dashboard.presentation.home.DashboardViewModel
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.notifications.data.datasources.*
@@ -30,6 +33,7 @@ import kotlinx.coroutines.runBlocking
 import org.jetbrains.skia.Image
 import org.junit.Rule
 import org.junit.Test
+import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 
 class AppFlowTest {
@@ -93,6 +97,15 @@ class AppFlowTest {
             compose.onNode(hasText("Sign in") and hasClickAction()).performScrollTo().performClick()
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Projects").fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.runOnIdle {
+                val initialTabProbe =
+                    container.koin.get<DashboardViewModel> { parametersOf(DashboardTab.Activity) }
+                assertEquals(DashboardTab.Activity, initialTabProbe.state.value.tab)
+                ViewModelStore().apply {
+                    put("probe", initialTabProbe)
+                    clear()
+                }
             }
             capture("dashboard")
             compose.runOnIdle { generation.value++ }

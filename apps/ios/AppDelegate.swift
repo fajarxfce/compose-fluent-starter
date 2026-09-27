@@ -1,4 +1,5 @@
 import UIKit
+import BackgroundTasks
 import UserNotifications
 import FirebaseCore
 import FirebaseMessaging
@@ -6,9 +7,18 @@ import StarterKit
 
 final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate, AppleFirebaseClient {
     lazy var host = AppleAppHost(firebase: self)
+    private let syncIdentifier = Bundle.main.bundleIdentifier! + ".sync"
     var configured: Bool { FirebaseApp.app() != nil }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: syncIdentifier, using: .main) { [weak self] task in
+            guard let self else { task.setTaskCompleted(success: false); return }
+            self.scheduleSync()
+            let execution = self.host.runBackgroundSync { success in
+                task.setTaskCompleted(success: success.boolValue)
+            }
+            task.expirationHandler = { execution.cancel() }
+        }
         UNUserNotificationCenter.current().delegate = self
         if Bundle.main.url(forResource: "GoogleService-Info", withExtension: "plist") != nil {
             FirebaseApp.configure()
@@ -54,6 +64,18 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
                 title: content.title, body: content.body, destination: destination
             ) { completionHandler() }
         } else { completionHandler() }
+    }
+
+    func enterBackground() {
+        host.stopForegroundWork()
+        scheduleSync()
+    }
+
+    private func scheduleSync() {
+        let request = BGAppRefreshTaskRequest(identifier: syncIdentifier)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 15 * 60)
+        do { try BGTaskScheduler.shared.submit(request) }
+        catch { NSLog("Background sync scheduling unavailable (%@)", String(describing: type(of: error))) }
     }
 
     func applicationWillTerminate(_ application: UIApplication) { host.close() }

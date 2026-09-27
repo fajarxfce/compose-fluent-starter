@@ -12,6 +12,7 @@ kotlin.sourceSets {
         api(libs.koin.core)
         implementation(projects.core.designsystem)
         api(projects.core.database)
+        api(projects.core.worker)
         api(projects.core.notifications.data)
         implementation(projects.features.notifications.presentation)
         api(projects.core.datastore)
