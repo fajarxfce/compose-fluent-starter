@@ -7,5 +7,7 @@ enum class FailureKind {
     Timeout,
     Service,
     Storage,
+    Permission,
+    Unavailable,
     Unexpected,
 }

@@ -1,25 +1,56 @@
 package dev.fajar.starter.app.di
 
 import dev.fajar.starter.auth.presentation.di.AuthPresentationModule
+import dev.fajar.starter.common.config.AppEnvironment
+import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.dashboard.data.di.DashboardDataModule
 import dev.fajar.starter.dashboard.presentation.di.DashboardPresentationModule
+import dev.fajar.starter.database.AppDatabase
+import dev.fajar.starter.database.DashboardStore
+import dev.fajar.starter.database.InboxStore
+import dev.fajar.starter.datastore.UserPreferencesStore
 import dev.fajar.starter.demo.createDemoEngine
 import dev.fajar.starter.identity.data.di.IdentityModule
 import dev.fajar.starter.network.createHttpClient
+import dev.fajar.starter.notifications.data.di.NotificationDataModule
+import dev.fajar.starter.notifications.presentation.di.NotificationPresentationModule
 import dev.fajar.starter.onboarding.data.di.OnboardingDataModule
 import dev.fajar.starter.onboarding.presentation.di.OnboardingPresentationModule
-import dev.fajar.starter.storage.PreferenceStore
+import dev.fajar.starter.sync.data.datasources.WorkScheduler
+import dev.fajar.starter.sync.data.di.SyncDataModule
+import dev.fajar.starter.sync.domain.SyncTask
+import dev.fajar.starter.worker.ForegroundWorkScheduler
 import io.ktor.client.HttpClient
+import org.koin.core.module.Module
 import org.koin.dsl.koinApplication
 import org.koin.dsl.module
 import org.koin.dsl.onClose
 import org.koin.ksp.generated.module
 
 /** Platform entry points own this isolated container and its lifetime. */
-fun createAppContainer(preferences: PreferenceStore) = koinApplication {
+fun createAppContainer(
+    preferences: UserPreferencesStore,
+    database: AppDatabase,
+    notificationPlatform: Module,
+    environment: AppEnvironment = BuildEnvironment.current,
+    workScheduler: WorkScheduler? = null,
+) = koinApplication {
     modules(
+        notificationPlatform,
+        SyncDataModule().module,
+        NotificationDataModule().module,
+        NotificationPresentationModule().module,
         module {
-            single<PreferenceStore> { preferences }
+            single { environment }
+            single<WorkScheduler> {
+                    workScheduler
+                        ?: ForegroundWorkScheduler(getAll<SyncTask>().map { it.key }.toSet())
+                }
+                .onClose { (it as? ForegroundWorkScheduler)?.close() }
+            single<AppDatabase>(createdAtStart = true) { database }.onClose { it?.close() }
+            single<InboxStore> { get<AppDatabase>().inbox }
+            single<DashboardStore> { get<AppDatabase>().dashboard }
+            single<UserPreferencesStore> { preferences }.onClose { it?.close() }
             single<HttpClient> {
                     createHttpClient(createDemoEngine(), "https://demo.fluent.local/")
                 }

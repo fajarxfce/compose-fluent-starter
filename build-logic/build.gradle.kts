@@ -9,4 +9,7 @@ dependencies {
     implementation(libs.compose.gradle)
     implementation(libs.android.gradle)
     implementation(libs.ksp.gradle)
+    implementation(libs.wire.gradle)
+    implementation(libs.room.gradle)
+    implementation(libs.google.services.gradle)
 }

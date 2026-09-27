@@ -11,3 +11,9 @@ local.properties
 **/xcuserdata/
 **/DerivedData/
 artifacts/
+**/google-services.json
+**/GoogleService-Info.plist
+**/firebase-config.js
+**/firebase-web.json
+*.jks
+*.keystore

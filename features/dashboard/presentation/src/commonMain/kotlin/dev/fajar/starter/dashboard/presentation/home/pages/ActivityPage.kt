@@ -11,7 +11,11 @@ import dev.fajar.starter.designsystem.theme.AppColors
 import io.github.composefluent.FluentTheme
 
 @Composable
-fun ActivityPage(state: DashboardState, onRefresh: () -> Unit) {
+fun ActivityPage(
+    state: DashboardState,
+    onRefresh: () -> Unit,
+    onSavedChanged: (String, Boolean) -> Unit,
+) {
     AppPage {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
             AppText("Activity", style = FluentTheme.typography.title)
@@ -20,7 +24,10 @@ fun ActivityPage(state: DashboardState, onRefresh: () -> Unit) {
         AppBadge("Sample data")
         if (state.error != null) AppFeedback(state.error)
         if (state.loading && state.dashboard == null) AppLoading()
-        if (state.dashboard != null) ActivityList(state.dashboard.activity)
+        if (state.dashboard != null) {
+            if (state.dashboard.pendingChanges > 0) AppBadge("Sync pending")
+            ActivityList(state.dashboard.activity, onSavedChanged)
+        }
         AppButton("Refresh", onRefresh, primary = false, loading = state.loading)
     }
 }
