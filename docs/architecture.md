@@ -70,8 +70,9 @@ Clearing its ViewModel cancels the request. The repository checks cancellation b
 publishing a successful session. Dashboard refresh cancels the previous request and
 retains existing data when a later refresh fails.
 
-The preference port already serves as a datasource contract. Onboarding does not introduce
-a forwarding datasource around it. The in-memory session datasource owns a replayed DTO
+The typed preference store already serves as a datasource contract. Onboarding consumes
+Proto DataStore through that port; its repository maps the protobuf field to a domain value.
+The in-memory session datasource owns a replayed DTO
 snapshot; it does not own UI state or decide when the application should sign in.
 
 ## Navigation

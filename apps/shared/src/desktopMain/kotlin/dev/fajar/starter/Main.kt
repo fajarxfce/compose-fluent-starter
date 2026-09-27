@@ -7,10 +7,18 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
-import dev.fajar.starter.storage.DesktopPreferenceStore
+import dev.fajar.starter.common.config.BuildEnvironment
+import dev.fajar.starter.datastore.createUserPreferences
 
 fun main() {
-    val container = createAppContainer(DesktopPreferenceStore())
+    val environment = BuildEnvironment.current
+    val container =
+        createAppContainer(
+            createUserPreferences(
+                java.io.File(System.getProperty("user.home"), ".fluent-starter/${environment.id}"),
+                migrateLegacy = environment.id == "prod",
+            )
+        )
     application {
         DisposableEffect(container) { onDispose { container.close() } }
         Window(

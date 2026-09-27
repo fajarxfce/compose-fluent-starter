@@ -18,9 +18,12 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
-import dev.fajar.starter.storage.PreferenceStore
+import dev.fajar.starter.datastore.createUserPreferences
 import java.io.File
+import java.nio.file.Files
 import kotlin.test.assertEquals
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import org.jetbrains.skia.Image
 import org.junit.Rule
 import org.junit.Test
@@ -30,17 +33,8 @@ class AppFlowTest {
 
     @Test
     fun onboardingLoginTabsAndLogout() {
-        val preferences =
-            object : PreferenceStore {
-                var completed: Boolean? = null
-
-                override suspend fun readBoolean(key: String) = completed
-
-                override suspend fun writeBoolean(key: String, value: Boolean): Boolean {
-                    completed = value
-                    return true
-                }
-            }
+        val directory = Files.createTempDirectory("fluent-ui").toFile()
+        val preferences = createUserPreferences(directory)
         val container = createAppContainer(preferences)
         val generation = mutableStateOf(0)
         try {
@@ -68,7 +62,7 @@ class AppFlowTest {
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Use demo account").fetchSemanticsNodes().isNotEmpty()
             }
-            assertEquals(true, preferences.completed)
+            assertEquals(true, runBlocking { preferences.data.first().onboarding_completed })
             capture("login")
             compose.onNodeWithText("Use demo account").performScrollTo().performClick()
             compose.onNodeWithContentDescription("Show password").performScrollTo().performClick()
@@ -94,6 +88,7 @@ class AppFlowTest {
             }
         } finally {
             container.close()
+            directory.deleteRecursively()
         }
     }
 

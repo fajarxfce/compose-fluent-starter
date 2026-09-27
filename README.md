@@ -9,7 +9,7 @@ Android builds also require Android SDK 36.
 
 ```sh
 ./gradlew :apps:shared:run                       # Desktop
-./gradlew :apps:android:installDevDebug             # Connected Android device
+./gradlew :apps:android:installDevDebug          # Connected Android device
 ./gradlew :apps:shared:wasmJsBrowserDevelopmentRun # Web
 ```
 
@@ -29,7 +29,8 @@ apps/demo                    Demo HTTP transport
 core/common                  Result and failure types
 core/presentation            MviViewModel and lifecycle-aware effect collection
 core/network                 Ktor client factory and HTTP failure boundary
-core/storage                 Platform preference drivers and storage boundary
+core/storage                 Storage error boundaries
+core/datastore               Reactive protobuf preferences and migration
 core/designsystem            Fluent theme and AppXxx composables
 core/identity/domain         User, repository contract, authentication use cases
 core/identity/data           API, datasource contracts, DTOs, repository, session
@@ -42,6 +43,7 @@ build-logic                  Gradle convention plugins
 Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dependencies use type-safe accessors such as `implementation(projects.core.common)`. Koin annotations generate registrations during normal Gradle builds.
 
 See [architecture](docs/architecture.md), [development](docs/development.md), and [validation](docs/validation.md).
+See [local storage](docs/storage.md) and [build environments](docs/environments.md) for platform setup.
 
 ## Check and build
 

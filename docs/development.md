@@ -10,6 +10,7 @@
 - `starter.android.application`: Android runner configuration with built-in Kotlin.
 - `starter.quality`: shared Kotlin formatting tasks.
 - `starter.web.toolchain`: use Node 22 LTS and resolve Binaryen through the settings repository.
+- `starter.proto`: Wire protobuf generation for KMP.
 - `starter.environment`: generated environment selection for shared targets.
 - `starter.android.flavors`: dev/staging/prod Android variants.
 

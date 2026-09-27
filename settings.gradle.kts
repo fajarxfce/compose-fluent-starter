@@ -35,6 +35,7 @@ include(
     ":core:presentation",
     ":core:network",
     ":core:storage",
+    ":core:datastore",
     ":core:designsystem",
     ":core:identity:domain",
     ":core:identity:data",
