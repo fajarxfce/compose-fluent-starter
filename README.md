@@ -17,6 +17,8 @@ Open `apps/ios/FluentStarter.xcodeproj` on macOS for iOS. Select a simulator or 
 
 Demo account: **demo@example.com / Demo123!**. The default transport is an in-process Ktor MockEngine; no authentication requests leave the device. Onboarding preferences persist. The demo session is memory-only and sign-in is required after a process restart. Dashboard content is sample data.
 
+Light and dark appearance follow the system theme automatically.
+
 ## Workspace
 
 ```text

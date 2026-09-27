@@ -3,8 +3,8 @@ package dev.fajar.starter.designsystem.components
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import io.github.composefluent.LocalContentColor
 import io.github.composefluent.component.AccentButton
 import io.github.composefluent.component.Button
 import io.github.composefluent.component.ProgressRing
@@ -24,8 +24,13 @@ fun AppButton(
             modifier = modifier.heightIn(min = 48.dp),
             disabled = !enabled || loading,
         ) {
-            if (loading) ProgressRing(modifier = Modifier.heightIn(max = 18.dp))
-            AppText(label, color = Color.White)
+            if (loading) {
+                ProgressRing(
+                    modifier = Modifier.heightIn(max = 18.dp),
+                    color = LocalContentColor.current,
+                )
+            }
+            AppText(label, color = LocalContentColor.current)
         }
     } else {
         Button(
@@ -33,7 +38,7 @@ fun AppButton(
             modifier = modifier.heightIn(min = 48.dp),
             disabled = !enabled || loading,
         ) {
-            AppText(label)
+            AppText(label, color = LocalContentColor.current)
         }
     }
 }
