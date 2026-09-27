@@ -6,15 +6,16 @@
 and `UserPreferencesStore`. `data` exposes `Flow<UserPreferences>`;
 `update { current -> current.copy(...) }` is an atomic read-modify-write operation.
 Keep transforms pure. A single application container owns each store and cancels
-its scope on close. Do not create a store per screen.
+its observations on close. Do not create a store per screen.
 
 Wire generates Kotlin models for all targets instead of JVM-only protobuf models.
 Repositories consume the store, map DTOs, and wrap acquisition/mapping with
 `safeStorageCall` or `safeStorageFlow`. Domain and presentation never import proto types.
 Onboarding uses this path and migrates its previous platform preference once.
 
-Android/iOS/desktop store protobuf files; Web stores the same protobuf bytes as
-Base64 through a DataStore storage adapter. Browser ownership is one store per
+Android/iOS/desktop use DataStore with protobuf files. DataStore 1.2.1's published
+Wasm factory is unimplemented, so Web uses a mutex-protected reactive localStorage
+adapter with the same protobuf bytes and `UserPreferencesStore` contract. Browser ownership is one store per
 key per page; this does not provide cross-tab reactive invalidation. Browser storage
 is subject to browser eviction/private-mode restrictions. It is not credential storage.
 

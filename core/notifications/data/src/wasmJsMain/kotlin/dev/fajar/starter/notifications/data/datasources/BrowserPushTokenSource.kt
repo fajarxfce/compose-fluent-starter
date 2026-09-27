@@ -5,6 +5,7 @@ package dev.fajar.starter.notifications.data.datasources
 import dev.fajar.starter.notifications.data.dto.NotificationPayload
 import dev.fajar.starter.notifications.data.errors.NotificationUnavailableException
 import kotlin.js.Promise
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.await
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
@@ -24,15 +25,20 @@ class BrowserPushTokenSource : PushTokenSource {
             close()
             return@callbackFlow
         }
+        val registration = listenBrowserPush { encoded ->
+            try {
+                trySend(Json.decodeFromString<NotificationPayload>(encoded))
+            } catch (error: Exception) {
+                close(error)
+            }
+        }
         val listener =
-            listenBrowserPush { encoded ->
-                    try {
-                        trySend(Json.decodeFromString<NotificationPayload>(encoded))
-                    } catch (error: Exception) {
-                        close(error)
-                    }
-                }
-                .await<JsAny>()
+            try {
+                registration.await<JsAny>()
+            } catch (cancelled: CancellationException) {
+                cancelPendingBrowserPush(registration)
+                throw cancelled
+            }
         awaitClose { stopBrowserPush(listener) }
     }
 }
@@ -70,3 +76,6 @@ private external fun browserPushToken(): Promise<JsString>
 private external fun listenBrowserPush(handler: (String) -> Unit): Promise<JsAny>
 
 @JsFun("(unsubscribe) => unsubscribe()") private external fun stopBrowserPush(listener: JsAny)
+
+@JsFun("(pending) => { pending.then(unsubscribe => unsubscribe(), () => {}); }")
+private external fun cancelPendingBrowserPush(pending: Promise<JsAny>)

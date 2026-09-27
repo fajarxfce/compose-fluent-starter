@@ -18,10 +18,10 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         return true
     }
 
-    func fetchToken(completion: @escaping (String?, NSError?) -> KotlinUnit) {
-        guard configured else { _ = completion(nil, NSError(domain: "FirebaseConfiguration", code: 1)); return }
+    func fetchToken(completion: @escaping (String?, Error?) -> Void) {
+        guard configured else { completion(nil, NSError(domain: "FirebaseConfiguration", code: 1)); return }
         Messaging.messaging().token { token, error in
-            _ = completion(token, error as NSError?)
+            completion(token, error as NSError?)
         }
     }
 
