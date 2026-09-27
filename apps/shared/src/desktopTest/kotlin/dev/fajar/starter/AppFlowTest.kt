@@ -71,6 +71,8 @@ class AppFlowTest {
             assertEquals(true, preferences.completed)
             capture("login")
             compose.onNodeWithText("Use demo account").performScrollTo().performClick()
+            compose.onNodeWithContentDescription("Show password").performScrollTo().performClick()
+            compose.onNodeWithContentDescription("Hide password").assertExists().performClick()
             compose.onNode(hasText("Sign in") and hasClickAction()).performScrollTo().performClick()
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Projects").fetchSemanticsNodes().isNotEmpty()

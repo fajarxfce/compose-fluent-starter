@@ -7,8 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import dev.fajar.starter.auth.presentation.login.LoginEvent
 import dev.fajar.starter.auth.presentation.login.LoginState
@@ -40,28 +38,15 @@ fun LoginPage(state: LoginState, onEvent: (LoginEvent) -> Unit) {
                             imeAction = ImeAction.Next,
                         ),
                 )
-                AppTextField(
-                    "Password",
-                    state.password,
-                    { onEvent(LoginEvent.PasswordChanged(it)) },
-                    placeholder = "Enter your password",
+                AppPasswordField(
+                    value = state.password,
+                    onValueChange = { onEvent(LoginEvent.PasswordChanged(it)) },
+                    visible = state.passwordVisible,
+                    onVisibilityChanged = { onEvent(LoginEvent.PasswordVisibilityChanged) },
                     enabled = !state.submitting,
                     error = state.failure?.takeIf { it.field == "password" }?.message,
-                    visualTransformation =
-                        if (state.passwordVisible) VisualTransformation.None
-                        else PasswordVisualTransformation(),
-                    keyboardOptions =
-                        KeyboardOptions(
-                            keyboardType = KeyboardType.Password,
-                            imeAction = ImeAction.Done,
-                        ),
                     keyboardActions =
                         KeyboardActions(onDone = { onEvent(LoginEvent.SignInRequested) }),
-                )
-                AppButton(
-                    if (state.passwordVisible) "Hide password" else "Show password",
-                    { onEvent(LoginEvent.PasswordVisibilityChanged) },
-                    primary = false,
                 )
                 if (state.failure != null && state.failure.field == null)
                     AppFeedback(state.failure.message)
