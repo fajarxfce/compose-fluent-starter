@@ -5,6 +5,8 @@ import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.dashboard.data.di.DashboardDataModule
 import dev.fajar.starter.dashboard.presentation.di.DashboardPresentationModule
+import dev.fajar.starter.database.AppDatabase
+import dev.fajar.starter.database.DashboardStore
 import dev.fajar.starter.database.InboxStore
 import dev.fajar.starter.datastore.UserPreferencesStore
 import dev.fajar.starter.demo.createDemoEngine
@@ -24,7 +26,7 @@ import org.koin.ksp.generated.module
 /** Platform entry points own this isolated container and its lifetime. */
 fun createAppContainer(
     preferences: UserPreferencesStore,
-    inbox: InboxStore,
+    database: AppDatabase,
     notificationPlatform: Module,
     environment: AppEnvironment = BuildEnvironment.current,
 ) = koinApplication {
@@ -34,7 +36,9 @@ fun createAppContainer(
         NotificationPresentationModule().module,
         module {
             single { environment }
-            single<InboxStore> { inbox }.onClose { it?.close() }
+            single<AppDatabase>(createdAtStart = true) { database }.onClose { it?.close() }
+            single<InboxStore> { get<AppDatabase>().inbox }
+            single<DashboardStore> { get<AppDatabase>().dashboard }
             single<UserPreferencesStore> { preferences }.onClose { it?.close() }
             single<HttpClient> {
                     createHttpClient(createDemoEngine(), "https://demo.fluent.local/")

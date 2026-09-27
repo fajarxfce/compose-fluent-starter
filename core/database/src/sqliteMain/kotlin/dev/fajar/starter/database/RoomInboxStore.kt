@@ -1,16 +1,10 @@
 package dev.fajar.starter.database
 
-import androidx.room.RoomDatabase
-import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import dev.fajar.starter.database.entities.InboxEntity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.map
 
-class RoomInboxStore(builder: RoomDatabase.Builder<StarterDatabase>) : InboxStore {
-    private val database =
-        builder.setDriver(BundledSQLiteDriver()).setQueryCoroutineContext(Dispatchers.IO).build()
-    private val dao = database.inboxDao()
+internal class RoomInboxStore(private val dao: dev.fajar.starter.database.dao.InboxDao) :
+    InboxStore {
 
     override fun observe() =
         dao.observe().map { rows ->
@@ -42,6 +36,4 @@ class RoomInboxStore(builder: RoomDatabase.Builder<StarterDatabase>) : InboxStor
     override suspend fun markRead(id: String) = dao.markRead(id)
 
     override suspend fun clear() = dao.clear()
-
-    override fun close() = database.close()
 }

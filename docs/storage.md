@@ -25,9 +25,10 @@ one field. Corrupt data is reported, not silently replaced with defaults.
 
 ## Database
 
-`core/database` exposes the raw `InboxStore` contract and `InboxRecord` DTO. Room
+`core/database` exposes raw `InboxStore` and `DashboardStore` contracts. One `AppDatabase`
+owns the connection and both stores; close the owner, not individual stores. Room
 implements it on Android, iOS, and desktop using bundled SQLite. Web uses IndexedDB
-because Room does not publish a Wasm target. Both adapters support ordered observation,
+because Room does not publish a Wasm target. The inbox adapters support ordered observation,
 upsert, marking a record read, and clearing records. Repository owns domain mapping.
 
 Room DAOs, entities, and database stay in `sqliteMain`; platform files only construct
@@ -39,3 +40,10 @@ committed writes in the current app instance.
 
 Run `./gradlew :core:datastore:desktopTest :core:database:desktopTest` for actual
 filesystem/SQLite tests. Browser behavior also needs a browser smoke test.
+
+Database version 2 adds dashboard content, device-owned saved preferences, and an ordered outbox.
+Room uses a tested automatic migration from v1; IndexedDB adds stores during its v2 upgrade. Both
+preserve existing inbox records. Updating a saved preference and inserting its outbox command is
+one transaction. Acknowledgements delete by operation ID. Refreshing content does not overwrite
+local preferences. The dashboard flow reads content, preferences, and pending counts in one query
+or transaction. Platform roots create the database once with `createAppDatabase`.

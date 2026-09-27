@@ -7,7 +7,7 @@ import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 
-fun createInboxStore(): InboxStore {
+fun createAppDatabase(): AppDatabase {
     val directory =
         NSFileManager.defaultManager.URLForDirectory(
             NSApplicationSupportDirectory,
@@ -16,7 +16,7 @@ fun createInboxStore(): InboxStore {
             true,
             null,
         ) ?: error("Application support directory is unavailable.")
-    return RoomInboxStore(
+    return RoomAppDatabase(
         Room.databaseBuilder<StarterDatabase>(requireNotNull(directory.path) + "/starter.db")
     )
 }

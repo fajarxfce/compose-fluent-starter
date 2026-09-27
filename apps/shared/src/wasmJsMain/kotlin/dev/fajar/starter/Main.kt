@@ -8,7 +8,7 @@ import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.common.config.BuildEnvironment
-import dev.fajar.starter.database.createInboxStore
+import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
@@ -29,7 +29,7 @@ fun main() {
     val container =
         createAppContainer(
             createUserPreferences(namespace),
-            createInboxStore(namespace),
+            createAppDatabase(namespace),
             module {
                 single<NotificationPermissionSource> { BrowserNotificationPermissionSource() }
                 single<NotificationDisplaySource> { BrowserNotificationDisplaySource() }

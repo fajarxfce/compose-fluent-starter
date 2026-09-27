@@ -4,7 +4,7 @@ import android.app.Application
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.common.config.AppEnvironment
-import dev.fajar.starter.database.createInboxStore
+import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 
 class StarterApplication : Application() {
@@ -13,7 +13,7 @@ class StarterApplication : Application() {
     val container by lazy {
         createAppContainer(
             createUserPreferences(this),
-            createInboxStore(this),
+            createAppDatabase(this),
             androidNotificationModule(this, environment),
             environment,
         )

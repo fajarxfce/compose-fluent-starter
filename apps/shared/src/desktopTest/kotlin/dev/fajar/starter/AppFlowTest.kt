@@ -18,7 +18,7 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
-import dev.fajar.starter.database.createInboxStore
+import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.data.dto.*
@@ -42,7 +42,7 @@ class AppFlowTest {
         val container =
             createAppContainer(
                 preferences,
-                createInboxStore(directory),
+                createAppDatabase(directory),
                 module {
                     single<NotificationPermissionSource> {
                         object : NotificationPermissionSource {

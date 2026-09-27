@@ -11,6 +11,4 @@ interface InboxStore {
     suspend fun markRead(id: String)
 
     suspend fun clear()
-
-    fun close()
 }

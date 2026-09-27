@@ -9,7 +9,7 @@ import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.common.config.BuildEnvironment
-import dev.fajar.starter.database.createInboxStore
+import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.notifications.data.datasources.*
 import org.koin.dsl.module
@@ -24,7 +24,7 @@ fun main(args: Array<String>) {
     val container =
         createAppContainer(
             createUserPreferences(directory, migrateLegacy = environment.id == "prod"),
-            createInboxStore(directory),
+            createAppDatabase(directory),
             module {
                 single<NotificationPermissionSource> { DesktopNotificationPermissionSource() }
                 single<NotificationDisplaySource> {

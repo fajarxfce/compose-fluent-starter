@@ -11,7 +11,8 @@ class InboxStoreTest {
     @Test
     fun inboxPersistsOrdersUpsertsAndMarksRead() = runTest {
         val directory = Files.createTempDirectory("fluent-inbox").toFile()
-        var store = createInboxStore(directory)
+        var database = createAppDatabase(directory)
+        var store = database.inbox
         try {
             assertTrue(store.observe().first().isEmpty())
             store.upsert(InboxRecord("a", "First", "Body", "inbox", 1))
@@ -19,14 +20,15 @@ class InboxStoreTest {
             store.upsert(InboxRecord("a", "Updated", "Body", "inbox", 1))
             assertEquals(listOf("b", "a"), store.observe().first().map { it.id })
             store.markRead("a")
-            store.close()
-            store = createInboxStore(directory)
+            database.close()
+            database = createAppDatabase(directory)
+            store = database.inbox
             assertTrue(store.observe().first().single { it.id == "a" }.read)
             assertEquals("Updated", store.observe().first().single { it.id == "a" }.title)
             store.clear()
             assertTrue(store.observe().first().isEmpty())
         } finally {
-            store.close()
+            database.close()
             directory.deleteRecursively()
         }
     }

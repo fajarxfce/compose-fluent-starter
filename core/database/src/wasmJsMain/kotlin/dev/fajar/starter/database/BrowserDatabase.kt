@@ -9,11 +9,20 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.json.Json
 
-fun createInboxStore(namespace: String): InboxStore = IndexedDbInboxStore("$namespace.database")
+fun createAppDatabase(namespace: String): AppDatabase = IndexedDbAppDatabase("$namespace.database")
 
-private class IndexedDbInboxStore(name: String) : InboxStore {
-    private val connection = lazy { openInboxDatabase(name) }
+private class IndexedDbAppDatabase(name: String) : AppDatabase {
+    private val connection = lazy { openAppDatabase(name) }
     private val database by connection
+    override val inbox: InboxStore = IndexedDbInboxStore { database.await<JsAny>() }
+    override val dashboard: DashboardStore = IndexedDbDashboardStore { database.await<JsAny>() }
+
+    override fun close() {
+        if (connection.isInitialized()) closeDatabase(database)
+    }
+}
+
+private class IndexedDbInboxStore(private val database: suspend () -> JsAny) : InboxStore {
     private val changes =
         MutableSharedFlow<Unit>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST).apply {
             tryEmit(Unit)
@@ -22,40 +31,45 @@ private class IndexedDbInboxStore(name: String) : InboxStore {
     override fun observe() =
         changes.map {
             Json.decodeFromString<List<InboxRecord>>(
-                readInbox(database.await<JsAny>()).await<JsString>().toString()
+                readInbox(database()).await<JsString>().toString()
             )
         }
 
     override suspend fun upsert(record: InboxRecord) {
-        writeInbox(database.await<JsAny>(), Json.encodeToString(record)).await<JsAny?>()
+        writeInbox(database(), Json.encodeToString(record)).await<JsAny?>()
         changes.tryEmit(Unit)
     }
 
     override suspend fun markRead(id: String) {
-        markInboxRead(database.await<JsAny>(), id).await<JsAny?>()
+        markInboxRead(database(), id).await<JsAny?>()
         changes.tryEmit(Unit)
     }
 
     override suspend fun clear() {
-        clearInbox(database.await<JsAny>()).await<JsAny?>()
+        clearInbox(database()).await<JsAny?>()
         changes.tryEmit(Unit)
-    }
-
-    override fun close() {
-        if (connection.isInitialized()) closeInbox(database)
     }
 }
 
 @JsFun(
     """(name) => new Promise((resolve, reject) => {
-    const request = indexedDB.open(name, 1);
-    request.onupgradeneeded = () => request.result.createObjectStore('inbox', {keyPath: 'id'});
+    const request = indexedDB.open(name, 2);
+    request.onupgradeneeded = event => {
+        const db = request.result;
+        if (event.oldVersion < 1) db.createObjectStore('inbox', {keyPath: 'id'});
+        if (event.oldVersion < 2) {
+            db.createObjectStore('dashboard');
+            db.createObjectStore('activity_preferences', {keyPath: 'activityId'});
+            const outbox = db.createObjectStore('dashboard_outbox', {keyPath: 'sequence', autoIncrement: true});
+            outbox.createIndex('operationId', 'operationId', {unique: true});
+        }
+    };
     request.onsuccess = () => { request.result.onversionchange = () => request.result.close(); resolve(request.result); };
     request.onerror = () => reject(request.error);
     request.onblocked = () => reject(new Error('Database upgrade is blocked.'));
 })"""
 )
-private external fun openInboxDatabase(name: String): Promise<JsAny>
+private external fun openAppDatabase(name: String): Promise<JsAny>
 
 @JsFun(
     """(db) => new Promise((resolve, reject) => {
@@ -93,4 +107,4 @@ private external fun markInboxRead(database: JsAny, id: String): Promise<JsAny?>
 private external fun clearInbox(database: JsAny): Promise<JsAny?>
 
 @JsFun("(pending) => { pending.then(db => db.close(), () => {}); }")
-private external fun closeInbox(database: Promise<JsAny>)
+private external fun closeDatabase(database: Promise<JsAny>)
