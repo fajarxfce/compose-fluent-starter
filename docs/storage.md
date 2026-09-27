@@ -21,3 +21,20 @@ is subject to browser eviction/private-mode restrictions. It is not credential s
 Add fields with new protobuf numbers. Reserve deleted field numbers/names. Wire
 preserves unknown fields through `copy`; do not reconstruct a message when updating
 one field. Corrupt data is reported, not silently replaced with defaults.
+
+## Database
+
+`core/database` exposes the raw `InboxStore` contract and `InboxRecord` DTO. Room
+implements it on Android, iOS, and desktop using bundled SQLite. Web uses IndexedDB
+because Room does not publish a Wasm target. Both adapters support ordered observation,
+upsert, marking a record read, and clearing records. Repository owns domain mapping.
+
+Room DAOs, entities, and database stay in `sqliteMain`; platform files only construct
+the database. Commit exported JSON schemas. Increment the database version and add a
+tested migration when changing an existing schema. No destructive fallback is enabled.
+IndexedDB schema upgrades belong in `onupgradeneeded`; its transaction completion,
+not individual request completion, determines write success. Observers update after
+committed writes in the current app instance.
+
+Run `./gradlew :core:datastore:desktopTest :core:database:desktopTest` for actual
+filesystem/SQLite tests. Browser behavior also needs a browser smoke test.

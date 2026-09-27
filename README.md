@@ -31,6 +31,7 @@ core/presentation            MviViewModel and lifecycle-aware effect collection
 core/network                 Ktor client factory and HTTP failure boundary
 core/storage                 Storage error boundaries
 core/datastore               Reactive protobuf preferences and migration
+core/database                Room / IndexedDB inbox persistence
 core/designsystem            Fluent theme and AppXxx composables
 core/identity/domain         User, repository contract, authentication use cases
 core/identity/data           API, datasource contracts, DTOs, repository, session

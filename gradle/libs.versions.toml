@@ -16,12 +16,18 @@ ktfmt = "0.59"
 browser = "0.3"
 datastore = "1.2.1"
 wire = "6.4.7"
+room = "2.8.5"
+sqlite = "2.6.2"
 
 [libraries]
 datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "datastore" }
 datastore-okio = { module = "androidx.datastore:datastore-core-okio", version.ref = "datastore" }
 wire-runtime = { module = "com.squareup.wire:wire-runtime", version.ref = "wire" }
 wire-gradle = { module = "com.squareup.wire:wire-gradle-plugin", version.ref = "wire" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-gradle = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 browser = { module = "org.jetbrains.kotlinx:kotlinx-browser", version.ref = "browser" }
 ktfmt = { module = "com.facebook:ktfmt", version.ref = "ktfmt" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }

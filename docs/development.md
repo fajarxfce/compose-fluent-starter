@@ -11,6 +11,7 @@
 - `starter.quality`: shared Kotlin formatting tasks.
 - `starter.web.toolchain`: use Node 22 LTS and resolve Binaryen through the settings repository.
 - `starter.proto`: Wire protobuf generation for KMP.
+- `starter.database`: Room, schema export, and platform KSP processors.
 - `starter.environment`: generated environment selection for shared targets.
 - `starter.android.flavors`: dev/staging/prod Android variants.
 
