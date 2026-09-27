@@ -40,7 +40,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
                 id: content.userInfo["gcm.message_id"] as? String ?? notification.request.identifier,
                 title: content.title, body: content.body,
                 destination: content.userInfo["destination"] as? String ?? "inbox"
-            ) { completionHandler([.banner, .sound, .list]); return KotlinUnit() }
+            ) { completionHandler([.banner, .sound, .list]) }
         } else { completionHandler([.banner, .sound, .list]) }
     }
 
@@ -52,7 +52,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
             host.receivedNotification(
                 id: content.userInfo["gcm.message_id"] as? String ?? response.notification.request.identifier,
                 title: content.title, body: content.body, destination: destination
-            ) { completionHandler(); return KotlinUnit() }
+            ) { completionHandler() }
         } else { completionHandler() }
     }
 
