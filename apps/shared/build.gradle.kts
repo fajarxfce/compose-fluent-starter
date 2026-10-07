@@ -78,6 +78,7 @@ compose.desktop {
     application {
         mainClass = "dev.fajar.starter.MainKt"
         nativeDistributions {
+            modules("jdk.httpserver")
             targetFormats(
                 org.jetbrains.compose.desktop.application.dsl.TargetFormat.Dmg,
                 org.jetbrains.compose.desktop.application.dsl.TargetFormat.Msi,

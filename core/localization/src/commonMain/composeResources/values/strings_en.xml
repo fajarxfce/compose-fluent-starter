@@ -106,4 +106,7 @@
     <string name="disable_app_lock_en">Disable app lock</string>
     <string name="device_authentication_failed_en">Authentication was not completed. Try again or sign in with your account.</string>
     <string name="device_authentication_unavailable_en">Biometrics are not available on this device.</string>
+    <string name="error_cancelled_en">The action was cancelled.</string>
+    <string name="sign_in_with_provider_en">Sign in with %1$s</string>
+    <string name="cancel_en">Cancel</string>
 </resources>

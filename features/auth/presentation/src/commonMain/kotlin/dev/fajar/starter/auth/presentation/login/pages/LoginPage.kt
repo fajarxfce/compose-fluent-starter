@@ -55,10 +55,27 @@ fun LoginPage(state: LoginState, onEvent: (LoginEvent) -> Unit) {
                     appString(AppString.SignIn),
                     { onEvent(LoginEvent.SignInRequested) },
                     Modifier.fillMaxWidth(),
-                    loading = state.submitting,
+                    loading = state.submitting && state.pendingProviderId == null,
+                    enabled = !state.submitting,
                 )
             }
         }
+        state.providers.forEach { provider ->
+            AppButton(
+                appString(AppString.SignInWithProvider, provider.label),
+                { onEvent(LoginEvent.SsoRequested(provider.id)) },
+                Modifier.fillMaxWidth(),
+                primary = false,
+                enabled = !state.submitting,
+                loading = state.submitting && state.pendingProviderId == provider.id,
+            )
+        }
+        if (state.pendingProviderId != null)
+            AppButton(
+                appString(AppString.Cancel),
+                { onEvent(LoginEvent.SsoCancellationRequested) },
+                primary = false,
+            )
         AppCard(Modifier.fillMaxWidth(), color = AppColors.tint) {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 AppBadge(appString(AppString.Demo))

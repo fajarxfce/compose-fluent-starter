@@ -8,6 +8,7 @@ import dev.fajar.starter.common.config.AppBuild
 import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.common.config.AppPlatform
 import dev.fajar.starter.common.config.BuildEnvironment
+import dev.fajar.starter.common.config.BuildOidc
 import dev.fajar.starter.common.config.BuildRuntime
 import dev.fajar.starter.common.result.AppResult
 import dev.fajar.starter.dashboard.data.di.DashboardDataModule
@@ -17,11 +18,15 @@ import dev.fajar.starter.database.AppDatabase
 import dev.fajar.starter.database.DashboardStore
 import dev.fajar.starter.database.InboxStore
 import dev.fajar.starter.datastore.UserPreferencesStore
+import dev.fajar.starter.demo.DemoBrowserAuthorizationSource
 import dev.fajar.starter.demo.createDemoEngine
 import dev.fajar.starter.featureflags.data.datasources.RemoteFeatureFlagSource
 import dev.fajar.starter.featureflags.data.datasources.UnavailableFeatureFlagSource
 import dev.fajar.starter.featureflags.data.di.FeatureFlagDataModule
 import dev.fajar.starter.identity.data.di.IdentityModule
+import dev.fajar.starter.identity.data.sso.config.SsoConfiguration
+import dev.fajar.starter.identity.data.sso.datasources.BrowserAuthorizationSource
+import dev.fajar.starter.identity.data.sso.datasources.UnavailableBrowserAuthorizationSource
 import dev.fajar.starter.identity.domain.usecases.AcquireSessionTokens
 import dev.fajar.starter.network.*
 import dev.fajar.starter.notifications.data.di.NotificationDataModule
@@ -58,6 +63,7 @@ fun createAppContainer(
     credentials: CredentialStore = MemoryCredentialStore(),
     remoteFeatureFlags: RemoteFeatureFlagSource = UnavailableFeatureFlagSource(),
     deviceAuthentication: DeviceAuthenticationSource = UnavailableDeviceAuthenticationSource(),
+    browserAuthorization: BrowserAuthorizationSource = UnavailableBrowserAuthorizationSource(),
     platform: AppPlatform = AppPlatform.Desktop,
 ) = koinApplication {
     modules(
@@ -74,6 +80,26 @@ fun createAppContainer(
         NotificationPresentationModule().module,
         module {
             single { environment }
+            single {
+                SsoConfiguration(
+                    if (BuildRuntime.demoBackend) dev.fajar.starter.demo.demoOidcClients()
+                    else BuildOidc.clients[environment].orEmpty(),
+                    platform,
+                )
+            }
+            single<BrowserAuthorizationSource> {
+                if (BuildRuntime.demoBackend) DemoBrowserAuthorizationSource()
+                else browserAuthorization
+            }
+            single<HttpClient>(named(HttpClients.Oidc)) {
+                    createHttpClient(
+                        if (BuildRuntime.demoBackend) createDemoEngine()
+                        else createPlatformHttpEngine(),
+                        HttpClientSettings("https://oidc.invalid/"),
+                    )
+                }
+                .onClose { it?.close() }
+
             single<DeviceAuthenticationSource> { deviceAuthentication }
             single {
                 AppBuild(

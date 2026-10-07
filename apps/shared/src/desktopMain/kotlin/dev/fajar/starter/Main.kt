@@ -13,6 +13,7 @@ import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.common.config.BuildRuntime
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
+import dev.fajar.starter.identity.data.sso.datasources.DesktopBrowserAuthorizationSource
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.securestorage.*
 import kotlinx.coroutines.*
@@ -39,6 +40,7 @@ fun main(args: Array<String>) {
                     .onClose { (it as? DesktopNotificationDisplaySource)?.close() }
                 single<PushTokenSource> { UnavailablePushTokenSource() }
             },
+            browserAuthorization = DesktopBrowserAuthorizationSource(),
             credentials =
                 if (BuildRuntime.persistDesktopSession)
                     DesktopCredentialStore("fluent-starter.${environment.id}")

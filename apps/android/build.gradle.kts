@@ -6,6 +6,7 @@ plugins {
 
 dependencies {
     implementation(projects.apps.shared)
+    implementation(projects.core.identity.data)
     implementation(libs.android.activity)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.messaging)

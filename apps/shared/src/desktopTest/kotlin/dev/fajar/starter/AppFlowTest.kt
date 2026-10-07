@@ -183,6 +183,13 @@ class AppFlowTest {
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Use demo account").fetchSemanticsNodes().isNotEmpty()
             }
+            compose
+                .onNodeWithText("Sign in with Demo organization")
+                .performScrollTo()
+                .performClick()
+            compose.waitUntil(15_000) {
+                compose.onAllNodesWithText("Projects").fetchSemanticsNodes().isNotEmpty()
+            }
         } finally {
             container.close()
             directory.deleteRecursively()

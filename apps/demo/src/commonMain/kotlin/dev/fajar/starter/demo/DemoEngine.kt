@@ -20,10 +20,17 @@ import kotlinx.serialization.json.jsonPrimitive
 fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
     val accepted = mutableMapOf<String, String>()
     val requests = Mutex()
+    val consumedAuthorizationCodes = mutableSetOf<String>()
     return MockEngine { request ->
         delay(latencyMillis)
         val headers = headersOf(HttpHeaders.ContentType, ContentType.Application.Json.toString())
         when {
+            request.method == HttpMethod.Get &&
+                request.url.encodedPath == "/.well-known/openid-configuration" ->
+                respond(DEMO_OIDC_DISCOVERY, headers = headers)
+            request.method == HttpMethod.Post && request.url.encodedPath == "/auth/oidc" ->
+                requests.withLock { respondDemoSso(request, consumedAuthorizationCodes) }
+
             request.method == HttpMethod.Post && request.url.encodedPath == "/auth/login" -> {
                 val credentials =
                     Json.parseToJsonElement(request.body.toByteArray().decodeToString()).jsonObject
@@ -62,24 +69,7 @@ fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
                 val editor =
                     request.headers[HttpHeaders.Authorization]?.split(":")?.getOrNull(1) ==
                         "demo-user"
-                respond(
-                    buildJsonObject {
-                            putJsonArray("roles") { add(if (editor) "editor" else "viewer") }
-                            putJsonArray("permissions") {
-                                add("files.download")
-                                if (editor) {
-                                    add("activity.save")
-                                    add("files.upload")
-                                }
-                            }
-                            put(
-                                "expiresAtEpochMillis",
-                                Clock.System.now().toEpochMilliseconds() + 3_600_000,
-                            )
-                        }
-                        .toString(),
-                    headers = headers,
-                )
+                respond(demoAccess(editor), headers = headers)
             }
             request.method == HttpMethod.Get && request.url.encodedPath == "/dashboard" -> {
                 val cursor = request.url.parameters["cursor"]
@@ -119,7 +109,7 @@ fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
 }
 
 /** Fixture encoding only; these strings are not real credentials or JWTs. */
-private fun demoSession(id: String): String {
+internal fun demoSession(id: String): String {
     val expires = Clock.System.now().toEpochMilliseconds() + 300_000
     return buildJsonObject {
             putJsonObject("user") {

@@ -106,4 +106,7 @@
     <string name="disable_app_lock_id">Nonaktifkan kunci aplikasi</string>
     <string name="device_authentication_failed_id">Autentikasi belum selesai. Coba lagi atau masuk dengan akun.</string>
     <string name="device_authentication_unavailable_id">Biometrik tidak tersedia di perangkat ini.</string>
+    <string name="error_cancelled_id">Tindakan dibatalkan.</string>
+    <string name="sign_in_with_provider_id">Masuk dengan %1$s</string>
+    <string name="cancel_id">Batal</string>
 </resources>

@@ -31,6 +31,7 @@ data class HttpClientSettings(
 }
 
 object HttpClients {
+    const val Oidc = "oidc"
     const val Public = "public-http"
     const val Authenticated = "authenticated-http"
 }

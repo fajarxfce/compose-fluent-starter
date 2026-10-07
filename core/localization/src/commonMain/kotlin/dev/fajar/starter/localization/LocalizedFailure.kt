@@ -7,6 +7,7 @@ import dev.fajar.starter.common.result.*
 fun failureText(failure: Failure): String =
     appString(
         when (failure.kind) {
+            FailureKind.Cancelled -> AppString.ErrorCancelled
             FailureKind.Validation -> AppString.ErrorValidation
             FailureKind.Unauthorized -> AppString.ErrorUnauthorized
             FailureKind.Network -> AppString.ErrorNetwork

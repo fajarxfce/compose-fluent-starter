@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import tasks.GenerateEnvironment
+import tasks.GenerateOidcClients
 
 plugins { id("starter.kmp") }
 
@@ -30,3 +31,13 @@ val generateEnvironment =
 kotlin.sourceSets.commonMain { kotlin.srcDir(generateEnvironment.flatMap { it.outputDirectory }) }
 
 tasks.withType<KotlinCompilationTask<*>>().configureEach { dependsOn(generateEnvironment) }
+
+val generateOidcClients =
+    tasks.register<GenerateOidcClients>("generateOidcClients") {
+        configurationFiles.from(rootProject.fileTree("config/oidc") { include("*.json") })
+        outputDirectory.set(layout.buildDirectory.dir("generated/oidc/kotlin"))
+    }
+
+kotlin.sourceSets.commonMain { kotlin.srcDir(generateOidcClients.flatMap { it.outputDirectory }) }
+
+tasks.withType<KotlinCompilationTask<*>>().configureEach { dependsOn(generateOidcClients) }

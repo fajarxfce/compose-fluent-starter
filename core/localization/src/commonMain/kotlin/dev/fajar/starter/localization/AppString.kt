@@ -5,6 +5,9 @@ import org.jetbrains.compose.resources.StringResource
 
 /** Explicit pairs keep runtime language changes portable across Android, iOS, desktop and Web. */
 enum class AppString(val english: StringResource, val indonesian: StringResource) {
+    Cancel(Res.string.cancel_en, Res.string.cancel_id),
+    ErrorCancelled(Res.string.error_cancelled_en, Res.string.error_cancelled_id),
+    SignInWithProvider(Res.string.sign_in_with_provider_en, Res.string.sign_in_with_provider_id),
     AppLocked(Res.string.app_locked_en, Res.string.app_locked_id),
     AppLockedDescription(
         Res.string.app_locked_description_en,

@@ -6,6 +6,7 @@ plugins {
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
         api(libs.ktor.mock)
+        implementation(projects.core.identity.data)
         implementation(libs.serialization.json)
     }
     getByName("commonTest").dependencies { implementation(libs.coroutines.test) }

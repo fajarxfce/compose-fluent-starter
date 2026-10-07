@@ -21,6 +21,7 @@ class MainActivity : FragmentActivity() {
         val container = app.container
         container.koin.get<AndroidNotificationPermissionSource>().attach(this)
         app.deviceAuthentication.attach(this)
+        app.browserAuthorization.attach(this)
         if (savedInstanceState == null)
             (intent.dataString
                     ?: intent.getStringExtra("destination")?.let {
@@ -48,6 +49,7 @@ class MainActivity : FragmentActivity() {
             .get<AndroidNotificationPermissionSource>()
             .detach(this)
         (application as StarterApplication).deviceAuthentication.detach(this)
+        (application as StarterApplication).browserAuthorization.detach(this)
         super.onDestroy()
     }
 }

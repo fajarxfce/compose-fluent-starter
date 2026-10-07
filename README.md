@@ -57,7 +57,7 @@ build-logic                  Gradle convention plugins
 
 Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dependencies use type-safe accessors such as `implementation(projects.core.common)`. Koin annotations generate registrations during normal Gradle builds.
 
-See [app lock](docs/app-lock.md), [app availability](docs/availability.md) and [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), and [localization](docs/localization.md).
+See [SSO](docs/sso.md), [app lock](docs/app-lock.md), [app availability](docs/availability.md) and [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), and [localization](docs/localization.md).
 
 See [architecture](docs/architecture.md), [development](docs/development.md), [quality gates](docs/quality.md), and [validation](docs/validation.md).
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
@@ -75,4 +75,4 @@ See [local storage](docs/storage.md) and [build environments](docs/environments.
 
 Use `xvfb-run -a ./gradlew :check` on headless Linux. Native installers require the corresponding operating system. Apple builds require Xcode.
 
-Compose Fluent remains experimental. Its API and accessibility coverage require evaluation for each target. The session and refresh foundations require a real backend contract for production use; the included transport and tokens are demo fixtures. OAuth remains backend integration work.
+Compose Fluent remains experimental. Its API and accessibility coverage require evaluation for each target. The session and refresh foundations require a real backend contract for production use; the included transport and tokens are demo fixtures. External SSO requires registered public clients and the documented backend code exchange.

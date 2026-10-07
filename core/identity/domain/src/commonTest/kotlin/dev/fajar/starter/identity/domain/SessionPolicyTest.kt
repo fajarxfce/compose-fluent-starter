@@ -3,8 +3,11 @@
 package dev.fajar.starter.identity.domain
 
 import dev.fajar.starter.common.result.*
+import dev.fajar.starter.common.result.AppResult
 import dev.fajar.starter.identity.domain.entities.*
+import dev.fajar.starter.identity.domain.entities.AuthenticatedUser
 import dev.fajar.starter.identity.domain.repositories.IdentityRepository
+import dev.fajar.starter.identity.domain.sso.entities.SsoProof
 import dev.fajar.starter.identity.domain.usecases.*
 import kotlin.test.*
 import kotlinx.coroutines.*
@@ -13,6 +16,9 @@ import kotlinx.coroutines.test.*
 class SessionPolicyTest {
     private class Remote(val action: suspend () -> AppResult<AuthenticatedUser>) :
         IdentityRepository {
+        override suspend fun completeSso(proof: SsoProof): AppResult<AuthenticatedUser> =
+            error("Unused SSO exchange")
+
         override suspend fun signIn(email: String, password: String) = action()
 
         override suspend fun refresh(refreshToken: String) = action()

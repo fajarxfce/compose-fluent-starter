@@ -17,3 +17,5 @@ artifacts/
 **/firebase-web.json
 *.jks
 *.keystore
+
+/config/oidc/*.json
