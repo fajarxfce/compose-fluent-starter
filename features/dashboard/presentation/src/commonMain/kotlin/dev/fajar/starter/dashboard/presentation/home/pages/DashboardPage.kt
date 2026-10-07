@@ -33,7 +33,32 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
             AppBrand()
             AppBadge(appString(AppString.Demo))
         }
-        Box(Modifier.weight(1f).consumeWindowInsets(WindowInsets.navigationBars)) {
+        AppNavigationScaffold(
+            modifier = Modifier.weight(1f),
+            items =
+                listOf(
+                    AppNavigationItem(
+                        DashboardTab.Overview,
+                        appString(AppString.Overview),
+                        Icons.Regular.Home,
+                        Icons.Filled.Home,
+                    ),
+                    AppNavigationItem(
+                        DashboardTab.Activity,
+                        appString(AppString.Activity),
+                        Icons.Regular.History,
+                        Icons.Filled.History,
+                    ),
+                    AppNavigationItem(
+                        DashboardTab.Account,
+                        appString(AppString.Account),
+                        Icons.Regular.Person,
+                        Icons.Filled.Person,
+                    ),
+                ),
+            selected = state.tab,
+            onSelected = { onEvent(DashboardEvent.TabSelected(it)) },
+        ) {
             when (state.tab) {
                 DashboardTab.Overview ->
                     OverviewPage(
@@ -59,30 +84,5 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
                     )
             }
         }
-        AppBottomNavigation(
-            items =
-                listOf(
-                    AppNavigationItem(
-                        DashboardTab.Overview,
-                        appString(AppString.Overview),
-                        Icons.Regular.Home,
-                        Icons.Filled.Home,
-                    ),
-                    AppNavigationItem(
-                        DashboardTab.Activity,
-                        appString(AppString.Activity),
-                        Icons.Regular.History,
-                        Icons.Filled.History,
-                    ),
-                    AppNavigationItem(
-                        DashboardTab.Account,
-                        appString(AppString.Account),
-                        Icons.Regular.Person,
-                        Icons.Filled.Person,
-                    ),
-                ),
-            selected = state.tab,
-            onSelected = { onEvent(DashboardEvent.TabSelected(it)) },
-        )
     }
 }

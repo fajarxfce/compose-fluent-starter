@@ -19,7 +19,7 @@ fun AccountPage(
 ) {
     AppPage(maxWidth = 600.dp) {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            AppText(appString(AppString.Account), style = FluentTheme.typography.title)
+            AppHeading(appString(AppString.Account), style = FluentTheme.typography.title)
             AppText(appString(AppString.ProfileDescription), color = AppColors.muted)
         }
         AppCard(Modifier.fillMaxWidth()) {

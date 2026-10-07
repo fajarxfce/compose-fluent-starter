@@ -20,7 +20,7 @@ fun ActivityPage(
 ) {
     AppPage {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            AppText(appString(AppString.Activity), style = FluentTheme.typography.title)
+            AppHeading(appString(AppString.Activity), style = FluentTheme.typography.title)
             AppText(appString(AppString.RecentChanges), color = AppColors.muted)
         }
         AppBadge(appString(AppString.SampleData))

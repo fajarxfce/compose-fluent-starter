@@ -21,7 +21,7 @@ fun LoginPage(state: LoginState, onEvent: (LoginEvent) -> Unit) {
         AppBrand()
         Spacer(Modifier.height(12.dp))
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            AppText(appString(AppString.SignIn), style = FluentTheme.typography.titleLarge)
+            AppHeading(appString(AppString.SignIn), style = FluentTheme.typography.titleLarge)
             AppText(appString(AppString.SignInDescription), color = AppColors.muted)
         }
         AppCard(Modifier.fillMaxWidth()) {

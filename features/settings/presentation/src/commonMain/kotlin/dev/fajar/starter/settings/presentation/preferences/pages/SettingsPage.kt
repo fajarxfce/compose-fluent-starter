@@ -15,7 +15,7 @@ fun SettingsPage(
     securitySettings: @Composable () -> Unit = {},
 ) {
     AppPage {
-        AppText(appString(AppString.Settings), style = FluentTheme.typography.title)
+        AppHeading(appString(AppString.Settings), style = FluentTheme.typography.title)
         AppCard {
             AppText(appString(AppString.AccountAccess), style = FluentTheme.typography.bodyStrong)
             AppText(appString(AppString.AccountRoles, state.roles.joinToString(", ")))

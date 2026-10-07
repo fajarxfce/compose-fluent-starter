@@ -15,7 +15,7 @@ fun NotificationPage(state: NotificationState, onEvent: (NotificationEvent) -> U
     AppLazyPage {
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                AppText(appString(AppString.Notifications), style = FluentTheme.typography.title)
+                AppHeading(appString(AppString.Notifications), style = FluentTheme.typography.title)
                 AppButton(
                     appString(AppString.Back),
                     { onEvent(NotificationEvent.BackRequested) },

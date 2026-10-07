@@ -10,7 +10,7 @@ import io.github.composefluent.FluentTheme
 fun AppLockPage(state: AppLockState, onEvent: (AppLockEvent) -> Unit) {
     AppPage {
         AppBrand()
-        AppText(appString(AppString.AppLocked), style = FluentTheme.typography.title)
+        AppHeading(appString(AppString.AppLocked), style = FluentTheme.typography.title)
         AppText(appString(AppString.AppLockedDescription))
         if (state.failure != null) AppFeedback(appString(AppString.DeviceAuthenticationFailed))
         AppButton(
