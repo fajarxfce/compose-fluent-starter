@@ -35,6 +35,8 @@ include(
     ":core:presentation",
     ":core:network",
     ":core:storage",
+    ":core:securestorage",
+    ":core:observability",
     ":core:datastore",
     ":core:database",
     ":core:sync:domain",

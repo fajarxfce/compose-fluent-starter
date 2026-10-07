@@ -23,8 +23,16 @@ firebase-web = "12.19.0"
 google-services = "4.5.0"
 android-core = "1.17.0"
 work = "2.12.0"
+java-keyring = "1.0.4"
+crashlytics = "3.0.8"
 
 [libraries]
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "crashlytics" }
+java-keyring = { module = "com.github.javakeyring:java-keyring", version.ref = "java-keyring" }
+ktor-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
 work-runtime = { module = "androidx.work:work-runtime", version.ref = "work" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 firebase-config = { module = "com.google.firebase:firebase-config" }

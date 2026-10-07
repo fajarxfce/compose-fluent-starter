@@ -12,4 +12,5 @@ dependencies {
     implementation(libs.wire.gradle)
     implementation(libs.room.gradle)
     implementation(libs.google.services.gradle)
+    implementation(libs.crashlytics.gradle)
 }
