@@ -1,6 +1,8 @@
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.attributes.Bundling
+import org.gradle.api.attributes.Category
 import org.gradle.api.attributes.Usage
+import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 
 plugins { base }
 
@@ -72,3 +74,24 @@ tasks.register<JavaExec>("detekt") {
 }
 
 tasks.named("check") { dependsOn("detekt") }
+
+// Maintainer-only resolution: include other desktop runtimes when reviewing new checksums.
+val desktopRuntimes by
+    configurations.creating {
+        attributes {
+            attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.JAVA_RUNTIME))
+            attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.LIBRARY))
+            attribute(KotlinPlatformType.attribute, KotlinPlatformType.jvm)
+        }
+    }
+
+dependencies {
+    listOf("compose-desktop-windows", "compose-desktop-macos-arm64", "compose-desktop-macos-x64")
+        .forEach { add(desktopRuntimes.name, catalog.findLibrary(it).get()) }
+}
+
+tasks.register("resolveDesktopRuntimes") {
+    group = "verification"
+    description = "Resolves supported desktop runtimes for dependency-metadata maintenance."
+    doLast { desktopRuntimes.files }
+}

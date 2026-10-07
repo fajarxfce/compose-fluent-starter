@@ -28,6 +28,9 @@ crashlytics = "3.0.8"
 detekt = "2.0.0-alpha.6"
 
 [libraries]
+compose-desktop-windows = { module = "org.jetbrains.compose.desktop:desktop-jvm-windows-x64", version.ref = "compose" }
+compose-desktop-macos-arm64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-macos-arm64", version.ref = "compose" }
+compose-desktop-macos-x64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-macos-x64", version.ref = "compose" }
 detekt-cli = { module = "dev.detekt:detekt-cli", version.ref = "detekt" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "crashlytics" }
