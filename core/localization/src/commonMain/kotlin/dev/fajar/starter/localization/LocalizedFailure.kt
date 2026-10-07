@@ -14,6 +14,7 @@ fun failureText(failure: Failure): String =
             FailureKind.Service -> AppString.ErrorService
             FailureKind.Storage -> AppString.ErrorStorage
             FailureKind.Permission -> AppString.ErrorPermission
+            FailureKind.AccessDenied -> AppString.ErrorAccessDenied
             FailureKind.Unavailable -> AppString.ErrorUnavailable
             FailureKind.Unexpected -> AppString.ErrorUnexpected
         }

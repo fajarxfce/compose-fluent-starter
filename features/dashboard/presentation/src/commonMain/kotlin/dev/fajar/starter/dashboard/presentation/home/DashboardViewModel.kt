@@ -8,6 +8,9 @@ import dev.fajar.starter.featureflags.domain.usecases.ObserveFeatureFlag
 import dev.fajar.starter.identity.domain.usecases.ObserveUser
 import dev.fajar.starter.identity.domain.usecases.SignOut
 import dev.fajar.starter.presentation.mvi.MviViewModel
+import dev.fajar.starter.security.domain.access.entities.Permission
+import dev.fajar.starter.security.domain.access.usecases.ObservePermission
+import dev.fajar.starter.security.domain.access.usecases.RefreshAccess
 import dev.fajar.starter.sync.domain.SyncResult
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -22,6 +25,8 @@ class DashboardViewModel(
     private val observeUser: ObserveUser,
     private val signOut: SignOut,
     private val observeFeatureFlag: ObserveFeatureFlag,
+    private val observePermission: ObservePermission,
+    private val refreshAccess: RefreshAccess,
     @org.koin.core.annotation.InjectedParam initialTab: DashboardTab,
 ) :
     MviViewModel<DashboardState, DashboardEvent, DashboardEffect>(
@@ -67,6 +72,16 @@ class DashboardViewModel(
                 }
             }
         }
+        viewModelScope.launch {
+            observePermission(Permission.SaveActivity).collect { result ->
+                when (result) {
+                    is AppResult.Success ->
+                        updateState { it.copy(hasSavingPermission = result.value) }
+                    is AppResult.Failed ->
+                        updateState { it.copy(hasSavingPermission = false, error = result.failure) }
+                }
+            }
+        }
         onEvent(DashboardEvent.RefreshRequested)
     }
 
@@ -80,6 +95,11 @@ class DashboardViewModel(
         updateState { it.copy(loading = true, loadingMore = false, pageError = null, error = null) }
         refreshJob =
             viewModelScope.launch {
+                when (val permissions = refreshAccess()) {
+                    is AppResult.Failed ->
+                        updateState { it.copy(accessError = permissions.failure) }
+                    is AppResult.Success -> updateState { it.copy(accessError = null) }
+                }
                 when (val result = synchronize()) {
                     SyncResult.Complete -> updateState { it.copy(loading = false, error = null) }
                     is SyncResult.Retry ->

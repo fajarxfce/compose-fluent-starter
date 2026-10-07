@@ -16,6 +16,9 @@ import dev.fajar.starter.identity.domain.entities.*
 import dev.fajar.starter.identity.domain.repositories.SessionRepository
 import dev.fajar.starter.identity.domain.usecases.ObserveUser
 import dev.fajar.starter.identity.domain.usecases.SignOut
+import dev.fajar.starter.security.domain.access.entities.*
+import dev.fajar.starter.security.domain.access.repositories.AccessRepository
+import dev.fajar.starter.security.domain.access.usecases.*
 import dev.fajar.starter.sync.domain.repositories.SyncScheduleRepository
 import kotlin.test.*
 import kotlinx.coroutines.CompletableDeferred
@@ -100,10 +103,13 @@ class DashboardViewModelTest {
                     flags,
                     AppEnvironment.Dev,
                     TestSessions(testSession()),
+                    GrantedAccess(),
                 ),
                 ObserveUser(identity),
                 SignOut(identity),
                 ObserveFeatureFlag(flags, AppEnvironment.Dev),
+                ObservePermission(identity, GrantedAccess()),
+                RefreshAccess(identity, GrantedAccess()),
                 DashboardTab.Overview,
             )
         store.put("dashboard", viewModel)
@@ -156,3 +162,16 @@ private fun testSession() =
         User("1", "Alex", "demo@example.com"),
         SessionTokens("access", "refresh", Long.MAX_VALUE),
     )
+
+private class GrantedAccess : AccessRepository {
+    override fun observe(sessionId: String) = flowOf(AppResult.Success(grants(sessionId)))
+
+    override suspend fun cached(sessionId: String) = AppResult.Success(grants(sessionId))
+
+    override suspend fun refresh(sessionId: String) = AppResult.Success(Unit)
+
+    override suspend fun invalidate(sessionId: String) = AppResult.Success(Unit)
+
+    private fun grants(id: String) =
+        AccessSnapshot(id, setOf("editor"), setOf(Permission.SaveActivity), Long.MAX_VALUE)
+}

@@ -80,4 +80,11 @@
     <string name="error_unavailable_id">Tindakan ini belum tersedia.</string>
     <string name="error_unexpected_id">Terjadi kesalahan. Coba lagi.</string>
     <plurals name="activity_count_id"><item quantity="one">%1$s aktivitas</item><item quantity="other">%1$s aktivitas</item></plurals>
+    <string name="error_access_denied_id">Akun Anda tidak memiliki akses untuk tindakan ini.</string>
+    <string name="account_access_id">Akses akun</string>
+    <string name="account_roles_id">Role: %1$s</string>
+    <string name="permission_save_activity_id">Menyimpan aktivitas</string>
+    <string name="permission_upload_file_id">Mengunggah file</string>
+    <string name="permission_download_file_id">Mengunduh file</string>
+    <string name="refresh_access_id">Perbarui akses</string>
 </resources>

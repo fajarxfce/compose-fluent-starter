@@ -53,9 +53,33 @@ fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
                 } else
                     respond("""{"error":"invalid_token"}""", HttpStatusCode.Unauthorized, headers)
             }
-            request.url.encodedPath.startsWith("/dashboard") &&
+            (request.url.encodedPath.startsWith("/dashboard") ||
+                request.url.encodedPath == "/me/access") &&
                 !validDemoToken(request.headers[HttpHeaders.Authorization]) -> {
                 respond("""{"error":"invalid_token"}""", HttpStatusCode.Unauthorized, headers)
+            }
+            request.method == HttpMethod.Get && request.url.encodedPath == "/me/access" -> {
+                val editor =
+                    request.headers[HttpHeaders.Authorization]?.split(":")?.getOrNull(1) ==
+                        "demo-user"
+                respond(
+                    buildJsonObject {
+                            putJsonArray("roles") { add(if (editor) "editor" else "viewer") }
+                            putJsonArray("permissions") {
+                                add("files.download")
+                                if (editor) {
+                                    add("activity.save")
+                                    add("files.upload")
+                                }
+                            }
+                            put(
+                                "expiresAtEpochMillis",
+                                Clock.System.now().toEpochMilliseconds() + 3_600_000,
+                            )
+                        }
+                        .toString(),
+                    headers = headers,
+                )
             }
             request.method == HttpMethod.Get && request.url.encodedPath == "/dashboard" -> {
                 val cursor = request.url.parameters["cursor"]
@@ -76,6 +100,8 @@ fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
                 val status =
                     requests.withLock {
                         when {
+                            request.headers[HttpHeaders.Authorization]?.split(":")?.getOrNull(1) !=
+                                "demo-user" -> HttpStatusCode.Forbidden
                             !valid -> HttpStatusCode.BadRequest
                             accepted.containsKey(key) && accepted[key] != body ->
                                 HttpStatusCode.Conflict

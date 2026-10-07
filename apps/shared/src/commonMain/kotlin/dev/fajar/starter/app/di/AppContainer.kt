@@ -51,6 +51,7 @@ fun createAppContainer(
 ) = koinApplication {
     modules(
         notificationPlatform,
+        dev.fajar.starter.security.data.di.SecurityDataModule().module,
         SettingsDataModule().module,
         SettingsPresentationModule().module,
         SyncDataModule().module,

@@ -32,7 +32,7 @@ fun ActivityPage(
             if (state.dashboard.pendingChanges > 0) AppBadge(appString(AppString.SyncPending))
             ActivityList(
                 state.dashboard.activity,
-                if (state.savingAvailable) onSavedChanged else null,
+                if (state.savingAvailable && state.hasSavingPermission) onSavedChanged else null,
             )
         }
         if (state.pageError != null) AppFeedback(failureText(state.pageError))

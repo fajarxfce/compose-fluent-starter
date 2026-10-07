@@ -8,6 +8,7 @@ enum class FailureKind {
     Service,
     Storage,
     Permission,
+    AccessDenied,
     Unavailable,
     Unexpected,
 }

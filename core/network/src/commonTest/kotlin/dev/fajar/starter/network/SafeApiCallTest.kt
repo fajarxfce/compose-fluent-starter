@@ -18,6 +18,7 @@ class SafeApiCallTest {
         for ((status, kind) in
             listOf(
                 401 to FailureKind.Unauthorized,
+                403 to FailureKind.AccessDenied,
                 429 to FailureKind.Service,
                 503 to FailureKind.Service,
             )) {

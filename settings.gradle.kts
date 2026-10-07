@@ -32,6 +32,8 @@ include(
     ":apps:shared",
     ":apps:demo",
     ":core:common",
+    ":core:security:domain",
+    ":core:security:data",
     ":core:presentation",
     ":core:network",
     ":core:storage",

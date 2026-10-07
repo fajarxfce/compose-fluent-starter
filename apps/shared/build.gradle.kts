@@ -9,6 +9,7 @@ plugins {
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
+        implementation(projects.core.security.data)
         implementation(projects.core.localization)
         implementation(projects.core.settings.data)
         implementation(projects.features.settings.presentation)

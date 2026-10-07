@@ -94,6 +94,22 @@ enum class AppString(val english: StringResource, val indonesian: StringResource
     ErrorTimeout(Res.string.error_timeout_en, Res.string.error_timeout_id),
     ErrorService(Res.string.error_service_en, Res.string.error_service_id),
     ErrorStorage(Res.string.error_storage_en, Res.string.error_storage_id),
+    ErrorAccessDenied(Res.string.error_access_denied_en, Res.string.error_access_denied_id),
+    AccountAccess(Res.string.account_access_en, Res.string.account_access_id),
+    AccountRoles(Res.string.account_roles_en, Res.string.account_roles_id),
+    PermissionSaveActivity(
+        Res.string.permission_save_activity_en,
+        Res.string.permission_save_activity_id,
+    ),
+    PermissionUploadFile(
+        Res.string.permission_upload_file_en,
+        Res.string.permission_upload_file_id,
+    ),
+    PermissionDownloadFile(
+        Res.string.permission_download_file_en,
+        Res.string.permission_download_file_id,
+    ),
+    RefreshAccess(Res.string.refresh_access_en, Res.string.refresh_access_id),
     ErrorPermission(Res.string.error_permission_en, Res.string.error_permission_id),
     ErrorUnavailable(Res.string.error_unavailable_en, Res.string.error_unavailable_id),
     ErrorUnexpected(Res.string.error_unexpected_en, Res.string.error_unexpected_id),

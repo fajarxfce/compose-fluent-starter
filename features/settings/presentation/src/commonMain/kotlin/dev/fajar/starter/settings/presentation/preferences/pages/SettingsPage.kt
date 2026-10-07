@@ -11,6 +11,31 @@ import io.github.composefluent.FluentTheme
 fun SettingsPage(state: SettingsState, onEvent: (SettingsEvent) -> Unit) {
     AppPage {
         AppText(appString(AppString.Settings), style = FluentTheme.typography.title)
+        AppCard {
+            AppText(appString(AppString.AccountAccess), style = FluentTheme.typography.bodyStrong)
+            AppText(appString(AppString.AccountRoles, state.roles.joinToString(", ")))
+            state.permissions.forEach { permission ->
+                AppText(
+                    appString(
+                        when (permission) {
+                            dev.fajar.starter.security.domain.access.entities.Permission
+                                .SaveActivity -> AppString.PermissionSaveActivity
+                            dev.fajar.starter.security.domain.access.entities.Permission
+                                .UploadFile -> AppString.PermissionUploadFile
+                            dev.fajar.starter.security.domain.access.entities.Permission
+                                .DownloadFile -> AppString.PermissionDownloadFile
+                        }
+                    )
+                )
+            }
+            if (state.accessError != null) AppFeedback(failureText(state.accessError))
+            AppButton(
+                appString(AppString.RefreshAccess),
+                { onEvent(SettingsEvent.AccessRefreshRequested) },
+                enabled = !state.loadingAccess,
+                primary = false,
+            )
+        }
         AppText(appString(AppString.LanguageDescription))
         AppLanguage.entries.forEach { language ->
             AppButton(

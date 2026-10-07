@@ -80,4 +80,11 @@
     <string name="error_unavailable_en">This action is currently unavailable.</string>
     <string name="error_unexpected_en">Something went wrong. Try again.</string>
     <plurals name="activity_count_en"><item quantity="one">%1$s activity</item><item quantity="other">%1$s activities</item></plurals>
+    <string name="error_access_denied_en">Your account cannot perform this action.</string>
+    <string name="account_access_en">Account access</string>
+    <string name="account_roles_en">Roles: %1$s</string>
+    <string name="permission_save_activity_en">Save activities</string>
+    <string name="permission_upload_file_en">Upload files</string>
+    <string name="permission_download_file_en">Download files</string>
+    <string name="refresh_access_en">Refresh access</string>
 </resources>
