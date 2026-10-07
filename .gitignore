@@ -19,3 +19,10 @@ artifacts/
 *.keystore
 
 /config/oidc/*.json
+
+*.p12
+*.p8
+*.mobileprovision
+
+__pycache__/
+gha-creds-*.json

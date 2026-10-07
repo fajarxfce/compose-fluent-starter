@@ -59,6 +59,7 @@ Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dep
 
 See [SSO](docs/sso.md), [app lock](docs/app-lock.md), [app availability](docs/availability.md) and [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), [performance](docs/performance.md), and [localization](docs/localization.md).
 
+See [internal distribution](docs/distribution.md) for signing and manual Firebase/TestFlight workflows.
 See [architecture](docs/architecture.md), [development](docs/development.md), [quality gates](docs/quality.md), and [validation](docs/validation.md).
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
 See [feature flags](docs/feature-flags.md) for Firebase Remote Config, offline defaults, and dev/staging overrides.

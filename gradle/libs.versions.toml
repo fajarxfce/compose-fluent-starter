@@ -29,8 +29,10 @@ work = "2.12.0"
 java-keyring = "1.0.4"
 crashlytics = "3.0.8"
 detekt = "2.0.0-alpha.6"
+cyclonedx = "3.5.0"
 
 [libraries]
+cyclonedx-gradle = { module = "org.cyclonedx:cyclonedx-gradle-plugin", version.ref = "cyclonedx" }
 oidc-core = { module = "io.github.kalinjul.kotlin.multiplatform:oidc-core", version.ref = "oidc" }
 android-appauth = { module = "net.openid:appauth", version.ref = "appauth" }
 android-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
