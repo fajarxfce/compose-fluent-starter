@@ -6,7 +6,7 @@ import FirebaseMessaging
 import StarterKit
 
 final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate, AppleFirebaseClient {
-    lazy var host = AppleAppHost(firebase: self)
+    lazy var host = AppleAppHost(firebase: self, remoteConfig: FirebaseFeatureFlagClient())
     private let syncIdentifier = Bundle.main.bundleIdentifier! + ".sync"
     var configured: Bool { FirebaseApp.app() != nil }
 

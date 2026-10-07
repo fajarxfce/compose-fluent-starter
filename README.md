@@ -35,6 +35,7 @@ core/database                Room / IndexedDB, dashboard cache, inbox and outbox
 core/sync                    domain / data; task contracts and scheduling boundary
 core/worker                  WorkManager and foreground execution
 core/notifications           domain / data; local delivery and FCM adapters
+core/featureflags            domain / data; Remote Config, defaults and cached overrides
 core/designsystem            Fluent theme and AppXxx composables
 core/identity/domain         User, repository contract, authentication use cases
 core/identity/data           API, datasource contracts, DTOs, repository, session
@@ -49,6 +50,7 @@ Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dep
 
 See [architecture](docs/architecture.md), [development](docs/development.md), and [validation](docs/validation.md).
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
+See [feature flags](docs/feature-flags.md) for Firebase Remote Config, offline defaults, and dev/staging overrides.
 See [local storage](docs/storage.md) and [build environments](docs/environments.md) for platform setup. See [notifications and deep links](docs/notifications.md) for Firebase configuration.
 
 ## Check and build

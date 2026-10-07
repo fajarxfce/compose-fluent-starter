@@ -11,6 +11,7 @@ import dev.fajar.starter.app.work.startForegroundSync
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
+import dev.fajar.starter.featureflags.data.datasources.BrowserFeatureFlagSource
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
@@ -39,6 +40,7 @@ fun main() {
                 single<PushTokenSource> { push }
             },
             environment,
+            remoteFeatureFlags = BrowserFeatureFlagSource(),
         )
     startForegroundSync(container, scope)
     window.addEventListener(

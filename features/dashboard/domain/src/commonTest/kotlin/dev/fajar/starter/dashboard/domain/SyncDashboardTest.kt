@@ -2,10 +2,14 @@
 
 package dev.fajar.starter.dashboard.domain
 
+import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.common.result.*
+import dev.fajar.starter.dashboard.domain.config.DashboardFlags
 import dev.fajar.starter.dashboard.domain.entities.*
 import dev.fajar.starter.dashboard.domain.repositories.DashboardRepository
 import dev.fajar.starter.dashboard.domain.usecases.*
+import dev.fajar.starter.featureflags.domain.entities.FlagSnapshot
+import dev.fajar.starter.featureflags.domain.repositories.FeatureFlagRepository
 import dev.fajar.starter.sync.domain.*
 import dev.fajar.starter.sync.domain.repositories.SyncScheduleRepository
 import kotlin.test.*
@@ -98,12 +102,23 @@ class SyncDashboardTest {
                     )
                 }
             }
-        val save = SetActivitySaved(repository, scheduler)
+        val flags = FlagRepositoryFake()
+        val save = SetActivitySaved(repository, scheduler, flags, AppEnvironment.Dev)
         assertIs<AppResult.Failed>(save("", true))
         assertEquals(0, requested)
         val result = assertIs<AppResult.Success<ActivitySaveResult>>(save("a", true))
         assertEquals(1, repository.saves)
         assertEquals(FailureKind.Unavailable, result.value.schedulingFailure?.kind)
+        flags.current =
+            AppResult.Success(FlagSnapshot(mapOf(DashboardFlags.SavedActivities.key to "false")))
+        assertEquals(FailureKind.Unavailable, (save("a", false) as AppResult.Failed).failure.kind)
+        assertEquals(1, repository.saves)
+        assertEquals(1, requested)
+        val unreadable = AppResult.Failed(Failure(FailureKind.Storage, "Unavailable"))
+        flags.current = unreadable
+        assertSame(unreadable, save("a", false))
+        assertEquals(1, repository.saves)
+        flags.current = AppResult.Success(FlagSnapshot())
         repository.localSave = AppResult.Failed(Failure(FailureKind.Storage, "Full"))
         assertIs<AppResult.Failed>(save("a", false))
         assertEquals(1, requested)
@@ -143,4 +158,16 @@ private class SyncRepositoryFake : DashboardRepository {
         saves++
         return localSave
     }
+}
+
+private class FlagRepositoryFake : FeatureFlagRepository {
+    var current: AppResult<FlagSnapshot> = AppResult.Success(FlagSnapshot())
+
+    override fun observe() = flowOf(current)
+
+    override suspend fun snapshot() = current
+
+    override suspend fun refresh(fetchedAtEpochMillis: Long) = error("unused")
+
+    override suspend fun setOverride(key: String, value: Boolean?) = error("unused")
 }

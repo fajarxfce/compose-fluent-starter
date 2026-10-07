@@ -2,13 +2,14 @@
 
 Local validation on Linux:
 
-- Architecture checks for 25 modules and Kotlin formatting.
-- 57 desktop tests covering cancellation, stale refreshes, permission recovery, pending deep
+- Architecture checks for 27 modules and Kotlin formatting.
+- 72 desktop tests covering cancellation, stale refreshes, permission recovery, pending deep
   links, DataStore corruption and persistence, actual SQLite operations, error boundaries,
   transactional outbox writes, migration, replay, worker retry/lifetime, and the assembled UI
   flow from onboarding through sign-in, inbox, and logout.
-- Six browser tests for IndexedDB transactions/migration/reopen and worker scheduling/cancellation.
-  CI also runs the three existing protobuf preference browser tests.
+- 19 browser tests for feature flag policy, cache/error/cancellation behavior, unconfigured Web
+  Remote Config, protobuf compatibility, and preference persistence. CI also runs the six
+  existing IndexedDB and worker browser tests.
 - Android dev/staging debug and prod release APK builds, plus the Web distribution.
 - Android 16 device: onboarding-gated deep link, denied/granted notification access,
   local delivery, notification tap, recovery after changing access in Settings, and
@@ -38,3 +39,16 @@ Local-first validation:
 Physical iOS background execution and OS scheduling timing have not been tested here. The
 in-process demo transport validates the client flow; these checks do not establish a real
 backend's idempotency, conflict-resolution, or cross-device behavior.
+
+Feature flag validation:
+
+- Default/remote/override precedence, explicit false overrides, production restrictions,
+  malformed parameters, and removal of remote parameters.
+- Concurrent refresh serialization, cancelled waiters, late SDK completion, retained cache
+  after failure, storage failure classification, fetch intervals, and clock rollback.
+- The assembled desktop UI reacts to a persisted override and restores save controls after
+  removing it. The action use case rejects a newly disabled flag even if a prior UI event
+  still requests a save. ViewModel disposal stops flag observation.
+- Android dev APK and browser distribution compile with the new SDK adapters. No Firebase
+  Console values were published, and a configured Remote Config fetch was not exercised.
+  The Android device was unreachable during this change; no new device validation is claimed.

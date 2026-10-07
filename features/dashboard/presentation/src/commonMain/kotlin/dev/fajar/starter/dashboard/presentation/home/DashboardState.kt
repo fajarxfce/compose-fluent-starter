@@ -9,5 +9,7 @@ data class DashboardState(
     val dashboard: Dashboard? = null,
     val loading: Boolean = true,
     val signingOut: Boolean = false,
+    val savingAvailable: Boolean = false,
+    val flagError: String? = null,
     val error: String? = null,
 )

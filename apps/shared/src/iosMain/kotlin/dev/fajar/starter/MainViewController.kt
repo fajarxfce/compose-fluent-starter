@@ -8,6 +8,8 @@ import dev.fajar.starter.app.work.startForegroundSync
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
+import dev.fajar.starter.featureflags.data.datasources.AppleFeatureFlagSource
+import dev.fajar.starter.featureflags.data.datasources.AppleRemoteConfigClient
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
@@ -18,7 +20,7 @@ import kotlinx.coroutines.*
 import org.koin.dsl.module
 
 /** Swift's application delegate owns the container, callback scope, and incoming intents. */
-class AppleAppHost(firebase: AppleFirebaseClient) {
+class AppleAppHost(firebase: AppleFirebaseClient, remoteConfig: AppleRemoteConfigClient) {
     private val links = AppLinkChannel()
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private val push = ApplePushTokenSource(firebase)
@@ -31,6 +33,7 @@ class AppleAppHost(firebase: AppleFirebaseClient) {
                 single<NotificationDisplaySource> { AppleNotificationDisplaySource() }
                 single<PushTokenSource> { push }
             },
+            remoteFeatureFlags = AppleFeatureFlagSource(remoteConfig),
         )
 
     private var foregroundWorker: Job? = null

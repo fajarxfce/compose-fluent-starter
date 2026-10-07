@@ -13,6 +13,7 @@ kotlin.sourceSets {
         implementation(projects.core.designsystem)
         api(projects.core.database)
         api(projects.core.worker)
+        api(projects.core.featureflags.data)
         api(projects.core.notifications.data)
         implementation(projects.features.notifications.presentation)
         api(projects.core.datastore)
@@ -44,6 +45,7 @@ kotlin {
             baseName = "StarterKit"
             isStatic = true
             export(projects.core.notifications.data)
+            export(projects.core.featureflags.data)
         }
     }
     wasmJs {
@@ -57,6 +59,7 @@ kotlin {
     }
     sourceSets.getByName("desktopTest").dependencies {
         implementation(compose.desktop.uiTestJUnit4)
+        implementation(projects.features.dashboard.domain)
     }
 }
 

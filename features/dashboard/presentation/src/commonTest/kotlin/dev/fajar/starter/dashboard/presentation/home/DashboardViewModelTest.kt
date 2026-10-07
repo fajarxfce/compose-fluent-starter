@@ -3,10 +3,15 @@
 package dev.fajar.starter.dashboard.presentation.home
 
 import androidx.lifecycle.ViewModelStore
+import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.common.result.*
+import dev.fajar.starter.dashboard.domain.config.DashboardFlags
 import dev.fajar.starter.dashboard.domain.entities.*
 import dev.fajar.starter.dashboard.domain.repositories.DashboardRepository
 import dev.fajar.starter.dashboard.domain.usecases.*
+import dev.fajar.starter.featureflags.domain.entities.FlagSnapshot
+import dev.fajar.starter.featureflags.domain.repositories.FeatureFlagRepository
+import dev.fajar.starter.featureflags.domain.usecases.ObserveFeatureFlag
 import dev.fajar.starter.identity.domain.entities.User
 import dev.fajar.starter.identity.domain.repositories.IdentityRepository
 import dev.fajar.starter.identity.domain.usecases.ObserveUser
@@ -72,18 +77,36 @@ class DashboardViewModelTest {
             object : SyncScheduleRepository {
                 override suspend fun request(key: String) = AppResult.Success(Unit)
             }
+        val flagValues =
+            MutableStateFlow<AppResult<FlagSnapshot>>(AppResult.Success(FlagSnapshot()))
+        val flags =
+            object : FeatureFlagRepository {
+                override fun observe() = flagValues
+
+                override suspend fun snapshot() = flagValues.value
+
+                override suspend fun refresh(fetchedAtEpochMillis: Long) = error("unused")
+
+                override suspend fun setOverride(key: String, value: Boolean?) = error("unused")
+            }
         val viewModel =
             DashboardViewModel(
                 ObserveDashboard(repository),
                 SyncDashboard(repository),
-                SetActivitySaved(repository, scheduler),
+                SetActivitySaved(repository, scheduler, flags, AppEnvironment.Dev),
                 ObserveUser(identity),
                 SignOut(identity),
+                ObserveFeatureFlag(flags, AppEnvironment.Dev),
                 DashboardTab.Overview,
             )
         store.put("dashboard", viewModel)
         runCurrent()
         assertEquals(8, viewModel.state.value.dashboard?.projects)
+        assertTrue(viewModel.state.value.savingAvailable)
+        flagValues.value =
+            AppResult.Success(FlagSnapshot(mapOf(DashboardFlags.SavedActivities.key to "false")))
+        runCurrent()
+        assertFalse(viewModel.state.value.savingAvailable)
         viewModel.onEvent(DashboardEvent.RefreshRequested)
         runCurrent()
         pending[0].complete(AppResult.Success(Unit))
@@ -95,8 +118,10 @@ class DashboardViewModelTest {
         viewModel.onEvent(DashboardEvent.RefreshRequested)
         runCurrent()
         store.clear()
+        flagValues.value = AppResult.Success(FlagSnapshot())
         pending[2].complete(AppResult.Success(Unit))
         runCurrent()
         assertNull(viewModel.state.value.error)
+        assertFalse(viewModel.state.value.savingAvailable)
     }
 }

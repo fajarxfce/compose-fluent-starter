@@ -10,6 +10,9 @@ import dev.fajar.starter.database.DashboardStore
 import dev.fajar.starter.database.InboxStore
 import dev.fajar.starter.datastore.UserPreferencesStore
 import dev.fajar.starter.demo.createDemoEngine
+import dev.fajar.starter.featureflags.data.datasources.RemoteFeatureFlagSource
+import dev.fajar.starter.featureflags.data.datasources.UnavailableFeatureFlagSource
+import dev.fajar.starter.featureflags.data.di.FeatureFlagDataModule
 import dev.fajar.starter.identity.data.di.IdentityModule
 import dev.fajar.starter.network.createHttpClient
 import dev.fajar.starter.notifications.data.di.NotificationDataModule
@@ -34,14 +37,17 @@ fun createAppContainer(
     notificationPlatform: Module,
     environment: AppEnvironment = BuildEnvironment.current,
     workScheduler: WorkScheduler? = null,
+    remoteFeatureFlags: RemoteFeatureFlagSource = UnavailableFeatureFlagSource(),
 ) = koinApplication {
     modules(
         notificationPlatform,
         SyncDataModule().module,
+        FeatureFlagDataModule().module,
         NotificationDataModule().module,
         NotificationPresentationModule().module,
         module {
             single { environment }
+            single<RemoteFeatureFlagSource> { remoteFeatureFlags }
             single<WorkScheduler> {
                     workScheduler
                         ?: ForegroundWorkScheduler(getAll<SyncTask>().map { it.key }.toSet())

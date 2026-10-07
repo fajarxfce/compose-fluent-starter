@@ -19,12 +19,16 @@ import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
+import dev.fajar.starter.dashboard.domain.config.DashboardFlags
 import dev.fajar.starter.dashboard.presentation.home.DashboardTab
 import dev.fajar.starter.dashboard.presentation.home.DashboardViewModel
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
+import dev.fajar.starter.featureflags.domain.usecases.RefreshFeatureFlags
+import dev.fajar.starter.featureflags.domain.usecases.SetFeatureFlagOverride
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.data.dto.*
+import dev.fajar.starter.sync.domain.SyncTask
 import java.io.File
 import java.nio.file.Files
 import kotlin.test.assertEquals
@@ -116,6 +120,25 @@ class AppFlowTest {
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Workspace created").fetchSemanticsNodes().isNotEmpty()
             }
+            compose.onNodeWithContentDescription("Save Workspace created").assertExists()
+            val overrideFlag = container.koin.get<SetFeatureFlagOverride>()
+            runBlocking { overrideFlag(DashboardFlags.SavedActivities, false) }
+            compose.waitUntil(5_000) {
+                compose
+                    .onAllNodesWithContentDescription("Save Workspace created")
+                    .fetchSemanticsNodes()
+                    .isEmpty()
+            }
+            compose.onNodeWithText("Workspace created").assertExists()
+            runBlocking { overrideFlag(DashboardFlags.SavedActivities, null) }
+            compose.waitUntil(5_000) {
+                compose
+                    .onAllNodesWithContentDescription("Save Workspace created")
+                    .fetchSemanticsNodes()
+                    .isNotEmpty()
+            }
+            val refresh = container.koin.get<RefreshFeatureFlags>()
+            assertEquals(1, container.koin.getAll<SyncTask>().count { it === refresh })
             compose.onNode(hasText("Account") and hasClickAction()).performClick()
             compose.onNodeWithText("Alex Morgan").assertExists()
             compose.onNodeWithText("Notifications").performClick()

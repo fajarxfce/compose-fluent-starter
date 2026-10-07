@@ -23,10 +23,14 @@ fun ActivityPage(
         }
         AppBadge("Sample data")
         if (state.error != null) AppFeedback(state.error)
+        if (state.flagError != null) AppFeedback(state.flagError)
         if (state.loading && state.dashboard == null) AppLoading()
         if (state.dashboard != null) {
             if (state.dashboard.pendingChanges > 0) AppBadge("Sync pending")
-            ActivityList(state.dashboard.activity, onSavedChanged)
+            ActivityList(
+                state.dashboard.activity,
+                if (state.savingAvailable) onSavedChanged else null,
+            )
         }
         AppButton("Refresh", onRefresh, primary = false, loading = state.loading)
     }

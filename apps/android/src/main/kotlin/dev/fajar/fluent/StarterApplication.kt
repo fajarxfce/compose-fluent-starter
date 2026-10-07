@@ -8,6 +8,7 @@ import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
+import dev.fajar.starter.featureflags.data.datasources.AndroidFeatureFlagSource
 import dev.fajar.starter.sync.domain.SyncTask
 import dev.fajar.starter.worker.AndroidWorkScheduler
 import dev.fajar.starter.worker.SyncWorkerFactory
@@ -29,6 +30,7 @@ class StarterApplication : Application(), Configuration.Provider {
             androidNotificationModule(this, environment),
             environment,
             workScheduler = scheduler,
+            remoteFeatureFlags = AndroidFeatureFlagSource(this),
         )
     }
 
