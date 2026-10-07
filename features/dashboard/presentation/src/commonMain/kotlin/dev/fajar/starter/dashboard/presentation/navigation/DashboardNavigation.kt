@@ -10,7 +10,7 @@ import dev.fajar.starter.dashboard.presentation.home.DashboardViewModel
 import dev.fajar.starter.dashboard.presentation.home.pages.DashboardPage
 import org.koin.compose.viewmodel.koinViewModel
 
-fun NavGraphBuilder.dashboardRoutes(onNotifications: () -> Unit) {
+fun NavGraphBuilder.dashboardRoutes(onNotifications: () -> Unit, onSettings: () -> Unit) {
     composable<DashboardRoute> { entry ->
         val route = entry.toRoute<DashboardRoute>()
         val viewModel =
@@ -25,6 +25,8 @@ fun NavGraphBuilder.dashboardRoutes(onNotifications: () -> Unit) {
         val state by viewModel.state.collectAsStateWithLifecycle()
         dev.fajar.starter.presentation.mvi.CollectEffects(viewModel.effects) { effect ->
             when (effect) {
+                dev.fajar.starter.dashboard.presentation.home.DashboardEffect.OpenSettings ->
+                    onSettings()
                 dev.fajar.starter.dashboard.presentation.home.DashboardEffect.OpenNotifications ->
                     onNotifications()
             }

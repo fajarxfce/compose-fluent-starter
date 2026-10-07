@@ -37,6 +37,7 @@ include(
     ":core:storage",
     ":core:securestorage",
     ":core:observability",
+    ":features:settings:presentation",
     ":core:localization",
     ":core:settings:data",
     ":core:settings:domain",

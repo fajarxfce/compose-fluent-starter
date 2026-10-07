@@ -8,6 +8,7 @@ import dev.fajar.starter.app.bootstrap.AppViewModelOwner
 import dev.fajar.starter.app.navigation.AppNavigation
 import dev.fajar.starter.designsystem.theme.AppColors
 import dev.fajar.starter.designsystem.theme.AppTheme
+import dev.fajar.starter.settings.presentation.navigation.ProvideAppLanguage
 import org.koin.compose.KoinIsolatedContext
 import org.koin.core.KoinApplication
 
@@ -18,18 +19,20 @@ fun StarterApp(
 ) {
     KoinIsolatedContext(context = container) {
         AppViewModelOwner {
-            AppTheme {
-                Box(
-                    Modifier.fillMaxSize()
-                        .background(AppColors.canvas)
-                        .windowInsetsPadding(
-                            WindowInsets.safeDrawing.only(
-                                WindowInsetsSides.Top + WindowInsetsSides.Horizontal
+            ProvideAppLanguage {
+                AppTheme {
+                    Box(
+                        Modifier.fillMaxSize()
+                            .background(AppColors.canvas)
+                            .windowInsetsPadding(
+                                WindowInsets.safeDrawing.only(
+                                    WindowInsetsSides.Top + WindowInsetsSides.Horizontal
+                                )
                             )
-                        )
-                        .imePadding()
-                ) {
-                    AppNavigation(incomingLinks)
+                            .imePadding()
+                    ) {
+                        AppNavigation(incomingLinks)
+                    }
                 }
             }
         }

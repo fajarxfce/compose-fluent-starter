@@ -11,7 +11,12 @@ import dev.fajar.starter.localization.*
 import io.github.composefluent.FluentTheme
 
 @Composable
-fun AccountPage(state: DashboardState, onSignOut: () -> Unit, onNotifications: () -> Unit) {
+fun AccountPage(
+    state: DashboardState,
+    onSignOut: () -> Unit,
+    onNotifications: () -> Unit,
+    onSettings: () -> Unit,
+) {
     AppPage(maxWidth = 600.dp) {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
             AppText(appString(AppString.Account), style = FluentTheme.typography.title)
@@ -32,6 +37,12 @@ fun AccountPage(state: DashboardState, onSignOut: () -> Unit, onNotifications: (
         AppButton(
             appString(AppString.Notifications),
             onNotifications,
+            Modifier.fillMaxWidth(),
+            primary = false,
+        )
+        AppButton(
+            appString(AppString.Settings),
+            onSettings,
             Modifier.fillMaxWidth(),
             primary = false,
         )

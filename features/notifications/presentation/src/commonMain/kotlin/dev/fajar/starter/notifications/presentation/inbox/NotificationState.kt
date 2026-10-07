@@ -8,6 +8,6 @@ data class NotificationState(
     val loading: Boolean = true,
     val busy: Boolean = false,
     val access: NotificationAccess? = null,
-    val status: String? = null,
-    val error: String? = null,
+    val status: dev.fajar.starter.localization.AppString? = null,
+    val error: dev.fajar.starter.common.result.Failure? = null,
 )

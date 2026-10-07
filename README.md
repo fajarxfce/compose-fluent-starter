@@ -15,7 +15,7 @@ Android builds also require Android SDK 36.
 
 Open `apps/ios/FluentStarter.xcodeproj` on macOS for iOS. Select a simulator or configure your signing team for a physical device.
 
-Demo account: **demo@example.com / Demo123!**. The default transport is an in-process Ktor MockEngine; no authentication requests leave the device. Onboarding preferences persist. The demo session is memory-only and sign-in is required after a process restart. Dashboard content is sample data, cached locally. Saved activities persist and use a transactional outbox for the demo sync flow.
+Demo account: **demo@example.com / Demo123!**. The default transport is an in-process Ktor MockEngine; no authentication requests leave the device. Onboarding preferences persist. Sessions restore from secure storage on mobile/desktop; Web sessions remain in memory. Dashboard content is sample data, cached locally. Saved activities persist and use a transactional outbox for the demo sync flow.
 
 Light and dark appearance follow the system theme automatically.
 
@@ -27,6 +27,10 @@ apps/ios                     iOS runner
 apps/shared                  Composition, navigation, desktop/iOS/web entry points
 apps/demo                    Demo HTTP transport
 core/common                  Result and failure types
+core/securestorage           Android Keystore, iOS Keychain, desktop credential manager
+core/observability           Structured diagnostics and mobile Crashlytics
+core/settings                domain / data; reactive language preference
+core/localization            English/Indonesian resources and formatting
 core/presentation            MviViewModel and lifecycle-aware effect collection
 core/network                 Ktor client factory and HTTP failure boundary
 core/storage                 Storage error boundaries
@@ -40,13 +44,16 @@ core/designsystem            Fluent theme and AppXxx composables
 core/identity/domain         User, repository contract, authentication use cases
 core/identity/data           API, datasource contracts, DTOs, repository, session
 features/onboarding          domain / data / presentation
-features/auth/presentation   Sign-in screen and ViewModel
+features/auth/presentation   Validated sign-in form and ViewModel
+features/settings/presentation Language selection
 features/notifications/presentation  Persistent inbox and notification controls
 features/dashboard           domain / data / presentation
 build-logic                  Gradle convention plugins
 ```
 
 Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dependencies use type-safe accessors such as `implementation(projects.core.common)`. Koin annotations generate registrations during normal Gradle builds.
+
+See [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), and [localization](docs/localization.md).
 
 See [architecture](docs/architecture.md), [development](docs/development.md), and [validation](docs/validation.md).
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
@@ -64,4 +71,4 @@ See [local storage](docs/storage.md) and [build environments](docs/environments.
 
 Use `xvfb-run -a ./gradlew :check` on headless Linux. Native installers require the corresponding operating system. Apple builds require Xcode.
 
-Compose Fluent remains experimental. Its API and accessibility coverage require evaluation for each target. Production authentication, secure token storage, refresh tokens, and OAuth are integration work; this starter does not simulate them as production security.
+Compose Fluent remains experimental. Its API and accessibility coverage require evaluation for each target. The session and refresh foundations require a real backend contract for production use; the included transport and tokens are demo fixtures. OAuth remains backend integration work.

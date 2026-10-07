@@ -55,6 +55,7 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
                         state,
                         { onEvent(DashboardEvent.SignOutRequested) },
                         { onEvent(DashboardEvent.NotificationsRequested) },
+                        { onEvent(DashboardEvent.SettingsRequested) },
                     )
             }
         }

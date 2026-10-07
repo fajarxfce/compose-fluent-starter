@@ -11,6 +11,7 @@ kotlin.sourceSets {
     getByName("commonMain").dependencies {
         implementation(projects.core.localization)
         implementation(projects.core.settings.data)
+        implementation(projects.features.settings.presentation)
         api(libs.koin.core)
         implementation(projects.core.designsystem)
         api(projects.core.database)

@@ -2,6 +2,7 @@ package dev.fajar.starter.notifications.presentation.inbox
 
 import androidx.lifecycle.viewModelScope
 import dev.fajar.starter.common.result.AppResult
+import dev.fajar.starter.localization.AppString
 import dev.fajar.starter.notifications.domain.entities.NotificationAccess
 import dev.fajar.starter.notifications.domain.usecases.*
 import dev.fajar.starter.presentation.mvi.MviViewModel
@@ -42,9 +43,9 @@ class NotificationViewModel(
                 when (val result = getPushToken()) {
                     is AppResult.Success -> {
                         emitEffect(NotificationEffect.CopyToken(result.value))
-                        updateState { it.copy(status = "Push token copied.") }
+                        updateState { it.copy(status = AppString.TokenCopied) }
                     }
-                    is AppResult.Failed -> updateState { it.copy(error = result.failure.message) }
+                    is AppResult.Failed -> updateState { it.copy(error = result.failure) }
                 }
             } finally {
                 updateState { it.copy(busy = false) }
@@ -62,7 +63,7 @@ class NotificationViewModel(
                         is AppResult.Success ->
                             updateState { it.copy(messages = result.value, loading = false) }
                         is AppResult.Failed ->
-                            updateState { it.copy(error = result.failure.message, loading = false) }
+                            updateState { it.copy(error = result.failure, loading = false) }
                     }
                 }
             }
@@ -75,7 +76,7 @@ class NotificationViewModel(
             viewModelScope.launch {
                 when (val result = checkAccess()) {
                     is AppResult.Success -> updateState { it.copy(access = result.value) }
-                    is AppResult.Failed -> updateState { it.copy(error = result.failure.message) }
+                    is AppResult.Failed -> updateState { it.copy(error = result.failure) }
                 }
             }
     }
@@ -93,15 +94,14 @@ class NotificationViewModel(
                                 access = result.value,
                                 status =
                                     when (result.value) {
-                                        NotificationAccess.Granted -> "Notifications are enabled."
-                                        NotificationAccess.Denied ->
-                                            "Notifications are blocked. Change access in system settings."
+                                        NotificationAccess.Granted -> AppString.NotificationsEnabled
+                                        NotificationAccess.Denied -> AppString.NotificationsBlocked
                                         NotificationAccess.Unavailable ->
-                                            "Notifications are unavailable on this device."
+                                            AppString.NotificationsUnavailable
                                     },
                             )
                         }
-                    is AppResult.Failed -> updateState { it.copy(error = result.failure.message) }
+                    is AppResult.Failed -> updateState { it.copy(error = result.failure) }
                 }
             } finally {
                 updateState { it.copy(busy = false) }
@@ -116,8 +116,8 @@ class NotificationViewModel(
             try {
                 when (val result = sendTest()) {
                     is AppResult.Success ->
-                        updateState { it.copy(status = "Test notification sent.") }
-                    is AppResult.Failed -> updateState { it.copy(error = result.failure.message) }
+                        updateState { it.copy(status = AppString.NotificationSent) }
+                    is AppResult.Failed -> updateState { it.copy(error = result.failure) }
                 }
             } finally {
                 updateState { it.copy(busy = false) }
@@ -132,7 +132,7 @@ class NotificationViewModel(
             try {
                 when (val result = clearNotifications()) {
                     is AppResult.Success -> updateState { it.copy(status = null) }
-                    is AppResult.Failed -> updateState { it.copy(error = result.failure.message) }
+                    is AppResult.Failed -> updateState { it.copy(error = result.failure) }
                 }
             } finally {
                 updateState { it.copy(busy = false) }
@@ -145,7 +145,7 @@ class NotificationViewModel(
             when (val result = markRead(event.message.id)) {
                 is AppResult.Success ->
                     emitEffect(NotificationEffect.OpenDestination(event.message.destination))
-                is AppResult.Failed -> updateState { it.copy(error = result.failure.message) }
+                is AppResult.Failed -> updateState { it.copy(error = result.failure) }
             }
         }
     }

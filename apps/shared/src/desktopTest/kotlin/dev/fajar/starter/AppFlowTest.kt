@@ -167,6 +167,18 @@ class AppFlowTest {
                     .isNotEmpty()
             }
             compose.onNodeWithText("Back").performClick()
+            compose.onNodeWithText("Settings").performScrollTo().performClick()
+            compose.onNodeWithText("Bahasa Indonesia").performClick()
+            compose.waitUntil(5_000) {
+                compose.onAllNodesWithText("Pengaturan").fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.onNodeWithText("Kembali").performClick()
+            compose.onNodeWithText("Pengaturan").performScrollTo().performClick()
+            compose.onNodeWithText("English").performClick()
+            compose.waitUntil(5_000) {
+                compose.onAllNodesWithText("Settings").fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.onNodeWithText("Back").performClick()
             compose.onNodeWithText("Sign out").performScrollTo().performClick()
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Use demo account").fetchSemanticsNodes().isNotEmpty()

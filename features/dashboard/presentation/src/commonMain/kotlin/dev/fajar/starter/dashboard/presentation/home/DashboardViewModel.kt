@@ -32,6 +32,7 @@ class DashboardViewModel(
 
     init {
         on<DashboardEvent.ActivitySavedChanged>(::onActivitySavedChanged)
+        on<DashboardEvent.SettingsRequested>(::onSettingsRequested)
         on<DashboardEvent.NotificationsRequested>(::onNotificationsRequested)
         on<DashboardEvent.TabSelected>(::onTabSelected)
         on<DashboardEvent.NextPageRequested>(::onNextPageRequested)
@@ -126,6 +127,10 @@ class DashboardViewModel(
                     updateState { it.copy(signingOut = false, error = result.failure) }
             }
         }
+    }
+
+    private fun onSettingsRequested(event: DashboardEvent.SettingsRequested) {
+        viewModelScope.launch { emitEffect(DashboardEffect.OpenSettings) }
     }
 
     private fun onNotificationsRequested(event: DashboardEvent.NotificationsRequested) {

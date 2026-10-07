@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.fajar.starter.designsystem.components.*
+import dev.fajar.starter.localization.*
 import dev.fajar.starter.notifications.presentation.inbox.*
 import io.github.composefluent.FluentTheme
 
@@ -14,53 +15,61 @@ fun NotificationPage(state: NotificationState, onEvent: (NotificationEvent) -> U
     AppLazyPage {
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                AppText("Notifications", style = FluentTheme.typography.title)
-                AppButton("Back", { onEvent(NotificationEvent.BackRequested) }, primary = false)
+                AppText(appString(AppString.Notifications), style = FluentTheme.typography.title)
+                AppButton(
+                    appString(AppString.Back),
+                    { onEvent(NotificationEvent.BackRequested) },
+                    primary = false,
+                )
             }
         }
         item {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 AppButton(
-                    "Allow notifications",
+                    appString(AppString.AllowNotifications),
                     { onEvent(NotificationEvent.PermissionRequested) },
                     enabled = !state.busy,
                 )
                 AppButton(
-                    "Send test notification",
+                    appString(AppString.TestNotification),
                     { onEvent(NotificationEvent.TestRequested) },
                     enabled = !state.busy,
                     primary = false,
                 )
                 AppButton(
-                    "Copy push token",
+                    appString(AppString.CopyToken),
                     { onEvent(NotificationEvent.TokenRequested) },
                     enabled = !state.busy,
                     primary = false,
                 )
                 AppButton(
-                    "Clear inbox",
+                    appString(AppString.ClearInbox),
                     { onEvent(NotificationEvent.ClearRequested) },
                     enabled = !state.busy && state.messages.isNotEmpty(),
                     primary = false,
                 )
             }
         }
-        if (state.status != null) item { AppText(state.status) }
+        if (state.status != null) item { AppText(appString(state.status)) }
         if (state.error != null)
             item {
-                AppFeedback(state.error)
-                AppButton("Retry", { onEvent(NotificationEvent.Started) }, primary = false)
+                AppFeedback(failureText(state.error))
+                AppButton(
+                    appString(AppString.Retry),
+                    { onEvent(NotificationEvent.Started) },
+                    primary = false,
+                )
             }
         if (state.loading) item { AppLoading() }
-        else if (state.messages.isEmpty()) item { AppText("No notifications yet.") }
+        else if (state.messages.isEmpty()) item { AppText(appString(AppString.EmptyInbox)) }
         items(state.messages, key = { it.id }) { message ->
             AppCard(Modifier.fillMaxWidth()) {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     AppText(message.title, style = FluentTheme.typography.bodyStrong)
                     AppText(message.body)
-                    if (!message.read) AppBadge("Unread")
+                    if (!message.read) AppBadge(appString(AppString.Unread))
                     AppButton(
-                        "Open",
+                        appString(AppString.Open),
                         { onEvent(NotificationEvent.MessageOpened(message)) },
                         primary = false,
                     )

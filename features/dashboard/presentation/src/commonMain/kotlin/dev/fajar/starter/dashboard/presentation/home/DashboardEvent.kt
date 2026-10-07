@@ -9,6 +9,8 @@ sealed interface DashboardEvent {
 
     data object RefreshRequested : DashboardEvent
 
+    data object SettingsRequested : DashboardEvent
+
     data object NotificationsRequested : DashboardEvent
 
     data object SignOutRequested : DashboardEvent

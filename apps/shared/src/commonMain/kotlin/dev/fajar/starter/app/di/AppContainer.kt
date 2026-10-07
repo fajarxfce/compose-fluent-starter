@@ -24,6 +24,8 @@ import dev.fajar.starter.notifications.presentation.di.NotificationPresentationM
 import dev.fajar.starter.onboarding.data.di.OnboardingDataModule
 import dev.fajar.starter.onboarding.presentation.di.OnboardingPresentationModule
 import dev.fajar.starter.securestorage.*
+import dev.fajar.starter.settings.data.di.SettingsDataModule
+import dev.fajar.starter.settings.presentation.di.SettingsPresentationModule
 import dev.fajar.starter.sync.data.datasources.WorkScheduler
 import dev.fajar.starter.sync.data.di.SyncDataModule
 import dev.fajar.starter.sync.domain.SyncTask
@@ -49,6 +51,8 @@ fun createAppContainer(
 ) = koinApplication {
     modules(
         notificationPlatform,
+        SettingsDataModule().module,
+        SettingsPresentationModule().module,
         SyncDataModule().module,
         FeatureFlagDataModule().module,
         NotificationDataModule().module,
