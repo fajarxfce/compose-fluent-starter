@@ -22,12 +22,12 @@ Gradle verifies dependency artifacts using the committed
 regenerate the hashes for the affected build targets:
 
 ```sh
-./gradlew --gradle-user-home build/verification-cache --write-verification-metadata sha256 resolveDesktopRuntimes :check :apps:android:assembleDevDebug :apps:shared:wasmJsBrowserDistribution
+./gradlew --gradle-user-home build/verification-cache --write-verification-metadata sha256 resolvePlatformArtifacts :check :apps:android:assembleDevDebug :apps:shared:wasmJsBrowserDistribution
 ```
 
 The separate Gradle user home includes parent/BOM metadata that a warm cache can
-omit during generation. `resolveDesktopRuntimes` also resolves the supported
-Windows/macOS runtime artifacts without executing them.
+omit during generation. `resolvePlatformArtifacts` also resolves the supported
+Windows/macOS runtime artifacts and iOS Compose resources without executing them.
 
 Review newly resolved coordinates, repository provenance and checksum changes
 before committing. Verification bootstraps trust from that reviewed resolution;

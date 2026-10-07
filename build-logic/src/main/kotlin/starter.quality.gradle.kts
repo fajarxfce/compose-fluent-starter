@@ -90,8 +90,13 @@ dependencies {
         .forEach { add(desktopRuntimes.name, catalog.findLibrary(it).get()) }
 }
 
-tasks.register("resolveDesktopRuntimes") {
+tasks.register("resolvePlatformArtifacts") {
     group = "verification"
-    description = "Resolves supported desktop runtimes for dependency-metadata maintenance."
+    description =
+        "Resolves desktop runtimes and Apple resources for dependency-metadata maintenance."
+    dependsOn(
+        ":apps:shared:iosArm64ResolveResourcesFromDependencies",
+        ":apps:shared:iosSimulatorArm64ResolveResourcesFromDependencies",
+    )
     doLast { desktopRuntimes.files }
 }
