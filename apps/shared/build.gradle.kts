@@ -9,6 +9,8 @@ plugins {
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
+        implementation(projects.core.localization)
+        implementation(projects.core.settings.data)
         api(libs.koin.core)
         implementation(projects.core.designsystem)
         api(projects.core.database)
@@ -18,6 +20,8 @@ kotlin.sourceSets {
         implementation(projects.features.notifications.presentation)
         api(projects.core.datastore)
         api(projects.core.common)
+        api(projects.core.securestorage)
+        api(projects.core.observability)
         implementation(projects.core.network)
         implementation(projects.core.identity.domain)
         implementation(projects.core.identity.data)
@@ -46,6 +50,8 @@ kotlin {
             isStatic = true
             export(projects.core.notifications.data)
             export(projects.core.featureflags.data)
+            export(projects.core.securestorage)
+            export(projects.core.observability)
         }
     }
     wasmJs {

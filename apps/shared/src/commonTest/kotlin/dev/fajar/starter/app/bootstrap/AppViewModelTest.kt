@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelStore
 import dev.fajar.starter.app.navigation.*
 import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.common.result.AppResult
-import dev.fajar.starter.identity.domain.entities.User
-import dev.fajar.starter.identity.domain.repositories.IdentityRepository
+import dev.fajar.starter.identity.domain.entities.*
+import dev.fajar.starter.identity.domain.repositories.SessionRepository
 import dev.fajar.starter.identity.domain.usecases.ObserveUser
 import dev.fajar.starter.onboarding.domain.repositories.OnboardingRepository
 import dev.fajar.starter.onboarding.domain.usecases.LoadOnboarding
@@ -21,7 +21,7 @@ class AppViewModelTest {
     fun pendingLinkSurvivesOnboardingAndLoginAndIgnoresAnOlderAcknowledgement() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val owner = ViewModelStore()
-        val user = MutableStateFlow<User?>(null)
+        val identity = TestSessions()
         var complete = false
         val onboarding =
             object : OnboardingRepository {
@@ -29,19 +29,12 @@ class AppViewModelTest {
 
                 override suspend fun complete() = AppResult.Success(Unit).also { complete = true }
             }
-        val identity =
-            object : IdentityRepository {
-                override fun observeUser() = user
-
-                override suspend fun signIn(email: String, password: String) = error("Not used")
-
-                override suspend fun signOut() = AppResult.Success(Unit)
-            }
         try {
             val vm =
                 AppViewModel(
                     LoadOnboarding(onboarding),
                     ObserveUser(identity),
+                    dev.fajar.starter.identity.domain.usecases.RestoreSession(identity),
                     ResolveAppLink(AppEnvironment.Dev),
                 )
             owner.put("app", vm)
@@ -54,7 +47,7 @@ class AppViewModelTest {
             runCurrent()
             assertEquals(AppStage.SignedOut, vm.state.value.stage)
             assertEquals(AppLink.Inbox, vm.state.value.pendingLink)
-            user.value = User("1", "Alex", "alex@example.com")
+            identity.value.value = AppResult.Success(testSession())
             runCurrent()
             assertEquals(AppStage.SignedIn, vm.state.value.stage)
             vm.onEvent(AppEvent.LinkReceived("fluentstarter-dev://app/activity"))
@@ -70,3 +63,27 @@ class AppViewModelTest {
         }
     }
 }
+
+private class TestSessions(initial: Session? = null) : SessionRepository {
+    override val persistent = false
+    val value = MutableStateFlow<AppResult<Session?>>(AppResult.Success(initial))
+
+    override fun observe() = value
+
+    override suspend fun current() = value.value
+
+    override suspend fun compareAndSet(expected: Session?, updated: Session?): AppResult<Boolean> {
+        val current = value.value
+        if (current is AppResult.Failed) return current
+        if ((current as AppResult.Success).value != expected) return AppResult.Success(false)
+        value.value = AppResult.Success(updated)
+        return AppResult.Success(true)
+    }
+}
+
+private fun testSession() =
+    Session(
+        "session-a",
+        User("1", "Alex", "demo@example.com"),
+        SessionTokens("access", "refresh", Long.MAX_VALUE),
+    )

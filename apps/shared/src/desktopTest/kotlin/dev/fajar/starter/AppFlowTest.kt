@@ -121,6 +121,17 @@ class AppFlowTest {
                 compose.onAllNodesWithText("Workspace created").fetchSemanticsNodes().isNotEmpty()
             }
             compose.onNodeWithContentDescription("Save Workspace created").assertExists()
+            compose.waitUntil(15_000) {
+                compose
+                    .onAllNodes(hasText("Load more") and isEnabled())
+                    .fetchSemanticsNodes()
+                    .isNotEmpty()
+            }
+            compose.onNodeWithText("Load more").performScrollTo().performClick()
+            compose.waitUntil(15_000) {
+                compose.onAllNodesWithText("Review 5 completed").fetchSemanticsNodes().isNotEmpty()
+            }
+
             val overrideFlag = container.koin.get<SetFeatureFlagOverride>()
             runBlocking { overrideFlag(DashboardFlags.SavedActivities, false) }
             compose.waitUntil(5_000) {
@@ -156,7 +167,7 @@ class AppFlowTest {
                     .isNotEmpty()
             }
             compose.onNodeWithText("Back").performClick()
-            compose.onNodeWithText("Sign out").performClick()
+            compose.onNodeWithText("Sign out").performScrollTo().performClick()
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Use demo account").fetchSemanticsNodes().isNotEmpty()
             }

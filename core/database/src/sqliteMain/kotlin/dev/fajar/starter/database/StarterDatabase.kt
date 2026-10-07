@@ -5,6 +5,7 @@ import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
+import dev.fajar.starter.database.dao.AccountCacheDao
 import dev.fajar.starter.database.dao.DashboardDao
 import dev.fajar.starter.database.dao.InboxDao
 import dev.fajar.starter.database.entities.*
@@ -13,18 +14,26 @@ import dev.fajar.starter.database.entities.InboxEntity
 @Database(
     entities =
         [
+            AccountScopeEntity::class,
             InboxEntity::class,
             DashboardEntity::class,
             ActivityEntity::class,
             ActivityPreferenceEntity::class,
             ActivityChangeEntity::class,
         ],
-    version = 2,
+    version = 4,
     exportSchema = true,
-    autoMigrations = [AutoMigration(from = 1, to = 2)],
+    autoMigrations =
+        [
+            AutoMigration(from = 1, to = 2),
+            AutoMigration(from = 2, to = 3),
+            AutoMigration(from = 3, to = 4),
+        ],
 )
 @ConstructedBy(StarterDatabaseConstructor::class)
 abstract class StarterDatabase : RoomDatabase() {
+    abstract fun accountCacheDao(): AccountCacheDao
+
     abstract fun inboxDao(): InboxDao
 
     abstract fun dashboardDao(): DashboardDao

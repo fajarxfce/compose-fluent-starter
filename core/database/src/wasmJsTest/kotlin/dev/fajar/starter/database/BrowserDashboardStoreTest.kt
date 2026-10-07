@@ -15,6 +15,8 @@ class BrowserDashboardStoreTest {
         val database = createAppDatabase(namespace)
         try {
             verifyDashboardTransactions(database)
+            verifyAccountIsolation(database)
+            verifyPaginationTransactions(database)
         } finally {
             database.close()
             deleteDatabase("$namespace.database").await<JsAny?>()
@@ -28,12 +30,16 @@ class BrowserDashboardStoreTest {
         var database = createAppDatabase(namespace)
         try {
             assertEquals("existing", database.inbox.observe().first().single().id)
-            database.dashboard.replaceContent(sampleDashboard)
-            database.dashboard.setSaved(ActivityChangeRecord("durable-id", "a", true))
+            database.accounts.activate("session-a")
+            database.dashboard.replaceContent("session-a", sampleDashboard)
+            database.dashboard.setSaved("session-a", ActivityChangeRecord("durable-id", "a", true))
             database.close()
             database = createAppDatabase(namespace)
-            assertTrue(database.dashboard.observe().first()!!.activity.single().saved)
-            assertEquals("durable-id", database.dashboard.pendingChanges(1).single().operationId)
+            assertTrue(database.dashboard.observe("session-a").first()!!.activity.single().saved)
+            assertEquals(
+                "durable-id",
+                database.dashboard.pendingChanges("session-a", 1).single().operationId,
+            )
         } finally {
             database.close()
             deleteDatabase("$namespace.database").await<JsAny?>()

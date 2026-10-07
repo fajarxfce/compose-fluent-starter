@@ -13,6 +13,8 @@ import dev.fajar.starter.featureflags.data.datasources.AppleRemoteConfigClient
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
+import dev.fajar.starter.observability.*
+import dev.fajar.starter.securestorage.*
 import dev.fajar.starter.sync.domain.*
 import dev.fajar.starter.worker.runSyncTask
 import kotlin.time.Clock
@@ -20,7 +22,16 @@ import kotlinx.coroutines.*
 import org.koin.dsl.module
 
 /** Swift's application delegate owns the container, callback scope, and incoming intents. */
-class AppleAppHost(firebase: AppleFirebaseClient, remoteConfig: AppleRemoteConfigClient) {
+class AppleAppHost(
+    firebase: AppleFirebaseClient,
+    remoteConfig: AppleRemoteConfigClient,
+    credentials: AppleCredentialClient,
+    crash: AppleCrashClient,
+) {
+    init {
+        Diagnostics.install(AppleCrashSink(crash))
+    }
+
     private val links = AppLinkChannel()
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private val push = ApplePushTokenSource(firebase)
@@ -33,6 +44,7 @@ class AppleAppHost(firebase: AppleFirebaseClient, remoteConfig: AppleRemoteConfi
                 single<NotificationDisplaySource> { AppleNotificationDisplaySource() }
                 single<PushTokenSource> { push }
             },
+            credentials = AppleCredentialStore(credentials),
             remoteFeatureFlags = AppleFeatureFlagSource(remoteConfig),
         )
 

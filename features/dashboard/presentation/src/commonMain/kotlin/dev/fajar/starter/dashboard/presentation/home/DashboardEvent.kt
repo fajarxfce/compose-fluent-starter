@@ -5,6 +5,8 @@ sealed interface DashboardEvent {
 
     data class ActivitySavedChanged(val id: String, val saved: Boolean) : DashboardEvent
 
+    data object NextPageRequested : DashboardEvent
+
     data object RefreshRequested : DashboardEvent
 
     data object NotificationsRequested : DashboardEvent

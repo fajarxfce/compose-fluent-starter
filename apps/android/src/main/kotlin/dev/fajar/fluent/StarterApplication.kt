@@ -9,6 +9,8 @@ import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.featureflags.data.datasources.AndroidFeatureFlagSource
+import dev.fajar.starter.observability.*
+import dev.fajar.starter.securestorage.AndroidCredentialStore
 import dev.fajar.starter.sync.domain.SyncTask
 import dev.fajar.starter.worker.AndroidWorkScheduler
 import dev.fajar.starter.worker.SyncWorkerFactory
@@ -30,12 +32,14 @@ class StarterApplication : Application(), Configuration.Provider {
             androidNotificationModule(this, environment),
             environment,
             workScheduler = scheduler,
+            credentials = AndroidCredentialStore(this),
             remoteFeatureFlags = AndroidFeatureFlagSource(this),
         )
     }
 
     override fun onCreate() {
         super.onCreate()
+        Diagnostics.install(AndroidCrashSink(this, enabled = !BuildConfig.DEBUG))
         scheduler.installPeriodic(container.koin.getAll<SyncTask>().map { it.key }.toSet())
     }
 }

@@ -21,6 +21,7 @@ import dev.fajar.starter.dashboard.presentation.home.DashboardTab
 import dev.fajar.starter.dashboard.presentation.navigation.DashboardRoute
 import dev.fajar.starter.dashboard.presentation.navigation.dashboardRoutes
 import dev.fajar.starter.designsystem.components.*
+import dev.fajar.starter.localization.*
 import dev.fajar.starter.notifications.presentation.navigation.NotificationRoute
 import dev.fajar.starter.notifications.presentation.navigation.notificationRoutes
 import dev.fajar.starter.onboarding.presentation.navigation.OnboardingRoute
@@ -93,8 +94,11 @@ fun AppNavigation(incomingLinks: Flow<String>) {
                 AppBrand()
                 when (val current = stage) {
                     is AppStage.Failed -> {
-                        AppFeedback(current.message)
-                        AppButton("Try again", { viewModel.onEvent(AppEvent.BootstrapRequested) })
+                        AppFeedback(failureText(current.failure))
+                        AppButton(
+                            appString(AppString.TryAgain),
+                            { viewModel.onEvent(AppEvent.BootstrapRequested) },
+                        )
                     }
                     else -> AppLoading()
                 }

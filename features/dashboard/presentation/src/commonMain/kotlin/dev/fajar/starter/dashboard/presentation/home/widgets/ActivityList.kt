@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import dev.fajar.starter.dashboard.domain.entities.Activity
 import dev.fajar.starter.designsystem.components.*
 import dev.fajar.starter.designsystem.theme.AppColors
+import dev.fajar.starter.localization.*
 import io.github.composefluent.FluentTheme
 import io.github.composefluent.icons.Icons
 import io.github.composefluent.icons.filled.Star
@@ -42,8 +43,8 @@ fun ActivityList(items: List<Activity>, onSavedChanged: ((String, Boolean) -> Un
                     if (onSavedChanged != null)
                         AppIconButton(
                             if (activity.saved) Icons.Filled.Star else Icons.Regular.Star,
-                            if (activity.saved) "Unsave ${activity.title}"
-                            else "Save ${activity.title}",
+                            if (activity.saved) appString(AppString.UnsaveActivity, activity.title)
+                            else appString(AppString.SaveActivity, activity.title),
                             { onSavedChanged(activity.id, !activity.saved) },
                         )
                     AppText(

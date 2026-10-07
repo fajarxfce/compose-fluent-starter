@@ -10,10 +10,13 @@ import dev.fajar.starter.dashboard.domain.repositories.DashboardRepository
 import dev.fajar.starter.dashboard.domain.usecases.*
 import dev.fajar.starter.featureflags.domain.entities.FlagSnapshot
 import dev.fajar.starter.featureflags.domain.repositories.FeatureFlagRepository
+import dev.fajar.starter.identity.domain.entities.*
+import dev.fajar.starter.identity.domain.repositories.SessionRepository
 import dev.fajar.starter.sync.domain.*
 import dev.fajar.starter.sync.domain.repositories.SyncScheduleRepository
 import kotlin.test.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.*
 
@@ -26,7 +29,7 @@ class SyncDashboardTest {
             withContext(NonCancellable) { pending.await() }
             AppResult.Success(Unit)
         }
-        val sync = SyncDashboard(repository)
+        val sync = SyncDashboard(repository, TestSessions(testSession()))
         val job = launch { sync() }
         runCurrent()
         job.cancel()
@@ -44,7 +47,7 @@ class SyncDashboardTest {
         val repository = SyncRepositoryFake()
         repository.acknowledgement =
             AppResult.Failed(Failure(FailureKind.Storage, "Storage unavailable"))
-        val sync = SyncDashboard(repository)
+        val sync = SyncDashboard(repository, TestSessions(testSession()))
         assertIs<SyncResult.Blocked>(sync())
         repository.acknowledgement = AppResult.Success(Unit)
         assertEquals(SyncResult.Complete, sync())
@@ -59,7 +62,7 @@ class SyncDashboardTest {
             uploaded.await()
             AppResult.Success(Unit)
         }
-        val sync = SyncDashboard(repository)
+        val sync = SyncDashboard(repository, TestSessions(testSession()))
         val first = async { sync() }
         runCurrent()
         repository.pending += ActivityChange("second", "a", false)
@@ -78,7 +81,7 @@ class SyncDashboardTest {
         val repository = SyncRepositoryFake()
         repository.pending.clear()
         repeat(51) { repository.pending += ActivityChange("op-$it", "a", it % 2 == 0) }
-        val sync = SyncDashboard(repository)
+        val sync = SyncDashboard(repository, TestSessions(testSession()))
         assertIs<SyncResult.Retry>(sync())
         assertEquals(50, repository.sent.size)
         repository.onPush = { AppResult.Failed(Failure(FailureKind.Network, "Offline")) }
@@ -103,24 +106,34 @@ class SyncDashboardTest {
                 }
             }
         val flags = FlagRepositoryFake()
-        val save = SetActivitySaved(repository, scheduler, flags, AppEnvironment.Dev)
-        assertIs<AppResult.Failed>(save("", true))
+        val save =
+            SetActivitySaved(
+                repository,
+                scheduler,
+                flags,
+                AppEnvironment.Dev,
+                TestSessions(testSession()),
+            )
+        assertIs<AppResult.Failed>(save("", true, "session-a"))
         assertEquals(0, requested)
-        val result = assertIs<AppResult.Success<ActivitySaveResult>>(save("a", true))
+        val result = assertIs<AppResult.Success<ActivitySaveResult>>(save("a", true, "session-a"))
         assertEquals(1, repository.saves)
         assertEquals(FailureKind.Unavailable, result.value.schedulingFailure?.kind)
         flags.current =
             AppResult.Success(FlagSnapshot(mapOf(DashboardFlags.SavedActivities.key to "false")))
-        assertEquals(FailureKind.Unavailable, (save("a", false) as AppResult.Failed).failure.kind)
+        assertEquals(
+            FailureKind.Unavailable,
+            (save("a", false, "session-a") as AppResult.Failed).failure.kind,
+        )
         assertEquals(1, repository.saves)
         assertEquals(1, requested)
         val unreadable = AppResult.Failed(Failure(FailureKind.Storage, "Unavailable"))
         flags.current = unreadable
-        assertSame(unreadable, save("a", false))
+        assertSame(unreadable, save("a", false, "session-a"))
         assertEquals(1, repository.saves)
         flags.current = AppResult.Success(FlagSnapshot())
         repository.localSave = AppResult.Failed(Failure(FailureKind.Storage, "Full"))
-        assertIs<AppResult.Failed>(save("a", false))
+        assertIs<AppResult.Failed>(save("a", false, "session-a"))
         assertEquals(1, requested)
     }
 }
@@ -134,27 +147,34 @@ private class SyncRepositoryFake : DashboardRepository {
     var acknowledgement: AppResult<Unit> = AppResult.Success(Unit)
     var localSave: AppResult<Unit> = AppResult.Success(Unit)
 
-    override fun observe() = flowOf(AppResult.Success<Dashboard?>(null))
+    override fun observe(sessionId: String) = flowOf(AppResult.Success<Dashboard?>(null))
 
-    override suspend fun pendingChanges(limit: Int) = AppResult.Success(pending.take(limit))
+    override suspend fun pendingChanges(sessionId: String, limit: Int) =
+        AppResult.Success(pending.take(limit))
 
-    override suspend fun push(change: ActivityChange): AppResult<Unit> {
+    override suspend fun push(sessionId: String, change: ActivityChange): AppResult<Unit> {
         sent += change.operationId
         return onPush()
     }
 
-    override suspend fun acknowledge(operationId: String): AppResult<Unit> {
+    override suspend fun acknowledge(sessionId: String, operationId: String): AppResult<Unit> {
         if (acknowledgement is AppResult.Success)
             pending.removeAll { it.operationId == operationId }
         return acknowledgement
     }
 
-    override suspend fun refresh(): AppResult<Unit> {
+    override suspend fun loadNextPage(sessionId: String) = AppResult.Success(Unit)
+
+    override suspend fun refresh(sessionId: String): AppResult<Unit> {
         refreshes++
         return AppResult.Success(Unit)
     }
 
-    override suspend fun setSaved(activityId: String, saved: Boolean): AppResult<Unit> {
+    override suspend fun setSaved(
+        sessionId: String,
+        activityId: String,
+        saved: Boolean,
+    ): AppResult<Unit> {
         saves++
         return localSave
     }
@@ -171,3 +191,27 @@ private class FlagRepositoryFake : FeatureFlagRepository {
 
     override suspend fun setOverride(key: String, value: Boolean?) = error("unused")
 }
+
+private class TestSessions(initial: Session? = null) : SessionRepository {
+    override val persistent = false
+    val value = MutableStateFlow<AppResult<Session?>>(AppResult.Success(initial))
+
+    override fun observe() = value
+
+    override suspend fun current() = value.value
+
+    override suspend fun compareAndSet(expected: Session?, updated: Session?): AppResult<Boolean> {
+        val current = value.value
+        if (current is AppResult.Failed) return current
+        if ((current as AppResult.Success).value != expected) return AppResult.Success(false)
+        value.value = AppResult.Success(updated)
+        return AppResult.Success(true)
+    }
+}
+
+private fun testSession() =
+    Session(
+        "session-a",
+        User("1", "Alex", "demo@example.com"),
+        SessionTokens("access", "refresh", Long.MAX_VALUE),
+    )

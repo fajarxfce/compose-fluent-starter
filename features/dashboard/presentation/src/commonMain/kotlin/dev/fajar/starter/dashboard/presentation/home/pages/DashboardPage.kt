@@ -11,6 +11,7 @@ import dev.fajar.starter.dashboard.presentation.home.DashboardState
 import dev.fajar.starter.dashboard.presentation.home.DashboardTab
 import dev.fajar.starter.designsystem.components.*
 import dev.fajar.starter.designsystem.theme.AppColors
+import dev.fajar.starter.localization.*
 import io.github.composefluent.icons.Icons
 import io.github.composefluent.icons.filled.History
 import io.github.composefluent.icons.filled.Home
@@ -30,7 +31,7 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             AppBrand()
-            AppBadge("Demo")
+            AppBadge(appString(AppString.Demo))
         }
         Box(Modifier.weight(1f).consumeWindowInsets(WindowInsets.navigationBars)) {
             when (state.tab) {
@@ -42,9 +43,12 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
                     )
                 DashboardTab.Activity ->
                     ActivityPage(
-                        state,
-                        { onEvent(DashboardEvent.RefreshRequested) },
-                        { id, saved -> onEvent(DashboardEvent.ActivitySavedChanged(id, saved)) },
+                        state = state,
+                        onRefresh = { onEvent(DashboardEvent.RefreshRequested) },
+                        onLoadMore = { onEvent(DashboardEvent.NextPageRequested) },
+                        onSavedChanged = { id, saved ->
+                            onEvent(DashboardEvent.ActivitySavedChanged(id, saved))
+                        },
                     )
                 DashboardTab.Account ->
                     AccountPage(
@@ -59,19 +63,19 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
                 listOf(
                     AppNavigationItem(
                         DashboardTab.Overview,
-                        "Overview",
+                        appString(AppString.Overview),
                         Icons.Regular.Home,
                         Icons.Filled.Home,
                     ),
                     AppNavigationItem(
                         DashboardTab.Activity,
-                        "Activity",
+                        appString(AppString.Activity),
                         Icons.Regular.History,
                         Icons.Filled.History,
                     ),
                     AppNavigationItem(
                         DashboardTab.Account,
-                        "Account",
+                        appString(AppString.Account),
                         Icons.Regular.Person,
                         Icons.Filled.Person,
                     ),

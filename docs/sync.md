@@ -99,3 +99,14 @@ Tests cover local write/outbox rollback, v1 database migration, restart persiste
 replay, edits during upload, cancellation with a late response, concurrent executions, bounded
 batches, retry timing, task isolation, and host disposal. SQLite and IndexedDB run the same storage
 contract against their actual databases.
+
+## Paged activity
+
+Activity demonstrates explicit refresh, load more and retry. The first page and
+cursor persist in Room/IndexedDB. An append commits only when the originating
+session ID, refresh snapshot and expected cursor still match; duplicate activity
+IDs appear once and saved preferences remain device-owned. The ViewModel drops
+concurrent load-more requests and cancels them when refreshing or being cleared.
+Database guards also reject stale results from background refresh/account changes.
+A failed load-more retains the current list and cursor for retry. Refresh starts
+a new first-page snapshot; cached later pages are replaced, including on sync.

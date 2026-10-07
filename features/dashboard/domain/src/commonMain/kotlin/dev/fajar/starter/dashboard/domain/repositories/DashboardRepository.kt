@@ -5,15 +5,17 @@ import dev.fajar.starter.dashboard.domain.entities.*
 import kotlinx.coroutines.flow.Flow
 
 interface DashboardRepository {
-    fun observe(): Flow<AppResult<Dashboard?>>
+    fun observe(sessionId: String): Flow<AppResult<Dashboard?>>
 
-    suspend fun refresh(): AppResult<Unit>
+    suspend fun loadNextPage(sessionId: String): AppResult<Unit>
 
-    suspend fun setSaved(activityId: String, saved: Boolean): AppResult<Unit>
+    suspend fun refresh(sessionId: String): AppResult<Unit>
 
-    suspend fun pendingChanges(limit: Int): AppResult<List<ActivityChange>>
+    suspend fun setSaved(sessionId: String, activityId: String, saved: Boolean): AppResult<Unit>
 
-    suspend fun push(change: ActivityChange): AppResult<Unit>
+    suspend fun pendingChanges(sessionId: String, limit: Int): AppResult<List<ActivityChange>>
 
-    suspend fun acknowledge(operationId: String): AppResult<Unit>
+    suspend fun push(sessionId: String, change: ActivityChange): AppResult<Unit>
+
+    suspend fun acknowledge(sessionId: String, operationId: String): AppResult<Unit>
 }

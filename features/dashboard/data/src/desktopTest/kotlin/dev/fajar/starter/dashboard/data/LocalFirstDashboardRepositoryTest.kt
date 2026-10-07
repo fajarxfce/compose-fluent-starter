@@ -18,24 +18,26 @@ class LocalFirstDashboardRepositoryTest {
     fun localWritesNeedNoNetworkAndRefreshPreservesPreferences() = runTest {
         val directory = Files.createTempDirectory("dashboard-repository").toFile()
         val database = createAppDatabase(directory)
+        database.accounts.activate("session-a")
         val remote = RemoteSourceFake()
         val repository = LocalFirstDashboardRepository(remote, database.dashboard)
         try {
-            assertIs<AppResult.Success<Unit>>(repository.refresh())
+            assertIs<AppResult.Success<Unit>>(repository.refresh("session-a"))
             remote.failure = java.io.IOException("private host detail")
-            assertIs<AppResult.Success<Unit>>(repository.setSaved("a", true))
+            assertIs<AppResult.Success<Unit>>(repository.setSaved("session-a", "a", true))
             assertEquals(1, remote.loads)
-            val cached = assertIs<AppResult.Success<*>>(repository.observe().first()).value
+            val cached =
+                assertIs<AppResult.Success<*>>(repository.observe("session-a").first()).value
             assertNotNull(cached)
-            val failure = assertIs<AppResult.Failed>(repository.refresh()).failure
+            val failure = assertIs<AppResult.Failed>(repository.refresh("session-a")).failure
             assertEquals(FailureKind.Network, failure.kind)
             assertFalse(failure.message.contains("private host detail"))
-            assertTrue(database.dashboard.observe().first()!!.activity.single().saved)
-            assertEquals(1, database.dashboard.pendingChanges(5).size)
-            assertIs<AppResult.Failed>(repository.setSaved("missing", true))
+            assertTrue(database.dashboard.observe("session-a").first()!!.activity.single().saved)
+            assertEquals(1, database.dashboard.pendingChanges("session-a", 5).size)
+            assertIs<AppResult.Failed>(repository.setSaved("session-a", "missing", true))
             remote.failure = null
-            assertIs<AppResult.Success<Unit>>(repository.refresh())
-            assertTrue(database.dashboard.observe().first()!!.activity.single().saved)
+            assertIs<AppResult.Success<Unit>>(repository.refresh("session-a"))
+            assertTrue(database.dashboard.observe("session-a").first()!!.activity.single().saved)
         } finally {
             database.close()
             directory.deleteRecursively()
@@ -46,18 +48,19 @@ class LocalFirstDashboardRepositoryTest {
     fun cancelledRemoteResultCannotReplaceTheCache() = runTest {
         val directory = Files.createTempDirectory("dashboard-cancel").toFile()
         val database = createAppDatabase(directory)
+        database.accounts.activate("session-a")
         val remote = RemoteSourceFake()
         val repository = LocalFirstDashboardRepository(remote, database.dashboard)
         try {
-            repository.refresh()
+            repository.refresh("session-a")
             remote.pending = CompletableDeferred()
             remote.response = remote.response.copy(projects = 99)
-            val refresh = launch { repository.refresh() }
+            val refresh = launch { repository.refresh("session-a") }
             runCurrent()
             refresh.cancel()
             remote.pending!!.complete(Unit)
             refresh.join()
-            assertEquals(2, database.dashboard.observe().first()!!.projects)
+            assertEquals(2, database.dashboard.observe("session-a").first()!!.projects)
         } finally {
             database.close()
             directory.deleteRecursively()
@@ -68,14 +71,15 @@ class LocalFirstDashboardRepositoryTest {
     fun invalidRemoteIdentifiersAreRejectedBeforeReplacingValidContent() = runTest {
         val directory = Files.createTempDirectory("dashboard-validation").toFile()
         val database = createAppDatabase(directory)
+        database.accounts.activate("session-a")
         val remote = RemoteSourceFake()
         val repository = LocalFirstDashboardRepository(remote, database.dashboard)
         try {
-            repository.refresh()
+            repository.refresh("session-a")
             remote.response =
                 remote.response.copy(activity = remote.response.activity + remote.response.activity)
-            assertIs<AppResult.Failed>(repository.refresh())
-            assertEquals(1, database.dashboard.observe().first()!!.activity.size)
+            assertIs<AppResult.Failed>(repository.refresh("session-a"))
+            assertEquals(1, database.dashboard.observe("session-a").first()!!.activity.size)
         } finally {
             database.close()
             directory.deleteRecursively()
@@ -89,12 +93,16 @@ private class RemoteSourceFake : DashboardRemoteDataSource {
     var pending: CompletableDeferred<Unit>? = null
     var response = DashboardDto(2, 1, 3, listOf(ActivityDto("a", "Review", "Project", "09:00")))
 
-    override suspend fun load(): DashboardDto {
+    override suspend fun load(sessionId: String, cursor: String?): DashboardDto {
         loads++
         failure?.let { throw it }
         withContext(NonCancellable) { pending?.await() }
         return response
     }
 
-    override suspend fun setSaved(operationId: String, request: ActivityPreferenceRequest) = Unit
+    override suspend fun setSaved(
+        sessionId: String,
+        operationId: String,
+        request: ActivityPreferenceRequest,
+    ) = Unit
 }

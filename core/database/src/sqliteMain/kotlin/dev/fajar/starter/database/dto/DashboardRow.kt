@@ -6,6 +6,8 @@ data class DashboardRow(
     val active: Int,
     val members: Int,
     val updatedAtEpochMillis: Long,
+    val snapshot: String,
+    val nextCursor: String?,
     val pendingChanges: Int,
     val activityId: String?,
     val title: String?,

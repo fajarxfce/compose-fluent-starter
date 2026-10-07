@@ -18,6 +18,7 @@ fun DashboardDto.toRecord(updatedAt: Long): DashboardRecord {
         members,
         activity.map { ActivityRecord(it.id, it.title, it.detail, it.time) },
         updatedAt,
+        nextCursor = nextCursor,
     )
 }
 
@@ -29,4 +30,5 @@ fun DashboardRecord.toDashboard() =
         activity.map { Activity(it.id, it.title, it.detail, it.time, it.saved) },
         pendingChanges,
         updatedAtEpochMillis,
+        hasMore = nextCursor != null,
     )

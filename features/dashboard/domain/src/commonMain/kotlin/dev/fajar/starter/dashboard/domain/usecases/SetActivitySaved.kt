@@ -7,6 +7,7 @@ import dev.fajar.starter.dashboard.domain.entities.ActivitySaveResult
 import dev.fajar.starter.dashboard.domain.repositories.DashboardRepository
 import dev.fajar.starter.featureflags.domain.policy.evaluateFlag
 import dev.fajar.starter.featureflags.domain.repositories.FeatureFlagRepository
+import dev.fajar.starter.identity.domain.repositories.SessionRepository
 import dev.fajar.starter.sync.domain.repositories.SyncScheduleRepository
 
 class SetActivitySaved(
@@ -14,10 +15,22 @@ class SetActivitySaved(
     private val scheduler: SyncScheduleRepository,
     private val flags: FeatureFlagRepository,
     private val environment: AppEnvironment,
+    private val sessions: SessionRepository,
 ) {
-    suspend operator fun invoke(id: String, saved: Boolean): AppResult<ActivitySaveResult> {
+    suspend operator fun invoke(
+        id: String,
+        saved: Boolean,
+        sessionId: String,
+    ): AppResult<ActivitySaveResult> {
         if (id.isBlank())
             return AppResult.Failed(Failure(FailureKind.Validation, "Select an activity."))
+        val session =
+            when (val result = sessions.current()) {
+                is AppResult.Failed -> return result
+                is AppResult.Success -> result.value
+            }
+        if (session == null || session.id != sessionId)
+            return AppResult.Failed(Failure(FailureKind.Unauthorized, "Sign in to continue."))
         val snapshot =
             when (val result = flags.snapshot()) {
                 is AppResult.Failed -> return result
@@ -28,7 +41,7 @@ class SetActivitySaved(
                 Failure(FailureKind.Unavailable, "Saving activities is currently unavailable.")
             )
         }
-        when (val local = repository.setSaved(id, saved)) {
+        when (val local = repository.setSaved(sessionId, id, saved)) {
             is AppResult.Failed -> return local
             is AppResult.Success -> Unit
         }

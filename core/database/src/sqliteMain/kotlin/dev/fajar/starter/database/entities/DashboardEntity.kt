@@ -9,4 +9,6 @@ data class DashboardEntity(
     val active: Int,
     val members: Int,
     val updatedAtEpochMillis: Long,
+    @ColumnInfo(defaultValue = "''") val snapshot: String = "",
+    @ColumnInfo(defaultValue = "NULL") val nextCursor: String? = null,
 )

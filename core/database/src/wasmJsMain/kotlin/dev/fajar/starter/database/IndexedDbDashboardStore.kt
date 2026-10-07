@@ -4,55 +4,81 @@ package dev.fajar.starter.database
 
 import kotlin.js.Promise
 import kotlinx.coroutines.await
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.json.Json
 
-internal class IndexedDbDashboardStore(private val database: suspend () -> JsAny) : DashboardStore {
-    private val changes =
-        MutableSharedFlow<Unit>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST).apply {
-            tryEmit(Unit)
-        }
-
-    override fun observe() =
+internal class IndexedDbDashboardStore(
+    private val changes: MutableSharedFlow<Unit>,
+    private val database: suspend () -> JsAny,
+) : DashboardStore {
+    override fun observe(sessionId: String) =
         changes.map {
             Json.decodeFromString<DashboardRecord?>(
-                readDashboard(database()).await<JsString>().toString()
+                readDashboard(database(), sessionId).await<JsString>().toString()
             )
         }
 
-    override suspend fun replaceContent(record: DashboardRecord) {
-        replaceDashboard(database(), Json.encodeToString(record)).await<JsAny?>()
+    override suspend fun replaceContent(sessionId: String, record: DashboardRecord): Boolean {
+        val applied =
+            replaceDashboard(database(), sessionId, Json.encodeToString(record))
+                .await<JsBoolean>()
+                .toBoolean()
         changes.tryEmit(Unit)
+        return applied
     }
 
-    override suspend fun setSaved(change: ActivityChangeRecord): Boolean {
+    override suspend fun appendPage(
+        sessionId: String,
+        snapshot: String,
+        cursor: String,
+        page: List<ActivityRecord>,
+        nextCursor: String?,
+    ): Boolean {
+        val applied =
+            appendDashboard(
+                    database(),
+                    sessionId,
+                    snapshot,
+                    cursor,
+                    Json.encodeToString(page),
+                    nextCursor,
+                )
+                .await<JsBoolean>()
+                .toBoolean()
+        changes.tryEmit(Unit)
+        return applied
+    }
+
+    override suspend fun setSaved(sessionId: String, change: ActivityChangeRecord): Boolean {
         val found =
-            saveActivity(database(), Json.encodeToString(change)).await<JsBoolean>().toBoolean()
+            saveActivity(database(), sessionId, Json.encodeToString(change))
+                .await<JsBoolean>()
+                .toBoolean()
         changes.tryEmit(Unit)
         return found
     }
 
-    override suspend fun pendingChanges(limit: Int) =
+    override suspend fun pendingChanges(sessionId: String, limit: Int) =
         Json.decodeFromString<List<ActivityChangeRecord>>(
-            readChanges(database(), limit).await<JsString>().toString()
+            readChanges(database(), sessionId, limit).await<JsString>().toString()
         )
 
-    override suspend fun acknowledge(operationId: String) {
-        acknowledgeChange(database(), operationId).await<JsAny?>()
+    override suspend fun acknowledge(sessionId: String, operationId: String) {
+        acknowledgeChange(database(), sessionId, operationId).await<JsAny?>()
         changes.tryEmit(Unit)
     }
 }
 
 @JsFun(
-    """(db) => new Promise((resolve, reject) => {
-    const tx = db.transaction(['dashboard', 'activity_preferences', 'dashboard_outbox'], 'readonly');
+    """(db, scope) => new Promise((resolve, reject) => {
+    const tx = db.transaction(['dashboard', 'activity_preferences', 'dashboard_outbox', 'account_scope'], 'readonly');
+    const currentScope = tx.objectStore('account_scope').get('current');
     const content = tx.objectStore('dashboard').get('current');
     const preferences = tx.objectStore('activity_preferences').getAll();
     const count = tx.objectStore('dashboard_outbox').count();
     tx.oncomplete = () => {
-        if (!content.result) { resolve('null'); return; }
+        if (currentScope.result !== scope || !content.result) { resolve('null'); return; }
         const saved = new Map(preferences.result.map(row => [row.activityId, row.saved]));
         resolve(JSON.stringify({...content.result, pendingChanges: count.result,
             activity: content.result.activity.map(row => ({...row, saved: saved.get(row.id) || false}))}));
@@ -60,28 +86,38 @@ internal class IndexedDbDashboardStore(private val database: suspend () -> JsAny
     tx.onabort = () => reject(tx.error || new Error('Dashboard read failed.'));
 })"""
 )
-private external fun readDashboard(database: JsAny): Promise<JsString>
+private external fun readDashboard(database: JsAny, scope: String): Promise<JsString>
 
 @JsFun(
-    """(db, json) => new Promise((resolve, reject) => {
-    const tx = db.transaction('dashboard', 'readwrite');
-    tx.objectStore('dashboard').put(JSON.parse(json), 'current');
-    tx.oncomplete = () => resolve(null);
+    """(db, scope, json) => new Promise((resolve, reject) => {
+    const tx = db.transaction(['dashboard', 'account_scope'], 'readwrite');
+    const current = tx.objectStore('account_scope').get('current');
+    let applied = false;
+    current.onsuccess = () => {
+        if (current.result !== scope) return;
+        tx.objectStore('dashboard').put(JSON.parse(json), 'current'); applied = true;
+    };
+    tx.oncomplete = () => resolve(applied);
     tx.onabort = () => reject(tx.error || new Error('Dashboard write failed.'));
 })"""
 )
-private external fun replaceDashboard(database: JsAny, json: String): Promise<JsAny?>
+private external fun replaceDashboard(
+    database: JsAny,
+    scope: String,
+    json: String,
+): Promise<JsBoolean>
 
 @JsFun(
-    """(db, json) => new Promise((resolve, reject) => {
+    """(db, scope, json) => new Promise((resolve, reject) => {
     const change = JSON.parse(json);
-    const tx = db.transaction(['dashboard', 'activity_preferences', 'dashboard_outbox'], 'readwrite');
+    const tx = db.transaction(['dashboard', 'activity_preferences', 'dashboard_outbox', 'account_scope'], 'readwrite');
+    const currentScope = tx.objectStore('account_scope').get('current');
     const content = tx.objectStore('dashboard').get('current');
     const prefs = tx.objectStore('activity_preferences');
     const preference = prefs.get(change.activityId);
     let found = false;
     preference.onsuccess = () => {
-        found = !!content.result?.activity.some(row => row.id === change.activityId);
+        found = currentScope.result === scope && !!content.result?.activity.some(row => row.id === change.activityId);
         if (!found || (preference.result?.saved || false) === change.saved) return;
         prefs.put({activityId: change.activityId, saved: change.saved});
         tx.objectStore('dashboard_outbox').add(change);
@@ -90,26 +126,59 @@ private external fun replaceDashboard(database: JsAny, json: String): Promise<Js
     tx.onabort = () => reject(tx.error || new Error('Activity update failed.'));
 })"""
 )
-private external fun saveActivity(database: JsAny, json: String): Promise<JsBoolean>
+private external fun saveActivity(database: JsAny, scope: String, json: String): Promise<JsBoolean>
 
 @JsFun(
-    """(db, limit) => new Promise((resolve, reject) => {
-    const tx = db.transaction('dashboard_outbox', 'readonly');
+    """(db, scope, limit) => new Promise((resolve, reject) => {
+    const tx = db.transaction(['dashboard_outbox', 'account_scope'], 'readonly');
+    const currentScope = tx.objectStore('account_scope').get('current');
     const request = tx.objectStore('dashboard_outbox').getAll(undefined, limit);
-    tx.oncomplete = () => resolve(JSON.stringify(request.result.map(({operationId, activityId, saved}) => ({operationId, activityId, saved}))));
+    tx.oncomplete = () => resolve(JSON.stringify(currentScope.result === scope ? request.result.map(({operationId, activityId, saved}) => ({operationId, activityId, saved})) : []));
     tx.onabort = () => reject(tx.error || new Error('Outbox read failed.'));
 })"""
 )
-private external fun readChanges(database: JsAny, limit: Int): Promise<JsString>
+private external fun readChanges(database: JsAny, scope: String, limit: Int): Promise<JsString>
 
 @JsFun(
-    """(db, id) => new Promise((resolve, reject) => {
-    const tx = db.transaction('dashboard_outbox', 'readwrite');
+    """(db, scope, id) => new Promise((resolve, reject) => {
+    const tx = db.transaction(['dashboard_outbox', 'account_scope'], 'readwrite');
+    const currentScope = tx.objectStore('account_scope').get('current');
     const store = tx.objectStore('dashboard_outbox');
     const request = store.index('operationId').getKey(id);
-    request.onsuccess = () => { if (request.result !== undefined) store.delete(request.result); };
+    request.onsuccess = () => { if (currentScope.result === scope && request.result !== undefined) store.delete(request.result); };
     tx.oncomplete = () => resolve(null);
     tx.onabort = () => reject(tx.error || new Error('Outbox acknowledgement failed.'));
 })"""
 )
-private external fun acknowledgeChange(database: JsAny, operationId: String): Promise<JsAny?>
+private external fun acknowledgeChange(
+    database: JsAny,
+    scope: String,
+    operationId: String,
+): Promise<JsAny?>
+
+@JsFun(
+    """(db, scope, snapshot, cursor, json, next) => new Promise((resolve, reject) => {
+    const tx = db.transaction(['dashboard', 'account_scope'], 'readwrite');
+    const owner = tx.objectStore('account_scope').get('current');
+    const store = tx.objectStore('dashboard'), request = store.get('current');
+    let applied = false;
+    request.onsuccess = () => {
+        const current = request.result;
+        if (owner.result !== scope || !current || current.snapshot !== snapshot || current.nextCursor !== cursor) return;
+        const ids = new Set(current.activity.map(row => row.id));
+        const additions = JSON.parse(json).filter(row => { if (ids.has(row.id)) return false; ids.add(row.id); return true; });
+        store.put({...current, activity: [...current.activity, ...additions], nextCursor: next}, 'current');
+        applied = true;
+    };
+    tx.oncomplete = () => resolve(applied);
+    tx.onabort = () => reject(tx.error || new Error('Page append failed.'));
+})"""
+)
+private external fun appendDashboard(
+    database: JsAny,
+    scope: String,
+    snapshot: String,
+    cursor: String,
+    json: String,
+    next: String?,
+): Promise<JsBoolean>

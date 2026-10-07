@@ -15,6 +15,7 @@ class DemoIdempotencyTest {
                 client
                     .put("https://demo.fluent.local/dashboard/preferences") {
                         if (key != null) header("Idempotency-Key", key)
+                        bearerAuth("demo:demo-user:${Long.MAX_VALUE}")
                         contentType(ContentType.Application.Json)
                         setBody("""{"activityId":"a","saved":$saved}""")
                     }

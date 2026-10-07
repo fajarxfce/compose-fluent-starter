@@ -17,6 +17,7 @@ import org.koin.android.annotation.KoinViewModel
 class DashboardViewModel(
     private val observeDashboard: ObserveDashboard,
     private val synchronize: SyncDashboard,
+    private val loadNextPage: LoadNextActivityPage,
     private val setActivitySaved: SetActivitySaved,
     private val observeUser: ObserveUser,
     private val signOut: SignOut,
@@ -27,22 +28,29 @@ class DashboardViewModel(
         DashboardState(tab = initialTab)
     ) {
     private var refreshJob: Job? = null
+    private var pageJob: Job? = null
 
     init {
         on<DashboardEvent.ActivitySavedChanged>(::onActivitySavedChanged)
         on<DashboardEvent.NotificationsRequested>(::onNotificationsRequested)
         on<DashboardEvent.TabSelected>(::onTabSelected)
+        on<DashboardEvent.NextPageRequested>(::onNextPageRequested)
         on<DashboardEvent.RefreshRequested>(::onRefreshRequested)
         on<DashboardEvent.SignOutRequested>(::onSignOutRequested)
         viewModelScope.launch {
-            observeUser().collect { user -> updateState { it.copy(user = user) } }
+            observeUser().collect { result ->
+                when (result) {
+                    is AppResult.Success -> updateState { it.copy(user = result.value) }
+                    is AppResult.Failed -> updateState { it.copy(error = result.failure) }
+                }
+            }
         }
         viewModelScope.launch {
             observeDashboard().collect { result ->
                 when (result) {
                     is AppResult.Success -> updateState { it.copy(dashboard = result.value) }
                     is AppResult.Failed ->
-                        updateState { it.copy(error = result.failure.message, loading = false) }
+                        updateState { it.copy(error = result.failure, loading = false) }
                 }
             }
         }
@@ -54,9 +62,7 @@ class DashboardViewModel(
                             it.copy(savingAvailable = result.value.enabled, flagError = null)
                         }
                     is AppResult.Failed ->
-                        updateState {
-                            it.copy(savingAvailable = false, flagError = result.failure.message)
-                        }
+                        updateState { it.copy(savingAvailable = false, flagError = result.failure) }
                 }
             }
         }
@@ -69,25 +75,43 @@ class DashboardViewModel(
 
     private fun onRefreshRequested(event: DashboardEvent.RefreshRequested) {
         refreshJob?.cancel()
-        updateState { it.copy(loading = true, error = null) }
+        pageJob?.cancel()
+        updateState { it.copy(loading = true, loadingMore = false, pageError = null, error = null) }
         refreshJob =
             viewModelScope.launch {
                 when (val result = synchronize()) {
                     SyncResult.Complete -> updateState { it.copy(loading = false, error = null) }
                     is SyncResult.Retry ->
-                        updateState { it.copy(loading = false, error = result.failure?.message) }
+                        updateState { it.copy(loading = false, error = result.failure) }
                     is SyncResult.Blocked ->
-                        updateState { it.copy(loading = false, error = result.failure.message) }
+                        updateState { it.copy(loading = false, error = result.failure) }
+                }
+            }
+    }
+
+    private fun onNextPageRequested(event: DashboardEvent.NextPageRequested) {
+        if (
+            state.value.loading || state.value.loadingMore || state.value.dashboard?.hasMore != true
+        )
+            return
+        updateState { it.copy(loadingMore = true, pageError = null) }
+        pageJob =
+            viewModelScope.launch {
+                when (val result = loadNextPage()) {
+                    is AppResult.Success -> updateState { it.copy(loadingMore = false) }
+                    is AppResult.Failed ->
+                        updateState { it.copy(loadingMore = false, pageError = result.failure) }
                 }
             }
     }
 
     private fun onActivitySavedChanged(event: DashboardEvent.ActivitySavedChanged) {
+        val sessionId = state.value.dashboard?.sessionId ?: return
         viewModelScope.launch {
-            when (val result = setActivitySaved(event.id, event.saved)) {
-                is AppResult.Failed -> updateState { it.copy(error = result.failure.message) }
+            when (val result = setActivitySaved(event.id, event.saved, sessionId)) {
+                is AppResult.Failed -> updateState { it.copy(error = result.failure) }
                 is AppResult.Success ->
-                    updateState { it.copy(error = result.value.schedulingFailure?.message) }
+                    updateState { it.copy(error = result.value.schedulingFailure) }
             }
         }
     }
@@ -99,7 +123,7 @@ class DashboardViewModel(
             when (val result = signOut()) {
                 is AppResult.Success -> updateState { it.copy(signingOut = false) }
                 is AppResult.Failed ->
-                    updateState { it.copy(signingOut = false, error = result.failure.message) }
+                    updateState { it.copy(signingOut = false, error = result.failure) }
             }
         }
     }

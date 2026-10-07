@@ -14,20 +14,30 @@ fun createAppDatabase(namespace: String): AppDatabase = IndexedDbAppDatabase("$n
 private class IndexedDbAppDatabase(name: String) : AppDatabase {
     private val connection = lazy { openAppDatabase(name) }
     private val database by connection
-    override val inbox: InboxStore = IndexedDbInboxStore { database.await<JsAny>() }
-    override val dashboard: DashboardStore = IndexedDbDashboardStore { database.await<JsAny>() }
+    private val changes =
+        MutableSharedFlow<Unit>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST).apply {
+            tryEmit(Unit)
+        }
+    override val accounts: AccountCacheStore =
+        object : AccountCacheStore {
+            override suspend fun activate(sessionId: String?) {
+                activateAccount(database.await<JsAny>(), sessionId).await<JsAny?>()
+                changes.tryEmit(Unit)
+            }
+        }
+    override val inbox: InboxStore = IndexedDbInboxStore(changes) { database.await<JsAny>() }
+    override val dashboard: DashboardStore =
+        IndexedDbDashboardStore(changes) { database.await<JsAny>() }
 
     override fun close() {
         if (connection.isInitialized()) closeDatabase(database)
     }
 }
 
-private class IndexedDbInboxStore(private val database: suspend () -> JsAny) : InboxStore {
-    private val changes =
-        MutableSharedFlow<Unit>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST).apply {
-            tryEmit(Unit)
-        }
-
+private class IndexedDbInboxStore(
+    private val changes: MutableSharedFlow<Unit>,
+    private val database: suspend () -> JsAny,
+) : InboxStore {
     override fun observe() =
         changes.map {
             Json.decodeFromString<List<InboxRecord>>(
@@ -53,10 +63,11 @@ private class IndexedDbInboxStore(private val database: suspend () -> JsAny) : I
 
 @JsFun(
     """(name) => new Promise((resolve, reject) => {
-    const request = indexedDB.open(name, 2);
+    const request = indexedDB.open(name, 3);
     request.onupgradeneeded = event => {
         const db = request.result;
         if (event.oldVersion < 1) db.createObjectStore('inbox', {keyPath: 'id'});
+        if (event.oldVersion < 3) db.createObjectStore('account_scope');
         if (event.oldVersion < 2) {
             db.createObjectStore('dashboard');
             db.createObjectStore('activity_preferences', {keyPath: 'activityId'});
@@ -108,3 +119,18 @@ private external fun clearInbox(database: JsAny): Promise<JsAny?>
 
 @JsFun("(pending) => { pending.then(db => db.close(), () => {}); }")
 private external fun closeDatabase(database: Promise<JsAny>)
+
+@JsFun(
+    """(db, scope) => new Promise((resolve, reject) => {
+    const tx = db.transaction(['account_scope', 'dashboard', 'activity_preferences', 'dashboard_outbox', 'inbox'], 'readwrite');
+    const scopes = tx.objectStore('account_scope'), current = scopes.get('current');
+    current.onsuccess = () => {
+        if (current.result === scope) return;
+        for (const name of ['dashboard', 'activity_preferences', 'dashboard_outbox', 'inbox']) tx.objectStore(name).clear();
+        scopes.put(scope, 'current');
+    };
+    tx.oncomplete = () => resolve(null);
+    tx.onabort = () => reject(tx.error || new Error('Account cache activation failed.'));
+})"""
+)
+private external fun activateAccount(database: JsAny, scope: String?): Promise<JsAny?>

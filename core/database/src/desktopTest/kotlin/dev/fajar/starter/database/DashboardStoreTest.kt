@@ -13,8 +13,11 @@ class DashboardStoreTest {
     fun atomicWritesOrderedOutboxAndStaleAcknowledgement() = runTest {
         val directory = Files.createTempDirectory("local-first-contract").toFile()
         val database = createAppDatabase(directory)
+        database.accounts.activate("session-a")
         try {
             verifyDashboardTransactions(database)
+            verifyAccountIsolation(database)
+            verifyPaginationTransactions(database)
         } finally {
             database.close()
             directory.deleteRecursively()
@@ -25,13 +28,17 @@ class DashboardStoreTest {
     fun pendingChangesAndSavedPreferenceSurviveProcessRecreation() = runTest {
         val directory = Files.createTempDirectory("local-first-reopen").toFile()
         var database = createAppDatabase(directory)
+        database.accounts.activate("session-a")
         try {
-            database.dashboard.replaceContent(sampleDashboard)
-            database.dashboard.setSaved(ActivityChangeRecord("durable-id", "a", true))
+            database.dashboard.replaceContent("session-a", sampleDashboard)
+            database.dashboard.setSaved("session-a", ActivityChangeRecord("durable-id", "a", true))
             database.close()
             database = createAppDatabase(directory)
-            assertTrue(database.dashboard.observe().first()!!.activity.single().saved)
-            assertEquals("durable-id", database.dashboard.pendingChanges(1).single().operationId)
+            assertTrue(database.dashboard.observe("session-a").first()!!.activity.single().saved)
+            assertEquals(
+                "durable-id",
+                database.dashboard.pendingChanges("session-a", 1).single().operationId,
+            )
         } finally {
             database.close()
             directory.deleteRecursively()
@@ -68,12 +75,13 @@ class DashboardStoreTest {
             statements.forEach { sql -> connection.prepare(sql).use { it.step() } }
         }
         val database = createAppDatabase(directory)
+        database.accounts.activate("session-a")
         try {
-            assertEquals("Keep me", database.inbox.observe().first().single().title)
-            assertTrue(database.inbox.observe().first().single().read)
-            assertNull(database.dashboard.observe().first())
-            database.dashboard.replaceContent(sampleDashboard)
-            assertEquals(2, database.dashboard.observe().first()!!.projects)
+            assertTrue(database.inbox.observe().first().isEmpty())
+
+            assertNull(database.dashboard.observe("session-a").first())
+            database.dashboard.replaceContent("session-a", sampleDashboard)
+            assertEquals(2, database.dashboard.observe("session-a").first()!!.projects)
         } finally {
             database.close()
             directory.deleteRecursively()

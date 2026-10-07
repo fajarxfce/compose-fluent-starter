@@ -10,4 +10,6 @@ data class DashboardRecord(
     val activity: List<ActivityRecord>,
     val updatedAtEpochMillis: Long,
     val pendingChanges: Int = 0,
+    val snapshot: String = "",
+    val nextCursor: String? = null,
 )
