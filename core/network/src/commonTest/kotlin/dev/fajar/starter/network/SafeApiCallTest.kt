@@ -14,6 +14,20 @@ import kotlinx.coroutines.test.runTest
 
 class SafeApiCallTest {
     @Test
+    fun streamingStatusErrorsKeepTheirClassificationWithoutAResponseBody() = runTest {
+        for ((status, kind) in
+            listOf(
+                400 to FailureKind.Validation,
+                401 to FailureKind.Unauthorized,
+                403 to FailureKind.AccessDenied,
+                503 to FailureKind.Service,
+            )) {
+            val result = safeApiCall { throw HttpStatusException(status) }
+            assertEquals(kind, assertIs<AppResult.Failed>(result).failure.kind)
+        }
+    }
+
+    @Test
     fun mapsHttpFailuresWithoutExposingServerText() = runTest {
         for ((status, kind) in
             listOf(
