@@ -23,8 +23,9 @@ suspend fun <T> safeApiCall(
         AppResult.Success(value)
     } catch (cancelled: CancellationException) {
         throw cancelled
-    } catch (exception: Exception) {
+    } catch (cause: Throwable) {
         currentCoroutineContext().ensureActive()
+        val exception = networkExceptionOrNull(cause) ?: throw cause
         onException(exception)
         val failure = readApiFailure(exception)
         currentCoroutineContext().ensureActive()
