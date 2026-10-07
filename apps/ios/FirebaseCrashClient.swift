@@ -3,7 +3,7 @@ import FirebaseCrashlytics
 import Foundation
 import StarterKit
 
-final class FirebaseCrashClient: AppleCrashClient {
+final class FirebaseCrashClient: NSObject, AppleCrashClient {
     func recordDiagnostic(json: String, failure: Bool) {
         guard FirebaseApp.app() != nil else { return }
         let client = Crashlytics.crashlytics()

@@ -2,7 +2,7 @@ import Foundation
 import Security
 import StarterKit
 
-final class KeychainClient: AppleCredentialClient {
+final class KeychainClient: NSObject, AppleCredentialClient {
     private let identity: [String: Any] = [
         kSecClass as String: kSecClassGenericPassword,
         kSecAttrService as String: Bundle.main.bundleIdentifier! + ".session",
