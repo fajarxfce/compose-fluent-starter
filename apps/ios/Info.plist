@@ -4,6 +4,8 @@
 <dict>
     <key>NSFaceIDUsageDescription</key><string>Use Face ID to unlock the app.</string>
     <key>FirebaseCrashlyticsCollectionEnabled</key><false/>
+    <key>firebase_performance_collection_enabled</key><false/>
+    <key>firebase_performance_instrumentation_enabled</key><false/>
 	<key>CFBundleDisplayName</key>
 	<string>$(FLUENT_DISPLAY_NAME)</string>
 	<key>CFBundleExecutable</key>

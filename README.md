@@ -57,7 +57,7 @@ build-logic                  Gradle convention plugins
 
 Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dependencies use type-safe accessors such as `implementation(projects.core.common)`. Koin annotations generate registrations during normal Gradle builds.
 
-See [SSO](docs/sso.md), [app lock](docs/app-lock.md), [app availability](docs/availability.md) and [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), and [localization](docs/localization.md).
+See [SSO](docs/sso.md), [app lock](docs/app-lock.md), [app availability](docs/availability.md) and [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), [performance](docs/performance.md), and [localization](docs/localization.md).
 
 See [architecture](docs/architecture.md), [development](docs/development.md), [quality gates](docs/quality.md), and [validation](docs/validation.md).
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.

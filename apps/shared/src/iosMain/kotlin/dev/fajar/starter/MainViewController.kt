@@ -30,9 +30,11 @@ class AppleAppHost(
     remoteConfig: AppleRemoteConfigClient,
     credentials: AppleCredentialClient,
     crash: AppleCrashClient,
+    performance: ApplePerformanceClient,
 ) {
     init {
         Diagnostics.install(AppleCrashSink(crash))
+        PerformanceMonitoring.install(ApplePerformanceSink(performance))
     }
 
     private val links = AppLinkChannel()

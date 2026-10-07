@@ -50,6 +50,7 @@ class StarterApplication : Application(), Configuration.Provider {
     override fun onCreate() {
         super.onCreate()
         Diagnostics.install(AndroidCrashSink(this, enabled = !BuildConfig.DEBUG))
+        PerformanceMonitoring.install(AndroidPerformanceSink(this, enabled = !BuildConfig.DEBUG))
         scheduler.installPeriodic(container.koin.getAll<SyncTask>().map { it.key }.toSet())
     }
 }

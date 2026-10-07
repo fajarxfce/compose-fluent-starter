@@ -5,7 +5,7 @@ hosts install it before creating the application container. Desktop and Web use
 JSON console output. Android and iOS also integrate Firebase Crashlytics.
 
 Diagnostics contain a closed set of fields: operation area, event, exception
-category, HTTP status and duration. They do not accept arbitrary messages, user
+category, HTTP status, duration and operation correlation. They do not accept arbitrary messages, user
 IDs, URLs, headers or payloads. HTTP failures are breadcrumbs; unexpected network
 and storage exceptions can be non-fatal reports. Android retains stack frames on
 a sanitized exception without its message or cause. The iOS bridge reports the
@@ -33,3 +33,6 @@ A successful build does not prove Firebase delivery. To verify a configured app,
 exercise a controlled non-fatal report or a deliberate test crash on a test build,
 restart it with connectivity, and inspect the matching Firebase app. No deliberate
 crash is triggered by the starter UI or automated application tests.
+
+See [performance](performance.md) for manual Firebase traces, first-party HTTP
+correlation and lifecycle/recomposition boundaries.

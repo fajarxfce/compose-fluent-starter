@@ -5,6 +5,7 @@ import dev.fajar.starter.app.navigation.ResolveAppLink
 import dev.fajar.starter.common.result.AppResult
 import dev.fajar.starter.identity.domain.usecases.ObserveUser
 import dev.fajar.starter.identity.domain.usecases.RestoreSession
+import dev.fajar.starter.observability.*
 import dev.fajar.starter.onboarding.domain.usecases.LoadOnboarding
 import dev.fajar.starter.presentation.mvi.MviViewModel
 import kotlinx.coroutines.Job
@@ -32,14 +33,20 @@ class AppViewModel(
         updateState { it.copy(stage = AppStage.Loading) }
         bootstrapJob =
             viewModelScope.launch {
-                when (val restored = restoreSession()) {
-                    is AppResult.Failed -> {
-                        updateState { it.copy(stage = AppStage.Failed(restored.failure)) }
-                        return@launch
+                val initialized =
+                    measureOperation(
+                        PerformanceOperation.AppBootstrap,
+                        classify = {
+                            if (it is AppResult.Failed) PerformanceOutcome.Failed
+                            else PerformanceOutcome.Succeeded
+                        },
+                    ) {
+                        when (val restored = restoreSession()) {
+                            is AppResult.Failed -> restored
+                            is AppResult.Success -> loadOnboarding()
+                        }
                     }
-                    is AppResult.Success -> Unit
-                }
-                when (val result = loadOnboarding()) {
+                when (val result = initialized) {
                     is AppResult.Failed ->
                         updateState { it.copy(stage = AppStage.Failed(result.failure)) }
                     is AppResult.Success -> {

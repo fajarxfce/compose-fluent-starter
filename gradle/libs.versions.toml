@@ -38,6 +38,7 @@ compose-desktop-windows = { module = "org.jetbrains.compose.desktop:desktop-jvm-
 compose-desktop-macos-arm64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-macos-arm64", version.ref = "compose" }
 compose-desktop-macos-x64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-macos-x64", version.ref = "compose" }
 detekt-cli = { module = "dev.detekt:detekt-cli", version.ref = "detekt" }
+firebase-performance = { module = "com.google.firebase:firebase-perf" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "crashlytics" }
 java-keyring = { module = "com.github.javakeyring:java-keyring", version.ref = "java-keyring" }
