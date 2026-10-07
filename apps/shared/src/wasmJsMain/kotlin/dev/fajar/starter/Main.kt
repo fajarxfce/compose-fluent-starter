@@ -15,6 +15,8 @@ import dev.fajar.starter.featureflags.data.datasources.BrowserFeatureFlagSource
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
+import dev.fajar.starter.observability.DiagnosticArea
+import dev.fajar.starter.observability.Diagnostics
 import dev.fajar.starter.sync.data.datasources.WorkScheduler
 import dev.fajar.starter.sync.domain.SyncTask
 import kotlin.time.Clock
@@ -70,7 +72,7 @@ fun main() {
         } catch (error: CancellationException) {
             throw error
         } catch (error: Exception) {
-            println("Push listener: ${error::class.simpleName}")
+            Diagnostics.failure(DiagnosticArea.Notification, error)
         }
     }
     links.receive(window.location.hash)

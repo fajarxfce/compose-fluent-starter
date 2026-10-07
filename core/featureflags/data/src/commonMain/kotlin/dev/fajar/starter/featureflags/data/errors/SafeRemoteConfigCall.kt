@@ -1,13 +1,15 @@
 package dev.fajar.starter.featureflags.data.errors
 
 import dev.fajar.starter.common.result.*
+import dev.fajar.starter.observability.DiagnosticArea
+import dev.fajar.starter.observability.Diagnostics
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 
 /** Fetch failures leave the last persisted snapshot intact; this boundary never retries. */
 suspend fun <T> safeRemoteConfigCall(
-    onException: (Exception) -> Unit = { println("Remote Config: ${it::class.simpleName}") },
+    onException: (Exception) -> Unit = { Diagnostics.failure(DiagnosticArea.FeatureFlags, it) },
     operation: suspend () -> T,
 ): AppResult<T> =
     try {

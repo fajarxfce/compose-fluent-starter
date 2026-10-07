@@ -1,13 +1,15 @@
 package dev.fajar.starter.worker
 
 import dev.fajar.starter.common.result.*
+import dev.fajar.starter.observability.DiagnosticArea
+import dev.fajar.starter.observability.Diagnostics
 import dev.fajar.starter.sync.domain.*
 import kotlinx.coroutines.*
 
 /** Last-resort runtime boundary for a faulty task; expected failures come from repositories. */
 suspend fun runSyncTask(
     task: SyncTask,
-    onException: (Exception) -> Unit = { println("Sync task: ${it::class.simpleName}") },
+    onException: (Exception) -> Unit = { Diagnostics.failure(DiagnosticArea.Worker, it) },
 ): SyncResult =
     try {
         currentCoroutineContext().ensureActive()

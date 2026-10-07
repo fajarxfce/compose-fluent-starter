@@ -1,6 +1,9 @@
 package dev.fajar.starter.notifications.data.errors
 
-/** Replace at a safe boundary with an internal diagnostic sink; never log payloads or tokens. */
+import dev.fajar.starter.observability.DiagnosticArea
+import dev.fajar.starter.observability.Diagnostics
+
+/** Reports an SDK failure without notification payloads, tokens or raw error messages. */
 fun reportNotificationException(error: Exception) {
-    println("Notification operation failed: ${error::class.simpleName}")
+    Diagnostics.failure(DiagnosticArea.Notification, error)
 }

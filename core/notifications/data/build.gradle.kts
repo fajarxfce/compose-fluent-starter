@@ -6,6 +6,7 @@ plugins {
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
+        implementation(projects.core.observability)
         api(projects.core.notifications.domain)
         implementation(projects.core.database)
         implementation(projects.core.storage)

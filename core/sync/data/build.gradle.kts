@@ -4,6 +4,9 @@ plugins {
 }
 
 kotlin.sourceSets {
-    getByName("commonMain").dependencies { api(projects.core.sync.domain) }
+    getByName("commonMain").dependencies {
+        implementation(projects.core.observability)
+        api(projects.core.sync.domain)
+    }
     getByName("commonTest").dependencies { implementation(libs.coroutines.test) }
 }

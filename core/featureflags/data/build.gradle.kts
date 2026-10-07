@@ -6,6 +6,7 @@ plugins {
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
+        implementation(projects.core.observability)
         api(projects.core.featureflags.domain)
         implementation(projects.core.datastore)
         implementation(projects.core.storage)
