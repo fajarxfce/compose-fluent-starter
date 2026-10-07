@@ -5,6 +5,7 @@ interface AppDatabase {
     val accounts: AccountCacheStore
     val inbox: InboxStore
     val dashboard: DashboardStore
+    val transfers: TransferStore
 
     fun close()
 }
