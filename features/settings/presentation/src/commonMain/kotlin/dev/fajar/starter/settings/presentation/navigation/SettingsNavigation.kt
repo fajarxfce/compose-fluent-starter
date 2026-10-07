@@ -6,6 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import dev.fajar.starter.localization.LocalAppLanguage
 import dev.fajar.starter.presentation.mvi.CollectEffects
+import dev.fajar.starter.settings.presentation.language.LanguageViewModel
 import dev.fajar.starter.settings.presentation.preferences.SettingsEffect
 import dev.fajar.starter.settings.presentation.preferences.SettingsViewModel
 import dev.fajar.starter.settings.presentation.preferences.pages.SettingsPage
@@ -30,7 +31,7 @@ fun NavGraphBuilder.settingsRoutes(
 /** Composition entry point: observing a preference never changes the process or OS locale. */
 @Composable
 fun ProvideAppLanguage(content: @Composable () -> Unit) {
-    val viewModel = koinViewModel<SettingsViewModel>()
+    val viewModel = koinViewModel<LanguageViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
-    CompositionLocalProvider(LocalAppLanguage provides state.language, content = content)
+    CompositionLocalProvider(LocalAppLanguage provides state, content = content)
 }

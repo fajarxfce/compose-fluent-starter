@@ -11,6 +11,21 @@ import kotlinx.coroutines.test.*
 
 class AccessRepositoryTest {
     @Test
+    fun cacheStorageIsBoundedAndEvictionNeverReassignsGrants() {
+        val cache = MemoryAccessCache()
+        repeat(100) { cache.write("session-$it", response("files.download")) }
+        assertNull(cache.read("session-0"))
+        assertNull(cache.read("session-91"))
+        assertNotNull(cache.read("session-92"))
+        assertNotNull(cache.read("session-99"))
+        cache.write("session-92", response("activity.save"))
+        cache.write("next", response("files.upload"))
+        assertNull(cache.read("session-93"))
+        assertEquals(listOf("activity.save"), cache.read("session-92")?.permissions)
+        assertEquals(listOf("files.upload"), cache.read("next")?.permissions)
+    }
+
+    @Test
     fun lateResponseCannotOverwriteAnotherSessionsGrants() = runTest {
         val pending = CompletableDeferred<AccessResponse>()
         val cache = MemoryAccessCache()

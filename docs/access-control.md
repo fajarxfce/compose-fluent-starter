@@ -32,3 +32,7 @@ an in-process fixture; it is not an authorization server.
 
 Tests cover expiry without another response, direct calls bypassing UI, backend
 rejection, cancellation before cache publication and responses from old sessions.
+
+The process cache keeps at most eight session-keyed snapshots in insertion order.
+Eviction removes the oldest record and never transfers permissions to another session.
+Expired grants are still rejected by policy; this storage bound is not an expiry policy.

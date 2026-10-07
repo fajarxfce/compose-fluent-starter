@@ -18,6 +18,11 @@ class MemoryAccessCache : AccessCache {
     }
 
     override fun write(sessionId: String, response: AccessResponse) {
-        records.update { it + (sessionId to response) }
+        records.update { current ->
+            // A bounded insertion-order cache; eviction never reassigns a grant to another key.
+            (current - sessionId + (sessionId to response)).entries.toList().takeLast(8).associate {
+                it.toPair()
+            }
+        }
     }
 }

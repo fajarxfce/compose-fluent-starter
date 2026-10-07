@@ -19,3 +19,5 @@ kotlin.sourceSets {
     }
     getByName("commonTest").dependencies { implementation(libs.coroutines.test) }
 }
+
+kotlin.sourceSets.getByName("commonTest").dependencies { implementation(libs.coroutines.test) }
