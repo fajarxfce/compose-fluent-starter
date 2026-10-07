@@ -37,6 +37,7 @@ class DashboardViewModel(
 
     init {
         on<DashboardEvent.ActivitySavedChanged>(::onActivitySavedChanged)
+        on<DashboardEvent.FilesRequested>(::onFilesRequested)
         on<DashboardEvent.SettingsRequested>(::onSettingsRequested)
         on<DashboardEvent.NotificationsRequested>(::onNotificationsRequested)
         on<DashboardEvent.TabSelected>(::onTabSelected)
@@ -147,6 +148,10 @@ class DashboardViewModel(
                     updateState { it.copy(signingOut = false, error = result.failure) }
             }
         }
+    }
+
+    private fun onFilesRequested(event: DashboardEvent.FilesRequested) {
+        viewModelScope.launch { emitEffect(DashboardEffect.OpenFiles) }
     }
 
     private fun onSettingsRequested(event: DashboardEvent.SettingsRequested) {

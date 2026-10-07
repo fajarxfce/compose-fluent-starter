@@ -109,4 +109,19 @@
     <string name="error_cancelled_id">Tindakan dibatalkan.</string>
     <string name="sign_in_with_provider_id">Masuk dengan %1$s</string>
     <string name="cancel_id">Batal</string>
+    <string name="files_id">File</string>
+    <string name="upload_id">Upload</string>
+    <string name="download_id">Download</string>
+    <string name="upload_sample_id">Upload contoh</string>
+    <string name="download_sample_id">Download contoh</string>
+    <string name="empty_transfers_id">Belum ada transfer file.</string>
+    <string name="transfer_preparing_id">Menyiapkan</string>
+    <string name="transfer_queued_id">Dalam antrean</string>
+    <string name="transfer_running_id">Mentransfer</string>
+    <string name="transfer_paused_id">Dijeda</string>
+    <string name="transfer_failed_id">Gagal</string>
+    <string name="transfer_completed_id">Selesai</string>
+    <string name="pause_id">Jeda</string>
+    <string name="resume_id">Lanjutkan</string>
+    <string name="remove_id">Hapus</string>
 </resources>

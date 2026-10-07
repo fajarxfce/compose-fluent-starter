@@ -38,7 +38,8 @@ core/presentation            MviViewModel and lifecycle-aware effect collection
 core/network                 Ktor client factory and HTTP failure boundary
 core/storage                 Storage error boundaries
 core/datastore               Reactive protobuf preferences and migration
-core/database                Room / IndexedDB, dashboard cache, inbox and outbox
+core/database                Room / IndexedDB, dashboard cache, inbox, outbox and file chunks
+core/transfers               domain / data; resumable transfer queue and HTTP boundary
 core/sync                    domain / data; task contracts and scheduling boundary
 core/worker                  WorkManager and foreground execution
 core/notifications           domain / data; local delivery and FCM adapters
@@ -50,6 +51,7 @@ features/onboarding          domain / data / presentation
 features/security/presentation  Biometric app lock and settings
 features/availability/presentation  Update and maintenance gate
 features/auth/presentation   Validated sign-in form and ViewModel
+features/files/presentation  Session-scoped file queue
 features/settings/presentation Language selection
 features/notifications/presentation  Persistent inbox and notification controls
 features/dashboard           domain / data / presentation
@@ -62,6 +64,7 @@ See [SSO](docs/sso.md), [app lock](docs/app-lock.md), [app availability](docs/av
 
 See [internal distribution](docs/distribution.md) for signing and manual Firebase/TestFlight workflows.
 See [architecture](docs/architecture.md), [development](docs/development.md), [quality gates](docs/quality.md), and [validation](docs/validation.md).
+See [file transfers](docs/file-transfers.md) for bounded imports, resumable uploads/downloads and backend contracts.
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
 See [feature flags](docs/feature-flags.md) for Firebase Remote Config, offline defaults, and dev/staging overrides.
 See [local storage](docs/storage.md) and [build environments](docs/environments.md) for platform setup. See [notifications and deep links](docs/notifications.md) for Firebase configuration.

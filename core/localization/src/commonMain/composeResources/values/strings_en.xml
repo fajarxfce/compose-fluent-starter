@@ -109,4 +109,19 @@
     <string name="error_cancelled_en">The action was cancelled.</string>
     <string name="sign_in_with_provider_en">Sign in with %1$s</string>
     <string name="cancel_en">Cancel</string>
+    <string name="files_en">Files</string>
+    <string name="upload_en">Upload</string>
+    <string name="download_en">Download</string>
+    <string name="upload_sample_en">Upload sample</string>
+    <string name="download_sample_en">Download sample</string>
+    <string name="empty_transfers_en">No file transfers.</string>
+    <string name="transfer_preparing_en">Preparing</string>
+    <string name="transfer_queued_en">Queued</string>
+    <string name="transfer_running_en">Transferring</string>
+    <string name="transfer_paused_en">Paused</string>
+    <string name="transfer_failed_en">Failed</string>
+    <string name="transfer_completed_en">Completed</string>
+    <string name="pause_en">Pause</string>
+    <string name="resume_en">Resume</string>
+    <string name="remove_en">Remove</string>
 </resources>

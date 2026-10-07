@@ -21,6 +21,7 @@ import dev.fajar.starter.dashboard.presentation.home.DashboardTab
 import dev.fajar.starter.dashboard.presentation.navigation.DashboardRoute
 import dev.fajar.starter.dashboard.presentation.navigation.dashboardRoutes
 import dev.fajar.starter.designsystem.components.*
+import dev.fajar.starter.files.presentation.navigation.*
 import dev.fajar.starter.localization.*
 import dev.fajar.starter.notifications.presentation.navigation.NotificationRoute
 import dev.fajar.starter.notifications.presentation.navigation.notificationRoutes
@@ -56,7 +57,8 @@ fun AppNavigation(incomingLinks: Flow<String>) {
         val protectedScreen =
             controller.currentDestination?.hasRoute<DashboardRoute>() == true ||
                 controller.currentDestination?.hasRoute<NotificationRoute>() == true ||
-                controller.currentDestination?.hasRoute<SettingsRoute>() == true
+                controller.currentDestination?.hasRoute<SettingsRoute>() == true ||
+                controller.currentDestination?.hasRoute<FilesRoute>() == true
         if (
             !(stage == AppStage.SignedIn && protectedScreen) &&
                 controller.currentDestination?.hasRoute(destination::class) != true
@@ -110,8 +112,10 @@ fun AppNavigation(incomingLinks: Flow<String>) {
         onboardingRoutes({ viewModel.onEvent(AppEvent.BootstrapRequested) })
         authRoutes()
         settingsRoutes(securitySettings = { AppLockSettings() }) { controller.popBackStack() }
+        filesRoutes { controller.popBackStack() }
         dashboardRoutes(
             onNotifications = { controller.navigate(NotificationRoute) { launchSingleTop = true } },
+            onFiles = { controller.navigate(FilesRoute) { launchSingleTop = true } },
             onSettings = { controller.navigate(SettingsRoute) { launchSingleTop = true } },
         )
         notificationRoutes(

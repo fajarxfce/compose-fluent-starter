@@ -19,6 +19,8 @@ kotlin.sourceSets {
         api(libs.koin.core)
         implementation(projects.core.designsystem)
         api(projects.core.database)
+        api(projects.core.transfers.data)
+        implementation(projects.features.files.presentation)
         api(projects.core.worker)
         api(projects.core.featureflags.data)
         api(projects.core.notifications.data)
@@ -71,6 +73,7 @@ kotlin {
     sourceSets.getByName("desktopTest").dependencies {
         implementation(compose.desktop.uiTestJUnit4)
         implementation(projects.features.dashboard.domain)
+        implementation(projects.core.transfers.domain)
     }
 }
 

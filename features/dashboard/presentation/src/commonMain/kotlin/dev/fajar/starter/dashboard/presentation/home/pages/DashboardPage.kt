@@ -81,6 +81,7 @@ fun DashboardPage(state: DashboardState, onEvent: (DashboardEvent) -> Unit) {
                         { onEvent(DashboardEvent.SignOutRequested) },
                         { onEvent(DashboardEvent.NotificationsRequested) },
                         { onEvent(DashboardEvent.SettingsRequested) },
+                        { onEvent(DashboardEvent.FilesRequested) },
                     )
             }
         }

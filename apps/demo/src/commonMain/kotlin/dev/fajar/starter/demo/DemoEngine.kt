@@ -17,7 +17,10 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 /** In-process demo transport. No requests leave the device. */
-fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
+fun createDemoEngine(
+    latencyMillis: Long = 350,
+    transfers: DemoTransferServer = DemoTransferServer(),
+): MockEngine {
     val accepted = mutableMapOf<String, String>()
     val requests = Mutex()
     val consumedAuthorizationCodes = mutableSetOf<String>()
@@ -25,6 +28,7 @@ fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
         delay(latencyMillis)
         val headers = headersOf(HttpHeaders.ContentType, ContentType.Application.Json.toString())
         when {
+            request.url.encodedPath.startsWith("/files/") -> respondDemoTransfer(request, transfers)
             request.method == HttpMethod.Get &&
                 request.url.encodedPath == "/.well-known/openid-configuration" ->
                 respond(DEMO_OIDC_DISCOVERY, headers = headers)
@@ -126,7 +130,7 @@ internal fun demoSession(id: String): String {
         .toString()
 }
 
-private fun validDemoToken(header: String?): Boolean {
+internal fun validDemoToken(header: String?): Boolean {
     val parts = header?.removePrefix("Bearer ")?.split(":") ?: return false
     return parts.size == 3 &&
         parts[0] == "demo" &&

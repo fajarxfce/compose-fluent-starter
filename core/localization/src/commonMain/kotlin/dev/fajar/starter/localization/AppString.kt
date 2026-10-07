@@ -5,6 +5,21 @@ import org.jetbrains.compose.resources.StringResource
 
 /** Explicit pairs keep runtime language changes portable across Android, iOS, desktop and Web. */
 enum class AppString(val english: StringResource, val indonesian: StringResource) {
+    Files(Res.string.files_en, Res.string.files_id),
+    Upload(Res.string.upload_en, Res.string.upload_id),
+    Download(Res.string.download_en, Res.string.download_id),
+    UploadSample(Res.string.upload_sample_en, Res.string.upload_sample_id),
+    DownloadSample(Res.string.download_sample_en, Res.string.download_sample_id),
+    EmptyTransfers(Res.string.empty_transfers_en, Res.string.empty_transfers_id),
+    TransferPreparing(Res.string.transfer_preparing_en, Res.string.transfer_preparing_id),
+    TransferQueued(Res.string.transfer_queued_en, Res.string.transfer_queued_id),
+    TransferRunning(Res.string.transfer_running_en, Res.string.transfer_running_id),
+    TransferPaused(Res.string.transfer_paused_en, Res.string.transfer_paused_id),
+    TransferFailed(Res.string.transfer_failed_en, Res.string.transfer_failed_id),
+    TransferCompleted(Res.string.transfer_completed_en, Res.string.transfer_completed_id),
+    Pause(Res.string.pause_en, Res.string.pause_id),
+    Resume(Res.string.resume_en, Res.string.resume_id),
+    Remove(Res.string.remove_en, Res.string.remove_id),
     Cancel(Res.string.cancel_en, Res.string.cancel_id),
     ErrorCancelled(Res.string.error_cancelled_en, Res.string.error_cancelled_id),
     SignInWithProvider(Res.string.sign_in_with_provider_en, Res.string.sign_in_with_provider_id),

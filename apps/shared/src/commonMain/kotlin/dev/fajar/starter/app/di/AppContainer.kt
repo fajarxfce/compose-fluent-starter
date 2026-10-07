@@ -2,7 +2,6 @@ package dev.fajar.starter.app.di
 
 import dev.fajar.starter.auth.presentation.di.AuthPresentationModule
 import dev.fajar.starter.availability.data.di.AvailabilityDataModule
-import dev.fajar.starter.availability.domain.usecases.CheckAppAvailability
 import dev.fajar.starter.availability.presentation.di.AvailabilityPresentationModule
 import dev.fajar.starter.common.config.AppBuild
 import dev.fajar.starter.common.config.AppEnvironment
@@ -10,25 +9,24 @@ import dev.fajar.starter.common.config.AppPlatform
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.common.config.BuildOidc
 import dev.fajar.starter.common.config.BuildRuntime
-import dev.fajar.starter.common.result.AppResult
 import dev.fajar.starter.dashboard.data.di.DashboardDataModule
 import dev.fajar.starter.dashboard.presentation.di.DashboardPresentationModule
 import dev.fajar.starter.database.AccountCacheStore
 import dev.fajar.starter.database.AppDatabase
 import dev.fajar.starter.database.DashboardStore
 import dev.fajar.starter.database.InboxStore
+import dev.fajar.starter.database.TransferStore
 import dev.fajar.starter.datastore.UserPreferencesStore
 import dev.fajar.starter.demo.DemoBrowserAuthorizationSource
-import dev.fajar.starter.demo.createDemoEngine
+import dev.fajar.starter.demo.SampleTransferInputSource
 import dev.fajar.starter.featureflags.data.datasources.RemoteFeatureFlagSource
 import dev.fajar.starter.featureflags.data.datasources.UnavailableFeatureFlagSource
 import dev.fajar.starter.featureflags.data.di.FeatureFlagDataModule
+import dev.fajar.starter.files.presentation.di.FilesPresentationModule
 import dev.fajar.starter.identity.data.di.IdentityModule
 import dev.fajar.starter.identity.data.sso.config.SsoConfiguration
 import dev.fajar.starter.identity.data.sso.datasources.BrowserAuthorizationSource
 import dev.fajar.starter.identity.data.sso.datasources.UnavailableBrowserAuthorizationSource
-import dev.fajar.starter.identity.domain.usecases.AcquireSessionTokens
-import dev.fajar.starter.network.*
 import dev.fajar.starter.notifications.data.di.NotificationDataModule
 import dev.fajar.starter.notifications.presentation.di.NotificationPresentationModule
 import dev.fajar.starter.onboarding.data.di.OnboardingDataModule
@@ -43,11 +41,10 @@ import dev.fajar.starter.settings.presentation.di.SettingsPresentationModule
 import dev.fajar.starter.sync.data.datasources.WorkScheduler
 import dev.fajar.starter.sync.data.di.SyncDataModule
 import dev.fajar.starter.sync.domain.SyncTask
+import dev.fajar.starter.transfers.data.datasources.TransferInputSource
+import dev.fajar.starter.transfers.data.di.TransferDataModule
 import dev.fajar.starter.worker.ForegroundWorkScheduler
-import io.ktor.client.HttpClient
-import io.ktor.http.Url
 import org.koin.core.module.Module
-import org.koin.core.qualifier.named
 import org.koin.dsl.koinApplication
 import org.koin.dsl.module
 import org.koin.dsl.onClose
@@ -65,9 +62,13 @@ fun createAppContainer(
     deviceAuthentication: DeviceAuthenticationSource = UnavailableDeviceAuthenticationSource(),
     browserAuthorization: BrowserAuthorizationSource = UnavailableBrowserAuthorizationSource(),
     platform: AppPlatform = AppPlatform.Desktop,
+    transferInputs: TransferInputSource = SampleTransferInputSource(),
 ) = koinApplication {
     modules(
         notificationPlatform,
+        applicationNetworkModule(environment),
+        TransferDataModule().module,
+        FilesPresentationModule().module,
         SecurityPresentationModule().module,
         AvailabilityDataModule().module,
         AvailabilityPresentationModule().module,
@@ -80,6 +81,9 @@ fun createAppContainer(
         NotificationPresentationModule().module,
         module {
             single { environment }
+
+            single<TransferInputSource> { transferInputs }
+            single<TransferStore> { get<AppDatabase>().transfers }
             single {
                 SsoConfiguration(
                     if (BuildRuntime.demoBackend) dev.fajar.starter.demo.demoOidcClients()
@@ -91,14 +95,6 @@ fun createAppContainer(
                 if (BuildRuntime.demoBackend) DemoBrowserAuthorizationSource()
                 else browserAuthorization
             }
-            single<HttpClient>(named(HttpClients.Oidc)) {
-                    createHttpClient(
-                        if (BuildRuntime.demoBackend) createDemoEngine()
-                        else createPlatformHttpEngine(),
-                        HttpClientSettings("https://oidc.invalid/"),
-                    )
-                }
-                .onClose { it?.close() }
 
             single<DeviceAuthenticationSource> { deviceAuthentication }
             single {
@@ -121,40 +117,6 @@ fun createAppContainer(
             single<InboxStore> { get<AppDatabase>().inbox }
             single<DashboardStore> { get<AppDatabase>().dashboard }
             single<UserPreferencesStore> { preferences }.onClose { it?.close() }
-            single<HttpClient>(named(HttpClients.Public)) {
-                    val policy = get<CheckAppAvailability>()
-                    createHttpClient(
-                        if (BuildRuntime.demoBackend) createDemoEngine()
-                        else createPlatformHttpEngine(),
-                        HttpClientSettings(BuildRuntime.apiEndpoints.getValue(environment)),
-                    ) {
-                        install(ApplicationAvailability) { check = { policy() } }
-                    }
-                }
-                .onClose { it?.close() }
-            single<HttpClient>(named(HttpClients.Authenticated)) {
-                    val acquireTokens = get<AcquireSessionTokens>()
-                    val policy = get<CheckAppAvailability>()
-                    val endpoint = BuildRuntime.apiEndpoints.getValue(environment)
-                    createHttpClient(
-                        if (BuildRuntime.demoBackend) createDemoEngine()
-                        else createPlatformHttpEngine(),
-                        HttpClientSettings(endpoint),
-                    ) {
-                        install(ApplicationAvailability) { check = { policy() } }
-                        install(SessionAuthentication) {
-                            origin = Url(endpoint)
-                            acquire = { sessionId, rejected ->
-                                when (val result = acquireTokens(sessionId, rejected)) {
-                                    is AppResult.Failed -> result
-                                    is AppResult.Success ->
-                                        AppResult.Success(result.value?.accessToken)
-                                }
-                            }
-                        }
-                    }
-                }
-                .onClose { it?.close() }
         },
         IdentityModule().module,
         OnboardingDataModule().module,
