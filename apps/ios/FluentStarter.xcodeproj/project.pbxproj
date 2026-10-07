@@ -84,19 +84,16 @@
         A00000000000000000000050 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000060, A00000000000000000000061, B00000000000000000000100, B00000000000000000000102, B00000000000000000000104, B00000000000000000000106, B00000000000000000000108, B00000000000000000000110,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
         A00000000000000000000051 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000062, A00000000000000000000063, B00000000000000000000101, B00000000000000000000103, B00000000000000000000105, B00000000000000000000107, B00000000000000000000109, B00000000000000000000111,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
         A00000000000000000000060 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = dev; FLUENT_DISPLAY_NAME = "Fluent Starter Dev"; FLUENT_LINK_SCHEME = fluentstarter-dev;
             CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos;
-            SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
         }; name = Debug; };
         A00000000000000000000061 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = prod; FLUENT_DISPLAY_NAME = "Fluent Starter"; FLUENT_LINK_SCHEME = fluentstarter;
             CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos;
             SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; SWIFT_COMPILATION_MODE = wholemodule;
         }; name = Release; };
         A00000000000000000000062 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = dev; FLUENT_DISPLAY_NAME = "Fluent Starter Dev"; FLUENT_LINK_SCHEME = fluentstarter-dev;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
             CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
@@ -108,7 +105,6 @@
             LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
         }; name = Debug; };
         A00000000000000000000063 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = prod; FLUENT_DISPLAY_NAME = "Fluent Starter"; FLUENT_LINK_SCHEME = fluentstarter;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
             CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
@@ -121,13 +117,11 @@
         }; name = Release; };
 
         B00000000000000000000100 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = dev; KOTLIN_FRAMEWORK_BUILD_TYPE = debug;
             CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos;
-            SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
         }; name = "Debug-dev"; };
         B00000000000000000000101 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = dev; KOTLIN_FRAMEWORK_BUILD_TYPE = debug; FLUENT_DISPLAY_NAME = "Fluent Starter Dev"; FLUENT_LINK_SCHEME = fluentstarter-dev;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
             CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
@@ -139,13 +133,11 @@
             LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
         }; name = "Debug-dev"; };
         B00000000000000000000102 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = dev; KOTLIN_FRAMEWORK_BUILD_TYPE = release;
             CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos;
             SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; SWIFT_COMPILATION_MODE = wholemodule;
         }; name = "Release-dev"; };
         B00000000000000000000103 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = dev; KOTLIN_FRAMEWORK_BUILD_TYPE = release; FLUENT_DISPLAY_NAME = "Fluent Starter Dev"; FLUENT_LINK_SCHEME = fluentstarter-dev;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
             CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
@@ -157,13 +149,11 @@
             LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
         }; name = "Release-dev"; };
         B00000000000000000000104 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = staging; KOTLIN_FRAMEWORK_BUILD_TYPE = debug;
             CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos;
-            SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
         }; name = "Debug-staging"; };
         B00000000000000000000105 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = staging; KOTLIN_FRAMEWORK_BUILD_TYPE = debug; FLUENT_DISPLAY_NAME = "Fluent Starter Staging"; FLUENT_LINK_SCHEME = fluentstarter-staging;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
             CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
@@ -175,13 +165,11 @@
             LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
         }; name = "Debug-staging"; };
         B00000000000000000000106 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = staging; KOTLIN_FRAMEWORK_BUILD_TYPE = release;
             CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos;
             SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; SWIFT_COMPILATION_MODE = wholemodule;
         }; name = "Release-staging"; };
         B00000000000000000000107 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = staging; KOTLIN_FRAMEWORK_BUILD_TYPE = release; FLUENT_DISPLAY_NAME = "Fluent Starter Staging"; FLUENT_LINK_SCHEME = fluentstarter-staging;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
             CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
@@ -193,13 +181,11 @@
             LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
         }; name = "Release-staging"; };
         B00000000000000000000108 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = prod; KOTLIN_FRAMEWORK_BUILD_TYPE = debug;
             CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos;
-            SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
         }; name = "Debug-prod"; };
         B00000000000000000000109 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = prod; KOTLIN_FRAMEWORK_BUILD_TYPE = debug; FLUENT_DISPLAY_NAME = "Fluent Starter"; FLUENT_LINK_SCHEME = fluentstarter;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
             CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
@@ -211,13 +197,11 @@
             LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
         }; name = "Debug-prod"; };
         B00000000000000000000110 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = prod; KOTLIN_FRAMEWORK_BUILD_TYPE = release;
             CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos;
             SWIFT_VERSION = 5.0; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; SWIFT_COMPILATION_MODE = wholemodule;
         }; name = "Release-prod"; };
         B00000000000000000000111 = {isa = XCBuildConfiguration; buildSettings = {
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
             FLUENT_ENVIRONMENT = prod; KOTLIN_FRAMEWORK_BUILD_TYPE = release; FLUENT_DISPLAY_NAME = "Fluent Starter"; FLUENT_LINK_SCHEME = fluentstarter;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
             CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
