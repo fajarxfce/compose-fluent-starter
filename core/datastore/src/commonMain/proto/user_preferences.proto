@@ -11,6 +11,7 @@ message UserPreferences {
   map<string, string> feature_flag_values = 5;
   map<string, bool> feature_flag_overrides = 6;
   int64 feature_flags_fetched_at = 7;
+  string language_tag = 8; // Empty uses the system language.
 }
 
 enum ThemeMode {
