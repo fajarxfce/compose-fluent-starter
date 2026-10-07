@@ -11,6 +11,29 @@ import kotlinx.coroutines.test.*
 
 class ForegroundSyncWorkerTest {
     @Test
+    fun successfulBatchesContinueWithoutNetworkBackoff() = runTest {
+        var calls = 0
+        val task =
+            object : SyncTask {
+                override val key = "batches"
+
+                override suspend fun invoke(): SyncResult {
+                    calls++
+                    return if (calls < 3) SyncResult.Retry() else SyncResult.Complete
+                }
+            }
+        val queue = ForegroundWorkScheduler(setOf(task.key))
+        val worker = ForegroundSyncWorker(listOf(task), queue).start(backgroundScope)
+        runCurrent()
+        assertEquals(1, calls)
+        advanceTimeBy(200)
+        runCurrent()
+        assertEquals(3, calls)
+        worker.cancelAndJoin()
+        queue.close()
+    }
+
+    @Test
     fun retriesBackOffAndARequestDuringExecutionIsRetained() = runTest {
         val firstUpload = CompletableDeferred<Unit>()
         var calls = 0
@@ -21,7 +44,8 @@ class ForegroundSyncWorkerTest {
                 override suspend fun invoke(): SyncResult {
                     calls++
                     if (calls == 1) firstUpload.await()
-                    return if (calls < 4) SyncResult.Retry() else SyncResult.Complete
+                    return if (calls < 4) SyncResult.Retry(Failure(FailureKind.Network, "Offline"))
+                    else SyncResult.Complete
                 }
             }
         val queue = ForegroundWorkScheduler(setOf(task.key))

@@ -7,6 +7,7 @@ import dev.fajar.starter.common.result.*
 fun failureText(failure: Failure): String =
     appString(
         when (failure.kind) {
+            FailureKind.Cancelled -> AppString.ErrorCancelled
             FailureKind.Validation -> AppString.ErrorValidation
             FailureKind.Unauthorized -> AppString.ErrorUnauthorized
             FailureKind.Network -> AppString.ErrorNetwork
@@ -14,6 +15,7 @@ fun failureText(failure: Failure): String =
             FailureKind.Service -> AppString.ErrorService
             FailureKind.Storage -> AppString.ErrorStorage
             FailureKind.Permission -> AppString.ErrorPermission
+            FailureKind.AccessDenied -> AppString.ErrorAccessDenied
             FailureKind.Unavailable -> AppString.ErrorUnavailable
             FailureKind.Unexpected -> AppString.ErrorUnexpected
         }

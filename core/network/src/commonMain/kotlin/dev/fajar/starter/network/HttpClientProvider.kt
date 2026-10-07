@@ -18,7 +18,7 @@ fun createHttpClient(
     configure: HttpClientConfig<*>.() -> Unit = {},
 ): HttpClient =
     HttpClient(engine) {
-        install(HttpDiagnostics)
+        install(HttpDiagnostics) { origin = io.ktor.http.Url(settings.baseUrl) }
         expectSuccess = true
         followRedirects = false
         defaultRequest { url(settings.baseUrl) }

@@ -3,6 +3,8 @@ package dev.fajar.starter.identity.data
 import dev.fajar.starter.common.result.*
 import dev.fajar.starter.identity.data.datasources.*
 import dev.fajar.starter.identity.data.dto.*
+import dev.fajar.starter.identity.data.dto.AuthResponse
+import dev.fajar.starter.identity.data.dto.OidcExchangeRequest
 import dev.fajar.starter.identity.data.repositories.DefaultIdentityRepository
 import kotlin.test.*
 import kotlinx.coroutines.*
@@ -16,6 +18,9 @@ class IdentityRepositoryTest {
         )
 
     private class Remote(val execute: suspend () -> AuthResponse) : AuthRemoteDataSource {
+        override suspend fun completeSso(request: OidcExchangeRequest): AuthResponse =
+            error("Unused SSO exchange")
+
         override suspend fun signIn(request: SignInRequest) = execute()
 
         override suspend fun refresh(request: RefreshRequest) = execute()

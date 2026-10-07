@@ -17,6 +17,8 @@ android {
                 resValue("string", "app_name", "Fluent Starter$suffix")
                 manifestPlaceholders["deepLinkScheme"] =
                     if (environment == "prod") "fluentstarter" else "fluentstarter-$environment"
+                manifestPlaceholders["appAuthRedirectScheme"] =
+                    if (environment == "prod") "fluentstarter" else "fluentstarter-$environment"
                 buildConfigField("String", "APP_ENVIRONMENT", "\"$environment\"")
             }
         }

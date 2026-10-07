@@ -96,7 +96,9 @@ states; tab selection does not create independent navigation histories in this s
 The app host handles top/side safe areas and keyboard insets. AppPage handles the bottom
 safe area for standalone pages; dashboard's bottom navigation owns that inset instead,
 and its content marks the inset consumed. The bar draws its surface beneath the system
-navigation area. Android window icon/contrast configuration stays in the platform runner.
+navigation area. On wider windows a side rail/sidebar replaces the bottom bar and
+pages own their bottom safe area. Moving the content composition preserves its
+rendering state across that layout change. Android window icon/contrast configuration stays in the platform runner.
 
 ## Checks
 

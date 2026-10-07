@@ -4,16 +4,33 @@ package dev.fajar.starter.auth.presentation.login
 
 import androidx.lifecycle.ViewModelStore
 import dev.fajar.starter.common.result.AppResult
+import dev.fajar.starter.common.result.Failure
+import dev.fajar.starter.common.result.FailureKind
+import dev.fajar.starter.common.result.ValidationIssue
 import dev.fajar.starter.identity.domain.entities.*
+import dev.fajar.starter.identity.domain.entities.AuthenticatedUser
 import dev.fajar.starter.identity.domain.repositories.IdentityRepository
 import dev.fajar.starter.identity.domain.repositories.SessionRepository
+import dev.fajar.starter.identity.domain.sso.entities.SsoProof
+import dev.fajar.starter.identity.domain.sso.entities.SsoProvider
+import dev.fajar.starter.identity.domain.sso.repositories.SsoRepository
+import dev.fajar.starter.identity.domain.sso.usecases.ListSsoProviders
+import dev.fajar.starter.identity.domain.sso.usecases.SignInWithSso
 import dev.fajar.starter.identity.domain.usecases.SignIn
+import dev.fajar.starter.identity.domain.usecases.ValidateSignIn
 import kotlin.test.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.*
 
 class LoginViewModelTest {
+    private val sso =
+        object : SsoRepository {
+            override suspend fun providers() = AppResult.Success(emptyList<SsoProvider>())
+
+            override suspend fun authorize(provider: SsoProvider): AppResult<SsoProof> =
+                error("Unused browser authorization")
+        }
     private val dispatcher = StandardTestDispatcher()
     private val store = ViewModelStore()
 
@@ -34,6 +51,8 @@ class LoginViewModelTest {
         var calls = 0
         val repository =
             object : IdentityRepository {
+                override suspend fun completeSso(proof: SsoProof): AppResult<AuthenticatedUser> =
+                    error("Unused SSO exchange")
 
                 override suspend fun refresh(refreshToken: String): AppResult<AuthenticatedUser> =
                     error("Unused")
@@ -46,10 +65,13 @@ class LoginViewModelTest {
                     return response.await()
                 }
             }
+        val sessions = TestSessions()
         val viewModel =
             LoginViewModel(
-                SignIn(repository, TestSessions()),
-                dev.fajar.starter.identity.domain.usecases.ValidateSignIn(),
+                SignIn(repository, sessions),
+                ValidateSignIn(),
+                ListSsoProviders(sso),
+                SignInWithSso(sso, repository, sessions),
             )
         store.put("login", viewModel)
         viewModel.onEvent(LoginEvent.DemoAccountSelected)
@@ -73,6 +95,8 @@ class LoginViewModelTest {
         var cancelled = false
         val repository =
             object : IdentityRepository {
+                override suspend fun completeSso(proof: SsoProof): AppResult<AuthenticatedUser> =
+                    error("Unused SSO exchange")
 
                 override suspend fun refresh(refreshToken: String): AppResult<AuthenticatedUser> =
                     error("Unused")
@@ -89,10 +113,13 @@ class LoginViewModelTest {
                     }
                 }
             }
+        val sessions = TestSessions()
         val viewModel =
             LoginViewModel(
-                SignIn(repository, TestSessions()),
-                dev.fajar.starter.identity.domain.usecases.ValidateSignIn(),
+                SignIn(repository, sessions),
+                ValidateSignIn(),
+                ListSsoProviders(sso),
+                SignInWithSso(sso, repository, sessions),
             )
         store.put("login", viewModel)
         viewModel.onEvent(LoginEvent.DemoAccountSelected)
@@ -109,6 +136,9 @@ class LoginViewModelTest {
         var calls = 0
         val repository =
             object : IdentityRepository {
+                override suspend fun completeSso(proof: SsoProof): AppResult<AuthenticatedUser> =
+                    error("Unused SSO exchange")
+
                 override suspend fun refresh(refreshToken: String): AppResult<AuthenticatedUser> =
                     error("unused")
 
@@ -118,22 +148,21 @@ class LoginViewModelTest {
                 ): AppResult<AuthenticatedUser> {
                     calls++
                     return AppResult.Failed(
-                        dev.fajar.starter.common.result.Failure(
-                            dev.fajar.starter.common.result.FailureKind.Validation,
+                        Failure(
+                            FailureKind.Validation,
                             "Rejected",
-                            violations =
-                                mapOf(
-                                    "email" to
-                                        dev.fajar.starter.common.result.ValidationIssue.Rejected
-                                ),
+                            violations = mapOf("email" to ValidationIssue.Rejected),
                         )
                     )
                 }
             }
+        val sessions = TestSessions()
         val vm =
             LoginViewModel(
-                SignIn(repository, TestSessions()),
-                dev.fajar.starter.identity.domain.usecases.ValidateSignIn(),
+                SignIn(repository, sessions),
+                ValidateSignIn(),
+                ListSsoProviders(sso),
+                SignInWithSso(sso, repository, sessions),
             )
         store.put("login", vm)
         vm.onEvent(LoginEvent.SignInRequested)

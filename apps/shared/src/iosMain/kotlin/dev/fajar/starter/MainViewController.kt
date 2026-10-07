@@ -5,16 +5,19 @@ import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.app.work.startForegroundSync
+import dev.fajar.starter.common.config.AppPlatform
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.featureflags.data.datasources.AppleFeatureFlagSource
 import dev.fajar.starter.featureflags.data.datasources.AppleRemoteConfigClient
+import dev.fajar.starter.identity.data.sso.datasources.AppleBrowserAuthorizationSource
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
 import dev.fajar.starter.observability.*
 import dev.fajar.starter.securestorage.*
+import dev.fajar.starter.security.data.lock.datasources.AppleDeviceAuthenticationSource
 import dev.fajar.starter.sync.domain.*
 import dev.fajar.starter.worker.runSyncTask
 import kotlin.time.Clock
@@ -27,9 +30,11 @@ class AppleAppHost(
     remoteConfig: AppleRemoteConfigClient,
     credentials: AppleCredentialClient,
     crash: AppleCrashClient,
+    performance: ApplePerformanceClient,
 ) {
     init {
         Diagnostics.install(AppleCrashSink(crash))
+        PerformanceMonitoring.install(ApplePerformanceSink(performance))
     }
 
     private val links = AppLinkChannel()
@@ -45,7 +50,10 @@ class AppleAppHost(
                 single<PushTokenSource> { push }
             },
             credentials = AppleCredentialStore(credentials),
+            deviceAuthentication = AppleDeviceAuthenticationSource(),
+            browserAuthorization = AppleBrowserAuthorizationSource(),
             remoteFeatureFlags = AppleFeatureFlagSource(remoteConfig),
+            platform = AppPlatform.Ios,
         )
 
     private var foregroundWorker: Job? = null

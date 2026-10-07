@@ -29,9 +29,10 @@ class DashboardDataModule {
         repository: DashboardRepository,
         scheduler: SyncScheduleRepository,
         flags: FeatureFlagRepository,
+        access: dev.fajar.starter.security.domain.access.repositories.AccessRepository,
         environment: AppEnvironment,
         sessions: SessionRepository,
-    ) = SetActivitySaved(repository, scheduler, flags, environment, sessions)
+    ) = SetActivitySaved(repository, scheduler, flags, environment, sessions, access)
 
     @Single(binds = [SyncTask::class, SyncDashboard::class])
     fun sync(repository: DashboardRepository, sessions: SessionRepository) =

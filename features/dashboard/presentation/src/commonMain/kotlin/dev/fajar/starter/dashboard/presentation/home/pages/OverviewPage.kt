@@ -16,7 +16,7 @@ import io.github.composefluent.FluentTheme
 fun OverviewPage(state: DashboardState, onRefresh: () -> Unit, onActivity: () -> Unit) {
     AppPage {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            AppText(appString(AppString.Overview), style = FluentTheme.typography.title)
+            AppHeading(appString(AppString.Overview), style = FluentTheme.typography.title)
             AppText(appString(AppString.WorkspaceSummary), color = AppColors.muted)
         }
         AppCard(Modifier.fillMaxWidth(), color = AppColors.tint) {
@@ -30,21 +30,26 @@ fun OverviewPage(state: DashboardState, onRefresh: () -> Unit, onActivity: () ->
         if (state.error != null) AppFeedback(failureText(state.error))
         if (state.loading && state.dashboard == null) AppLoading()
         if (state.dashboard != null) {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            FlowRow(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                maxItemsInEachRow = 3,
+            ) {
                 SummaryCard(
                     appString(AppString.Projects),
                     formatNumber(state.dashboard.projects.toLong(), appLanguageTag()),
-                    Modifier.weight(1f),
+                    Modifier.widthIn(min = 160.dp).weight(1f),
                 )
                 SummaryCard(
                     appString(AppString.Active),
                     formatNumber(state.dashboard.active.toLong(), appLanguageTag()),
-                    Modifier.weight(1f),
+                    Modifier.widthIn(min = 160.dp).weight(1f),
                 )
                 SummaryCard(
                     appString(AppString.Members),
                     formatNumber(state.dashboard.members.toLong(), appLanguageTag()),
-                    Modifier.weight(1f),
+                    Modifier.widthIn(min = 160.dp).weight(1f),
                 )
             }
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {

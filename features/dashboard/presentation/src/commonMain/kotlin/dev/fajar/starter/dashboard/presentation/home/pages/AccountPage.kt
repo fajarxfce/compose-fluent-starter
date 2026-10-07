@@ -16,10 +16,11 @@ fun AccountPage(
     onSignOut: () -> Unit,
     onNotifications: () -> Unit,
     onSettings: () -> Unit,
+    onFiles: () -> Unit,
 ) {
     AppPage(maxWidth = 600.dp) {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            AppText(appString(AppString.Account), style = FluentTheme.typography.title)
+            AppHeading(appString(AppString.Account), style = FluentTheme.typography.title)
             AppText(appString(AppString.ProfileDescription), color = AppColors.muted)
         }
         AppCard(Modifier.fillMaxWidth()) {
@@ -46,6 +47,7 @@ fun AccountPage(
             Modifier.fillMaxWidth(),
             primary = false,
         )
+        AppButton(appString(AppString.Files), onFiles, Modifier.fillMaxWidth(), primary = false)
         if (state.error != null) AppFeedback(failureText(state.error))
         AppButton(
             appString(AppString.SignOut),

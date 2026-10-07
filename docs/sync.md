@@ -65,7 +65,9 @@ process ends after a database commit but before enqueueing. No feature payload l
 `Data`; the outbox is the durable source. iOS uses the same feature use cases and cancels their
 execution when its permitted background window expires.
 
-Network, timeout, HTTP 429 and server failures request backoff. Validation, authorization, storage
+Successful bounded batches continue in the foreground after a short yield; they do not
+increase the network retry backoff. Android schedules continuation with WorkManager retry
+timing. Network, timeout, HTTP 429 and server failures request backoff. Validation, authorization, storage
 and unexpected failures stop that execution and preserve pending data. A later explicit request,
 startup, or Android/iOS scheduled opportunity can try again. Cancellation propagates without
 acknowledging a late upload result. Delivery is **at least once**, not exactly once.
@@ -110,3 +112,9 @@ concurrent load-more requests and cancels them when refreshing or being cleared.
 Database guards also reject stale results from background refresh/account changes.
 A failed load-more retains the current list and cursor for retry. Refresh starts
 a new first-page snapshot; cached later pages are replaced, including on sync.
+
+## File queue
+
+`SyncTransfers` adds the `file-transfers` task to the existing worker registry. It processes
+a bounded batch and leaves durable checkpoints on cancellation. See [file transfers](file-transfers.md)
+for platform limits, offset reconciliation and pause/account-change ownership.

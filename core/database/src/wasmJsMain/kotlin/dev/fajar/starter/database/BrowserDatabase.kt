@@ -18,16 +18,24 @@ private class IndexedDbAppDatabase(name: String) : AppDatabase {
         MutableSharedFlow<Unit>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST).apply {
             tryEmit(Unit)
         }
+    private val transferChanges =
+        MutableSharedFlow<Unit>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST).apply {
+            tryEmit(Unit)
+        }
     override val accounts: AccountCacheStore =
         object : AccountCacheStore {
             override suspend fun activate(sessionId: String?) {
                 activateAccount(database.await<JsAny>(), sessionId).await<JsAny?>()
                 changes.tryEmit(Unit)
+                transferChanges.tryEmit(Unit)
             }
         }
     override val inbox: InboxStore = IndexedDbInboxStore(changes) { database.await<JsAny>() }
     override val dashboard: DashboardStore =
         IndexedDbDashboardStore(changes) { database.await<JsAny>() }
+
+    override val transfers: TransferStore =
+        IndexedDbTransferStore(transferChanges) { database.await<JsAny>() }
 
     override fun close() {
         if (connection.isInitialized()) closeDatabase(database)
@@ -63,9 +71,13 @@ private class IndexedDbInboxStore(
 
 @JsFun(
     """(name) => new Promise((resolve, reject) => {
-    const request = indexedDB.open(name, 3);
+    const request = indexedDB.open(name, 4);
     request.onupgradeneeded = event => {
         const db = request.result;
+        if (event.oldVersion < 4) {
+            db.createObjectStore('transfers', {keyPath: 'id'});
+            db.createObjectStore('transfer_chunks', {keyPath: ['transferId', 'offset']});
+        }
         if (event.oldVersion < 1) db.createObjectStore('inbox', {keyPath: 'id'});
         if (event.oldVersion < 3) db.createObjectStore('account_scope');
         if (event.oldVersion < 2) {
@@ -122,11 +134,11 @@ private external fun closeDatabase(database: Promise<JsAny>)
 
 @JsFun(
     """(db, scope) => new Promise((resolve, reject) => {
-    const tx = db.transaction(['account_scope', 'dashboard', 'activity_preferences', 'dashboard_outbox', 'inbox'], 'readwrite');
+    const tx = db.transaction(['account_scope', 'dashboard', 'activity_preferences', 'dashboard_outbox', 'inbox', 'transfers', 'transfer_chunks'], 'readwrite');
     const scopes = tx.objectStore('account_scope'), current = scopes.get('current');
     current.onsuccess = () => {
         if (current.result === scope) return;
-        for (const name of ['dashboard', 'activity_preferences', 'dashboard_outbox', 'inbox']) tx.objectStore(name).clear();
+        for (const name of ['dashboard', 'activity_preferences', 'dashboard_outbox', 'inbox', 'transfers', 'transfer_chunks']) tx.objectStore(name).clear();
         scopes.put(scope, 'current');
     };
     tx.oncomplete = () => resolve(null);

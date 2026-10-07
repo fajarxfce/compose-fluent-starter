@@ -9,12 +9,18 @@ plugins {
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
+        implementation(projects.core.availability.data)
+        implementation(projects.features.availability.presentation)
+        api(projects.core.security.data)
+        implementation(projects.features.security.presentation)
         implementation(projects.core.localization)
         implementation(projects.core.settings.data)
         implementation(projects.features.settings.presentation)
         api(libs.koin.core)
         implementation(projects.core.designsystem)
         api(projects.core.database)
+        api(projects.core.transfers.data)
+        implementation(projects.features.files.presentation)
         api(projects.core.worker)
         api(projects.core.featureflags.data)
         api(projects.core.notifications.data)
@@ -67,6 +73,7 @@ kotlin {
     sourceSets.getByName("desktopTest").dependencies {
         implementation(compose.desktop.uiTestJUnit4)
         implementation(projects.features.dashboard.domain)
+        implementation(projects.core.transfers.domain)
     }
 }
 
@@ -74,6 +81,7 @@ compose.desktop {
     application {
         mainClass = "dev.fajar.starter.MainKt"
         nativeDistributions {
+            modules("jdk.httpserver")
             targetFormats(
                 org.jetbrains.compose.desktop.application.dsl.TargetFormat.Dmg,
                 org.jetbrains.compose.desktop.application.dsl.TargetFormat.Msi,
