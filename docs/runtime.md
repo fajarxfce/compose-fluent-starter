@@ -24,7 +24,8 @@ For a desktop without a credential manager, explicitly use ephemeral sessions:
 
 Web bearer tokens are memory-only. Persistent browser authentication requires a
 backend with an HttpOnly, Secure cookie strategy; localStorage is not used for
-credentials. DataStore contains preferences, not tokens.
+credentials. Reloading the Web app drops its previous account cache along with
+the ephemeral session. DataStore contains preferences, not tokens.
 
 A new sign-in receives a new session ID. Refresh preserves that ID. The database
 owns one active account cache, rejects reads/writes from old sessions, and clears

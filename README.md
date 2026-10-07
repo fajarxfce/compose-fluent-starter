@@ -15,7 +15,7 @@ Android builds also require Android SDK 36.
 
 Open `apps/ios/FluentStarter.xcodeproj` on macOS for iOS. Select a simulator or configure your signing team for a physical device.
 
-Demo account: **demo@example.com / Demo123!**. The default transport is an in-process Ktor MockEngine; no authentication requests leave the device. Onboarding preferences persist. Sessions restore from secure storage on mobile/desktop; Web sessions remain in memory. Dashboard content is sample data, cached locally. Saved activities persist and use a transactional outbox for the demo sync flow.
+Demo account: **demo@example.com / Demo123!**. The default transport is an in-process Ktor MockEngine; no authentication requests leave the device. Onboarding preferences persist. Sessions restore from secure storage on mobile/desktop; Web sessions remain in memory. Dashboard content is sample data, cached locally. Saved activities use a transactional outbox and persist with the active session.
 
 Light and dark appearance follow the system theme automatically.
 
@@ -55,7 +55,7 @@ Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dep
 
 See [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), and [localization](docs/localization.md).
 
-See [architecture](docs/architecture.md), [development](docs/development.md), and [validation](docs/validation.md).
+See [architecture](docs/architecture.md), [development](docs/development.md), [quality gates](docs/quality.md), and [validation](docs/validation.md).
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
 See [feature flags](docs/feature-flags.md) for Firebase Remote Config, offline defaults, and dev/staging overrides.
 See [local storage](docs/storage.md) and [build environments](docs/environments.md) for platform setup. See [notifications and deep links](docs/notifications.md) for Firebase configuration.

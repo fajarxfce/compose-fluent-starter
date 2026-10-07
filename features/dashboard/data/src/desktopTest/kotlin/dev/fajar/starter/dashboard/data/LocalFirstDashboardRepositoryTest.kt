@@ -85,6 +85,39 @@ class LocalFirstDashboardRepositoryTest {
             directory.deleteRecursively()
         }
     }
+
+    @Test
+    fun failedPageRetainsCursorAndLatePageCannotCrossAccounts() = runTest {
+        val directory = Files.createTempDirectory("dashboard-page-scope").toFile()
+        val database = createAppDatabase(directory)
+        database.accounts.activate("session-a")
+        val remote = RemoteSourceFake()
+        remote.response = remote.response.copy(nextCursor = "next")
+        val repository = LocalFirstDashboardRepository(remote, database.dashboard)
+        try {
+            repository.refresh("session-a")
+            remote.failure = java.io.IOException("offline")
+            assertIs<AppResult.Failed>(repository.loadNextPage("session-a"))
+            assertEquals("next", database.dashboard.observe("session-a").first()!!.nextCursor)
+            remote.failure = null
+            remote.response =
+                remote.response.copy(
+                    activity = listOf(ActivityDto("b", "Second", "Project", "10:00")),
+                    nextCursor = null,
+                )
+            remote.pending = CompletableDeferred()
+            val page = launch { repository.loadNextPage("session-a") }
+            runCurrent()
+            database.accounts.activate("session-b")
+            remote.pending!!.complete(Unit)
+            page.join()
+            assertNull(database.dashboard.observe("session-b").first())
+            assertNull(database.dashboard.observe("session-a").first())
+        } finally {
+            database.close()
+            directory.deleteRecursively()
+        }
+    }
 }
 
 private class RemoteSourceFake : DashboardRemoteDataSource {

@@ -41,3 +41,34 @@ tasks.register<JavaExec>("formatCheck") {
         )
     }
 }
+
+val staticAnalysis by configurations.creating
+
+dependencies { add(staticAnalysis.name, catalog.findLibrary("detekt-cli").get()) }
+
+tasks.register<JavaExec>("detekt") {
+    group = "verification"
+    description = "Runs Kotlin static analysis with the workspace rule set."
+    classpath = staticAnalysis
+    mainClass.set("dev.detekt.cli.Main")
+    maxHeapSize = "1g"
+    args(
+        "--fail-on-severity",
+        "Warning",
+        "--input",
+        ".",
+        "--excludes",
+        "**/build/**",
+        "**/composeResources/**",
+        "**/.gradle/**",
+        "**/.kotlin/**",
+        "--config",
+        "config/detekt.yml",
+        "--report",
+        "sarif:build/reports/detekt/detekt.sarif",
+        "--report",
+        "html:build/reports/detekt/detekt.html",
+    )
+}
+
+tasks.named("check") { dependsOn("detekt") }
