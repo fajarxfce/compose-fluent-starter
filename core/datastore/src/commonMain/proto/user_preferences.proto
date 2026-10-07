@@ -8,6 +8,9 @@ message UserPreferences {
   ThemeMode theme_mode = 2;
   bool notifications_enabled = 3;
   bool legacy_migrated = 4;
+  map<string, string> feature_flag_values = 5;
+  map<string, bool> feature_flag_overrides = 6;
+  int64 feature_flags_fetched_at = 7;
 }
 
 enum ThemeMode {

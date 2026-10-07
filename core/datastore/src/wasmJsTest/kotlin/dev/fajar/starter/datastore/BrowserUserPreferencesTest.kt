@@ -28,7 +28,14 @@ class BrowserUserPreferencesTest {
                 store.data.toList(values)
             }
         assertFalse(values.last().onboarding_completed)
-        store.update { it.copy(onboarding_completed = true) }
+        store.update {
+            it.copy(
+                onboarding_completed = true,
+                feature_flag_values = mapOf("save" to "true"),
+                feature_flag_overrides = mapOf("save" to false),
+                feature_flags_fetched_at = 123,
+            )
+        }
         runCurrent()
         assertTrue(values.last().onboarding_completed)
         store.close()
@@ -36,7 +43,11 @@ class BrowserUserPreferencesTest {
         assertTrue(observation.isCompleted)
         val reopened = createUserPreferences(namespace)
         try {
-            assertTrue(reopened.data.first().onboarding_completed)
+            val persisted = reopened.data.first()
+            assertTrue(persisted.onboarding_completed)
+            assertEquals(mapOf("save" to "true"), persisted.feature_flag_values)
+            assertEquals(mapOf("save" to false), persisted.feature_flag_overrides)
+            assertEquals(123, persisted.feature_flags_fetched_at)
         } finally {
             reopened.close()
         }

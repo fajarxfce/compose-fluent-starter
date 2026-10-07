@@ -74,6 +74,12 @@ Workers are platform application entry points that invoke feature `SyncTask` use
 mutation and outbox insertion share a transaction; background execution is independently scheduled.
 See [sync](sync.md) for delivery and platform guarantees.
 
+Feature flag definitions and evaluation policy live in `core/featureflags/domain`; each
+consuming feature owns its keys and action guards. A shared refresh use case serializes
+workers and sets the fetch interval. Its repository coordinates Remote Config and the
+preference store; SDK adapters perform raw fetch/activation only. Flags have no UI state,
+and overrides are allowed only by dev/staging use-case policy.
+
 The typed preference store already serves as a datasource contract. Onboarding consumes
 Proto DataStore through that port; its repository maps the protobuf field to a domain value.
 The in-memory session datasource owns a replayed DTO

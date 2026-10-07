@@ -40,6 +40,8 @@ include(
     ":core:sync:domain",
     ":core:sync:data",
     ":core:worker",
+    ":core:featureflags:domain",
+    ":core:featureflags:data",
     ":core:notifications:domain",
     ":core:notifications:data",
     ":core:designsystem",
