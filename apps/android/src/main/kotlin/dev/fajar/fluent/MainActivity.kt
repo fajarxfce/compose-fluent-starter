@@ -3,13 +3,14 @@ package dev.fajar.fluent
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.fragment.app.FragmentActivity
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.notifications.data.datasources.AndroidNotificationPermissionSource
+import dev.fajar.starter.security.data.lock.datasources.*
 
-class MainActivity : ComponentActivity() {
+class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
         val app = application as StarterApplication
         val container = app.container
         container.koin.get<AndroidNotificationPermissionSource>().attach(this)
+        app.deviceAuthentication.attach(this)
         if (savedInstanceState == null)
             (intent.dataString
                     ?: intent.getStringExtra("destination")?.let {
@@ -45,6 +47,7 @@ class MainActivity : ComponentActivity() {
             .koin
             .get<AndroidNotificationPermissionSource>()
             .detach(this)
+        (application as StarterApplication).deviceAuthentication.detach(this)
         super.onDestroy()
     }
 }

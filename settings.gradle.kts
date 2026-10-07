@@ -36,6 +36,7 @@ include(
     ":core:availability:domain",
     ":core:availability:data",
     ":features:availability:presentation",
+    ":features:security:presentation",
     ":core:security:data",
     ":core:presentation",
     ":core:network",

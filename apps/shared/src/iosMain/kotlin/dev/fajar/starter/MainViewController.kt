@@ -5,6 +5,7 @@ import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.app.work.startForegroundSync
+import dev.fajar.starter.common.config.AppPlatform
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
@@ -15,6 +16,7 @@ import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
 import dev.fajar.starter.observability.*
 import dev.fajar.starter.securestorage.*
+import dev.fajar.starter.security.data.lock.datasources.AppleDeviceAuthenticationSource
 import dev.fajar.starter.sync.domain.*
 import dev.fajar.starter.worker.runSyncTask
 import kotlin.time.Clock
@@ -45,8 +47,9 @@ class AppleAppHost(
                 single<PushTokenSource> { push }
             },
             credentials = AppleCredentialStore(credentials),
+            deviceAuthentication = AppleDeviceAuthenticationSource(),
             remoteFeatureFlags = AppleFeatureFlagSource(remoteConfig),
-            platform = dev.fajar.starter.common.config.AppPlatform.Ios,
+            platform = AppPlatform.Ios,
         )
 
     private var foregroundWorker: Job? = null

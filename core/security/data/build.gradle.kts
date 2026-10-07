@@ -1,10 +1,11 @@
 plugins {
-    id("starter.android.library")
+    id("starter.android.resources")
     id("starter.serialization")
     id("starter.di")
 }
 
 kotlin.sourceSets {
+    getByName("androidMain").dependencies { api(libs.android.biometric) }
     getByName("commonMain").dependencies {
         api(projects.core.security.domain)
         implementation(projects.core.network)

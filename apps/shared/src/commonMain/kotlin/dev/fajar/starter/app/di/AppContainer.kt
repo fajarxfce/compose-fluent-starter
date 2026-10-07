@@ -1,7 +1,12 @@
 package dev.fajar.starter.app.di
 
 import dev.fajar.starter.auth.presentation.di.AuthPresentationModule
+import dev.fajar.starter.availability.data.di.AvailabilityDataModule
+import dev.fajar.starter.availability.domain.usecases.CheckAppAvailability
+import dev.fajar.starter.availability.presentation.di.AvailabilityPresentationModule
+import dev.fajar.starter.common.config.AppBuild
 import dev.fajar.starter.common.config.AppEnvironment
+import dev.fajar.starter.common.config.AppPlatform
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.common.config.BuildRuntime
 import dev.fajar.starter.common.result.AppResult
@@ -24,6 +29,10 @@ import dev.fajar.starter.notifications.presentation.di.NotificationPresentationM
 import dev.fajar.starter.onboarding.data.di.OnboardingDataModule
 import dev.fajar.starter.onboarding.presentation.di.OnboardingPresentationModule
 import dev.fajar.starter.securestorage.*
+import dev.fajar.starter.security.data.di.SecurityDataModule
+import dev.fajar.starter.security.data.lock.datasources.DeviceAuthenticationSource
+import dev.fajar.starter.security.data.lock.datasources.UnavailableDeviceAuthenticationSource
+import dev.fajar.starter.security.presentation.di.SecurityPresentationModule
 import dev.fajar.starter.settings.data.di.SettingsDataModule
 import dev.fajar.starter.settings.presentation.di.SettingsPresentationModule
 import dev.fajar.starter.sync.data.datasources.WorkScheduler
@@ -48,14 +57,15 @@ fun createAppContainer(
     workScheduler: WorkScheduler? = null,
     credentials: CredentialStore = MemoryCredentialStore(),
     remoteFeatureFlags: RemoteFeatureFlagSource = UnavailableFeatureFlagSource(),
-    platform: dev.fajar.starter.common.config.AppPlatform =
-        dev.fajar.starter.common.config.AppPlatform.Desktop,
+    deviceAuthentication: DeviceAuthenticationSource = UnavailableDeviceAuthenticationSource(),
+    platform: AppPlatform = AppPlatform.Desktop,
 ) = koinApplication {
     modules(
         notificationPlatform,
-        dev.fajar.starter.availability.data.di.AvailabilityDataModule().module,
-        dev.fajar.starter.availability.presentation.di.AvailabilityPresentationModule().module,
-        dev.fajar.starter.security.data.di.SecurityDataModule().module,
+        SecurityPresentationModule().module,
+        AvailabilityDataModule().module,
+        AvailabilityPresentationModule().module,
+        SecurityDataModule().module,
         SettingsDataModule().module,
         SettingsPresentationModule().module,
         SyncDataModule().module,
@@ -64,8 +74,9 @@ fun createAppContainer(
         NotificationPresentationModule().module,
         module {
             single { environment }
+            single<DeviceAuthenticationSource> { deviceAuthentication }
             single {
-                dev.fajar.starter.common.config.AppBuild(
+                AppBuild(
                     platform,
                     BuildRuntime.versionNumber,
                     BuildRuntime.versionName,
@@ -85,8 +96,7 @@ fun createAppContainer(
             single<DashboardStore> { get<AppDatabase>().dashboard }
             single<UserPreferencesStore> { preferences }.onClose { it?.close() }
             single<HttpClient>(named(HttpClients.Public)) {
-                    val policy =
-                        get<dev.fajar.starter.availability.domain.usecases.CheckAppAvailability>()
+                    val policy = get<CheckAppAvailability>()
                     createHttpClient(
                         if (BuildRuntime.demoBackend) createDemoEngine()
                         else createPlatformHttpEngine(),
@@ -98,8 +108,7 @@ fun createAppContainer(
                 .onClose { it?.close() }
             single<HttpClient>(named(HttpClients.Authenticated)) {
                     val acquireTokens = get<AcquireSessionTokens>()
-                    val policy =
-                        get<dev.fajar.starter.availability.domain.usecases.CheckAppAvailability>()
+                    val policy = get<CheckAppAvailability>()
                     val endpoint = BuildRuntime.apiEndpoints.getValue(environment)
                     createHttpClient(
                         if (BuildRuntime.demoBackend) createDemoEngine()

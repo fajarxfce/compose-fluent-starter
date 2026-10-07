@@ -11,7 +11,8 @@ kotlin.sourceSets {
     getByName("commonMain").dependencies {
         implementation(projects.core.availability.data)
         implementation(projects.features.availability.presentation)
-        implementation(projects.core.security.data)
+        api(projects.core.security.data)
+        implementation(projects.features.security.presentation)
         implementation(projects.core.localization)
         implementation(projects.core.settings.data)
         implementation(projects.features.settings.presentation)

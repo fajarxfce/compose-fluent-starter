@@ -26,6 +26,7 @@ import dev.fajar.starter.notifications.presentation.navigation.NotificationRoute
 import dev.fajar.starter.notifications.presentation.navigation.notificationRoutes
 import dev.fajar.starter.onboarding.presentation.navigation.OnboardingRoute
 import dev.fajar.starter.onboarding.presentation.navigation.onboardingRoutes
+import dev.fajar.starter.security.presentation.navigation.AppLockSettings
 import dev.fajar.starter.settings.presentation.navigation.*
 import kotlinx.coroutines.flow.Flow
 import org.koin.compose.koinInject
@@ -108,7 +109,7 @@ fun AppNavigation(incomingLinks: Flow<String>) {
         }
         onboardingRoutes({ viewModel.onEvent(AppEvent.BootstrapRequested) })
         authRoutes()
-        settingsRoutes { controller.popBackStack() }
+        settingsRoutes(securitySettings = { AppLockSettings() }) { controller.popBackStack() }
         dashboardRoutes(
             onNotifications = { controller.navigate(NotificationRoute) { launchSingleTop = true } },
             onSettings = { controller.navigate(SettingsRoute) { launchSingleTop = true } },

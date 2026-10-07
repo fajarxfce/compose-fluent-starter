@@ -96,4 +96,14 @@
     <string name="update_app_id">Perbarui aplikasi</string>
     <string name="later_id">Nanti</string>
     <string name="policy_refresh_failed_id">Kebijakan aplikasi belum dapat diperbarui.</string>
+    <string name="app_locked_id">Aplikasi terkunci</string>
+    <string name="app_locked_description_id">Autentikasi untuk melanjutkan.</string>
+    <string name="unlock_app_id">Buka kunci</string>
+    <string name="use_account_sign_in_id">Keluar dan masuk dengan akun</string>
+    <string name="app_lock_id">Kunci aplikasi</string>
+    <string name="app_lock_description_id">Gunakan biometrik setelah meninggalkan aplikasi atau tidak aktif selama lima menit.</string>
+    <string name="enable_app_lock_id">Aktifkan kunci aplikasi</string>
+    <string name="disable_app_lock_id">Nonaktifkan kunci aplikasi</string>
+    <string name="device_authentication_failed_id">Autentikasi belum selesai. Coba lagi atau masuk dengan akun.</string>
+    <string name="device_authentication_unavailable_id">Biometrik tidak tersedia di perangkat ini.</string>
 </resources>

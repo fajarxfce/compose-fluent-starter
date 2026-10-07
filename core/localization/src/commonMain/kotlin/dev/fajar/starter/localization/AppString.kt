@@ -5,6 +5,25 @@ import org.jetbrains.compose.resources.StringResource
 
 /** Explicit pairs keep runtime language changes portable across Android, iOS, desktop and Web. */
 enum class AppString(val english: StringResource, val indonesian: StringResource) {
+    AppLocked(Res.string.app_locked_en, Res.string.app_locked_id),
+    AppLockedDescription(
+        Res.string.app_locked_description_en,
+        Res.string.app_locked_description_id,
+    ),
+    UnlockApp(Res.string.unlock_app_en, Res.string.unlock_app_id),
+    UseAccountSignIn(Res.string.use_account_sign_in_en, Res.string.use_account_sign_in_id),
+    AppLock(Res.string.app_lock_en, Res.string.app_lock_id),
+    AppLockDescription(Res.string.app_lock_description_en, Res.string.app_lock_description_id),
+    EnableAppLock(Res.string.enable_app_lock_en, Res.string.enable_app_lock_id),
+    DisableAppLock(Res.string.disable_app_lock_en, Res.string.disable_app_lock_id),
+    DeviceAuthenticationFailed(
+        Res.string.device_authentication_failed_en,
+        Res.string.device_authentication_failed_id,
+    ),
+    DeviceAuthenticationUnavailable(
+        Res.string.device_authentication_unavailable_en,
+        Res.string.device_authentication_unavailable_id,
+    ),
     SignIn(Res.string.sign_in_en, Res.string.sign_in_id),
     SignInDescription(Res.string.sign_in_description_en, Res.string.sign_in_description_id),
     Email(Res.string.email_en, Res.string.email_id),
