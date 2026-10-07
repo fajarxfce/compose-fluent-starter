@@ -17,7 +17,8 @@ suspend fun runSyncTask(
     measureOperation(
         PerformanceOperation.Sync,
         classify = {
-            if (it == SyncResult.Complete) PerformanceOutcome.Succeeded
+            if (it == SyncResult.Complete || it is SyncResult.Retry && it.failure == null)
+                PerformanceOutcome.Succeeded
             else PerformanceOutcome.Failed
         },
     ) {
