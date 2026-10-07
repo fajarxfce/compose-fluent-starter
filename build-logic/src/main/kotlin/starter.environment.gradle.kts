@@ -1,0 +1,25 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+import tasks.GenerateEnvironment
+
+plugins { id("starter.kmp") }
+
+val generateEnvironment =
+    tasks.register<GenerateEnvironment>("generateEnvironment") {
+        environment.set(providers.gradleProperty("appEnvironment").orElse("dev"))
+        backend.set(providers.gradleProperty("backend").orElse("demo"))
+        desktopPersistence.set(providers.gradleProperty("desktopPersistence").orElse("secure"))
+        listOf("dev", "staging", "prod").forEach { name ->
+            endpoints.put(
+                name,
+                providers
+                    .gradleProperty("apiBaseUrl.$name")
+                    .orElse(providers.gradleProperty("apiBaseUrl"))
+                    .orElse("https://demo.fluent.local/"),
+            )
+        }
+        outputDirectory.set(layout.buildDirectory.dir("generated/environment/kotlin"))
+    }
+
+kotlin.sourceSets.commonMain { kotlin.srcDir(generateEnvironment.flatMap { it.outputDirectory }) }
+
+tasks.withType<KotlinCompilationTask<*>>().configureEach { dependsOn(generateEnvironment) }

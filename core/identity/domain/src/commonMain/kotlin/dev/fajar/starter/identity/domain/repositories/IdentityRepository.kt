@@ -1,13 +1,10 @@
 package dev.fajar.starter.identity.domain.repositories
 
 import dev.fajar.starter.common.result.AppResult
-import dev.fajar.starter.identity.domain.entities.User
-import kotlinx.coroutines.flow.Flow
+import dev.fajar.starter.identity.domain.entities.AuthenticatedUser
 
 interface IdentityRepository {
-    fun observeUser(): Flow<User?>
+    suspend fun signIn(email: String, password: String): AppResult<AuthenticatedUser>
 
-    suspend fun signIn(email: String, password: String): AppResult<User>
-
-    suspend fun signOut(): AppResult<Unit>
+    suspend fun refresh(refreshToken: String): AppResult<AuthenticatedUser>
 }

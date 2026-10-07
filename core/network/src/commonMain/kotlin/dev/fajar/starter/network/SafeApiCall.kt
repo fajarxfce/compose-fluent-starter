@@ -26,11 +26,14 @@ suspend fun <T> safeApiCall(
     } catch (exception: Exception) {
         currentCoroutineContext().ensureActive()
         onException(exception)
-        AppResult.Failed(mapHttpFailure(exception))
+        val failure = readApiFailure(exception)
+        currentCoroutineContext().ensureActive()
+        AppResult.Failed(failure)
     }
 
 fun mapHttpFailure(exception: Exception): Failure =
     when (exception) {
+        is RequestFailureException -> exception.failure
         is HttpRequestTimeoutException,
         is ConnectTimeoutException,
         is SocketTimeoutException ->

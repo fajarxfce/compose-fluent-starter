@@ -12,6 +12,7 @@ import dev.fajar.starter.auth.presentation.login.LoginEvent
 import dev.fajar.starter.auth.presentation.login.LoginState
 import dev.fajar.starter.designsystem.components.*
 import dev.fajar.starter.designsystem.theme.AppColors
+import dev.fajar.starter.localization.*
 import io.github.composefluent.FluentTheme
 
 @Composable
@@ -20,18 +21,18 @@ fun LoginPage(state: LoginState, onEvent: (LoginEvent) -> Unit) {
         AppBrand()
         Spacer(Modifier.height(12.dp))
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            AppText("Sign in", style = FluentTheme.typography.titleLarge)
-            AppText("Use your account to continue.", color = AppColors.muted)
+            AppText(appString(AppString.SignIn), style = FluentTheme.typography.titleLarge)
+            AppText(appString(AppString.SignInDescription), color = AppColors.muted)
         }
         AppCard(Modifier.fillMaxWidth()) {
             Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                 AppTextField(
-                    "Email",
+                    appString(AppString.Email),
                     state.email,
                     { onEvent(LoginEvent.EmailChanged(it)) },
                     placeholder = "name@example.com",
                     enabled = !state.submitting,
-                    error = state.failure?.takeIf { it.field == "email" }?.message,
+                    error = fieldErrorText(state.fieldErrors["email"]),
                     keyboardOptions =
                         KeyboardOptions(
                             keyboardType = KeyboardType.Email,
@@ -44,14 +45,14 @@ fun LoginPage(state: LoginState, onEvent: (LoginEvent) -> Unit) {
                     visible = state.passwordVisible,
                     onVisibilityChanged = { onEvent(LoginEvent.PasswordVisibilityChanged) },
                     enabled = !state.submitting,
-                    error = state.failure?.takeIf { it.field == "password" }?.message,
+                    error = fieldErrorText(state.fieldErrors["password"]),
                     keyboardActions =
                         KeyboardActions(onDone = { onEvent(LoginEvent.SignInRequested) }),
                 )
-                if (state.failure != null && state.failure.field == null)
-                    AppFeedback(state.failure.message)
+                if (state.failure != null && state.fieldErrors.isEmpty())
+                    AppFeedback(failureText(state.failure))
                 AppButton(
-                    "Sign in",
+                    appString(AppString.SignIn),
                     { onEvent(LoginEvent.SignInRequested) },
                     Modifier.fillMaxWidth(),
                     loading = state.submitting,
@@ -60,15 +61,18 @@ fun LoginPage(state: LoginState, onEvent: (LoginEvent) -> Unit) {
         }
         AppCard(Modifier.fillMaxWidth(), color = AppColors.tint) {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                AppBadge("Demo")
-                AppText("Explore with a sample account.", style = FluentTheme.typography.bodyStrong)
+                AppBadge(appString(AppString.Demo))
+                AppText(
+                    appString(AppString.DemoDescription),
+                    style = FluentTheme.typography.bodyStrong,
+                )
                 AppText(
                     "demo@example.com  /  Demo123!",
                     style = FluentTheme.typography.caption,
                     color = AppColors.muted,
                 )
                 AppButton(
-                    "Use demo account",
+                    appString(AppString.UseDemo),
                     { onEvent(LoginEvent.DemoAccountSelected) },
                     Modifier.fillMaxWidth(),
                     primary = false,

@@ -4,14 +4,25 @@ plugins {
     id("starter.compose")
     id("starter.serialization")
     id("starter.di")
+    id("starter.firebase.web")
 }
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
+        implementation(projects.core.localization)
+        implementation(projects.core.settings.data)
+        implementation(projects.features.settings.presentation)
         api(libs.koin.core)
-        implementation(projects.core.common)
         implementation(projects.core.designsystem)
-        api(projects.core.storage)
+        api(projects.core.database)
+        api(projects.core.worker)
+        api(projects.core.featureflags.data)
+        api(projects.core.notifications.data)
+        implementation(projects.features.notifications.presentation)
+        api(projects.core.datastore)
+        api(projects.core.common)
+        api(projects.core.securestorage)
+        api(projects.core.observability)
         implementation(projects.core.network)
         implementation(projects.core.identity.domain)
         implementation(projects.core.identity.data)
@@ -38,6 +49,10 @@ kotlin {
         binaries.framework {
             baseName = "StarterKit"
             isStatic = true
+            export(projects.core.notifications.data)
+            export(projects.core.featureflags.data)
+            export(projects.core.securestorage)
+            export(projects.core.observability)
         }
     }
     wasmJs {
@@ -51,6 +66,7 @@ kotlin {
     }
     sourceSets.getByName("desktopTest").dependencies {
         implementation(compose.desktop.uiTestJUnit4)
+        implementation(projects.features.dashboard.domain)
     }
 }
 
