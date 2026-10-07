@@ -31,7 +31,9 @@ fun StarterApp(
                             )
                             .imePadding()
                     ) {
-                        AppNavigation(incomingLinks)
+                        dev.fajar.starter.availability.presentation.navigation.AvailabilityGate {
+                            AppNavigation(incomingLinks)
+                        }
                     }
                 }
             }

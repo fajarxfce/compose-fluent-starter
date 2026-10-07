@@ -9,6 +9,8 @@ plugins {
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
+        implementation(projects.core.availability.data)
+        implementation(projects.features.availability.presentation)
         implementation(projects.core.security.data)
         implementation(projects.core.localization)
         implementation(projects.core.settings.data)

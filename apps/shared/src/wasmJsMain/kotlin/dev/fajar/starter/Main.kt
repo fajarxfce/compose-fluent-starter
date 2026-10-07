@@ -43,6 +43,7 @@ fun main() {
             },
             environment,
             remoteFeatureFlags = BrowserFeatureFlagSource(),
+            platform = dev.fajar.starter.common.config.AppPlatform.Web,
         )
     startForegroundSync(container, scope)
     window.addEventListener(

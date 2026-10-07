@@ -110,6 +110,27 @@ enum class AppString(val english: StringResource, val indonesian: StringResource
         Res.string.permission_download_file_id,
     ),
     RefreshAccess(Res.string.refresh_access_en, Res.string.refresh_access_id),
+    MaintenanceTitle(Res.string.maintenance_title_en, Res.string.maintenance_title_id),
+    MaintenanceDescription(
+        Res.string.maintenance_description_en,
+        Res.string.maintenance_description_id,
+    ),
+    UpdateRequiredTitle(Res.string.update_required_title_en, Res.string.update_required_title_id),
+    UpdateRequiredDescription(
+        Res.string.update_required_description_en,
+        Res.string.update_required_description_id,
+    ),
+    UpdateRecommendedDescription(
+        Res.string.update_recommended_description_en,
+        Res.string.update_recommended_description_id,
+    ),
+    UpdateContactAdministrator(
+        Res.string.update_contact_administrator_en,
+        Res.string.update_contact_administrator_id,
+    ),
+    UpdateApp(Res.string.update_app_en, Res.string.update_app_id),
+    Later(Res.string.later_en, Res.string.later_id),
+    PolicyRefreshFailed(Res.string.policy_refresh_failed_en, Res.string.policy_refresh_failed_id),
     ErrorPermission(Res.string.error_permission_en, Res.string.error_permission_id),
     ErrorUnavailable(Res.string.error_unavailable_en, Res.string.error_unavailable_id),
     ErrorUnexpected(Res.string.error_unexpected_en, Res.string.error_unexpected_id),

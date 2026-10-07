@@ -87,4 +87,13 @@
     <string name="permission_upload_file_en">Upload files</string>
     <string name="permission_download_file_en">Download files</string>
     <string name="refresh_access_en">Refresh access</string>
+    <string name="maintenance_title_en">Scheduled maintenance</string>
+    <string name="maintenance_description_en">Please try again shortly.</string>
+    <string name="update_required_title_en">Update required</string>
+    <string name="update_required_description_en">Install the latest version to continue.</string>
+    <string name="update_recommended_description_en">A new version is available.</string>
+    <string name="update_contact_administrator_en">Contact your administrator for the latest version.</string>
+    <string name="update_app_en">Update app</string>
+    <string name="later_en">Later</string>
+    <string name="policy_refresh_failed_en">App policy could not be refreshed.</string>
 </resources>

@@ -34,6 +34,7 @@ class StarterApplication : Application(), Configuration.Provider {
             workScheduler = scheduler,
             credentials = AndroidCredentialStore(this),
             remoteFeatureFlags = AndroidFeatureFlagSource(this),
+            platform = dev.fajar.starter.common.config.AppPlatform.Android,
         )
     }
 

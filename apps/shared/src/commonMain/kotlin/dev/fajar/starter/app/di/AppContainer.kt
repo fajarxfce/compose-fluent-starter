@@ -48,9 +48,13 @@ fun createAppContainer(
     workScheduler: WorkScheduler? = null,
     credentials: CredentialStore = MemoryCredentialStore(),
     remoteFeatureFlags: RemoteFeatureFlagSource = UnavailableFeatureFlagSource(),
+    platform: dev.fajar.starter.common.config.AppPlatform =
+        dev.fajar.starter.common.config.AppPlatform.Desktop,
 ) = koinApplication {
     modules(
         notificationPlatform,
+        dev.fajar.starter.availability.data.di.AvailabilityDataModule().module,
+        dev.fajar.starter.availability.presentation.di.AvailabilityPresentationModule().module,
         dev.fajar.starter.security.data.di.SecurityDataModule().module,
         SettingsDataModule().module,
         SettingsPresentationModule().module,
@@ -60,6 +64,14 @@ fun createAppContainer(
         NotificationPresentationModule().module,
         module {
             single { environment }
+            single {
+                dev.fajar.starter.common.config.AppBuild(
+                    platform,
+                    BuildRuntime.versionNumber,
+                    BuildRuntime.versionName,
+                    BuildRuntime.updateUrls[platform]?.takeIf { it.isNotBlank() },
+                )
+            }
             single<RemoteFeatureFlagSource> { remoteFeatureFlags }
             single<WorkScheduler> {
                     workScheduler
@@ -73,21 +85,28 @@ fun createAppContainer(
             single<DashboardStore> { get<AppDatabase>().dashboard }
             single<UserPreferencesStore> { preferences }.onClose { it?.close() }
             single<HttpClient>(named(HttpClients.Public)) {
+                    val policy =
+                        get<dev.fajar.starter.availability.domain.usecases.CheckAppAvailability>()
                     createHttpClient(
                         if (BuildRuntime.demoBackend) createDemoEngine()
                         else createPlatformHttpEngine(),
                         HttpClientSettings(BuildRuntime.apiEndpoints.getValue(environment)),
-                    )
+                    ) {
+                        install(ApplicationAvailability) { check = { policy() } }
+                    }
                 }
                 .onClose { it?.close() }
             single<HttpClient>(named(HttpClients.Authenticated)) {
                     val acquireTokens = get<AcquireSessionTokens>()
+                    val policy =
+                        get<dev.fajar.starter.availability.domain.usecases.CheckAppAvailability>()
                     val endpoint = BuildRuntime.apiEndpoints.getValue(environment)
                     createHttpClient(
                         if (BuildRuntime.demoBackend) createDemoEngine()
                         else createPlatformHttpEngine(),
                         HttpClientSettings(endpoint),
                     ) {
+                        install(ApplicationAvailability) { check = { policy() } }
                         install(SessionAuthentication) {
                             origin = Url(endpoint)
                             acquire = { sessionId, rejected ->

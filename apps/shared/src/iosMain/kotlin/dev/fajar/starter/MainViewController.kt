@@ -46,6 +46,7 @@ class AppleAppHost(
             },
             credentials = AppleCredentialStore(credentials),
             remoteFeatureFlags = AppleFeatureFlagSource(remoteConfig),
+            platform = dev.fajar.starter.common.config.AppPlatform.Ios,
         )
 
     private var foregroundWorker: Job? = null

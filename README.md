@@ -28,6 +28,7 @@ apps/shared                  Composition, navigation, desktop/iOS/web entry poin
 apps/demo                    Demo HTTP transport
 core/common                  Result and failure types
 core/securestorage           Android Keystore, iOS Keychain, desktop credential manager
+core/availability            domain / data; minimum version and maintenance policy
 core/security                domain / data; session-scoped permissions and access policy
 core/observability           Structured diagnostics and mobile Crashlytics
 core/settings                domain / data; reactive language preference
@@ -45,6 +46,7 @@ core/designsystem            Fluent theme and AppXxx composables
 core/identity/domain         User, repository contract, authentication use cases
 core/identity/data           API, datasource contracts, DTOs, repository, session
 features/onboarding          domain / data / presentation
+features/availability/presentation  Update and maintenance gate
 features/auth/presentation   Validated sign-in form and ViewModel
 features/settings/presentation Language selection
 features/notifications/presentation  Persistent inbox and notification controls
@@ -54,7 +56,7 @@ build-logic                  Gradle convention plugins
 
 Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dependencies use type-safe accessors such as `implementation(projects.core.common)`. Koin annotations generate registrations during normal Gradle builds.
 
-See [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), and [localization](docs/localization.md).
+See [app availability](docs/availability.md) and [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), and [localization](docs/localization.md).
 
 See [architecture](docs/architecture.md), [development](docs/development.md), [quality gates](docs/quality.md), and [validation](docs/validation.md).
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.

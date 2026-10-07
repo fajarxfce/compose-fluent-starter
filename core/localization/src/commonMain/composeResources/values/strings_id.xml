@@ -87,4 +87,13 @@
     <string name="permission_upload_file_id">Mengunggah file</string>
     <string name="permission_download_file_id">Mengunduh file</string>
     <string name="refresh_access_id">Perbarui akses</string>
+    <string name="maintenance_title_id">Pemeliharaan sistem</string>
+    <string name="maintenance_description_id">Silakan coba kembali beberapa saat lagi.</string>
+    <string name="update_required_title_id">Pembaruan diperlukan</string>
+    <string name="update_required_description_id">Instal versi terbaru untuk melanjutkan.</string>
+    <string name="update_recommended_description_id">Versi baru tersedia.</string>
+    <string name="update_contact_administrator_id">Hubungi administrator untuk mendapatkan versi terbaru.</string>
+    <string name="update_app_id">Perbarui aplikasi</string>
+    <string name="later_id">Nanti</string>
+    <string name="policy_refresh_failed_id">Kebijakan aplikasi belum dapat diperbarui.</string>
 </resources>
