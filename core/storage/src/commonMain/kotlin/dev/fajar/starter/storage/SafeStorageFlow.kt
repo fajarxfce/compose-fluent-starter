@@ -10,13 +10,20 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 
-/** Wrap acquisition and DTO mapping upstream; downstream collector failures are not caught. */
+/** Wraps storage acquisition; downstream collector failures are never intercepted. */
 fun <T> safeStorageFlow(
     source: Flow<T>,
     onException: (Exception) -> Unit = ::reportStorageException,
-): Flow<AppResult<T>> =
+): Flow<AppResult<T>> = safeStorageFlow(source, onException, mapValue = { it })
+
+/** A malformed record emits a Failure while later storage updates can still recover. */
+fun <T, R> safeStorageFlow(
+    source: Flow<T>,
+    onException: (Exception) -> Unit = ::reportStorageException,
+    mapValue: suspend (T) -> R,
+): Flow<AppResult<R>> =
     source
-        .map<T, AppResult<T>> { AppResult.Success(it) }
+        .map { value -> safeStorageCall(onException) { mapValue(value) } }
         .catch { error ->
             if (error is CancellationException || error !is Exception) throw error
             currentCoroutineContext().ensureActive()

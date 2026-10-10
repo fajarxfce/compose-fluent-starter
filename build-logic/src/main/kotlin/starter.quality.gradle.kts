@@ -54,23 +54,41 @@ tasks.register<JavaExec>("detekt") {
     classpath = staticAnalysis
     mainClass.set("dev.detekt.cli.Main")
     maxHeapSize = "1g"
-    args(
-        "--fail-on-severity",
-        "Warning",
-        "--input",
-        ".",
-        "--excludes",
-        "**/build/**",
-        "**/composeResources/**",
-        "**/.gradle/**",
-        "**/.kotlin/**",
-        "--config",
-        "config/detekt.yml",
-        "--report",
-        "sarif:build/reports/detekt/detekt.sarif",
-        "--report",
-        "html:build/reports/detekt/detekt.html",
-    )
+    inputs.files(sources).withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.file("config/detekt.yml")
+    outputs.files("build/reports/detekt/detekt.sarif", "build/reports/detekt/detekt.html")
+    doFirst {
+        // Analyze manual source trees without traversing generated output or validation caches.
+        // Grouping by src keeps the command line below platform length limits.
+        val roots =
+            sources.files
+                .map { source ->
+                    val relative = source.relativeTo(rootDir).invariantSeparatorsPath
+                    val module = relative.substringBefore("/src/", missingDelimiterValue = "")
+                    if (module.isEmpty()) source else file("$module/src")
+                }
+                .distinct()
+                .sortedBy { it.path }
+        setArgs(
+            listOf(
+                "--fail-on-severity",
+                "Warning",
+                "--input",
+                roots.joinToString(java.io.File.pathSeparator) { it.absolutePath },
+                "--excludes",
+                "**/build/**",
+                "**/composeResources/**",
+                "**/.gradle/**",
+                "**/.kotlin/**",
+                "--config",
+                "config/detekt.yml",
+                "--report",
+                "sarif:build/reports/detekt/detekt.sarif",
+                "--report",
+                "html:build/reports/detekt/detekt.html",
+            )
+        )
+    }
 }
 
 tasks.named("check") { dependsOn("detekt") }

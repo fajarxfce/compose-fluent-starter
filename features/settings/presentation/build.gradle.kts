@@ -6,6 +6,7 @@ plugins {
 
 kotlin.sourceSets {
     getByName("commonMain").dependencies {
+        implementation(projects.core.security.domain)
         implementation(projects.core.presentation)
         implementation(projects.core.designsystem)
         implementation(projects.core.localization)
@@ -18,3 +19,5 @@ kotlin.sourceSets {
     }
     getByName("commonTest").dependencies { implementation(libs.coroutines.test) }
 }
+
+kotlin.sourceSets.getByName("commonTest").dependencies { implementation(libs.coroutines.test) }

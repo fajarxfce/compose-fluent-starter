@@ -67,6 +67,11 @@ class AppFlowTest {
                     single<PushTokenSource> { UnavailablePushTokenSource() }
                 },
             )
+        val workScope =
+            kotlinx.coroutines.CoroutineScope(
+                kotlinx.coroutines.SupervisorJob() + kotlinx.coroutines.Dispatchers.Default
+            )
+        dev.fajar.starter.app.work.startForegroundSync(container, workScope)
         val generation = mutableStateOf(0)
         try {
             compose.setContent {
@@ -167,6 +172,54 @@ class AppFlowTest {
                     .isNotEmpty()
             }
             compose.onNodeWithText("Back").performClick()
+            compose.onNodeWithText("Files").performScrollTo().performClick()
+            compose.waitUntil(15_000) {
+                compose
+                    .onAllNodes(hasText("Download sample") and isEnabled())
+                    .fetchSemanticsNodes()
+                    .isNotEmpty()
+            }
+            compose.onNodeWithText("Download sample").performClick()
+            compose.onNodeWithText("Upload sample").performClick()
+            compose.waitUntil(30_000) {
+                compose
+                    .onAllNodes(hasText("Completed", substring = true))
+                    .fetchSemanticsNodes()
+                    .size == 2
+            }
+            capture("files")
+            runBlocking {
+                val database = container.koin.get<dev.fajar.starter.database.AppDatabase>()
+                val session =
+                    (container.koin
+                            .get<dev.fajar.starter.identity.domain.repositories.SessionRepository>()
+                            .current() as dev.fajar.starter.common.result.AppResult.Success)
+                        .value!!
+                val rows = database.transfers.observe(session.id).first()
+                assertEquals(2, rows.size)
+                val downloaded = rows.single { it.direction == "Download" }
+                assertEquals(downloaded.size, downloaded.storedBytes)
+                val firstChunk = database.transfers.chunk(session.id, downloaded.id, 0)!!
+                assertEquals(262_144, firstChunk.bytes.size)
+                val readable =
+                    container.koin.get<
+                            dev.fajar.starter.transfers.domain.usecases.ReadDownloadedFile
+                        >()(downloaded.id)
+                        .first()
+                assertEquals(
+                    262_144,
+                    (readable as dev.fajar.starter.common.result.AppResult.Success).value.size,
+                )
+                assertEquals(
+                    true,
+                    firstChunk.bytes
+                        .decodeToString()
+                        .startsWith("Compose Fluent Starter sample file."),
+                )
+                val uploaded = rows.single { it.direction == "Upload" }
+                assertEquals(0L, uploaded.storedBytes)
+            }
+            compose.onNodeWithText("Back").performClick()
             compose.onNodeWithText("Settings").performScrollTo().performClick()
             compose.onNodeWithText("Bahasa Indonesia").performClick()
             compose.waitUntil(5_000) {
@@ -183,7 +236,20 @@ class AppFlowTest {
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Use demo account").fetchSemanticsNodes().isNotEmpty()
             }
+            compose
+                .onNodeWithText("Sign in with Demo organization")
+                .performScrollTo()
+                .performClick()
+            compose.waitUntil(15_000) {
+                compose.onAllNodesWithText("Projects").fetchSemanticsNodes().isNotEmpty()
+            }
         } finally {
+            runBlocking {
+                workScope.coroutineContext[kotlinx.coroutines.Job]?.let { job ->
+                    job.cancel()
+                    job.join()
+                }
+            }
             container.close()
             directory.deleteRecursively()
         }

@@ -11,5 +11,8 @@ kotlin.sourceSets {
     getByName("androidMain").dependencies {
         implementation(project.dependencies.platform(libs.firebase.bom))
         implementation(libs.firebase.crashlytics)
+        implementation(libs.firebase.performance)
     }
 }
+
+kotlin.sourceSets.getByName("commonTest").dependencies { implementation(libs.coroutines.test) }

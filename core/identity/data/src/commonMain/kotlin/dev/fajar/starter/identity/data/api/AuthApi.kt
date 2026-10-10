@@ -10,6 +10,14 @@ import org.koin.core.annotation.*
 
 @Single
 class AuthApi(@Named(HttpClients.Public) private val client: HttpClient) {
+    suspend fun completeSso(request: OidcExchangeRequest): AuthResponse =
+        client
+            .post("auth/oidc") {
+                contentType(ContentType.Application.Json)
+                setBody(request)
+            }
+            .body()
+
     suspend fun signIn(request: SignInRequest): AuthResponse =
         client
             .post("auth/login") {

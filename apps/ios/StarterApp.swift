@@ -7,7 +7,13 @@ struct StarterApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ComposeView(host: delegate.host)
+            ZStack {
+                ComposeView(host: delegate.host)
+                if scenePhase != .active {
+                    Color(.systemBackground)
+                        .accessibilityLabel("Fluent Starter")
+                }
+            }
                 .ignoresSafeArea()
                 .onOpenURL { delegate.host.openLink(uri: $0.absoluteString) }
                 .onChange(of: scenePhase) { phase in

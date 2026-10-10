@@ -69,3 +69,11 @@ only with a repeatable body and an idempotent method or idempotency key. Refresh
 revocation clears the original session; temporary network failures retain it.
 The backend must implement token expiry, refresh rotation/revocation and request
 idempotency. Integrate its actual contract in the API/DTO layer.
+
+### Browser transport failures
+
+Ktor's Wasm Fetch engine can reject with `Error(cause = JsError)` and throw `JsError`
+while reading a response stream. The network boundary recognizes these transport wrappers
+and maps them to a network failure, retaining the original cause for internal diagnostics.
+Unrelated programming/runtime errors still propagate. A real Fetch rejection test complements
+the MockEngine contracts; cancellation remains controlled by the originating coroutine.

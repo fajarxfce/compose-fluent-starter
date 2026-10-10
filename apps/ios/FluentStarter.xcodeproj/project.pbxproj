@@ -4,6 +4,10 @@
     classes = {};
     objectVersion = 56;
     objects = {
+        E00000000000000000000001 = {isa = XCSwiftPackageProductDependency; package = C00000000000000000000003; productName = FirebasePerformance; };
+        E00000000000000000000002 = {isa = PBXBuildFile; productRef = E00000000000000000000001; };
+        E00000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePerformanceClient.swift; sourceTree = "<group>"; };
+        E00000000000000000000004 = {isa = PBXBuildFile; fileRef = E00000000000000000000003; };
         D00000000000000000000003 = {isa = XCSwiftPackageProductDependency; package = C00000000000000000000003; productName = FirebaseCrashlytics; };
         D00000000000000000000004 = {isa = PBXBuildFile; productRef = D00000000000000000000003; };
         D00000000000000000000005 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCrashClient.swift; sourceTree = "<group>"; };
@@ -43,7 +47,7 @@
         A00000000000000000000015 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluentStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
         A00000000000000000000020 = {
             isa = PBXGroup;
-            children = (D00000000000000000000005, D00000000000000000000001, C00000000000000000000011, C00000000000000000000002, A00000000000000000000011, A00000000000000000000012, A00000000000000000000013, A00000000000000000000014, A00000000000000000000021,);
+            children = (E00000000000000000000003, D00000000000000000000005, D00000000000000000000001, C00000000000000000000011, C00000000000000000000002, A00000000000000000000011, A00000000000000000000012, A00000000000000000000013, A00000000000000000000014, A00000000000000000000021,);
             sourceTree = "<group>";
         };
         A00000000000000000000021 = {isa = PBXGroup; children = (A00000000000000000000015,); name = Products; sourceTree = "<group>"; };
@@ -52,7 +56,7 @@
             buildConfigurationList = A00000000000000000000051;
             buildPhases = (A00000000000000000000044, A00000000000000000000041, A00000000000000000000042, A00000000000000000000043, C00000000000000000000008, D00000000000000000000007,);
             buildRules = (); dependencies = ();
-            packageProductDependencies = (D00000000000000000000003,C00000000000000000000004, C00000000000000000000005, C00000000000000000000009,);
+            packageProductDependencies = (E00000000000000000000001,D00000000000000000000003,C00000000000000000000004, C00000000000000000000005, C00000000000000000000009,);
             name = FluentStarter;
             productName = FluentStarter;
             productReference = A00000000000000000000015;
@@ -72,14 +76,14 @@
             packageReferences = (C00000000000000000000003,);
             targets = (A00000000000000000000030,);
         };
-        A00000000000000000000041 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D00000000000000000000006, D00000000000000000000002, A00000000000000000000001, A00000000000000000000002, C00000000000000000000001, C00000000000000000000012,); runOnlyForDeploymentPostprocessing = 0; };
-        A00000000000000000000042 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (D00000000000000000000004, C00000000000000000000006, C00000000000000000000007, C00000000000000000000010,); runOnlyForDeploymentPostprocessing = 0; };
+        A00000000000000000000041 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (E00000000000000000000004, D00000000000000000000006, D00000000000000000000002, A00000000000000000000001, A00000000000000000000002, C00000000000000000000001, C00000000000000000000012,); runOnlyForDeploymentPostprocessing = 0; };
+        A00000000000000000000042 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (E00000000000000000000002, D00000000000000000000004, C00000000000000000000006, C00000000000000000000007, C00000000000000000000010,); runOnlyForDeploymentPostprocessing = 0; };
         A00000000000000000000043 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000003,); runOnlyForDeploymentPostprocessing = 0; };
         A00000000000000000000044 = {
             isa = PBXShellScriptBuildPhase; alwaysOutOfDate = 1; buildActionMask = 2147483647;
             files = (); inputPaths = (); outputPaths = (); name = "Build Kotlin framework";
             runOnlyForDeploymentPostprocessing = 0; shellPath = /bin/sh;
-            shellScript = "cd \"$SRCROOT/../..\"\n./gradlew -PappEnvironment=\"$FLUENT_ENVIRONMENT\" :apps:shared:embedAndSignAppleFrameworkForXcode\n";
+            shellScript = "cd \"$SRCROOT/../..\"\n./gradlew -PappEnvironment=\"$FLUENT_ENVIRONMENT\" -PappVersion=\"$MARKETING_VERSION\" -PappVersionCode=\"$CURRENT_PROJECT_VERSION\" :apps:shared:embedAndSignAppleFrameworkForXcode\n";
         };
         A00000000000000000000050 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000060, A00000000000000000000061, B00000000000000000000100, B00000000000000000000102, B00000000000000000000104, B00000000000000000000106, B00000000000000000000108, B00000000000000000000110,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
         A00000000000000000000051 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000062, A00000000000000000000063, B00000000000000000000101, B00000000000000000000103, B00000000000000000000105, B00000000000000000000107, B00000000000000000000109, B00000000000000000000111,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };

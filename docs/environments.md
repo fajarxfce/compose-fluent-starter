@@ -16,8 +16,9 @@ Android flavors are configured by `starter.android.flavors`, independently of
 python3 tool/run_android.py --flavor dev
 ```
 
-Release APKs are unsigned until a private signing configuration is supplied. Do not
-commit signing keys or passwords. APK output is under
+Release APKs are unsigned until signing environment variables are supplied.
+See [internal distribution](distribution.md) for the convention plugin, secrets and
+manual workflows. Do not commit signing keys or passwords. APK output is under
 `apps/android/build/outputs/apk/<flavor>/<buildType>/`.
 
 For desktop/Web, `starter.environment` generates the selected environment from

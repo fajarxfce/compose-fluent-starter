@@ -26,7 +26,7 @@ one field. Corrupt data is reported, not silently replaced with defaults.
 ## Database
 
 `core/database` exposes raw `InboxStore` and `DashboardStore` contracts. One `AppDatabase`
-owns the connection and both stores; close the owner, not individual stores. Room
+owns the connection and its stores; close the owner, not individual stores. Room
 implements it on Android, iOS, and desktop using bundled SQLite. Web uses IndexedDB
 because Room does not publish a Wasm target. The inbox adapters support ordered observation,
 upsert, marking a record read, and clearing records. Repository owns domain mapping.
@@ -47,3 +47,14 @@ preserve existing inbox records. Updating a saved preference and inserting its o
 one transaction. Acknowledgements delete by operation ID. Refreshing content does not overwrite
 local preferences. The dashboard flow reads content, preferences, and pending counts in one query
 or transaction. Platform roots create the database once with `createAppDatabase`.
+
+## Transfer storage
+
+Room version 5 adds `transfers` and `transfer_chunks` through the v4→v5 migration.
+IndexedDB version 4 adds equivalent stores. Metadata contains no file bodies, tokens or URLs.
+Content blocks are at most 256 KiB; account ownership, storage admission, version checks,
+and metadata/content updates execute transactionally. Removing a transfer or changing
+accounts also removes its chunks. Browser transfer invalidations use their own signal,
+so checkpoints do not trigger dashboard/inbox reads.
+
+See [file transfers](file-transfers.md) for limits, resume policy and retention.

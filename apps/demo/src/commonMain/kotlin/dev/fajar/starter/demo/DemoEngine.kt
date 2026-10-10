@@ -17,13 +17,24 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 /** In-process demo transport. No requests leave the device. */
-fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
+fun createDemoEngine(
+    latencyMillis: Long = 350,
+    transfers: DemoTransferServer = DemoTransferServer(),
+): MockEngine {
     val accepted = mutableMapOf<String, String>()
     val requests = Mutex()
+    val consumedAuthorizationCodes = mutableSetOf<String>()
     return MockEngine { request ->
         delay(latencyMillis)
         val headers = headersOf(HttpHeaders.ContentType, ContentType.Application.Json.toString())
         when {
+            request.url.encodedPath.startsWith("/files/") -> respondDemoTransfer(request, transfers)
+            request.method == HttpMethod.Get &&
+                request.url.encodedPath == "/.well-known/openid-configuration" ->
+                respond(DEMO_OIDC_DISCOVERY, headers = headers)
+            request.method == HttpMethod.Post && request.url.encodedPath == "/auth/oidc" ->
+                requests.withLock { respondDemoSso(request, consumedAuthorizationCodes) }
+
             request.method == HttpMethod.Post && request.url.encodedPath == "/auth/login" -> {
                 val credentials =
                     Json.parseToJsonElement(request.body.toByteArray().decodeToString()).jsonObject
@@ -53,9 +64,16 @@ fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
                 } else
                     respond("""{"error":"invalid_token"}""", HttpStatusCode.Unauthorized, headers)
             }
-            request.url.encodedPath.startsWith("/dashboard") &&
+            (request.url.encodedPath.startsWith("/dashboard") ||
+                request.url.encodedPath == "/me/access") &&
                 !validDemoToken(request.headers[HttpHeaders.Authorization]) -> {
                 respond("""{"error":"invalid_token"}""", HttpStatusCode.Unauthorized, headers)
+            }
+            request.method == HttpMethod.Get && request.url.encodedPath == "/me/access" -> {
+                val editor =
+                    request.headers[HttpHeaders.Authorization]?.split(":")?.getOrNull(1) ==
+                        "demo-user"
+                respond(demoAccess(editor), headers = headers)
             }
             request.method == HttpMethod.Get && request.url.encodedPath == "/dashboard" -> {
                 val cursor = request.url.parameters["cursor"]
@@ -76,6 +94,8 @@ fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
                 val status =
                     requests.withLock {
                         when {
+                            request.headers[HttpHeaders.Authorization]?.split(":")?.getOrNull(1) !=
+                                "demo-user" -> HttpStatusCode.Forbidden
                             !valid -> HttpStatusCode.BadRequest
                             accepted.containsKey(key) && accepted[key] != body ->
                                 HttpStatusCode.Conflict
@@ -93,7 +113,7 @@ fun createDemoEngine(latencyMillis: Long = 350): MockEngine {
 }
 
 /** Fixture encoding only; these strings are not real credentials or JWTs. */
-private fun demoSession(id: String): String {
+internal fun demoSession(id: String): String {
     val expires = Clock.System.now().toEpochMilliseconds() + 300_000
     return buildJsonObject {
             putJsonObject("user") {
@@ -110,7 +130,7 @@ private fun demoSession(id: String): String {
         .toString()
 }
 
-private fun validDemoToken(header: String?): Boolean {
+internal fun validDemoToken(header: String?): Boolean {
     val parts = header?.removePrefix("Bearer ")?.split(":") ?: return false
     return parts.size == 3 &&
         parts[0] == "demo" &&

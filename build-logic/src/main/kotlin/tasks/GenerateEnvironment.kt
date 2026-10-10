@@ -9,6 +9,9 @@ import org.gradle.api.tasks.*
 
 @CacheableTask
 abstract class GenerateEnvironment : DefaultTask() {
+    @get:Input abstract val versionName: Property<String>
+    @get:Input abstract val versionNumber: Property<Long>
+    @get:Input abstract val updateUrls: MapProperty<String, String>
     @get:Input abstract val environment: Property<String>
     @get:Input abstract val backend: Property<String>
     @get:Input abstract val endpoints: MapProperty<String, String>
@@ -17,6 +20,28 @@ abstract class GenerateEnvironment : DefaultTask() {
 
     @TaskAction
     fun generate() {
+        require(versionNumber.get() > 0 && versionName.get().isNotBlank()) {
+            "App version and build number are required."
+        }
+        updateUrls
+            .get()
+            .values
+            .filter { it.isNotEmpty() }
+            .forEach {
+                val uri = java.net.URI(it)
+                require(
+                    uri.scheme == "https" &&
+                        !uri.host.isNullOrBlank() &&
+                        uri.userInfo == null &&
+                        uri.fragment == null
+                ) {
+                    "Update URLs require HTTPS without embedded credentials or fragments."
+                }
+            }
+        val stores =
+            updateUrls.get().entries.joinToString(",\n") { (key, url) ->
+                "AppPlatform.${key.replaceFirstChar { it.uppercase() }} to ${JsonOutput.toJson(url).replace("$", "\\$")}"
+            }
         val value = environment.get()
         require(value in setOf("dev", "staging", "prod")) {
             "appEnvironment must be dev, staging, or prod."
@@ -58,6 +83,9 @@ abstract class GenerateEnvironment : DefaultTask() {
                 val current: AppEnvironment = AppEnvironment.${value.replaceFirstChar { it.uppercase() }}
             }
             object BuildRuntime {
+                const val versionName: String = ${JsonOutput.toJson(versionName.get()).replace("$", "\\$")}
+                const val versionNumber: Long = ${versionNumber.get()}L
+                val updateUrls: Map<AppPlatform, String> = mapOf($stores)
                 const val demoBackend: Boolean = ${backend.get() == "demo"}
                 const val persistDesktopSession: Boolean = ${desktopPersistence.get() == "secure"}
                 val apiEndpoints: Map<AppEnvironment, String> = mapOf($entries)

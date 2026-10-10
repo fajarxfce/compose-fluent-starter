@@ -3,11 +3,12 @@ import BackgroundTasks
 import UserNotifications
 import FirebaseCore
 import FirebaseCrashlytics
+import FirebasePerformance
 import FirebaseMessaging
 import StarterKit
 
 final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate, AppleFirebaseClient {
-    lazy var host = AppleAppHost(firebase: self, remoteConfig: FirebaseFeatureFlagClient(), credentials: KeychainClient(), crash: FirebaseCrashClient())
+    lazy var host = AppleAppHost(firebase: self, remoteConfig: FirebaseFeatureFlagClient(), credentials: KeychainClient(), crash: FirebaseCrashClient(), performance: FirebasePerformanceClient())
     private let syncIdentifier = Bundle.main.bundleIdentifier! + ".sync"
     var configured: Bool { FirebaseApp.app() != nil }
 
@@ -22,11 +23,14 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         }
         UNUserNotificationCenter.current().delegate = self
         if Bundle.main.url(forResource: "GoogleService-Info", withExtension: "plist") != nil {
+            Performance.sharedInstance().isInstrumentationEnabled = false
             FirebaseApp.configure()
             #if DEBUG
             Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+            Performance.sharedInstance().isDataCollectionEnabled = false
             #else
             Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
+            Performance.sharedInstance().isDataCollectionEnabled = true
             #endif
             Messaging.messaging().delegate = self
             application.registerForRemoteNotifications()

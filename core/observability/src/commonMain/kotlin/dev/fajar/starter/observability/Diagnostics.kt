@@ -16,6 +16,7 @@ enum class DiagnosticArea {
 enum class DiagnosticKind {
     OperationFailed,
     HttpCompleted,
+    OperationCompleted,
 }
 
 data class Diagnostic(
@@ -24,6 +25,10 @@ data class Diagnostic(
     val category: String? = null,
     val httpStatus: Int? = null,
     val durationMillis: Long? = null,
+    val operation: PerformanceOperation? = null,
+    val outcome: PerformanceOutcome? = null,
+    val traceId: String? = null,
+    val spanId: String? = null,
 )
 
 fun interface DiagnosticSink {
@@ -67,5 +72,13 @@ fun encodeDiagnostic(event: Diagnostic): String =
                 ?.let { put("category", it) }
             event.httpStatus?.takeIf { it in 100..599 }?.let { put("http_status", it) }
             event.durationMillis?.takeIf { it >= 0 }?.let { put("duration_ms", it) }
+            event.operation?.let { put("operation", it.name) }
+            event.outcome?.let { put("outcome", it.name) }
+            event.traceId
+                ?.takeIf { it.matches(Regex("[0-9a-f]{32}")) && it.any { c -> c != '0' } }
+                ?.let { put("trace_id", it) }
+            event.spanId
+                ?.takeIf { it.matches(Regex("[0-9a-f]{16}")) && it.any { c -> c != '0' } }
+                ?.let { put("span_id", it) }
         }
         .toString()

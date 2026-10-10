@@ -12,6 +12,9 @@ import dev.fajar.starter.featureflags.domain.entities.FlagSnapshot
 import dev.fajar.starter.featureflags.domain.repositories.FeatureFlagRepository
 import dev.fajar.starter.identity.domain.entities.*
 import dev.fajar.starter.identity.domain.repositories.SessionRepository
+import dev.fajar.starter.security.domain.access.entities.*
+import dev.fajar.starter.security.domain.access.repositories.AccessRepository
+import dev.fajar.starter.security.domain.access.usecases.*
 import dev.fajar.starter.sync.domain.*
 import dev.fajar.starter.sync.domain.repositories.SyncScheduleRepository
 import kotlin.test.*
@@ -21,6 +24,46 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.*
 
 class SyncDashboardTest {
+    @Test
+    fun anUnprivilegedCallerCannotBypassTheHiddenAction() = runTest {
+        val repository = SyncRepositoryFake()
+        var scheduled = false
+        val scheduler =
+            object : SyncScheduleRepository {
+                override suspend fun request(key: String): AppResult<Unit> {
+                    scheduled = true
+                    return AppResult.Success(Unit)
+                }
+            }
+        val access =
+            object : AccessRepository {
+                override fun observe(sessionId: String) =
+                    flowOf(AppResult.Success<AccessSnapshot?>(null))
+
+                override suspend fun cached(sessionId: String) =
+                    AppResult.Success<AccessSnapshot?>(null)
+
+                override suspend fun refresh(sessionId: String) = AppResult.Success(Unit)
+
+                override suspend fun invalidate(sessionId: String) = AppResult.Success(Unit)
+            }
+        val action =
+            SetActivitySaved(
+                repository,
+                scheduler,
+                FlagRepositoryFake(),
+                AppEnvironment.Dev,
+                TestSessions(testSession()),
+                access,
+            )
+        assertEquals(
+            FailureKind.AccessDenied,
+            assertIs<AppResult.Failed>(action("a", true, "session-a")).failure.kind,
+        )
+        assertEquals(0, repository.saves)
+        assertFalse(scheduled)
+    }
+
     @Test
     fun lateSuccessAfterCancellationNeverAcknowledgesTheOutbox() = runTest {
         val repository = SyncRepositoryFake()
@@ -113,6 +156,7 @@ class SyncDashboardTest {
                 flags,
                 AppEnvironment.Dev,
                 TestSessions(testSession()),
+                GrantedAccess(),
             )
         assertIs<AppResult.Failed>(save("", true, "session-a"))
         assertEquals(0, requested)
@@ -215,3 +259,16 @@ private fun testSession() =
         User("1", "Alex", "demo@example.com"),
         SessionTokens("access", "refresh", Long.MAX_VALUE),
     )
+
+private class GrantedAccess : AccessRepository {
+    override fun observe(sessionId: String) = flowOf(AppResult.Success(grants(sessionId)))
+
+    override suspend fun cached(sessionId: String) = AppResult.Success(grants(sessionId))
+
+    override suspend fun refresh(sessionId: String) = AppResult.Success(Unit)
+
+    override suspend fun invalidate(sessionId: String) = AppResult.Success(Unit)
+
+    private fun grants(id: String) =
+        AccessSnapshot(id, setOf("editor"), setOf(Permission.SaveActivity), Long.MAX_VALUE)
+}

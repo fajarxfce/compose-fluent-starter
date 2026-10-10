@@ -8,6 +8,23 @@ import kotlinx.coroutines.test.runTest
 
 class DemoIdempotencyTest {
     @Test
+    fun serverRejectsAViewerEvenWhenTheClientSendsTheMutationDirectly() = runTest {
+        val client = HttpClient(createDemoEngine(latencyMillis = 0))
+        try {
+            val response =
+                client.put("https://demo.fluent.local/dashboard/preferences") {
+                    bearerAuth("demo:casey-user:${Long.MAX_VALUE}")
+                    header("Idempotency-Key", "unauthorized-write")
+                    contentType(ContentType.Application.Json)
+                    setBody("""{"activityId":"a","saved":true}""")
+                }
+            assertEquals(HttpStatusCode.Forbidden, response.status)
+        } finally {
+            client.close()
+        }
+    }
+
+    @Test
     fun duplicateDeliveryIsAcceptedAndReusingAKeyForAnotherPayloadIsRejected() = runTest {
         val client = HttpClient(createDemoEngine(latencyMillis = 0))
         try {

@@ -2,22 +2,79 @@ package dev.fajar.starter.auth.presentation.login
 
 import androidx.lifecycle.viewModelScope
 import dev.fajar.starter.common.result.AppResult
+import dev.fajar.starter.common.result.FailureKind
+import dev.fajar.starter.identity.domain.sso.usecases.*
 import dev.fajar.starter.identity.domain.usecases.SignIn
 import dev.fajar.starter.identity.domain.usecases.ValidateSignIn
 import dev.fajar.starter.presentation.mvi.MviViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
-class LoginViewModel(private val signIn: SignIn, private val validate: ValidateSignIn) :
-    MviViewModel<LoginState, LoginEvent, Nothing>(LoginState()) {
+class LoginViewModel(
+    private val signIn: SignIn,
+    private val validate: ValidateSignIn,
+    private val listProviders: ListSsoProviders,
+    private val signInWithSso: SignInWithSso,
+) : MviViewModel<LoginState, LoginEvent, Nothing>(LoginState()) {
+
+    private var authorization: Job? = null
 
     init {
+        on<LoginEvent.ProvidersRequested>(::onProvidersRequested)
+        on<LoginEvent.SsoRequested>(::onSsoRequested)
+        on<LoginEvent.SsoCancellationRequested>(::onSsoCancellationRequested)
         on<LoginEvent.EmailChanged>(::onEmailChanged)
         on<LoginEvent.PasswordChanged>(::onPasswordChanged)
         on<LoginEvent.PasswordVisibilityChanged>(::onPasswordVisibilityChanged)
         on<LoginEvent.DemoAccountSelected>(::onDemoAccountSelected)
         on<LoginEvent.SignInRequested>(::onSignInRequested)
+        onEvent(LoginEvent.ProvidersRequested)
+    }
+
+    private fun onProvidersRequested(event: LoginEvent.ProvidersRequested) {
+        viewModelScope.launch {
+            when (val result = listProviders()) {
+                is AppResult.Success -> updateState { it.copy(providers = result.value) }
+                is AppResult.Failed -> updateState { it.copy(failure = result.failure) }
+            }
+        }
+    }
+
+    private fun onSsoRequested(event: LoginEvent.SsoRequested) {
+        if (state.value.submitting) return
+        updateState {
+            it.copy(
+                submitting = true,
+                pendingProviderId = event.providerId,
+                failure = null,
+                fieldErrors = emptyMap(),
+            )
+        }
+        authorization =
+            viewModelScope.launch {
+                try {
+                    when (val result = signInWithSso(event.providerId)) {
+                        is AppResult.Success -> updateState { it.copy(password = "") }
+                        is AppResult.Failed ->
+                            updateState {
+                                it.copy(
+                                    failure =
+                                        result.failure.takeUnless { failure ->
+                                            failure.kind == FailureKind.Cancelled
+                                        }
+                                )
+                            }
+                    }
+                } finally {
+                    updateState { it.copy(submitting = false, pendingProviderId = null) }
+                }
+            }
+    }
+
+    private fun onSsoCancellationRequested(event: LoginEvent.SsoCancellationRequested) {
+        authorization?.cancel()
     }
 
     private fun onEmailChanged(event: LoginEvent.EmailChanged) {
@@ -62,7 +119,15 @@ class LoginViewModel(private val signIn: SignIn, private val validate: ValidateS
 
     private fun onDemoAccountSelected(event: LoginEvent.DemoAccountSelected) {
         if (!state.value.submitting)
-            updateState { LoginState(email = "demo@example.com", password = "Demo123!") }
+            updateState {
+                it.copy(
+                    email = "demo@example.com",
+                    password = "Demo123!",
+                    failure = null,
+                    fieldErrors = emptyMap(),
+                    validated = false,
+                )
+            }
     }
 
     private fun onSignInRequested(event: LoginEvent.SignInRequested) {

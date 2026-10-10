@@ -20,3 +20,8 @@ Presentation state retains failures and resource keys rather than translated
 error strings. Existing feedback therefore updates when the language changes.
 Remote activity titles and notification payloads remain content supplied by the
 backend; translating that content is a backend/product decision.
+
+The root language provider owns a dedicated read-only `LanguageViewModel`; it does
+not create Settings permission observers or refresh access. Equal language values
+are conflated, and disposal cancels the preference subscription. Settings keeps
+its own route-scoped state and actions.

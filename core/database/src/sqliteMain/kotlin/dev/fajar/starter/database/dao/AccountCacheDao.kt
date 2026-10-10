@@ -20,6 +20,8 @@ abstract class AccountCacheDao {
 
     @Query("DELETE FROM inbox") protected abstract suspend fun clearInbox()
 
+    @Query("DELETE FROM transfers") protected abstract suspend fun clearTransfers()
+
     @Transaction
     open suspend fun activate(sessionId: String?) {
         val previous = current()
@@ -29,6 +31,7 @@ abstract class AccountCacheDao {
         clearPreferences()
         clearOutbox()
         clearInbox()
+        clearTransfers()
         write(AccountScopeEntity(sessionId = sessionId))
     }
 }

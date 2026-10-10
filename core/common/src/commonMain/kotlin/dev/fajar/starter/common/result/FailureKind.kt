@@ -1,6 +1,8 @@
 package dev.fajar.starter.common.result
 
 enum class FailureKind {
+    /** User dismissed an interaction; coroutine cancellation is still thrown. */
+    Cancelled,
     Validation,
     Unauthorized,
     Network,
@@ -8,6 +10,7 @@ enum class FailureKind {
     Service,
     Storage,
     Permission,
+    AccessDenied,
     Unavailable,
     Unexpected,
 }

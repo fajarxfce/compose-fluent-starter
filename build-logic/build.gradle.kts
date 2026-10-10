@@ -13,4 +13,5 @@ dependencies {
     implementation(libs.room.gradle)
     implementation(libs.google.services.gradle)
     implementation(libs.crashlytics.gradle)
+    implementation(libs.cyclonedx.gradle)
 }

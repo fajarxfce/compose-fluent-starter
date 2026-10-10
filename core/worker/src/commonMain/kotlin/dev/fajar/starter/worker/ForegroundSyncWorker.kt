@@ -2,6 +2,7 @@ package dev.fajar.starter.worker
 
 import dev.fajar.starter.sync.domain.*
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.*
@@ -29,14 +30,21 @@ class ForegroundSyncWorker(
                         while (isActive) {
                             if (wait == null) requests.receive()
                             else withTimeoutOrNull(wait) { requests.receive() }
-                            when (runSyncTask(task)) {
+                            when (val result = runSyncTask(task)) {
                                 SyncResult.Complete -> {
                                     wait = interval
                                     backoff = retryDelay
                                 }
                                 is SyncResult.Retry -> {
-                                    wait = backoff
-                                    backoff = (backoff * 2).coerceAtMost(interval)
+                                    if (result.failure == null) {
+                                        // A completed bounded batch has more work, without a failed
+                                        // request.
+                                        wait = 100.milliseconds
+                                        backoff = retryDelay
+                                    } else {
+                                        wait = backoff
+                                        backoff = (backoff * 2).coerceAtMost(interval)
+                                    }
                                 }
                                 is SyncResult.Blocked -> {
                                     wait = null

@@ -4,8 +4,10 @@ import dev.fajar.starter.common.result.AppResult
 import dev.fajar.starter.common.result.Failure
 import dev.fajar.starter.common.result.FailureKind
 import dev.fajar.starter.identity.domain.entities.*
+import dev.fajar.starter.identity.domain.entities.AuthenticatedUser
 import dev.fajar.starter.identity.domain.repositories.IdentityRepository
 import dev.fajar.starter.identity.domain.repositories.SessionRepository
+import dev.fajar.starter.identity.domain.sso.entities.SsoProof
 import dev.fajar.starter.identity.domain.usecases.SignIn
 import kotlin.test.*
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,6 +15,9 @@ import kotlinx.coroutines.test.runTest
 
 class SignInTest {
     private class Repository : IdentityRepository {
+        override suspend fun completeSso(proof: SsoProof): AppResult<AuthenticatedUser> =
+            error("Unused SSO exchange")
+
         var calls = 0
         var receivedEmail = ""
         var result: AppResult<AuthenticatedUser> =

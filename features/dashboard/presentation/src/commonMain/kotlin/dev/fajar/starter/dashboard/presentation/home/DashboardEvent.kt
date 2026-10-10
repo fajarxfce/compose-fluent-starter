@@ -1,6 +1,8 @@
 package dev.fajar.starter.dashboard.presentation.home
 
 sealed interface DashboardEvent {
+    data object FilesRequested : DashboardEvent
+
     data class TabSelected(val tab: DashboardTab) : DashboardEvent
 
     data class ActivitySavedChanged(val id: String, val saved: Boolean) : DashboardEvent

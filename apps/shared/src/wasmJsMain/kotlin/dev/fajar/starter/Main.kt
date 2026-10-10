@@ -8,10 +8,12 @@ import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.app.work.startForegroundSync
+import dev.fajar.starter.common.config.AppPlatform
 import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.featureflags.data.datasources.BrowserFeatureFlagSource
+import dev.fajar.starter.identity.data.sso.datasources.WebBrowserAuthorizationSource
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
 import dev.fajar.starter.notifications.domain.usecases.ReceiveNotification
@@ -27,6 +29,7 @@ import org.koin.dsl.module
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
+    if (dev.fajar.starter.identity.data.sso.datasources.handleOidcRedirect()) return
     val environment = BuildEnvironment.current
     val namespace = "fluent-starter.${environment.id}"
     val links = AppLinkChannel()
@@ -43,6 +46,8 @@ fun main() {
             },
             environment,
             remoteFeatureFlags = BrowserFeatureFlagSource(),
+            browserAuthorization = WebBrowserAuthorizationSource(),
+            platform = AppPlatform.Web,
         )
     startForegroundSync(container, scope)
     window.addEventListener(
