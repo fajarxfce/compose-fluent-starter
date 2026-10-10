@@ -39,6 +39,9 @@ Read [docs/architecture.md](docs/architecture.md) and [README.md](README.md) bef
   relevant build targets. Report only checks actually performed.
 - Keep copy short and professional. Make atomic commits without co-author trailers.
   Preserve unrelated changes. Push when authorized; releases require an explicit request.
+- Follow [mobile experience](docs/experience.md): use restrained, interruptible
+  transitions and clear interaction feedback. Honor reduced motion, retain tab
+  state, and keep animation work independent of data acquisition.
 - Follow [downstream development](docs/downstream-development.md): port reusable
   fixes discovered in HRIS Mobile back to this starter with regression coverage.
   Keep application policy and configuration in the application repository.
