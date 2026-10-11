@@ -65,6 +65,12 @@ Default diagnostics contain exception categories only; an explicit diagnostic ca
 can retain the original exception for an appropriate internal sink. Never expose response
 bodies, credentials, or exception messages in UI/log output.
 
+Protected read failures remain authoritative while a retry is pending or fails.
+A transport/storage error cannot replace a known access denial or expired read
+lease and make retained cache data readable. Presentation stops that cache
+subscription until a fresh admitted acquisition succeeds. Cache deletion remains
+best effort. Test this boundary with failed cleanup that retains old ciphertext.
+
 Sign-in drops duplicate submissions and freezes credential edits until completion.
 Clearing its ViewModel cancels the request. The sign-in use case checks cancellation before
 committing a successful session through the session repository. Dashboard refresh cancels the previous request and
