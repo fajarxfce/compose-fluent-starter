@@ -48,3 +48,8 @@ including Apple callback ownership at
 The shared foundation contains raw Android/iOS adapters, a domain repository,
 DTO/failure mapping and cancellation tests. Attendance permission policy, company
 access, capture evidence, encrypted commands and review remain in HRIS Mobile.
+
+Optional `AppCard` content spacing matches
+[HRIS Mobile a871170](https://github.com/fajarxfce/hris-mobile/commit/a871170).
+Its zero-spacing default preserves existing callers. Both repositories passed
+root checks and Android/Web builds; attendance card layouts stay in HRIS Mobile.
