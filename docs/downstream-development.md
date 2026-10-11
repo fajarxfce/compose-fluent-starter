@@ -27,3 +27,10 @@ matching [HRIS Mobile 76c6375](https://github.com/fajarxfce/hris-mobile/commit/7
 An API 24 emulator reproduced the missing Java time class before that correction
 and opened the employee calendar afterward. Application-specific calendar behavior
 remains in HRIS Mobile.
+
+The date-only formatter and timezone regression match
+[HRIS Mobile 30b51fc](https://github.com/fajarxfce/hris-mobile/commit/30b51fc).
+They keep a calendar date independent of the device timezone while applying the
+selected language. Both repositories passed root checks and Android/Web builds;
+HRIS Android emulator captures cover English and Indonesian dates. Apple builds
+remain part of platform CI.
