@@ -31,6 +31,13 @@ when there is insufficient width. `AppHeading` identifies screen headings;
 Icon actions have descriptions, loading buttons expose progress semantics, and
 feedback uses a polite live region. Text selection follows the theme accent.
 
+`AppScreenHeader` keeps the title, optional subtitle, navigation and trailing
+actions in one shared layout. Text can grow vertically instead of forcing a fixed
+toolbar height. `AppActionTile` exposes one keyboard-accessible action with a
+decorative icon and bounded supporting text; its press feedback stays inside the
+rounded surface. `AppPage` and `AppLazyPage` accept content padding, while their
+existing scroll and inset ownership remains unchanged.
+
 Desktop Compose UI tests cover responsive navigation, preserved content lifetime
 on resize, selected semantics, text at 200%, input labels/errors, minimum button
 height and Enter-key activation. Screenshots are written to the test reports.

@@ -34,3 +34,9 @@ They keep a calendar date independent of the device timezone while applying the
 selected language. Both repositories passed root checks and Android/Web builds;
 HRIS Android emulator captures cover English and Indonesian dates. Apple builds
 remain part of platform CI.
+
+Reusable screen headers, action tiles and page-spacing controls now support the
+employee layouts in HRIS Mobile. Their shared regression checks 200% text,
+heading semantics, one action per tile and keyboard activation. The starter
+receives the components and regression; company switching, inbox and calendar
+screen layouts remain in HRIS Mobile.

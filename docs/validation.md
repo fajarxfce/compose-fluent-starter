@@ -32,3 +32,13 @@ idempotent replay behavior; a real backend still needs its own authentication,
 refresh-token rotation, idempotency and conflict-resolution validation. Web
 credentials are ephemeral; persistent browser authentication requires a backend
 cookie integration.
+
+## Reusable mobile layout components
+
+Root architecture, formatting and distribution checks passed with all 198 desktop
+tests. The shared header/action-tile regression covers a 360 dp layout at 200%
+text, heading semantics, 48 dp icon actions and keyboard activation. Android dev
+and Web distribution builds passed; Web retains the existing bundler warnings.
+The corresponding components were exercised in HRIS Mobile against its real API.
+This increment did not install the starter APK on a physical device, and no
+frame-time or heap measurement is claimed.
