@@ -9,6 +9,9 @@ permission launcher. The source holds a weak Activity reference. iOS uses Core
 Location. The app host closes the source, and caller cancellation stops GPS.
 A cancelled permission request retains its callback slot until the OS responds,
 so an old response cannot resume a newer request.
+An owned `NSObject` delegate adopts the Core Location protocol and refers weakly
+to its datasource. The datasource implements only its Kotlin contract; Kotlin/Native
+does not support combining that interface with Objective-C inheritance.
 The iOS source retains its fix until the suspended call finishes cleanup; a late
 callback cannot stop a new acquisition. Its simulator regressions use an injected
 SDK manager to cover reentrant acquisition and closure during a pending fix.
