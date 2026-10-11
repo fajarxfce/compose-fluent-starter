@@ -40,3 +40,11 @@ employee layouts in HRIS Mobile. Their shared regression checks 200% text,
 heading semantics, one action per tile and keyboard activation. The starter
 receives the components and regression; company switching, inbox and calendar
 screen layouts remain in HRIS Mobile.
+
+Foreground location matches
+[HRIS Mobile 21eead1](https://github.com/fajarxfce/hris-mobile/commit/21eead1),
+including Apple callback ownership at
+[b90f908](https://github.com/fajarxfce/hris-mobile/commit/b90f908).
+The shared foundation contains raw Android/iOS adapters, a domain repository,
+DTO/failure mapping and cancellation tests. Attendance permission policy, company
+access, capture evidence, encrypted commands and review remain in HRIS Mobile.

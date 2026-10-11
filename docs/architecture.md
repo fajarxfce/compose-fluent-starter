@@ -91,6 +91,10 @@ caches. Application identity adapters supply their stable audience/account bindi
 Features own encryption, admission, replay and conflicts; the raw database enforces
 ownership, request immutability, bounds and atomic outcome revisions.
 
+The [foreground location](location.md) foundation keeps OS permission and fix
+operations in datasource contracts. Consuming use cases own access, acquisition
+deadlines and recovery policy; cancellation releases each owned native operation.
+
 ## Navigation
 
 Features own their serializable route and NavGraphBuilder registration. The app composes

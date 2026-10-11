@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: '22'
       - run: python3 -m unittest discover -s tool -p 'test_*.py'
-      - run: xvfb-run -a ./gradlew :check :core:datastore:wasmJsBrowserTest :core:database:wasmJsBrowserTest :core:transfers:domain:wasmJsBrowserTest :core:transfers:data:wasmJsBrowserTest :features:files:presentation:wasmJsBrowserTest :core:worker:wasmJsBrowserTest :core:featureflags:domain:wasmJsBrowserTest :core:featureflags:data:wasmJsBrowserTest :core:identity:domain:wasmJsBrowserTest :core:identity:data:wasmJsBrowserTest :core:network:wasmJsBrowserTest :core:storage:wasmJsBrowserTest :core:securestorage:wasmJsBrowserTest :core:settings:data:wasmJsBrowserTest :core:localization:wasmJsBrowserTest :core:observability:wasmJsBrowserTest :core:security:domain:wasmJsBrowserTest :core:security:data:wasmJsBrowserTest :features:security:presentation:wasmJsBrowserTest :core:availability:domain:wasmJsBrowserTest :core:availability:data:wasmJsBrowserTest :apps:android:assembleDevDebug :apps:android:assembleStagingDebug :apps:android:assembleProdRelease :apps:shared:wasmJsBrowserDistribution
+      - run: xvfb-run -a ./gradlew :check :core:datastore:wasmJsBrowserTest :core:database:wasmJsBrowserTest :core:transfers:domain:wasmJsBrowserTest :core:transfers:data:wasmJsBrowserTest :features:files:presentation:wasmJsBrowserTest :core:worker:wasmJsBrowserTest :core:featureflags:domain:wasmJsBrowserTest :core:featureflags:data:wasmJsBrowserTest :core:identity:domain:wasmJsBrowserTest :core:identity:data:wasmJsBrowserTest :core:location:data:wasmJsBrowserTest :core:network:wasmJsBrowserTest :core:storage:wasmJsBrowserTest :core:securestorage:wasmJsBrowserTest :core:settings:data:wasmJsBrowserTest :core:localization:wasmJsBrowserTest :core:observability:wasmJsBrowserTest :core:security:domain:wasmJsBrowserTest :core:security:data:wasmJsBrowserTest :features:security:presentation:wasmJsBrowserTest :core:availability:domain:wasmJsBrowserTest :core:availability:data:wasmJsBrowserTest :apps:android:assembleDevDebug :apps:android:assembleStagingDebug :apps:android:assembleProdRelease :apps:shared:wasmJsBrowserDistribution
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -52,6 +52,8 @@ jobs:
           xcodebuild -project apps/ios/FluentStarter.xcodeproj -scheme FluentStarter
           -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator'
           -derivedDataPath apps/ios/build CODE_SIGNING_ALLOWED=NO ARCHS=arm64 build
+      - run: ./gradlew :core:location:data:iosSimulatorArm64Test --no-daemon
+        timeout-minutes: 15
   windows:
     runs-on: windows-latest
     steps:

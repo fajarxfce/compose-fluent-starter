@@ -49,5 +49,7 @@
 	<array><string>fetch</string></array>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Use your location when you choose an action that requires it.</string>
 </dict>
 </plist>

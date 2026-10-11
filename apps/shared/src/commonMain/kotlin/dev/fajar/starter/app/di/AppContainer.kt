@@ -27,6 +27,9 @@ import dev.fajar.starter.identity.data.di.IdentityModule
 import dev.fajar.starter.identity.data.sso.config.SsoConfiguration
 import dev.fajar.starter.identity.data.sso.datasources.BrowserAuthorizationSource
 import dev.fajar.starter.identity.data.sso.datasources.UnavailableBrowserAuthorizationSource
+import dev.fajar.starter.location.data.datasources.LocationDataSource
+import dev.fajar.starter.location.data.datasources.UnavailableLocationDataSource
+import dev.fajar.starter.location.data.di.LocationDataModule
 import dev.fajar.starter.notifications.data.di.NotificationDataModule
 import dev.fajar.starter.notifications.presentation.di.NotificationPresentationModule
 import dev.fajar.starter.onboarding.data.di.OnboardingDataModule
@@ -63,6 +66,7 @@ fun createAppContainer(
     browserAuthorization: BrowserAuthorizationSource = UnavailableBrowserAuthorizationSource(),
     platform: AppPlatform = AppPlatform.Desktop,
     transferInputs: TransferInputSource = SampleTransferInputSource(),
+    location: LocationDataSource = UnavailableLocationDataSource(),
 ) = koinApplication {
     modules(
         notificationPlatform,
@@ -78,9 +82,11 @@ fun createAppContainer(
         SyncDataModule().module,
         FeatureFlagDataModule().module,
         NotificationDataModule().module,
+        LocationDataModule().module,
         NotificationPresentationModule().module,
         module {
             single { environment }
+            single<LocationDataSource> { location }.onClose { it?.close() }
 
             single<TransferInputSource> { transferInputs }
             single<TransferStore> { get<AppDatabase>().transfers }

@@ -43,6 +43,7 @@ core/transfers               domain / data; resumable transfer queue and HTTP bo
 core/sync                    domain / data; task contracts and scheduling boundary
 core/worker                  WorkManager and foreground execution
 core/notifications           domain / data; local delivery and FCM adapters
+core/location                domain / data; foreground permission and location adapters
 core/featureflags            domain / data; Remote Config, defaults and cached overrides
 core/designsystem            Fluent theme and AppXxx composables
 core/identity/domain         User, repository contract, authentication use cases
