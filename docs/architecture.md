@@ -101,6 +101,9 @@ Features own their serializable route and NavGraphBuilder registration. The app 
 their entries and reacts to onboarding/session state. Authentication transitions replace
 the root stack, so sign-out removes protected screens. Dashboard owns its three tab
 states; tab selection does not create independent navigation histories in this starter.
+Back pops an inner route before returning a nondefault dashboard tab to Overview.
+At Overview, it remains available to the platform. The lifecycle-owned Compose
+back handler commits the tab change only after a completed back gesture.
 
 The root navigation graph belongs to a session ID. Logout or a replacement session
 disposes its protected routes and saved tab state immediately; these boundaries
@@ -130,6 +133,13 @@ and its content marks the inset consumed. The bar draws its surface beneath the 
 navigation area. On wider windows a side rail/sidebar replaces the bottom bar and
 pages own their bottom safe area. Moving the content composition preserves its
 rendering state across that layout change. Android window icon/contrast configuration stays in the platform runner.
+Bottom-navigation labels stay on one line at large text sizes. Visual ellipsis
+does not shorten their accessible names or reduce the selectable touch targets.
+
+The navigation host consumes extra Back actions while its root destination is
+returning from an inner page. Destination callbacks retain priority, and the
+fallback is disabled once the root resumes. A rapid second Back cannot exit
+through the gap before the tab's own callback is restored.
 
 ## Checks
 

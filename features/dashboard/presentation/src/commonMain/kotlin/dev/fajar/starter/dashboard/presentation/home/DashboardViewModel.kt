@@ -41,6 +41,7 @@ class DashboardViewModel(
         on<DashboardEvent.SettingsRequested>(::onSettingsRequested)
         on<DashboardEvent.NotificationsRequested>(::onNotificationsRequested)
         on<DashboardEvent.TabSelected>(::onTabSelected)
+        on<DashboardEvent.BackRequested>(::onBackRequested)
         on<DashboardEvent.NextPageRequested>(::onNextPageRequested)
         on<DashboardEvent.RefreshRequested>(::onRefreshRequested)
         on<DashboardEvent.SignOutRequested>(::onSignOutRequested)
@@ -88,6 +89,10 @@ class DashboardViewModel(
 
     private fun onTabSelected(event: DashboardEvent.TabSelected) {
         updateState { it.copy(tab = event.tab) }
+    }
+
+    private fun onBackRequested(event: DashboardEvent.BackRequested) {
+        updateState { it.copy(tab = DashboardTab.Overview) }
     }
 
     private fun onRefreshRequested(event: DashboardEvent.RefreshRequested) {

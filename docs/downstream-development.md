@@ -65,3 +65,12 @@ Settings uses the same fixed back action and language/security preference rows a
 [HRIS Mobile 99b3cce](https://github.com/fajarxfce/hris-mobile/commit/99b3cce).
 The starter retains its account roles, permission list and access refresh action.
 Its assembled UI test covers language changes, persistence and back navigation.
+
+Root-tab Back handling and single-line navigation labels also support the
+[HRIS Mobile navigation update](https://github.com/fajarxfce/hris-mobile/blob/main/docs/template-updates.md#root-navigation).
+Shared regressions cover inner-page return, cancelled gestures, rapid Back during
+the root transition, platform fallback and full accessible labels at 200% text.
+Employee directory policy, Inbox integration and service admission remain in
+HRIS Mobile.
+Both repositories passed root checks and Android/Web builds. HRIS Android
+emulator checks also reproduced and verified the rapid-Back correction.

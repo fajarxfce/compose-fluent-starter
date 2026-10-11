@@ -1,15 +1,19 @@
 package dev.fajar.starter.dashboard.presentation.navigation
 
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
+import dev.fajar.starter.dashboard.presentation.home.DashboardEvent
 import dev.fajar.starter.dashboard.presentation.home.DashboardTab
 import dev.fajar.starter.dashboard.presentation.home.DashboardViewModel
 import dev.fajar.starter.dashboard.presentation.home.pages.DashboardPage
 import org.koin.compose.viewmodel.koinViewModel
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun NavGraphBuilder.dashboardRoutes(
     onNotifications: () -> Unit,
     onSettings: () -> Unit,
@@ -27,6 +31,9 @@ fun NavGraphBuilder.dashboardRoutes(
                 }
             )
         val state by viewModel.state.collectAsStateWithLifecycle()
+        BackHandler(enabled = state.tab != DashboardTab.Overview) {
+            viewModel.onEvent(DashboardEvent.BackRequested)
+        }
         dev.fajar.starter.presentation.mvi.CollectEffects(viewModel.effects) { effect ->
             when (effect) {
                 dev.fajar.starter.dashboard.presentation.home.DashboardEffect.OpenFiles -> onFiles()

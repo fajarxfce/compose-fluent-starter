@@ -1,3 +1,5 @@
+@file:OptIn(androidx.compose.ui.ExperimentalComposeUiApi::class)
+
 package dev.fajar.starter
 
 import androidx.compose.foundation.layout.Box
@@ -8,6 +10,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.LocalBackGestureDispatcher
 import androidx.compose.ui.graphics.asSkiaBitmap
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -26,6 +29,7 @@ import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.featureflags.domain.usecases.RefreshFeatureFlags
 import dev.fajar.starter.featureflags.domain.usecases.SetFeatureFlagOverride
+import dev.fajar.starter.fixtures.TestBackDispatcher
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.data.dto.*
 import dev.fajar.starter.sync.domain.SyncTask
@@ -42,6 +46,7 @@ import org.koin.dsl.module
 
 class AppFlowTest {
     @get:Rule val compose = createComposeRule()
+    private val backDispatcher = TestBackDispatcher()
 
     @Test
     fun onboardingLoginTabsAndLogout() {
@@ -84,7 +89,10 @@ class AppFlowTest {
                 DisposableEffect(lifecycleOwner) {
                     onDispose { lifecycleOwner.lifecycle.currentState = Lifecycle.State.DESTROYED }
                 }
-                CompositionLocalProvider(LocalLifecycleOwner provides lifecycleOwner) {
+                CompositionLocalProvider(
+                    LocalLifecycleOwner provides lifecycleOwner,
+                    LocalBackGestureDispatcher provides backDispatcher,
+                ) {
                     key(generation.value) {
                         Box(Modifier.size(420.dp, 760.dp)) { StarterApp(container) }
                     }
@@ -117,6 +125,31 @@ class AppFlowTest {
                 }
             }
             capture("dashboard")
+            compose.onNode(hasText("Account") and hasClickAction()).performClick()
+            compose.waitUntil { backDispatcher.canHandleBack }
+            compose.runOnIdle { backDispatcher.cancelBack() }
+            compose.onNode(hasText("Account") and hasClickAction()).assertIsSelected()
+            compose.onNodeWithText("Settings").performScrollTo().performClick()
+            compose.waitUntil {
+                compose.onAllNodesWithContentDescription("Back").fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.runOnIdle { backDispatcher.pressBack() }
+            compose.waitUntil {
+                compose
+                    .onAllNodes(hasText("Account") and isSelected())
+                    .fetchSemanticsNodes()
+                    .size == 1
+            }
+            compose.runOnIdle { backDispatcher.pressBack() }
+            compose.waitUntil {
+                compose
+                    .onAllNodes(hasText("Overview") and isSelected())
+                    .fetchSemanticsNodes()
+                    .size == 1
+            }
+            compose.waitUntil { !backDispatcher.canHandleBack }
+            compose.runOnIdle { backDispatcher.pressBack() }
+            assertEquals(1, backDispatcher.unhandled)
             compose.runOnIdle { generation.value++ }
             compose.waitUntil(15_000) {
                 compose.onAllNodesWithText("Projects").fetchSemanticsNodes().isNotEmpty()
@@ -126,6 +159,14 @@ class AppFlowTest {
                 compose.onAllNodesWithText("Workspace created").fetchSemanticsNodes().isNotEmpty()
             }
             compose.onNodeWithContentDescription("Save Workspace created").assertExists()
+            compose.runOnIdle { backDispatcher.pressBack() }
+            compose.waitUntil {
+                compose
+                    .onAllNodes(hasText("Overview") and isSelected())
+                    .fetchSemanticsNodes()
+                    .size == 1
+            }
+            compose.onNode(hasText("Activity") and hasClickAction()).performClick()
             compose.waitUntil(15_000) {
                 compose
                     .onAllNodes(hasText("Load more") and isEnabled())

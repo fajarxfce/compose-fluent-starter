@@ -5,6 +5,8 @@ sealed interface DashboardEvent {
 
     data class TabSelected(val tab: DashboardTab) : DashboardEvent
 
+    data object BackRequested : DashboardEvent
+
     data class ActivitySavedChanged(val id: String, val saved: Boolean) : DashboardEvent
 
     data object NextPageRequested : DashboardEvent
