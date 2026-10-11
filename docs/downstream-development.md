@@ -60,3 +60,8 @@ Shared UI tests cover scroll-independent back/refresh actions, 200% text, keyboa
 activation and radio/switch semantics. Both repositories passed root checks and
 Android/Web builds. Home attendance, company switching and employee service
 admission remain in HRIS Mobile.
+
+Settings uses the same fixed back action and language/security preference rows as
+[HRIS Mobile 99b3cce](https://github.com/fajarxfce/hris-mobile/commit/99b3cce).
+The starter retains its account roles, permission list and access refresh action.
+Its assembled UI test covers language changes, persistence and back navigation.

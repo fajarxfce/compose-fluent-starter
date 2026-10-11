@@ -33,3 +33,10 @@ and measured workloads separately.
 metadata, and clipped press feedback. Place dates below the summary when a
 trailing column would crowd a narrow screen. `AppLazyPage` accepts an owned list
 state so paging can reset its position without rebuilding the route owner.
+
+Put `AppTopBar` in the fixed `topBar` page slot, never inside scroll content. Use
+16 dp content margins for inner mobile pages; page padding must not displace the
+bar or duplicate the host's system insets. Use grid icons for small service menus,
+icon actions for back/refresh, and text actions for secondary navigation. Mutually
+exclusive preferences use radio rows; boolean preferences use switches. Settings
+keeps its back action above the language, security and account-access groups.

@@ -125,4 +125,5 @@
     <string name="resume_en">Resume</string>
     <string name="remove_en">Remove</string>
     <string name="error_conflict_en">The data changed. Review it before trying again.</string>
+    <string name="security_en">Security</string>
 </resources>

@@ -122,7 +122,9 @@ Feature entries normally collect their route-owned ViewModel; app-owned gates pa
 a Compose `State` holder and read its value inside the entry. Bootstrap recovery
 tests keep the same route while a pending read fails and an explicit retry succeeds.
 
-The app host handles top/side safe areas and keyboard insets. AppPage handles the bottom
+The app host handles top/side safe areas and keyboard insets. `AppTopBar` is rendered
+in the page's fixed `topBar` slot, before its independently scrolling content.
+Content padding does not move the top bar. AppPage handles the bottom
 safe area for standalone pages; dashboard's bottom navigation owns that inset instead,
 and its content marks the inset consumed. The bar draws its surface beneath the system
 navigation area. On wider windows a side rail/sidebar replaces the bottom bar and
