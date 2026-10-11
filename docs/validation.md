@@ -1,5 +1,13 @@
 # Validation
 
+## Multiline text fields
+
+The shared field keeps its single-line default and accepts a caller-selected
+`maxLines` for longer input. Root checks pass with 216 desktop tests, including
+line layout and newline-preserving editing at 200% text. Android dev and the
+production Web build pass; Web retains its existing three bundler warnings.
+This increment did not install the starter APK or measure runtime performance.
+
 ## Storage observer recovery
 
 The 2026-10-12 dashboard correction passed root checks with 215 desktop tests,

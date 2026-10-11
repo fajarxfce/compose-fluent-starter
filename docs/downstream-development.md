@@ -95,3 +95,13 @@ reopen the owned content subscription; a failed operation does not trigger an
 automatic retry loop. Cancellation checks reject obsolete results before state
 changes or subscription replacement. The starter regression reproduces the
 completed-source failure and verifies cancellation, recovery and disposal.
+
+## Multiline text fields
+
+Optional multiline input matches
+[HRIS Mobile 844314c](https://github.com/fajarxfce/hris-mobile/commit/844314c).
+`AppTextField` retains its single-line default; a caller can supply `maxLines`
+without replacing the shared field or owning keyboard internals. Both repositories
+passed root checks and Android/Web builds. The shared regression checks line layout
+and newline-preserving editing at 200% text. Leave reasons, validation and command
+orchestration remain in HRIS Mobile.
