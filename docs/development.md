@@ -62,6 +62,13 @@ Android dev APK: `apps/android/build/outputs/apk/dev/debug/android-dev-debug.apk
 Web output: `apps/shared/build/dist/wasmJs/productionExecutable`.
 Desktop distributions: `apps/shared/build/compose/binaries/main`.
 
+Select the Android device explicitly with `python3 tool/run_android.py <device-serial>`.
+The runner builds with `assemble` and installs using `adb -s`, so other connected
+phones and emulators are not installation targets. It refuses ambiguous or
+disconnected targets. Add `--skip-build --install-only` to update an already
+validated APK without bringing the app to the foreground. Installation retains
+app data but may stop an existing app process.
+
 ## Tests
 
 `:check` runs architectural checks and all module desktop tests, including the UI smoke
@@ -71,3 +78,6 @@ device testing. On headless Linux use Xvfb. UI captures are written under
 
 Run `./gradlew clean` for a full rebuild. It is intentionally separate from ordinary
 build/run tasks so incremental compilation remains useful.
+
+The Android runner's device-selection checks run with
+`python3 -m unittest discover -s tool -p 'test_*.py'`.

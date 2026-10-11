@@ -9,7 +9,7 @@ Android builds also require Android SDK 36.
 
 ```sh
 ./gradlew :apps:shared:run                       # Desktop
-./gradlew :apps:android:installDevDebug          # Connected Android device
+python3 tool/run_android.py <device-serial>     # Serial from adb devices
 ./gradlew :apps:shared:wasmJsBrowserDevelopmentRun # Web
 ```
 
