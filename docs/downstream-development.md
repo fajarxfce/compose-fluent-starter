@@ -19,3 +19,11 @@ downstream tree or merge unrelated template histories to synchronize it.
 Keep the template's default branch on the latest verified foundation. Preserve
 platform-specific checks and report separately which behavior was verified by
 unit tests, an actual backend, or a device.
+
+## Reviewed foundation updates
+
+The Android convention enables core library desugaring for the API 24 minimum,
+matching [HRIS Mobile 76c6375](https://github.com/fajarxfce/hris-mobile/commit/76c6375).
+An API 24 emulator reproduced the missing Java time class before that correction
+and opened the employee calendar afterward. Application-specific calendar behavior
+remains in HRIS Mobile.
