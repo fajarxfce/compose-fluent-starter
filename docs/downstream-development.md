@@ -74,3 +74,13 @@ Employee directory policy, Inbox integration and service admission remain in
 HRIS Mobile.
 Both repositories passed root checks and Android/Web builds. HRIS Android
 emulator checks also reproduced and verified the rapid-Back correction.
+
+## Month selection
+
+The controlled `AppMonthPicker`, optional filter-chip icons, and `formatMonth`
+match [HRIS Mobile f531200](https://github.com/fajarxfce/hris-mobile/commit/f531200).
+The picker owns layout and selection semantics; callers supply the available
+months, years, labels, and actions. Tests cover disabled choices, 200% text,
+English/Indonesian names, and timezone-independent formatting. Root checks,
+the localization Chromium suite, Android dev, and production Web builds passed
+in both repositories. Attendance rules and screen state stay in HRIS Mobile.

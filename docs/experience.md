@@ -58,3 +58,8 @@ to the platform. Feature MVI owns visibility, selection and cancellable I/O.
 Shared UI tests cover large text, clear/disabled actions, keyboard submission,
 filter selection and dismissal. These controls were exercised in HRIS Mobile's
 company directory before returning to this starter.
+
+`AppMonthPicker` renders a controlled month/year selection with adaptive columns
+and disabled-choice semantics. Supply localized month labels with `formatMonth`
+and let the feature decide which dates are available. Keep the picker in an owned,
+scrollable surface when text scaling can exceed the available height.
