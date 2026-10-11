@@ -53,3 +53,10 @@ Optional `AppCard` content spacing matches
 [HRIS Mobile a871170](https://github.com/fajarxfce/hris-mobile/commit/a871170).
 Its zero-spacing default preserves existing callers. Both repositories passed
 root checks and Android/Web builds; attendance card layouts stay in HRIS Mobile.
+
+Fixed page bars, adaptive menu grids, text actions and preference rows match
+[HRIS Mobile bb1cc5c](https://github.com/fajarxfce/hris-mobile/commit/bb1cc5c).
+Shared UI tests cover scroll-independent back/refresh actions, 200% text, keyboard
+activation and radio/switch semantics. Both repositories passed root checks and
+Android/Web builds. Home attendance, company switching and employee service
+admission remain in HRIS Mobile.

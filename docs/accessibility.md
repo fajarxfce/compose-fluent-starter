@@ -31,16 +31,22 @@ when there is insufficient width. `AppHeading` identifies screen headings;
 Icon actions have descriptions, loading buttons expose progress semantics, and
 feedback uses a polite live region. Text selection follows the theme accent.
 
-`AppScreenHeader` keeps the title, optional subtitle, navigation and trailing
-actions in one shared layout. Text can grow vertically instead of forcing a fixed
-toolbar height. `AppActionTile` exposes one keyboard-accessible action with a
-decorative icon and bounded supporting text; its press feedback stays inside the
-rounded surface. `AppPage` and `AppLazyPage` accept content padding, while their
-existing scroll and inset ownership remains unchanged.
+`AppTopBar` belongs in the fixed `topBar` slot of `AppPage` or `AppLazyPage`, outside
+scrolling content and its padding. Its normal minimum height is 56 dp; large text
+can increase it. The app host still owns top/side system insets and the page or
+bottom navigation owns the bottom inset. Back and refresh retain 48 dp targets.
+
+`AppMenuGrid` uses up to four columns and reduces that count as text grows.
+`AppMenuItem` exposes one keyboard-accessible action for its icon and label.
+Secondary actions can use `AppTextButton`. `AppRadioRow` and `AppSwitchRow` expose
+one radio/switch action for the entire row, including selected/checked and disabled
+semantics; their visual indicators are not independent targets.
 
 Desktop Compose UI tests cover responsive navigation, preserved content lifetime
 on resize, selected semantics, text at 200%, input labels/errors, minimum button
-height and Enter-key activation. Screenshots are written to the test reports.
+height and Enter-key activation. Additional page tests scroll to the last item
+while asserting the back/refresh bounds remain unchanged, and verify menu reflow
+and preference semantics. Screenshots are written to the test reports.
 These checks do not replace TalkBack/VoiceOver tests on physical devices. Review
 focus order, announcements, contrast, switch access, RTL requirements, and each new
 custom Fluent component on the intended platform. The community Fluent library
