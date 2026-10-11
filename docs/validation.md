@@ -1,6 +1,17 @@
 # Validation
 
-Current Linux checks:
+## Replication metadata and navigation badges
+
+The 2026-10-12 foundation update passed root checks, the database's Chromium
+contract tests, and the Android dev build. Shared SQLite/IndexedDB tests cover
+checkpoint observation during staging, publication, removal, account replacement
+and cancellation. Navigation UI tests cover bottom/side badges, 200% text, full
+accessible counts and retained tab actions. Application unread-count acquisition
+and company policy remain in HRIS Mobile.
+
+## Earlier foundation checks
+
+Earlier Linux checks:
 
 - Architecture checks for 33 modules, ktfmt and Detekt with no findings.
 - 92 JVM tests: session restoration and revocation, concurrent refresh, cancelled

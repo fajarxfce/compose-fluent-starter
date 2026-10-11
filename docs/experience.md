@@ -41,6 +41,13 @@ icon actions for back/refresh, and text actions for secondary navigation. Mutual
 exclusive preferences use radio rows; boolean preferences use switches. Settings
 keeps its back action above the language, security and account-access groups.
 
+## Navigation badges
+
+Navigation items accept a composable badge slot. `AppCountBadge` displays counts
+above 99 as `99+`, retaining the full localized accessible description. Zero and
+unknown counts have no badge. Feature entry points own count observation; the
+navigation components own only its layout in bottom bars, rails and sidebars.
+
 ## Search and filters
 
 Use `AppSearchField` for compact search, retaining its accessible label and clear
