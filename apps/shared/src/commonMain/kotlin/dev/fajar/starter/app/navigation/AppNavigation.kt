@@ -3,6 +3,7 @@ package dev.fajar.starter.app.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -37,6 +38,7 @@ fun AppNavigation(controller: NavHostController, incomingLinks: Flow<String>) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val environment = koinInject<AppEnvironment>()
     val stage = state.stage
+    val bootstrapStage = rememberUpdatedState(stage)
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     LaunchedEffect(incomingLinks, lifecycle) {
         lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -87,7 +89,7 @@ fun AppNavigation(controller: NavHostController, incomingLinks: Flow<String>) {
         composable<BootstrapRoute> {
             AppPage {
                 AppBrand()
-                when (val current = stage) {
+                when (val current = bootstrapStage.value) {
                     is AppStage.Failed -> {
                         AppFeedback(failureText(current.failure))
                         AppButton(
