@@ -63,3 +63,8 @@ company directory before returning to this starter.
 and disabled-choice semantics. Supply localized month labels with `formatMonth`
 and let the feature decide which dates are available. Keep the picker in an owned,
 scrollable surface when text scaling can exceed the available height.
+
+`AppDatePicker` renders a controlled seven-column month grid. The caller supplies
+short localized weekday labels, full-date accessible descriptions, selection and
+availability. Calendar navigation and date policy remain with the feature. Put it
+inside a scrollable dialog so large text does not displace the fixed close action.

@@ -1,5 +1,14 @@
 # Validation
 
+## Controlled date picker
+
+Root checks passed with 217 desktop tests; Android dev and production Web builds
+passed. The shared regression covers caller-owned selection, disabled dates/month
+navigation, full-date accessible labels and 200% text at 320 dp. Calendar policy
+and data acquisition remain with consuming features. This component also exists
+in [HRIS Mobile](https://github.com/fajarxfce/hris-mobile/commit/e960e40).
+No starter installation or runtime performance measurement was performed.
+
 ## Multiline text fields
 
 The shared field keeps its single-line default and accepts a caller-selected
