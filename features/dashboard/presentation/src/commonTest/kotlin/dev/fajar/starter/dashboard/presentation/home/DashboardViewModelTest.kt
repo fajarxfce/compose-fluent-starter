@@ -21,6 +21,7 @@ import dev.fajar.starter.security.domain.access.repositories.AccessRepository
 import dev.fajar.starter.security.domain.access.usecases.*
 import dev.fajar.starter.sync.domain.repositories.SyncScheduleRepository
 import kotlin.test.*
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -39,6 +40,62 @@ class DashboardViewModelTest {
     fun after() {
         store.clear()
         Dispatchers.resetMain()
+    }
+
+    @Test
+    fun aSuccessfulRefreshReopensAnUpstreamSubscriptionWithoutAutomaticRetries() = runTest {
+        val repository = RecoveringDashboard()
+        val viewModel = model(repository)
+        store.put("dashboard", viewModel)
+        runCurrent()
+        assertEquals(FailureKind.Storage, viewModel.state.value.error?.kind)
+        assertEquals(0, repository.observers)
+        advanceTimeBy(500)
+        runCurrent()
+        assertEquals(1, repository.subscriptions)
+        assertEquals(1, repository.responses.size)
+        repository.cached.value = AppResult.Success(Dashboard(9, 3, 6, emptyList()))
+        repository.responses.single().complete(AppResult.Success(Unit))
+        runCurrent()
+        assertEquals(9, viewModel.state.value.dashboard?.projects)
+        assertEquals(1, repository.observers)
+        assertNull(viewModel.state.value.error)
+        store.clear()
+        runCurrent()
+        assertEquals(0, repository.observers)
+        repository.cached.value = AppResult.Success(Dashboard(10, 3, 7, emptyList()))
+        runCurrent()
+        assertEquals(9, viewModel.state.value.dashboard?.projects)
+    }
+
+    @Test
+    fun cancelledRefreshCannotPublishItsLateFailureOrRestartObservationAfterDisposal() = runTest {
+        val repository = RecoveringDashboard()
+        val viewModel = model(repository)
+        store.put("dashboard", viewModel)
+        runCurrent()
+        repository.cached.value = AppResult.Success(Dashboard(9, 3, 6, emptyList()))
+        repository.responses[0].complete(AppResult.Success(Unit))
+        runCurrent()
+        viewModel.onEvent(DashboardEvent.RefreshRequested)
+        runCurrent()
+        viewModel.onEvent(DashboardEvent.RefreshRequested)
+        runCurrent()
+        assertEquals(3, repository.responses.size)
+        assertTrue(viewModel.state.value.loading)
+        assertNull(viewModel.state.value.error)
+        repository.cached.value = AppResult.Success(Dashboard(10, 3, 7, emptyList()))
+        repository.responses[2].complete(AppResult.Success(Unit))
+        runCurrent()
+        assertEquals(10, viewModel.state.value.dashboard?.projects)
+        assertEquals(1, repository.observers)
+        viewModel.onEvent(DashboardEvent.RefreshRequested)
+        runCurrent()
+        val beforeDisposal = viewModel.state.value
+        store.clear()
+        runCurrent()
+        assertEquals(beforeDisposal, viewModel.state.value)
+        assertEquals(0, repository.observers)
     }
 
     @Test
@@ -75,43 +132,9 @@ class DashboardViewModelTest {
                     saved: Boolean,
                 ) = AppResult.Success(Unit)
             }
-        val identity = TestSessions(testSession())
-        val scheduler =
-            object : SyncScheduleRepository {
-                override suspend fun request(key: String) = AppResult.Success(Unit)
-            }
         val flagValues =
             MutableStateFlow<AppResult<FlagSnapshot>>(AppResult.Success(FlagSnapshot()))
-        val flags =
-            object : FeatureFlagRepository {
-                override fun observe() = flagValues
-
-                override suspend fun snapshot() = flagValues.value
-
-                override suspend fun refresh(fetchedAtEpochMillis: Long) = error("unused")
-
-                override suspend fun setOverride(key: String, value: Boolean?) = error("unused")
-            }
-        val viewModel =
-            DashboardViewModel(
-                ObserveDashboard(repository, TestSessions(testSession())),
-                SyncDashboard(repository, TestSessions(testSession())),
-                LoadNextActivityPage(repository, TestSessions(testSession())),
-                SetActivitySaved(
-                    repository,
-                    scheduler,
-                    flags,
-                    AppEnvironment.Dev,
-                    TestSessions(testSession()),
-                    GrantedAccess(),
-                ),
-                ObserveUser(identity),
-                SignOut(identity),
-                ObserveFeatureFlag(flags, AppEnvironment.Dev),
-                ObservePermission(identity, GrantedAccess()),
-                RefreshAccess(identity, GrantedAccess()),
-                DashboardTab.Overview,
-            )
+        val viewModel = model(repository, flagValues)
         store.put("dashboard", viewModel)
         runCurrent()
         assertEquals(8, viewModel.state.value.dashboard?.projects)
@@ -137,6 +160,88 @@ class DashboardViewModelTest {
         assertNull(viewModel.state.value.error?.message)
         assertFalse(viewModel.state.value.savingAvailable)
     }
+
+    private fun model(
+        repository: DashboardRepository,
+        flagValues: MutableStateFlow<AppResult<FlagSnapshot>> =
+            MutableStateFlow(AppResult.Success(FlagSnapshot())),
+    ): DashboardViewModel {
+        val identity = TestSessions(testSession())
+        val scheduler =
+            object : SyncScheduleRepository {
+                override suspend fun request(key: String) = AppResult.Success(Unit)
+            }
+        val flags =
+            object : FeatureFlagRepository {
+                override fun observe() = flagValues
+
+                override suspend fun snapshot() = flagValues.value
+
+                override suspend fun refresh(fetchedAtEpochMillis: Long) = error("unused")
+
+                override suspend fun setOverride(key: String, value: Boolean?) = error("unused")
+            }
+        return DashboardViewModel(
+            ObserveDashboard(repository, identity),
+            SyncDashboard(repository, identity),
+            LoadNextActivityPage(repository, identity),
+            SetActivitySaved(
+                repository,
+                scheduler,
+                flags,
+                AppEnvironment.Dev,
+                identity,
+                GrantedAccess(),
+            ),
+            ObserveUser(identity),
+            SignOut(identity),
+            ObserveFeatureFlag(flags, AppEnvironment.Dev),
+            ObservePermission(identity, GrantedAccess()),
+            RefreshAccess(identity, GrantedAccess()),
+            DashboardTab.Overview,
+        )
+    }
+}
+
+private class RecoveringDashboard : DashboardRepository {
+    val cached = MutableStateFlow<AppResult<Dashboard?>>(AppResult.Success(null))
+    val responses = mutableListOf<CompletableDeferred<AppResult<Unit>>>()
+    var observers = 0
+    var subscriptions = 0
+
+    override fun observe(sessionId: String): Flow<AppResult<Dashboard?>> = flow {
+        observers++
+        subscriptions++
+        try {
+            if (subscriptions == 1)
+                emit(AppResult.Failed(Failure(FailureKind.Storage, "Unavailable")))
+            else emitAll(cached)
+        } finally {
+            observers--
+        }
+    }
+
+    override suspend fun refresh(sessionId: String): AppResult<Unit> {
+        val response = CompletableDeferred<AppResult<Unit>>()
+        responses += response
+        return try {
+            response.await()
+        } catch (_: CancellationException) {
+            AppResult.Failed(Failure(FailureKind.Network, "Obsolete response"))
+        }
+    }
+
+    override suspend fun pendingChanges(sessionId: String, limit: Int) =
+        AppResult.Success(emptyList<ActivityChange>())
+
+    override suspend fun loadNextPage(sessionId: String) = error("unused")
+
+    override suspend fun push(sessionId: String, change: ActivityChange) = error("unused")
+
+    override suspend fun acknowledge(sessionId: String, operationId: String) = error("unused")
+
+    override suspend fun setSaved(sessionId: String, activityId: String, saved: Boolean) =
+        error("unused")
 }
 
 private class TestSessions(initial: Session? = null) : SessionRepository {

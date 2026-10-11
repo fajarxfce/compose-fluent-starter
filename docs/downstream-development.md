@@ -84,3 +84,14 @@ months, years, labels, and actions. Tests cover disabled choices, 200% text,
 English/Indonesian names, and timezone-independent formatting. Root checks,
 the localization Chromium suite, Android dev, and production Web builds passed
 in both repositories. Attendance rules and screen state stay in HRIS Mobile.
+
+## Storage observer recovery
+
+Dashboard subscription recovery matches
+[HRIS Mobile eee789e](https://github.com/fajarxfce/hris-mobile/commit/eee789e).
+A storage source can report a failure and complete while its outer session
+observer remains active. Successful refresh, pagination and saved-item writes
+reopen the owned content subscription; a failed operation does not trigger an
+automatic retry loop. Cancellation checks reject obsolete results before state
+changes or subscription replacement. The starter regression reproduces the
+completed-source failure and verifies cancellation, recovery and disposal.

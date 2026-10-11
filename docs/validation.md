@@ -1,5 +1,15 @@
 # Validation
 
+## Storage observer recovery
+
+The 2026-10-12 dashboard correction passed root checks with 215 desktop tests,
+all three dashboard presentation tests in Chromium, Android dev assembly and
+the production Web distribution. The regression first reproduced a completed
+storage source that remained disconnected after refresh. It now covers explicit
+recovery, no automatic retry, replacement cancellation and disposal. Web retains
+the existing three bundler warnings. This increment did not install the starter
+APK or measure frame times or heap use.
+
 ## Replication metadata and navigation badges
 
 The 2026-10-12 foundation update passed root checks, the database's Chromium
