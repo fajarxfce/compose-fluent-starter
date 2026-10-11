@@ -33,7 +33,7 @@ class StoredSessionRepositoryTest {
     private class Accounts : AccountCacheStore {
         var active: String? = null
 
-        override suspend fun activate(sessionId: String?) {
+        override suspend fun activate(sessionId: String?, accountKey: String?) {
             active = sessionId
         }
     }

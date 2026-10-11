@@ -86,6 +86,11 @@ The in-memory session datasource owns a replayed DTO snapshot. Its repository
 coordinates credential storage and account cache ownership; session policy remains
 in use cases. See [sessions and HTTP](runtime.md).
 
+[Durable command storage](command-storage.md) is separate from disposable account
+caches. Application identity adapters supply their stable audience/account binding.
+Features own encryption, admission, replay and conflicts; the raw database enforces
+ownership, request immutability, bounds and atomic outcome revisions.
+
 ## Navigation
 
 Features own their serializable route and NavGraphBuilder registration. The app composes
