@@ -40,3 +40,14 @@ bar or duplicate the host's system insets. Use grid icons for small service menu
 icon actions for back/refresh, and text actions for secondary navigation. Mutually
 exclusive preferences use radio rows; boolean preferences use switches. Settings
 keeps its back action above the language, security and account-access groups.
+
+## Search and filters
+
+Use `AppSearchField` for compact search, retaining its accessible label and clear
+action; use `AppTextField` for labelled forms. `AppFilterChip` opens a filter
+surface. `AppDialog` owns only window presentation and delegates focus/dismissal
+to the platform. Feature MVI owns visibility, selection and cancellable I/O.
+
+Shared UI tests cover large text, clear/disabled actions, keyboard submission,
+filter selection and dismissal. These controls were exercised in HRIS Mobile's
+company directory before returning to this starter.
