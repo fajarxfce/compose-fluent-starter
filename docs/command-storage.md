@@ -1,5 +1,9 @@
 # Durable command storage
 
+Content-key creation can use the [atomic credential port](protected-credentials.md).
+The raw database does not create or recover cryptographic keys itself. The adapter
+and its regressions are shared with [HRIS Mobile](https://github.com/fajarxfce/hris-mobile/commit/291a64c).
+
 `AppDatabase.commands` retains encrypted requests independently of disposable
 replicas. Logout and a replacement session revoke access without deleting an
 unconfirmed operation. Integrating applications bind the active session to a stable
