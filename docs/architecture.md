@@ -122,6 +122,16 @@ Back pops an inner route before returning a nondefault dashboard tab to Overview
 At Overview, it remains available to the platform. The lifecycle-owned Compose
 back handler commits the tab change only after a completed back gesture.
 
+Tab composition and navigation ownership have different lifetimes. Returning to
+a loaded tab must not clear its data or unconditionally repeat acquisition.
+Retain its state and bounded local data/admission observation in the navigation
+ViewModel; collect rendering state only while the consumer is visible. Network
+requests, sensors and user actions still need an explicit foreground owner and
+cancellation policy. Hidden read state must expire or lose access through its
+domain observation. Clearing the route owner cancels retained observations.
+Do not retain whole UI trees or view callbacks to preserve data, and do not treat
+animation or composition entry as a business refresh signal.
+
 The root navigation graph belongs to a session ID. Logout or a replacement session
 disposes its protected routes and saved tab state immediately; these boundaries
 never animate an outgoing account's content. Token rotation does not change that

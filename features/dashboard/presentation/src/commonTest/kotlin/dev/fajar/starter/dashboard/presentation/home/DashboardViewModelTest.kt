@@ -43,6 +43,40 @@ class DashboardViewModelTest {
     }
 
     @Test
+    fun changingTabsRetainsReactiveContentWithoutRepeatingAcquisition() = runTest {
+        val repository = RecoveringDashboard()
+        val viewModel = model(repository)
+        store.put("dashboard", viewModel)
+        runCurrent()
+        val loaded = Dashboard(9, 3, 6, emptyList())
+        repository.cached.value = AppResult.Success(loaded)
+        repository.responses.single().complete(AppResult.Success(Unit))
+        runCurrent()
+        val subscriptions = repository.subscriptions
+        repeat(3) {
+            for (tab in DashboardTab.entries) {
+                viewModel.onEvent(DashboardEvent.TabSelected(tab))
+                runCurrent()
+                assertEquals(tab, viewModel.state.value.tab)
+                assertEquals(loaded, viewModel.state.value.dashboard)
+                assertFalse(viewModel.state.value.loading)
+                assertEquals(1, repository.responses.size)
+                assertEquals(subscriptions, repository.subscriptions)
+            }
+        }
+        repository.cached.value = AppResult.Success(loaded.copy(projects = 10))
+        runCurrent()
+        viewModel.onEvent(DashboardEvent.BackRequested)
+        runCurrent()
+        assertEquals(DashboardTab.Overview, viewModel.state.value.tab)
+        assertEquals(10, viewModel.state.value.dashboard?.projects)
+        assertEquals(1, repository.responses.size)
+        store.clear()
+        runCurrent()
+        assertEquals(0, repository.observers)
+    }
+
+    @Test
     fun aSuccessfulRefreshReopensAnUpstreamSubscriptionWithoutAutomaticRetries() = runTest {
         val repository = RecoveringDashboard()
         val viewModel = model(repository)

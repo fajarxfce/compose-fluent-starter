@@ -1,5 +1,15 @@
 # Validation
 
+## Retained tab state
+
+Root checks passed with 230 desktop tests and seven Android runner tests. The
+dashboard regression verifies repeated tab changes without new acquisition or
+storage subscriptions, reactive cache updates and cleanup when its navigation
+owner is cleared. The existing dashboard behavior already follows this contract;
+this update adds coverage and lifecycle guidance. HRIS-specific tab acquisition
+changes and Android acceptance remain in HRIS Mobile. No starter APK was installed
+for this test/documentation update.
+
 ## Android runner recovery
 
 Root checks passed with 229 desktop tests and seven Python runner tests. Coverage

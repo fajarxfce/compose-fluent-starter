@@ -1,5 +1,14 @@
 # Downstream development
 
+## Retained tab state
+
+HRIS Mobile exposed unconditional acquisition on returning to already loaded
+tabs. The starter's dashboard already retains its navigation-owned state; its
+regression now checks request counts, reactive cache updates and observation
+cleanup. The shared architecture guidance distinguishes rendering visibility
+from navigation ownership. Attendance and employee-directory policy remain in
+HRIS Mobile.
+
 ## Android runner recovery
 
 Bounded ADB commands, optional per-device port forwarding and runner checks match
