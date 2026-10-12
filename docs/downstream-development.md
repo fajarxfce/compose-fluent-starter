@@ -1,5 +1,16 @@
 # Downstream development
 
+## Controlled time input
+
+The shared `AppTimeInput` matches
+[HRIS Mobile a66c787](https://github.com/fajarxfce/hris-mobile/commit/a66c787).
+It renders independently controlled hour/minute fields with numeric keyboard
+options and caller-provided labels. Consuming forms own range validation, timezone
+conversion and confirmation. The regression checks narrow layout at 200% text,
+independent edits and disabled input. Root checks passed with 268 desktop tests,
+Android dev assembly and application Web compilation. HRIS overtime policy and
+durable submission remain in the application.
+
 ## Page actions and progress
 
 Fixed page action slots and labelled inline progress match
