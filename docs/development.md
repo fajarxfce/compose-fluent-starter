@@ -70,11 +70,18 @@ Web output: `apps/shared/build/dist/wasmJs/productionExecutable`.
 Desktop distributions: `apps/shared/build/compose/binaries/main`.
 
 Select the Android device explicitly with `python3 tool/run_android.py <device-serial>`.
-The runner builds with `assemble` and installs using `adb -s`, so other connected
+The runner builds with `assemble --no-daemon` and installs using `adb -s`, so other connected
 phones and emulators are not installation targets. It refuses ambiguous or
 disconnected targets. Add `--skip-build --install-only` to update an already
 validated APK without bringing the app to the foreground. Installation retains
 app data but may stop an existing app process.
+
+An integrated local backend may need `--reverse-port <port>`. The runner configures
+that forwarding on the selected device before installing; failure stops installation.
+ADB discovery, forwarding, installation and launch have finite timeouts. Forwarding
+ends when ADB disconnects and must then be restored. It does not change the built
+API URL or the application's HTTPS policy. The default in-process demo needs no
+forwarding.
 
 ## Tests
 
@@ -86,5 +93,5 @@ device testing. On headless Linux use Xvfb. UI captures are written under
 Run `./gradlew clean` for a full rebuild. It is intentionally separate from ordinary
 build/run tasks so incremental compilation remains useful.
 
-The Android runner's device-selection checks run with
+The Android runner's device-selection checks also run in `:check`, or separately with
 `python3 -m unittest discover -s tool -p 'test_*.py'`.

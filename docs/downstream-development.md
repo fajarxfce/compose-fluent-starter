@@ -1,5 +1,13 @@
 # Downstream development
 
+## Android runner recovery
+
+Bounded ADB commands, optional per-device port forwarding and runner checks match
+[HRIS Mobile 2e12213](https://github.com/fajarxfce/hris-mobile/commit/2e12213).
+Both repositories passed their root checks and all seven runner tests. HRIS's
+private VPN endpoint, firewall and Android HTTP allowlist remain in that application;
+the starter retains its existing HTTPS configuration and in-process demo.
+
 [HRIS Mobile](https://github.com/fajarxfce/hris-mobile) is an application generated
 from this template. It exercises the foundation against a real backend and keeps
 its own application history.

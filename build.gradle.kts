@@ -25,10 +25,16 @@ tasks.register<Exec>("distributionCheck") {
 tasks.named("check") {
     dependsOn("architectureCheck")
     dependsOn("distributionCheck")
+    dependsOn("androidRunnerCheck")
     dependsOn("formatCheck")
     dependsOn(
         subprojects
             .filter { it.buildFile.exists() && it.path != ":apps:android" }
             .map { "${it.path}:desktopTest" }
     )
+}
+
+tasks.register<Exec>("androidRunnerCheck") {
+    group = "verification"
+    commandLine("python3", "-m", "unittest", "discover", "-s", "tool", "-p", "test_*.py")
 }

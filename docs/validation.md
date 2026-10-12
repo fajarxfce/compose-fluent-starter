@@ -1,5 +1,13 @@
 # Validation
 
+## Android runner recovery
+
+Root checks passed with 229 desktop tests and seven Python runner tests. Coverage
+verifies explicit-device installation, no launch in install-only mode, optional
+forwarding before installation, failure without installation, port bounds and
+finite ADB command timeouts. The Gradle build uses `--no-daemon`. This tooling-only
+increment did not rebuild or install the starter application.
+
 ## Durable file blocks and checkpoints
 
 Root checks passed with 229 desktop tests. All 23 database Chromium tests passed,
