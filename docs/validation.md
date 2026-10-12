@@ -1,5 +1,15 @@
 # Validation
 
+## Inline loading
+
+Root checks passed with 218 desktop tests; Android dev and production Web builds
+passed. The compact loading regression keeps both its label and an adjacent
+action visible at 200% text in a bounded viewport. The default loading layout
+remains unchanged. Web retains its three existing bundler warnings. No starter
+installation or runtime performance measurement was performed.
+The same component and regression exist in
+[HRIS Mobile](https://github.com/fajarxfce/hris-mobile/commit/f3b283e).
+
 ## Controlled date picker
 
 Root checks passed with 217 desktop tests; Android dev and production Web builds
