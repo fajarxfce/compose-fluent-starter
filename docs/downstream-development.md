@@ -1,5 +1,14 @@
 # Downstream development
 
+## Page actions and progress
+
+Fixed page action slots and labelled inline progress match
+[HRIS Mobile c99de56](https://github.com/fajarxfce/hris-mobile/commit/c99de56).
+The shared regressions keep the last list row above the fixed action at 200%
+text size and preserve a busy icon's target while duplicate input is disabled.
+Root checks passed with 263 desktop tests, two app Chromium tests and Android dev
+assembly. Company selection and its application policy remain in HRIS Mobile.
+
 ## Navigation restoration
 
 The scoped navigation saver and deferred graph attachment address the process

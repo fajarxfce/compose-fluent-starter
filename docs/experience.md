@@ -43,6 +43,11 @@ icon actions for back/refresh, and text actions for secondary navigation. Mutual
 exclusive preferences use radio rows; boolean preferences use switches. Settings
 keeps its back action above the language, security and account-access groups.
 
+Use `AppActionBar` in `AppLazyPage.bottomBar` for a page's primary action, keeping
+it visible without covering the final list row. `AppIconButton.loading` retains
+its target and accessible label while preventing duplicate input. Progress rings
+belong beside the operation they describe; avoid moving progress below a long list.
+
 ## Navigation badges
 
 Navigation items accept a composable badge slot. `AppCountBadge` displays counts
