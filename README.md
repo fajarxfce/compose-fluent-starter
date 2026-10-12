@@ -67,6 +67,7 @@ See [internal distribution](docs/distribution.md) for signing and manual Firebas
 See [downstream development](docs/downstream-development.md) for the feedback workflow with HRIS Mobile and reviewed template updates.
 See [architecture](docs/architecture.md), [development](docs/development.md), [quality gates](docs/quality.md), and [validation](docs/validation.md).
 See [file transfers](docs/file-transfers.md) for bounded imports, resumable uploads/downloads and backend contracts.
+See [durable file storage](docs/blob-storage.md) for account-owned opaque blocks and checkpoints independent of disposable caches.
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
 See [feature flags](docs/feature-flags.md) for Firebase Remote Config, offline defaults, and dev/staging overrides.
 See [local storage](docs/storage.md) and [build environments](docs/environments.md) for platform setup. See [notifications and deep links](docs/notifications.md) for Firebase configuration.

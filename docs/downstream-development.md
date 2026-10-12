@@ -22,6 +22,14 @@ unit tests, an actual backend, or a device.
 
 ## Reviewed foundation updates
 
+Durable file storage matches
+[HRIS Mobile 0267e71](https://github.com/fajarxfce/hris-mobile/commit/0267e71).
+The raw SQLite/IndexedDB boundary stores bounded opaque blocks, immutable completion
+proofs and versioned checkpoints under a stable account binding. It preserves files
+across admitted logins and reserves capacity before import. Encryption, file
+selection and application transfer protocols remain consuming data/use-case work.
+Both repositories share the storage contract and regression coverage.
+
 The Android convention enables core library desugaring for the API 24 minimum,
 matching [HRIS Mobile 76c6375](https://github.com/fajarxfce/hris-mobile/commit/76c6375).
 An API 24 emulator reproduced the missing Java time class before that correction

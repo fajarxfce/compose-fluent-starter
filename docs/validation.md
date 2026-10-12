@@ -1,5 +1,20 @@
 # Validation
 
+## Durable file blocks and checkpoints
+
+Root checks passed with 229 desktop tests. All 23 database Chromium tests passed,
+including 11 new cases shared with SQLite. Coverage verifies atomic block/progress
+writes, immutable completed content, checkpoint contention, stale deletion, account
+replacement, bounded reservations/pages, cancellation, independent connections,
+restart and migration with retained commands. Android dev assembly and production
+Web distribution passed; Web retains its three existing bundler warnings.
+
+The raw store accepts opaque envelopes. Encryption, file selection and application
+transfer policy remain with their consuming adapters and use cases. This update
+ports the validated storage implementation from
+[HRIS Mobile](https://github.com/fajarxfce/hris-mobile/commit/0267e71).
+No starter installation or runtime performance measurement was performed.
+
 ## Inline loading
 
 Root checks passed with 218 desktop tests; Android dev and production Web builds
