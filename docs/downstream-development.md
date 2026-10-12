@@ -1,5 +1,15 @@
 # Downstream development
 
+## Scheduler registration
+
+Deferred platform scheduler resolution matches
+[HRIS Mobile 3cdbd52](https://github.com/fajarxfce/hris-mobile/commit/3cdbd52).
+A task can depend on scheduling when it needs another bounded pass. Its
+constructor must finish before foreground registration inspects the task keys.
+The shared generated-DI regression covers both task-first and repository-first
+resolution, repeated requests and one platform registration. Scheduler disposal
+remains owned by the application container.
+
 ## File input
 
 The bounded document picker/read adapters and failure boundary match

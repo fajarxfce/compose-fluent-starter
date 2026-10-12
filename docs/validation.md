@@ -1,5 +1,14 @@
 # Validation
 
+## Deferred scheduler acquisition
+
+Root checks passed with 242 desktop tests. The sync data suite passed all three
+Chromium tests, and Android dev assembly passed. A generated-DI regression resolves
+a task that requests subsequent work, including task-first and repository-first
+construction. Both orders defer platform registration until the scheduling call
+and reuse it for later requests. This reproduces the dependency cycle exposed by
+HRIS Mobile's resumable upload integration.
+
 ## Retained tab state
 
 Root checks passed with 230 desktop tests and seven Android runner tests. The
