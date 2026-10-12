@@ -1,5 +1,15 @@
 # Downstream development
 
+## Navigation restoration
+
+The scoped navigation saver and deferred graph attachment address the process
+restoration crash reproduced in HRIS Mobile. Matching account/company stacks
+restore after bootstrap; changed scopes discard saved entries and clear retained
+navigation ViewModels. Four new regressions cover process recreation, changed
+company, revoked session and repeated recreation during bootstrap. Root checks
+passed with 261 desktop tests, two app Chromium tests and Android dev assembly.
+Application admission remains with its own use cases.
+
 ## Owned file output
 
 The raw save-dialog adapters, bounded sequential writers and failure mapping match
