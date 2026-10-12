@@ -1,5 +1,17 @@
 # Downstream development
 
+## Enum route arguments
+
+The shared `enumNavType` adapter matches
+[HRIS Mobile b58caf8](https://github.com/fajarxfce/hris-mobile/commit/b58caf8).
+It provides named enum arguments on every Navigation target and preserves argument
+equality when a graph is rebuilt. Unknown restored values fail decoding without
+choosing another action. Three regressions cover saved-state round trips, invalid
+values and graph identity. Root checks passed with 271 desktop tests, five
+shared-presentation Chromium tests, Android dev assembly and application Web
+compilation. CI includes the shared browser suite. HRIS routes and overtime policy
+remain in the application.
+
 ## Controlled time input
 
 The shared `AppTimeInput` matches
