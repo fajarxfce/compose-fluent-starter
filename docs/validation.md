@@ -1,5 +1,14 @@
 # Validation
 
+## Bounded binary responses
+
+Root checks passed with 249 desktop tests. Chromium passed all 34 network and five
+transfer tests, and Android dev assembly passed. The shared range reader verifies
+strong validators, exact ranges and bounded response sizes, rejects unexpected
+full responses, and cancels pending or oversized reads. HTTP failures keep their
+status and structured API problem without exposing the raw response body.
+No starter APK was installed for this transport update.
+
 ## Deferred scheduler acquisition
 
 Root checks passed with 242 desktop tests. The sync data suite passed all three

@@ -1,5 +1,15 @@
 # Downstream development
 
+## Binary transport
+
+The bounded range reader and shared API response boundary match
+[HRIS Mobile c1ef559](https://github.com/fajarxfce/hris-mobile/commit/c1ef559).
+Callers select the conditional request header required by their API. The common
+reader verifies the returned validator, byte extent and size before exposing
+content, while preserving structured HTTP failures and cancellation. Both
+repositories passed root checks, network and transfer Chromium tests, and Android
+dev assembly. HRIS document admission and storage policy remain application work.
+
 ## Scheduler registration
 
 Deferred platform scheduler resolution matches
