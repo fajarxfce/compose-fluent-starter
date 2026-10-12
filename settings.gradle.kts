@@ -49,6 +49,7 @@ include(
     ":core:settings:domain",
     ":core:datastore",
     ":core:database",
+    ":core:fileio",
     ":core:transfers:domain",
     ":core:transfers:data",
     ":features:files:presentation",

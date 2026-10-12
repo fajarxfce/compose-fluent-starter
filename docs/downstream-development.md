@@ -1,5 +1,13 @@
 # Downstream development
 
+## File input
+
+The bounded document picker/read adapters and failure boundary match
+[HRIS Mobile 6dded5a](https://github.com/fajarxfce/hris-mobile/commit/6dded5a).
+Shared regressions cover picker ownership, late results, disposal, native read
+cancellation, hashing and browser cleanup. Account admission, encrypted document
+mapping and the HRIS upload protocol remain application responsibilities.
+
 ## Retained tab state
 
 HRIS Mobile exposed unconditional acquisition on returning to already loaded

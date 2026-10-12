@@ -107,6 +107,8 @@ ownership, request immutability, bounds and atomic outcome revisions.
 Large file contents use the separate [blob store](blob-storage.md), with bounded
 opaque blocks, transactional progress and account-owned reservations. File adapters
 own encryption and mapping; use cases own import, transfer and cleanup policy.
+The [file input adapter](file-input.md) owns OS pickers and transient readers;
+those resources never enter a domain contract or a ViewModel.
 
 The [foreground location](location.md) foundation keeps OS permission and fix
 operations in datasource contracts. Consuming use cases own access, acquisition
