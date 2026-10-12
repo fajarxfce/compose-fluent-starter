@@ -57,13 +57,18 @@ navigation components own only its layout in bottom bars, rails and sidebars.
 
 ## Search and filters
 
-Use `AppSearchField` for compact search, retaining its accessible label and clear
-action; use `AppTextField` for labelled forms. `AppFilterChip` opens a filter
+Use `AppSearchEntry` to open a dedicated search surface from a browsing list. It
+exposes one accessible action without creating an editor or showing the keyboard.
+Use `AppSearchField` inside that surface, retaining its accessible label and clear
+action. Optional initial focus belongs to its composition and query changes do
+not steal focus after dismissal. Keep Back and the search field above scrolling
+results; the route owns query state and cancellation. Use `AppTextField` for
+labelled forms. `AppFilterChip` opens a filter
 surface. `AppDialog` owns only window presentation and delegates focus/dismissal
 to the platform. Feature MVI owns visibility, selection and cancellable I/O.
 
 Shared UI tests cover large text, clear/disabled actions, keyboard submission,
-filter selection and dismissal. These controls were exercised in HRIS Mobile's
+search entry semantics, focus/disposal, filter selection and dismissal. These controls were exercised in HRIS Mobile's
 company directory before returning to this starter.
 
 `AppMonthPicker` renders a controlled month/year selection with adaptive columns

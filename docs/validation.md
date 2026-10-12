@@ -152,3 +152,13 @@ and Web distribution builds passed; Web retains the existing bundler warnings.
 The corresponding components were exercised in HRIS Mobile against its real API.
 This increment did not install the starter APK on a physical device, and no
 frame-time or heap measurement is claimed.
+
+## Search entry and focus ownership
+
+The shared search entry opens a search surface without creating an editor. Optional
+initial focus in `AppSearchField` follows its composition lifetime; subsequent query
+updates do not reacquire dismissed focus. Root checks passed with 267 desktop tests,
+two application Chromium tests and Android dev assembly. Regression coverage
+includes pointer/keyboard activation, editor-free entry semantics, focus dismissal,
+disposal and reopening. HRIS Mobile separately exercises navigation and real API
+search on its Android emulator.
