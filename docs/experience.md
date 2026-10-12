@@ -75,3 +75,9 @@ scrollable surface when text scaling can exceed the available height.
 short localized weekday labels, full-date accessible descriptions, selection and
 availability. Calendar navigation and date policy remain with the feature. Put it
 inside a scrollable dialog so large text does not displace the fixed close action.
+
+## Content tabs
+
+`AppTabs` renders controlled content categories with an underline. Labels wrap at
+large text sizes, targets remain at least 48 dp, and disabled tabs do not dispatch
+selection. Features own the selected value and the corresponding data request.

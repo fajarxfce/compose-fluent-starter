@@ -186,3 +186,12 @@ without replacing the shared field or owning keyboard internals. Both repositori
 passed root checks and Android/Web builds. The shared regression checks line layout
 and newline-preserving editing at 200% text. Leave reasons, validation and command
 orchestration remain in HRIS Mobile.
+
+## Content categories
+
+The controlled `AppTabs` component and its regressions match
+[HRIS Mobile c992f95](https://github.com/fajarxfce/hris-mobile/commit/c992f95).
+Selection stays with the caller; the component supplies tab semantics, wrapping
+labels and touch targets. Root checks passed with 265 desktop tests, two
+application Chromium tests and Android dev assembly. HRIS document navigation
+and acquisition policy remain in the mobile application.
