@@ -1,5 +1,14 @@
 # Downstream development
 
+## Owned file output
+
+The raw save-dialog adapters, bounded sequential writers and failure mapping match
+[HRIS Mobile 89ffc4d](https://github.com/fajarxfce/hris-mobile/commit/89ffc4d).
+Platform entry points own and close each source. Cancellation and late results
+release native handles without deleting a selected path. Repositories and use
+cases supply their own mapping, admission and transfer policy; the starter demo
+queue does not automatically export files.
+
 ## Binary transport
 
 The bounded range reader and shared API response boundary match

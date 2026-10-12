@@ -13,6 +13,7 @@ import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.common.config.BuildRuntime
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
+import dev.fajar.starter.fileio.DesktopFileOutputSource
 import dev.fajar.starter.identity.data.sso.datasources.DesktopBrowserAuthorizationSource
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.securestorage.*
@@ -41,6 +42,7 @@ fun main(args: Array<String>) {
                 single<PushTokenSource> { UnavailablePushTokenSource() }
             },
             browserAuthorization = DesktopBrowserAuthorizationSource(),
+            fileOutputs = DesktopFileOutputSource(),
             credentials =
                 if (BuildRuntime.persistDesktopSession)
                     DesktopCredentialStore("fluent-starter.${environment.id}")

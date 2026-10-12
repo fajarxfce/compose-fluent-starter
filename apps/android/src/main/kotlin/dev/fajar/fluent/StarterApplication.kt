@@ -10,6 +10,7 @@ import dev.fajar.starter.common.config.AppPlatform
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.featureflags.data.datasources.AndroidFeatureFlagSource
+import dev.fajar.starter.fileio.AndroidFileOutputSource
 import dev.fajar.starter.identity.data.sso.datasources.AndroidBrowserAuthorizationSource
 import dev.fajar.starter.location.data.datasources.AndroidLocationDataSource
 import dev.fajar.starter.observability.*
@@ -42,10 +43,12 @@ class StarterApplication : Application(), Configuration.Provider {
             browserAuthorization = browserAuthorization,
             platform = AppPlatform.Android,
             location = location,
+            fileOutputs = fileOutputs,
         )
     }
 
     val location by lazy { AndroidLocationDataSource(this) }
+    val fileOutputs by lazy { AndroidFileOutputSource(this) }
 
     val browserAuthorization by lazy { AndroidBrowserAuthorizationSource(this) }
 

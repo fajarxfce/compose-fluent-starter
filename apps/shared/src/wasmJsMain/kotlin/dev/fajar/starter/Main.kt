@@ -13,6 +13,7 @@ import dev.fajar.starter.common.config.BuildEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.featureflags.data.datasources.BrowserFeatureFlagSource
+import dev.fajar.starter.fileio.BrowserFileOutputSource
 import dev.fajar.starter.identity.data.sso.datasources.WebBrowserAuthorizationSource
 import dev.fajar.starter.notifications.data.datasources.*
 import dev.fajar.starter.notifications.domain.entities.NotificationMessage
@@ -48,6 +49,7 @@ fun main() {
             remoteFeatureFlags = BrowserFeatureFlagSource(),
             browserAuthorization = WebBrowserAuthorizationSource(),
             platform = AppPlatform.Web,
+            fileOutputs = BrowserFileOutputSource(),
         )
     startForegroundSync(container, scope)
     window.addEventListener(

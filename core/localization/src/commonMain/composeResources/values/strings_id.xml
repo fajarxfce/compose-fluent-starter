@@ -1,4 +1,7 @@
 <resources>
+    <string name="file_save_failed_id">File tidak dapat disimpan.</string>
+    <string name="file_already_exists_id">File dengan nama ini sudah ada. Pilih nama lain.</string>
+
     <string name="sign_in_id">Masuk</string>
     <string name="sign_in_description_id">Gunakan akun Anda untuk melanjutkan.</string>
     <string name="email_id">Email</string>

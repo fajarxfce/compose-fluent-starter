@@ -11,6 +11,7 @@ import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.featureflags.data.datasources.AppleFeatureFlagSource
 import dev.fajar.starter.featureflags.data.datasources.AppleRemoteConfigClient
+import dev.fajar.starter.fileio.AppleFileOutputSource
 import dev.fajar.starter.identity.data.sso.datasources.AppleBrowserAuthorizationSource
 import dev.fajar.starter.location.data.datasources.AppleLocationDataSource
 import dev.fajar.starter.notifications.data.datasources.*
@@ -41,6 +42,7 @@ class AppleAppHost(
     private val links = AppLinkChannel()
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private val push = ApplePushTokenSource(firebase)
+    private val fileOutputs = AppleFileOutputSource()
     private val container =
         createAppContainer(
             createUserPreferences(),
@@ -56,6 +58,7 @@ class AppleAppHost(
             remoteFeatureFlags = AppleFeatureFlagSource(remoteConfig),
             platform = AppPlatform.Ios,
             location = AppleLocationDataSource(),
+            fileOutputs = fileOutputs,
         )
 
     private var foregroundWorker: Job? = null
@@ -87,7 +90,8 @@ class AppleAppHost(
         return AppleSyncExecution(execution)
     }
 
-    fun viewController() = ComposeUIViewController { StarterApp(container, links.links) }
+    fun viewController() =
+        ComposeUIViewController { StarterApp(container, links.links) }.also(fileOutputs::attach)
 
     fun openLink(uri: String) {
         links.receive(uri)

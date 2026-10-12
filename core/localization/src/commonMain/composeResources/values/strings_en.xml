@@ -1,4 +1,7 @@
 <resources>
+    <string name="file_save_failed_en">The file could not be saved.</string>
+    <string name="file_already_exists_en">A file with this name already exists. Choose another name.</string>
+
     <string name="sign_in_en">Sign in</string>
     <string name="sign_in_description_en">Use your account to continue.</string>
     <string name="email_en">Email</string>

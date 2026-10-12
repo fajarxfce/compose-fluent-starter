@@ -1,5 +1,16 @@
 # Validation
 
+## Owned file output
+
+Complete root checks passed with 257 desktop/JVM tests. File-I/O passed 21
+Chromium tests, localization passed two, and app wiring passed two. Android dev
+assembly and production Web distribution passed; Web retains three existing
+bundler warnings. Shared native/browser regressions cover bounded writes, partial
+writes, zero progress, cancellation, late picker results, disposal and read/write
+failure mapping. The Apple filesystem tests are part of the existing simulator CI
+target and were not run on this Linux host. No native save-dialog device acceptance
+was performed for the starter demo.
+
 ## Bounded binary responses
 
 Root checks passed with 249 desktop tests. Chromium passed all 34 network and five

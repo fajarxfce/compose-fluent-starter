@@ -22,6 +22,8 @@ import dev.fajar.starter.demo.SampleTransferInputSource
 import dev.fajar.starter.featureflags.data.datasources.RemoteFeatureFlagSource
 import dev.fajar.starter.featureflags.data.datasources.UnavailableFeatureFlagSource
 import dev.fajar.starter.featureflags.data.di.FeatureFlagDataModule
+import dev.fajar.starter.fileio.FileOutputSource
+import dev.fajar.starter.fileio.UnavailableFileOutputSource
 import dev.fajar.starter.files.presentation.di.FilesPresentationModule
 import dev.fajar.starter.identity.data.di.IdentityModule
 import dev.fajar.starter.identity.data.sso.config.SsoConfiguration
@@ -67,6 +69,7 @@ fun createAppContainer(
     platform: AppPlatform = AppPlatform.Desktop,
     transferInputs: TransferInputSource = SampleTransferInputSource(),
     location: LocationDataSource = UnavailableLocationDataSource(),
+    fileOutputs: FileOutputSource = UnavailableFileOutputSource(),
 ) = koinApplication {
     modules(
         notificationPlatform,
@@ -87,6 +90,7 @@ fun createAppContainer(
         module {
             single { environment }
             single<LocationDataSource> { location }.onClose { it?.close() }
+            single<FileOutputSource> { fileOutputs }.onClose { it?.close() }
 
             single<TransferInputSource> { transferInputs }
             single<TransferStore> { get<AppDatabase>().transfers }
