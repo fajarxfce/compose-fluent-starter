@@ -1,5 +1,19 @@
 # Downstream development
 
+## Bounded protocol response bodies
+
+The public `readApiBody` boundary matches
+[HRIS Mobile 7741c4e](https://github.com/fajarxfce/hris-mobile/commit/7741c4e).
+Feature-owned protocols can select a bounded success-body budget while HTTP
+problems retain their independent 16 KiB limit. Callers own and clear successful
+buffers. Regressions cover one-byte probes, oversized bodies, invalid budgets
+and retained structured rejection codes. Expense authorization, range negotiation
+and file export policy remain in the application.
+
+Root checks passed with 278 desktop tests, 36 network Chromium tests and Android
+dev assembly. HRIS Mobile passed its corresponding checks, network Chromium
+suite and Android build.
+
 ## Exact decimal formatting
 
 `DecimalAmount` and `formatDecimal` match
