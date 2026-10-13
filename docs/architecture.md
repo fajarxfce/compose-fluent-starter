@@ -66,8 +66,9 @@ can retain the original exception for an appropriate internal sink. Never expose
 bodies, credentials, or exception messages in UI/log output.
 
 Protected read failures remain authoritative while a retry is pending or fails.
-A transport/storage error cannot replace a known access denial or expired read
-lease and make retained cache data readable. Presentation stops that cache
+A transport/storage error cannot replace a confirmed access denial and make
+retained private data readable. Ordinary data age and credential expiry are
+separate from permission to read locally owned facts. Presentation stops that cache
 subscription until a fresh admitted acquisition succeeds. Cache deletion remains
 best effort. Test this boundary with failed cleanup that retains old ciphertext.
 
@@ -99,8 +100,11 @@ The in-memory session datasource owns a replayed DTO snapshot. Its repository
 coordinates credential storage and account cache ownership; session policy remains
 in use cases. See [sessions and HTTP](runtime.md).
 
-[Durable command storage](command-storage.md) is separate from disposable account
-caches. Application identity adapters supply their stable audience/account binding.
+[Durable command storage](command-storage.md) and [account-owned read replicas](replica-storage.md)
+are separate from temporary session data. Application identity adapters supply
+the stable audience/account binding and an independent active-session guard.
+Logout hides retained records; an admitted new session for that account can
+access them without authorizing the preceding session's late work.
 Features own encryption, admission, replay and conflicts; the raw database enforces
 ownership, request immutability, bounds and atomic outcome revisions.
 
@@ -148,8 +152,8 @@ a loaded tab must not clear its data or unconditionally repeat acquisition.
 Retain its state and bounded local data/admission observation in the navigation
 ViewModel; collect rendering state only while the consumer is visible. Network
 requests, sensors and user actions still need an explicit foreground owner and
-cancellation policy. Hidden read state must expire or lose access through its
-domain observation. Clearing the route owner cancels retained observations.
+cancellation policy. Hidden read state must react to lost admission through its
+domain observation; ordinary freshness age does not remove stored facts. Clearing the route owner cancels retained observations.
 Do not retain whole UI trees or view callbacks to preserve data, and do not treat
 animation or composition entry as a business refresh signal.
 

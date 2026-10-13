@@ -241,3 +241,19 @@ Selection stays with the caller; the component supplies tab semantics, wrapping
 labels and touch targets. Root checks passed with 265 desktop tests, two
 application Chromium tests and Android dev assembly. HRIS document navigation
 and acquisition policy remain in the mobile application.
+
+
+## Stable read ownership
+
+The raw replication contract now accepts `ReplicaScope`: a current session guard
+and an optional stable API/account key. Composite database keys keep accounts and
+company/collection partitions independent. New-session reads can use retained
+account data, while the previous session cannot publish, remove or recreate it.
+A missing account key explicitly selects temporary session data. Existence checks
+include inactive accounts so encryption adapters do not replace a lost key over
+retained ciphertext.
+
+The shared Room/IndexedDB schema upgrades and regression contract match HRIS
+Mobile. Both repositories passed root checks, database Chromium tests and Android
+dev assembly. HRIS separately owns encrypted Inbox formats, company admission,
+credential-bound cursor replacement and offline UI acceptance.

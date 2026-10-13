@@ -162,3 +162,19 @@ two application Chromium tests and Android dev assembly. Regression coverage
 includes pointer/keyboard activation, editor-free entry semantics, focus dismissal,
 disposal and reopening. HRIS Mobile separately exercises navigation and real API
 search on its Android emulator.
+
+
+## Account-owned read replicas
+
+On 14 October 2026, root checks passed with 279 JVM/desktop tests, 24 database
+Chromium cases and Android dev assembly. Both database implementations exercise
+stable account/API/company partitions independently of the current session,
+logout and reauthentication, late writes, observer invalidation, checkpoint
+compare-and-set, tombstones, cancellation and reopening. Migration tests retain
+active/staging rows and equal-version deletions from Room schema 8 and IndexedDB
+schema 7; the new versions are 9 and 8 respectively.
+
+HRIS Mobile additionally validates encrypted Inbox integration and Android upgrade,
+offline reads, and same-account sign-in recovery. The starter's generic contract
+does not introduce an HRIS feed or change its demo's session-owned dashboard data.
+No starter APK installation or new physical-device/performance claim is made.
