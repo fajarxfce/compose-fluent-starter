@@ -76,6 +76,11 @@ disconnected targets. Add `--skip-build --install-only` to update an already
 validated APK without bringing the app to the foreground. Installation retains
 app data but may stop an existing app process.
 
+On a shared VPS, stop the dedicated emulator before production Web optimization
+and restart it after the build. The combined compiler, `wasm-opt` and emulator
+memory peak can exhaust the host. Keep the AVD's data when restarting; release
+idle Gradle daemons with `./gradlew --stop` after the build finishes.
+
 An integrated local backend may need `--reverse-port <port>`. The runner configures
 that forwarding on the selected device before installing; failure stops installation.
 ADB discovery, forwarding, installation and launch have finite timeouts. Forwarding
