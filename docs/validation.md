@@ -178,3 +178,19 @@ HRIS Mobile additionally validates encrypted Inbox integration and Android upgra
 offline reads, and same-account sign-in recovery. The starter's generic contract
 does not introduce an HRIS feed or change its demo's session-owned dashboard data.
 No starter APK installation or new physical-device/performance claim is made.
+
+## Indexed replica reads
+
+The raw replica store supports bounded equality-tag queries. Multiple pages share
+one published generation/revision and active account check; record, index and
+cursor changes commit together. SQLite and IndexedDB tests cover filtering, ordered
+pagination, status-index replacement, stale updates, deletion, rollback, staged
+publication, observer disposal and replacement sessions. Both migration suites
+retain untagged account ciphertext, pending generations and tombstones before
+adding indexes.
+
+Root checks passed with 283 JVM/desktop tests. The database (25) and secure-storage
+(16) Chromium suites passed, including independent HKDF/HMAC vectors and cancellation.
+Android dev assembly passed. This validates the storage foundation; it does not
+claim that a business collection is connected to a change feed or that UI/device
+acceptance has been performed for this increment.

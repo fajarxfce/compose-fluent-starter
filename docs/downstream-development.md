@@ -257,3 +257,14 @@ The shared Room/IndexedDB schema upgrades and regression contract match HRIS
 Mobile. Both repositories passed root checks, database Chromium tests and Android
 dev assembly. HRIS separately owns encrypted Inbox formats, company admission,
 credential-bound cursor replacement and offline UI acceptance.
+
+## Indexed replica queries
+
+The shared replica store adds optional equality tags and atomic multi-page reads,
+with compatible Room/IndexedDB migrations. `contentIndexes` derives scoped opaque
+filter tokens using HKDF-SHA256 and HMAC-SHA256. Storage performs no feature
+selection, permission policy or synchronization. The implementation and portable
+regressions match HRIS Mobile; Leave integration remains application work.
+
+Root checks, 41 database/secure-storage Chromium tests and Android dev assembly
+passed. No device performance or business sync coverage is inferred from these checks.
