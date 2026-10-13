@@ -31,3 +31,11 @@ The root language provider owns a dedicated read-only `LanguageViewModel`; it do
 not create Settings permission observers or refresh access. Equal language values
 are conflated, and disposal cancels the preference subscription. Settings keeps
 its own route-scoped state and actions.
+
+Use `DecimalAmount.parse` for exact decimal values supplied as strings. The bounded
+value canonicalizes equivalent scales and signed zero without floating-point
+conversion. `formatDecimal` preserves every retained digit, adds English/Indonesian
+separators and optionally pads a minimum fractional scale. It does not round,
+recalculate amounts or infer a currency. Currency and financial policy belong to
+the consuming application. Tests cover large values, fractional precision, refunds
+and invalid representations on JVM and in the browser.

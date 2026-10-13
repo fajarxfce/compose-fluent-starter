@@ -27,7 +27,7 @@ apps/android                 Android runner
 apps/ios                     iOS runner
 apps/shared                  Composition, navigation, desktop/iOS/web entry points
 apps/demo                    Demo HTTP transport
-core/common                  Result and failure types
+core/common                  Result, failures and exact decimals
 core/securestorage           Android Keystore, iOS Keychain, desktop credential manager
 core/availability            domain / data; minimum version and maintenance policy
 core/security                domain / data; permissions, biometric app lock and access policy

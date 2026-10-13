@@ -1,5 +1,14 @@
 # Downstream development
 
+## Exact decimal formatting
+
+`DecimalAmount` and `formatDecimal` match
+[HRIS Mobile d51b291](https://github.com/fajarxfce/hris-mobile/commit/d51b291).
+The shared value retains bounded decimal digits and value equality across equivalent
+scales. English/Indonesian formatting avoids floating-point conversion. Portable
+regressions cover precision beyond integer-safe floating-point values, signed zero,
+refunds and invalid input. Payroll contracts and policy stay in HRIS Mobile.
+
 ## Enum route arguments
 
 The shared `enumNavType` adapter matches
