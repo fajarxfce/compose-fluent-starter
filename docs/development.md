@@ -88,6 +88,11 @@ ends when ADB disconnects and must then be restored. It does not change the buil
 API URL or the application's HTTPS policy. The default in-process demo needs no
 forwarding.
 
+For a slow remote connection, `--install-timeout 600` gives the APK transfer and
+installation up to ten minutes. The default is 180 seconds; accepted values are
+30–900 seconds. Timeout leaves the result unconfirmed and never launches or
+retries the app. Check package metadata before retrying with the same APK.
+
 ## Tests
 
 `:check` runs architectural checks and all module desktop tests, including the UI smoke

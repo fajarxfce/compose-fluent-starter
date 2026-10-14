@@ -113,6 +113,15 @@ HRIS Mobile.
 
 ## Android runner recovery
 
+The optional installation deadline and timeout regressions match
+[HRIS Mobile d66078bc](https://github.com/fajarxfce/hris-mobile/commit/d66078bc).
+An observed VPN transfer exceeded the default three-minute deadline. Callers can
+select 30–900 seconds without enabling retries or application launch. Timeout
+reports an unconfirmed result; invalid values are rejected before device access.
+Both repositories passed all ten runner tests. HRIS endpoints and phone selection
+remain application configuration.
+
+
 Bounded ADB commands, optional per-device port forwarding and runner checks match
 [HRIS Mobile 2e12213](https://github.com/fajarxfce/hris-mobile/commit/2e12213).
 Both repositories passed their root checks and all seven runner tests. HRIS's
