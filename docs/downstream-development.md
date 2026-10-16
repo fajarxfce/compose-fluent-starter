@@ -1,5 +1,17 @@
 # Downstream development
 
+## Filter labels at large text sizes
+
+The optional `AppFilterChip.maxLines` and its regression match
+[HRIS Mobile 7e79d35f](https://github.com/fajarxfce/hris-mobile/commit/7e79d35f).
+The default remains one line. A complete month and year can wrap between
+48 dp navigation actions at 320 dp width and 200% text without losing click
+semantics. Month selection and attendance policy remain in HRIS Mobile.
+
+Root checks passed with 284 desktop tests, including the new label regression.
+Android dev assembly passed. HRIS also verified the control on Android at 200%
+text after an offline upgrade without changing retained attendance records.
+
 ## Bounded protocol response bodies
 
 The public `readApiBody` boundary matches

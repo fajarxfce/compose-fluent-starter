@@ -76,6 +76,10 @@ and disabled-choice semantics. Supply localized month labels with `formatMonth`
 and let the feature decide which dates are available. Keep the picker in an owned,
 scrollable surface when text scaling can exceed the available height.
 
+Use `AppFilterChip(maxLines = 2)` when a selected value must remain fully visible
+beside other actions. Month controls can wrap the month and year at 200% text
+without shrinking adjacent 48 dp targets. Other chips retain a single-line default.
+
 `AppDatePicker` renders a controlled seven-column month grid. The caller supplies
 short localized weekday labels, full-date accessible descriptions, selection and
 availability. Calendar navigation and date policy remain with the feature. Put it
