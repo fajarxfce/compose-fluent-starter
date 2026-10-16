@@ -1,5 +1,18 @@
 # Downstream development
 
+## Published replica metadata
+
+The metadata-only published-checkpoint observer matches
+[HRIS Mobile ff01f11e](https://github.com/fajarxfce/hris-mobile/commit/ff01f11ef04ba7e81c87ec3a2e061644139a424c).
+Room and IndexedDB retain visible metadata while a replacement stages, then
+publish the new checkpoint atomically. Account/company isolation, replacement
+login, removal and observer cancellation share the same portable regression.
+Feature decryption, read admission and synchronization status remain application
+responsibilities.
+
+Root checks, all 25 database Chromium tests and Android dev assembly passed in
+both repositories. See [replication storage](replica-storage.md) for the contract.
+
 ## Filter labels at large text sizes
 
 The optional `AppFilterChip.maxLines` and its regression match
