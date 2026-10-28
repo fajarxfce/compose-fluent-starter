@@ -20,6 +20,17 @@ updates the existing entry. This is a local inbox, not a server-synchronized not
 history or an exactly-once delivery guarantee. Add an authenticated inbox endpoint if
 history must include messages the platform never delivered to application code.
 
+## Internal destinations
+
+Local display accepts bounded internal paths of ASCII letters, digits, hyphens and
+underscores, separated by slashes. A path has at most 12 segments, 80 characters per
+segment and 512 characters total. Schemes, hosts, query/fragment parts, encoded or
+empty segments are rejected before platform display. Android appends each segment
+separately, so hierarchical resource links keep their path structure. Its full
+message ID identifies notification replacement, with only one alert on update.
+The consuming application still validates the destination against its current
+session and resource authorization when the user opens it.
+
 ## Token retirement
 
 `PushTokenRepository.deleteToken()` removes the SDK registration on Android,

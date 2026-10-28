@@ -1,5 +1,14 @@
 # Downstream development
 
+## Notification resource paths
+
+The four notification source/test files from Mobile `b77d991f` preserve validated
+hierarchical internal paths on Android. Source baselines matched before copying.
+Mobile passed root checks, eight notification-data Chromium tests and Android
+assembly before the port; the starter passed the same checks with 291 desktop
+tests. HRIS hint queues, selected-company admission and canonical Inbox acquisition
+stay in Mobile. See [notification contracts](notifications.md).
+
 ## Provider token retirement
 
 Thirteen reusable source/test files match HRIS Mobile `e56ef32b` after checking

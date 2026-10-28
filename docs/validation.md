@@ -1,5 +1,19 @@
 # Validation
 
+## Hierarchical notification destinations
+
+On 28 October 2026, root checks passed with 291 desktop/UI tests, the runner and
+distribution suites, architecture, formatting and static analysis. All eight
+notification-data Chromium tests and configured Android dev assembly passed in
+`.work/notification-path-validation.log`.
+
+Four source/test files match Mobile `b77d991f`, after comparing the previous source
+baselines. Internal destination validation rejects schemes, query/fragment parts,
+encoded separators, empty segments and oversized paths before platform display.
+Android appends separate path segments and uses the full event ID for notification
+replacement with only one alert. This is fixture/build evidence; device delivery
+and consumer-specific authorization are separate acceptance work.
+
 ## Provider token retirement
 
 On 28 October 2026, root checks passed with 289 desktop tests, plus the runner,
