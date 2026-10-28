@@ -2,6 +2,8 @@
 
 A modular Compose Multiplatform starter with community [Compose Fluent](https://github.com/compose-fluent/compose-fluent-ui), clean architecture, MVI, and an onboarding → sign-in → dashboard flow.
 
+Agent continuation: [current checkpoint and downstream workflow](docs/agent-handoff.md).
+
 ## Run
 
 Requires JDK 21. Checks require Python 3; web builds require Node.js 22 LTS.
