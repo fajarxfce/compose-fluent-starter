@@ -10,8 +10,12 @@ Output is in `.work/push-token-validation.log`.
 Thirteen reusable source/test files match Mobile after baseline comparison.
 The port includes SDK deletion, current-token observation instead of callback
 token replay, cancellation/late-result tests and the Swift deletion bridge.
-Two Apple bridge regressions are scheduled through simulator CI; they were not
-run on this Linux host. No provider or device acceptance is claimed. Backend
+Remote [CI run 40627090822](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40627090822)
+passed Linux verification, Windows packaging and Apple simulator/Xcode checks,
+including both Apple token bridge regressions. The supplied local Firebase
+configuration also passed Android dev assembly and staging/prod configuration
+processing for project `cmp-fajar`; its file remains ignored. No provider or
+device acceptance is claimed. Backend
 registration, session ownership and retirement recovery belong to the consuming
 application.
 
