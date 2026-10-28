@@ -39,3 +39,10 @@ Validation: the Linux workspace check, Android dev debug build, and actual SQLit
 and IndexedDB tests passed. This storage was integrated from
 [HRIS Mobile](https://github.com/fajarxfce/hris-mobile/commit/075b95a); its HRIS
 session binding and business command policy remain in that application.
+
+`observeAll` observes the complete selected partition, bounded by the existing
+128-command account capacity. It supports summaries that must include retained
+operations beyond the ordinary 50-record page. It preserves account checks,
+ordering, logout invalidation and cancellation; it does not schedule delivery or
+classify outcomes. SQLite and IndexedDB share coverage through full capacity,
+outcome changes, removal and replacement login.

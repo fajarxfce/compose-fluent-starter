@@ -1,5 +1,18 @@
 # Validation
 
+## Pending-work storage ports
+
+On 28 October 2026, `xvfb-run -a ./gradlew :check
+:core:database:wasmJsBrowserTest :apps:android:assembleDevDebug` passed with JDK 21,
+Android SDK 36 and Node 22.23.3. The root check covered 284 desktop tests; Chromium
+ran all 25 database tests. Portable regressions now also cover published partition
+pagination, staging visibility, observer cancellation and full-capacity retained
+command observation across logout and replacement login.
+
+The twelve database source/test files match the validated Mobile change `0428aa46`.
+This is an automated storage and assembly check, with no phone/emulator installation
+or Apple execution. Local build output is in `.work/pending-storage-validation.log`.
+
 ## Owned file output
 
 Complete root checks passed with 257 desktop/JVM tests. File-I/O passed 21

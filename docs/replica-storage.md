@@ -116,3 +116,11 @@ rows and equal-version tombstones from the preceding database schema.
 Validation: the workspace `:check`, Android dev debug build, and database
 `wasmJsBrowserTest` passed on Linux. This does not establish device performance
 or complete a feature's encryption and synchronization integration.
+
+`observePublishedCheckpoints` enumerates visible metadata across a partition prefix,
+ordered by partition with an exclusive partition cursor. Each page contains 1–200
+checkpoints and checks the active session/account in the same read transaction.
+Staging-only partitions remain absent; replacing a published generation leaves its
+previous metadata visible until publication. Prefix and cursor accept only bounded
+ASCII keys, and a cursor must belong to the requested prefix. No document payloads
+are read. Feature repositories own decryption and define any narrower page limits.

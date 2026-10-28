@@ -1,5 +1,20 @@
 # Downstream development
 
+## Published partition pages and complete command observation
+
+The database contracts and portable regressions match HRIS Mobile `0428aa46`.
+`observePublishedCheckpoints` reads bounded metadata pages under a partition
+prefix, retaining the visible generation during replacement. `CommandStore.observeAll`
+includes every retained command in a partition under the existing account capacity.
+Account ownership, cancellation and replacement-login behavior stay in the raw
+storage contracts. HRIS draft editing, business outcomes and the pending-actions
+page remain in Mobile.
+
+On 28 October 2026, root checks passed with 284 desktop tests. All 25 database
+Chromium tests and Android dev assembly passed. No device installation or Apple
+build was performed for this port. See [replication storage](replica-storage.md)
+and [command storage](command-storage.md).
+
 ## Published replica metadata
 
 The metadata-only published-checkpoint observer matches
