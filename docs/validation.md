@@ -1,5 +1,20 @@
 # Validation
 
+## Provider token retirement
+
+On 28 October 2026, root checks passed with 289 desktop tests, plus the runner,
+distribution, architecture and format checks. All six notification-data Chromium
+tests and Android dev assembly passed with JDK 21, SDK 36 and Node 22.23.3.
+Output is in `.work/push-token-validation.log`.
+
+Thirteen reusable source/test files match Mobile after baseline comparison.
+The port includes SDK deletion, current-token observation instead of callback
+token replay, cancellation/late-result tests and the Swift deletion bridge.
+Two Apple bridge regressions are scheduled through simulator CI; they were not
+run on this Linux host. No provider or device acceptance is claimed. Backend
+registration, session ownership and retirement recovery belong to the consuming
+application.
+
 ## Session-owned incoming links
 
 On 28 October 2026, root checks passed with 286 desktop tests, ten Android-runner

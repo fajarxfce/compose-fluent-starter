@@ -1,5 +1,18 @@
 # Downstream development
 
+## Provider token retirement
+
+Thirteen reusable source/test files match HRIS Mobile `e56ef32b` after checking
+their source baselines. Android/iOS callbacks now request the current SDK token
+instead of replaying retained token strings. Android, iOS and Web adapters expose
+deletion; failed or cancelled deletion does not publish success. The Swift bridge
+and simulator regressions accompany the port.
+
+Mobile passed root checks with 1,735 desktop tests; the starter passed 289.
+Both passed all six notification-data Chromium tests and Android dev assembly.
+Apple execution is tracked separately through CI. Session-bound registration,
+backend disable and durable retirement recovery remain application policy.
+
 ## Published partition pages and complete command observation
 
 The database contracts and portable regressions match HRIS Mobile `0428aa46`.
