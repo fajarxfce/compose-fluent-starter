@@ -21,7 +21,10 @@ Chromium tests and configured Android dev assembly on 28 October 2026. Output is
 in `.work/firebase-provider-validation.log`. All 34 newly verified artifact entries
 match the already validated Mobile metadata and preserve every prior hash. This
 port adds 13 portable provider regressions and two application-container cases.
-Remote Apple/Windows verification is tracked separately from the local checks.
+Remote [run 40648662419](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40648662419)
+for `9a13791` passed Linux/Android/Web, Windows and Apple simulator tests/full Xcode
+simulator build. Real Google token exchange and iOS Firebase provider acceptance
+remain separate from build/container compatibility.
 
 ## Notification resource paths
 
