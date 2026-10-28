@@ -7,6 +7,11 @@ distribution suites, architecture, formatting and static analysis. All eight
 notification-data Chromium tests and configured Android dev assembly passed in
 `.work/notification-path-validation.log`.
 
+Remote [run 40637280819](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40637280819)
+for port `7562e67` passed Linux verification/Android assembly, Windows compilation,
+Apple simulator tests and the Xcode simulator build. These results validate the
+generic port across the configured runners; real provider delivery remains open.
+
 Four source/test files match Mobile `b77d991f`, after comparing the previous source
 baselines. Internal destination validation rejects schemes, query/fragment parts,
 encoded separators, empty segments and oversized paths before platform display.
