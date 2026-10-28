@@ -63,30 +63,36 @@ fun AppNavigation(navigation: ScopedNavigationState, incomingLinks: Flow<String>
             AppStage.SignedOut -> "signed-out"
             else -> "bootstrap"
         }
-    LaunchedEffect(scope, state.pendingLink) {
+    LaunchedEffect(scope, state.pendingLink, lifecycle) {
         val link = state.pendingLink
-        if (stage is AppStage.SignedIn && link != null) {
-            when (link) {
-                AppLink.Inbox ->
-                    controller.navigate(NotificationRoute) {
-                        popUpTo<DashboardRoute>()
-                        launchSingleTop = true
-                    }
-                else ->
-                    controller.navigate(
-                        DashboardRoute(
-                            when (link) {
-                                AppLink.Activity -> DashboardTab.Activity
-                                AppLink.Account -> DashboardTab.Account
-                                else -> DashboardTab.Overview
+        if (stage is AppStage.SignedIn && link != null && link.sessionId == stage.sessionId) {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                controller.awaitAppLinkNavigation(scope)
+                val current = viewModel.state.value
+                if (current.pendingLink == link && current.stage == stage) {
+                    when (link.target) {
+                        AppLink.Inbox ->
+                            controller.navigate(NotificationRoute) {
+                                popUpTo<DashboardRoute>()
+                                launchSingleTop = true
                             }
-                        )
-                    ) {
-                        popUpTo<DashboardRoute> { inclusive = true }
-                        launchSingleTop = true
+                        else ->
+                            controller.navigate(
+                                DashboardRoute(
+                                    when (link.target) {
+                                        AppLink.Activity -> DashboardTab.Activity
+                                        AppLink.Account -> DashboardTab.Account
+                                        else -> DashboardTab.Overview
+                                    }
+                                )
+                            ) {
+                                popUpTo<DashboardRoute> { inclusive = true }
+                                launchSingleTop = true
+                            }
                     }
+                    viewModel.onEvent(AppEvent.LinkHandled(link))
+                }
             }
-            viewModel.onEvent(AppEvent.LinkHandled(link))
         }
     }
     ScopedNavHost(navigation, scope = scope, startDestination = destination) {

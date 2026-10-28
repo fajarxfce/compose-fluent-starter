@@ -104,8 +104,11 @@ a compatible system tray return an unavailable capability instead of claiming de
 
 Allowed destinations: `overview`, `activity`, `account`, `inbox`. Unknown paths, query
 parameters, and links for another environment are ignored. Protected destinations wait
-until onboarding and sign-in complete; signing out removes the protected stack. Pending
-links are in-memory intents and do not survive process death.
+until onboarding and sign-in complete, the host resumes and its destination finishes
+entering. A waiting intent binds to its first session and is discarded on logout or
+session replacement. An older acknowledgement cannot consume a different pending
+intent. Signing out removes the protected stack. Pending links are in-memory intents
+and do not survive process death.
 
 ```sh
 adb shell am start -W -a android.intent.action.VIEW \

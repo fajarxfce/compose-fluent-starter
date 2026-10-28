@@ -18,53 +18,58 @@ import kotlinx.coroutines.test.*
 
 class AppViewModelTest {
     @Test
-    fun pendingLinkSurvivesOnboardingAndLoginAndIgnoresAnOlderAcknowledgement() = runTest {
-        Dispatchers.setMain(StandardTestDispatcher(testScheduler))
-        val owner = ViewModelStore()
-        val identity = TestSessions()
-        var complete = false
-        val onboarding =
-            object : OnboardingRepository {
-                override suspend fun isComplete() = AppResult.Success(complete)
+    fun pendingLinkSurvivesFirstLoginButNotSessionReplacementAndIgnoresOlderAcknowledgement() =
+        runTest {
+            Dispatchers.setMain(StandardTestDispatcher(testScheduler))
+            val owner = ViewModelStore()
+            val identity = TestSessions()
+            var complete = false
+            val onboarding =
+                object : OnboardingRepository {
+                    override suspend fun isComplete() = AppResult.Success(complete)
 
-                override suspend fun complete() = AppResult.Success(Unit).also { complete = true }
+                    override suspend fun complete() =
+                        AppResult.Success(Unit).also { complete = true }
+                }
+            try {
+                val vm =
+                    AppViewModel(
+                        LoadOnboarding(onboarding),
+                        ObserveSessionIdentity(identity),
+                        dev.fajar.starter.identity.domain.usecases.RestoreSession(identity),
+                        ResolveAppLink(AppEnvironment.Dev),
+                    )
+                owner.put("app", vm)
+                vm.onEvent(AppEvent.LinkReceived("fluentstarter-dev://app/inbox"))
+                runCurrent()
+                assertEquals(AppStage.Onboarding, vm.state.value.stage)
+                assertEquals(PendingAppLink(AppLink.Inbox), vm.state.value.pendingLink)
+                complete = true
+                vm.onEvent(AppEvent.BootstrapRequested)
+                runCurrent()
+                assertEquals(AppStage.SignedOut, vm.state.value.stage)
+                assertEquals(PendingAppLink(AppLink.Inbox), vm.state.value.pendingLink)
+                identity.value.value = AppResult.Success(testSession())
+                runCurrent()
+                assertEquals(AppStage.SignedIn("session-a"), vm.state.value.stage)
+                val first = requireNotNull(vm.state.value.pendingLink)
+                assertEquals("session-a", first.sessionId)
+                identity.value.value = AppResult.Success(testSession().copy(id = "session-b"))
+                runCurrent()
+                assertEquals(AppStage.SignedIn("session-b"), vm.state.value.stage)
+                assertNull(vm.state.value.pendingLink)
+                vm.onEvent(AppEvent.LinkReceived("fluentstarter-dev://app/activity"))
+                vm.onEvent(AppEvent.LinkHandled(first))
+                runCurrent()
+                assertEquals(AppLink.Activity, vm.state.value.pendingLink?.target)
+                vm.onEvent(AppEvent.LinkHandled(requireNotNull(vm.state.value.pendingLink)))
+                runCurrent()
+                assertNull(vm.state.value.pendingLink)
+            } finally {
+                owner.clear()
+                Dispatchers.resetMain()
             }
-        try {
-            val vm =
-                AppViewModel(
-                    LoadOnboarding(onboarding),
-                    ObserveSessionIdentity(identity),
-                    dev.fajar.starter.identity.domain.usecases.RestoreSession(identity),
-                    ResolveAppLink(AppEnvironment.Dev),
-                )
-            owner.put("app", vm)
-            vm.onEvent(AppEvent.LinkReceived("fluentstarter-dev://app/inbox"))
-            runCurrent()
-            assertEquals(AppStage.Onboarding, vm.state.value.stage)
-            assertEquals(AppLink.Inbox, vm.state.value.pendingLink)
-            complete = true
-            vm.onEvent(AppEvent.BootstrapRequested)
-            runCurrent()
-            assertEquals(AppStage.SignedOut, vm.state.value.stage)
-            assertEquals(AppLink.Inbox, vm.state.value.pendingLink)
-            identity.value.value = AppResult.Success(testSession())
-            runCurrent()
-            assertEquals(AppStage.SignedIn("session-a"), vm.state.value.stage)
-            identity.value.value = AppResult.Success(testSession().copy(id = "session-b"))
-            runCurrent()
-            assertEquals(AppStage.SignedIn("session-b"), vm.state.value.stage)
-            vm.onEvent(AppEvent.LinkReceived("fluentstarter-dev://app/activity"))
-            vm.onEvent(AppEvent.LinkHandled(AppLink.Inbox))
-            runCurrent()
-            assertEquals(AppLink.Activity, vm.state.value.pendingLink)
-            vm.onEvent(AppEvent.LinkHandled(AppLink.Activity))
-            runCurrent()
-            assertNull(vm.state.value.pendingLink)
-        } finally {
-            owner.clear()
-            Dispatchers.resetMain()
         }
-    }
 }
 
 private class TestSessions(initial: Session? = null) : SessionRepository {

@@ -1,6 +1,7 @@
 package dev.fajar.starter.app.bootstrap
 
 import androidx.lifecycle.viewModelScope
+import dev.fajar.starter.app.navigation.PendingAppLink
 import dev.fajar.starter.app.navigation.ResolveAppLink
 import dev.fajar.starter.common.result.AppResult
 import dev.fajar.starter.identity.domain.usecases.ObserveSessionIdentity
@@ -56,6 +57,14 @@ class AppViewModel(
                             observeIdentity().collect { identity ->
                                 updateState {
                                     it.copy(
+                                        pendingLink =
+                                            when (identity) {
+                                                is AppResult.Failed -> it.pendingLink
+                                                is AppResult.Success ->
+                                                    it.pendingLink?.inSession(
+                                                        identity.value?.sessionId
+                                                    )
+                                            },
                                         stage =
                                             when (identity) {
                                                 is AppResult.Failed ->
@@ -64,7 +73,7 @@ class AppViewModel(
                                                     identity.value?.let {
                                                         AppStage.SignedIn(it.sessionId)
                                                     } ?: AppStage.SignedOut
-                                            }
+                                            },
                                     )
                                 }
                             }
@@ -76,7 +85,8 @@ class AppViewModel(
 
     private fun onLinkReceived(event: AppEvent.LinkReceived) {
         val link = resolveAppLink(event.uri) ?: return
-        updateState { it.copy(pendingLink = link) }
+        val sessionId = (state.value.stage as? AppStage.SignedIn)?.sessionId
+        updateState { it.copy(pendingLink = PendingAppLink(link, sessionId)) }
     }
 
     private fun onLinkHandled(event: AppEvent.LinkHandled) {

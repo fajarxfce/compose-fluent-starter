@@ -1,5 +1,21 @@
 # Validation
 
+## Session-owned incoming links
+
+On 28 October 2026, root checks passed with 286 desktop tests, ten Android-runner
+tests and six distribution tests, plus architecture/format checks.
+The application Chromium suite passed three tests and
+Android dev assembly passed using JDK 21, SDK 36 and Node 22.23.3. Output is in
+`.work/link-ownership-validation-2.log`.
+
+The port from HRIS Mobile binds a pending link to its first session, drops it on
+logout/replacement, and waits for the resumed host and entered destination before
+navigating. Pure tests cover ownership and replacement acknowledgements; the
+assembled UI test queues a cold link through onboarding/sign-in, then verifies
+background/resume navigation. HRIS company and resource policy stay in Mobile.
+These are automated fixture checks; no device installation, iOS execution or
+external push-provider acceptance was performed.
+
 ## Pending-work storage ports
 
 On 28 October 2026, `xvfb-run -a ./gradlew :check
