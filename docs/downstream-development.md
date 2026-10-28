@@ -1,5 +1,28 @@
 # Downstream development
 
+## Firebase provider ownership
+
+Twenty reusable provider source/test files derive from Mobile `d191c61d`, with
+application-neutral documentation and fixture identifiers. Android Credential
+Manager, fixed Firebase REST transport, opaque provider contracts, lazy acquisition,
+bounded errors, nonce binding and cancellation/disposal regressions accompany the
+port. Host wiring preserves Activity/container ownership. Two additional real
+container regressions verify disabled/lazy transport, provider resolution and no
+application-session publication from provider proof alone.
+
+Mobile passed 1,837 desktop/UI tests, 119 related Chromium tests and Android
+assembly before the port. Its real Firebase email/password acceptance completed
+Android login through HRIS MFA, then removed the temporary account. Google account
+UI launch/dismissal passed, without Google token acceptance. HRIS exchange and login
+policy remain in Mobile. See [the provider contract](firebase-auth.md).
+
+The starter passed root checks with 306 desktop/UI tests, 29 identity-data
+Chromium tests and configured Android dev assembly on 28 October 2026. Output is
+in `.work/firebase-provider-validation.log`. All 34 newly verified artifact entries
+match the already validated Mobile metadata and preserve every prior hash. This
+port adds 13 portable provider regressions and two application-container cases.
+Remote Apple/Windows verification is tracked separately from the local checks.
+
 ## Notification resource paths
 
 The four notification source/test files from Mobile `b77d991f` preserve validated

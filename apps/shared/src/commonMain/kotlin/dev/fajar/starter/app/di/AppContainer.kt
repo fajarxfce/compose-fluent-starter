@@ -26,6 +26,7 @@ import dev.fajar.starter.fileio.FileOutputSource
 import dev.fajar.starter.fileio.UnavailableFileOutputSource
 import dev.fajar.starter.files.presentation.di.FilesPresentationModule
 import dev.fajar.starter.identity.data.di.IdentityModule
+import dev.fajar.starter.identity.data.firebase.datasources.*
 import dev.fajar.starter.identity.data.sso.config.SsoConfiguration
 import dev.fajar.starter.identity.data.sso.datasources.BrowserAuthorizationSource
 import dev.fajar.starter.identity.data.sso.datasources.UnavailableBrowserAuthorizationSource
@@ -70,10 +71,13 @@ fun createAppContainer(
     transferInputs: TransferInputSource = SampleTransferInputSource(),
     location: LocationDataSource = UnavailableLocationDataSource(),
     fileOutputs: FileOutputSource = UnavailableFileOutputSource(),
+    firebaseOptions: FirebaseClientOptionsSource = UnavailableFirebaseClientOptionsSource(),
+    googleCredentials: GoogleCredentialSource = UnavailableGoogleCredentialSource(),
 ) = koinApplication {
     modules(
         notificationPlatform,
         applicationNetworkModule(environment),
+        applicationFirebaseModule(firebaseOptions, googleCredentials),
         TransferDataModule().module,
         FilesPresentationModule().module,
         SecurityPresentationModule().module,

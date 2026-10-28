@@ -16,6 +16,10 @@ kotlin.sourceSets {
         implementation(libs.serialization.json)
     }
     getByName("androidMain").dependencies {
+        implementation(libs.android.core)
+        implementation(libs.android.credentials)
+        implementation(libs.android.credentials.play.services)
+        implementation(libs.google.id)
         implementation(libs.android.appauth)
         implementation(libs.android.activity)
     }

@@ -73,6 +73,7 @@ See [file input](docs/file-input.md) for platform attachment, cancellation, incr
 See [file output](docs/file-output.md) for save dialogs, bounded writes and native handle ownership.
 See [local-first sync and workers](docs/sync.md) for execution, retry and backend integration.
 See [feature flags](docs/feature-flags.md) for Firebase Remote Config, offline defaults, and dev/staging overrides.
+See [Firebase authentication](docs/firebase-auth.md) for reusable email/password and Android Google provider adapters and application integration.
 See [local storage](docs/storage.md) and [build environments](docs/environments.md) for platform setup. See [notifications and deep links](docs/notifications.md) for Firebase configuration.
 
 ## Check and build

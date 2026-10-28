@@ -75,6 +75,7 @@ kotlin {
     }
     sourceSets.getByName("desktopTest").dependencies {
         implementation(compose.desktop.uiTestJUnit4)
+        implementation(libs.ktor.mock)
         implementation(projects.features.dashboard.domain)
         implementation(projects.core.transfers.domain)
     }
