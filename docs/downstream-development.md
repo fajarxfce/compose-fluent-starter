@@ -19,7 +19,8 @@ OIDC crypto catalog entry reuses version 0.18.4 and existing verified artifacts.
 The starter demo login and application-session policy remain unchanged. Local
 root checks, Android assembly, 320 desktop and 46 identity/application Chromium
 cases passed in 4m20s, with ten runner/six distribution checks and no failures/
-errors/skips. Full hosted CI follows the port commit.
+errors/skips. Full hosted [CI 40864341588](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40864341588)
+is in progress at port `e0c6071`.
 
 ## Apple Firebase password configuration
 
@@ -41,8 +42,10 @@ Google browser/code exchange is a later Mobile increment, not part of this port.
 
 Starter root checks, Android dev assembly and identity Chromium passed in 1m10s
 (1,503 tasks). Reports retain 308 desktop and 31 Chromium cases, zero failures/
-errors/skips, plus ten runner and six distribution checks. Its independent Apple
-verification is next.
+errors/skips, plus ten runner and six distribution checks. Independent Apple
+[run 40861505322](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40861505322)
+passed at `8a75de5`: 62 native cases in 18 downloaded suites, no failures/errors/
+skips and the complete Xcode app. Compilation took 611s, tests 63s and Xcode 625s.
 
 ## Downstream actual FCM acceptance
 

@@ -10,9 +10,9 @@ the consuming application.
 
 Read `AGENTS.md`, [architecture](architecture.md), [downstream development](downstream-development.md)
 and [validation](validation.md). Inspect `git status`, recent commits and upstream
-before edits. The current branch is `fix/push-token-lifecycle`; latest accepted
-CI port `1817e45` follows Mobile proof. The validated application foundation remains
-Firebase provider port `9a13791`; the new workflow changes no application sources.
+before edits. The current branch is `fix/push-token-lifecycle`. The latest accepted
+Apple password/configuration port is `8a75de5`; Google port `e0c6071` has passed
+local checks and is completing its own full hosted verification below.
 
 Current work ports iOS Google browser/code ownership from Mobile `43cd8ec6`, after
 its full run `40858176601` passed all four jobs, 97 native cases and Xcode. All
@@ -25,10 +25,11 @@ excluded. [Downstream development](downstream-development.md) records the source
 
 The preceding password/configuration port `8a75de5` follows Mobile `196c1171` and
 its accepted Apple run `40855843460`. Starter root/Android, 308 desktop cases and
-31 identity Chromium cases passed in 1m10s; its native tests also passed in
+31 identity Chromium cases passed in 1m10s. Its independent Apple verification passed in
 [run 40861505322](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40861505322),
-whose Xcode step is still running. Do not cancel that run when dispatching the
-later Google port; use the separate full workflow scope. Matching local iOS
+with 62 native cases in 18 downloaded suites, no failures/errors/skips and the
+complete unsigned Xcode app. Compilation took 611s, tests 63s and Xcode 625s.
+This password-only run does not cover the later Google port. Matching local iOS
 plists for all three existing Starter apps were fetched and remain ignored/mode 600.
 
 Android Google → Firebase → HRIS → company/Home is now accepted on the user-operated
@@ -57,8 +58,8 @@ and actual one-hour export retirement (`1abdbce9`). Subsequent native fixtures
 The six Mobile pending-action observers now each have a native recovery example;
 those examples retain their specific scope and used Mobile application `02743a9f`.
 Later Mobile `678783b3` corrects English Expense count copy, with root/Android checks. No generic implementation port was
-needed for these HRIS fixtures; the Starter application remains unchanged since
-`9a13791`, whose cross-platform CI passed.
+needed for these HRIS fixtures; the then-current Starter application was `9a13791`,
+whose cross-platform CI passed. The later Apple provider ports are recorded above.
 
 The generic Apple CI correction is accepted. Mobile full run `40815794384` passed
 Linux/Android, Web and Windows but reached the combined Apple compile/test deadline.
@@ -78,10 +79,11 @@ passed all ten jobs at `9345c19b`: four backend/dashboard shards each, actual
 API/worker/export integration and schema-101 restore with a checked sanitized
 artifact. Its prior upload and browser-locator failures remain in the Platform
 measurement history. The owned temporary CI ref was removed after verification.
-No CI or owned local test remains active. All native-owned resources are cleaned,
-emulator data retained and location restored. Actual HRIS Android FCM delivery
-subsequently passed as recorded above. Google exchange and physical/iOS provider
-acceptance still need their actual external input; build results do not close them.
+Those earlier runs are complete; Google port run `40864341588` remains active.
+All earlier native fixture resources were cleaned, emulator data retained and
+location restored. Actual HRIS Android FCM and Google exchange subsequently passed
+as recorded above. Physical/iOS provider acceptance still needs actual external
+input; build results do not close it.
 
 The user authorized continued work and pushing every atomic commit. Preserve
 unrelated edits, omit co-author trailers and retain implementation/tests/docs
@@ -92,6 +94,7 @@ documents are the durable handoff; `.work` and chat history are supplementary.
 
 | Port | Source and destination | Recorded evidence |
 | --- | --- | --- |
+| Apple Firebase password/configuration | Mobile `196c1171` → Starter `8a75de5` | Mobile run `40855843460` passed 82 native cases/Xcode before porting. Starter run `40861505322` passed 62 native cases in 18 suites and the full Xcode app; root/Android/Chromium checks passed separately. |
 | Apple CI compilation budget | Mobile `451a2c4d` → Starter `1817e45` | Mobile run `40817592306` passed before Starter run `40820482699`; each retained 27 simulator tests and built the unsigned Xcode application. Separate 25/15/30-minute steps, 75-minute job bound, scoped manual dispatch and reports. |
 | Firebase provider ownership | Mobile `d191c61d` → Starter `9a13791` | 20 provider source/test files, host wiring and two actual container regressions; 306 desktop/UI and 29 identity-data Chromium tests, configured Android assembly. CI run [40648662419](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40648662419) passed Linux/Android/Web, Windows and Apple simulator/Xcode. |
 | Notification resource paths | Mobile `b77d991f` → Starter `7562e67` | Four source/test files, 291 desktop/UI and eight notification-data Chromium cases, Android assembly and cross-platform CI recorded at `da0855b`. |
@@ -106,8 +109,9 @@ also records replica storage, file ownership, navigation and UI foundations.
 The Firebase provider returns an opaque proof and never publishes a consuming
 application's session by itself. HRIS owns project discovery, binding, native
 exchange, MFA and login policy. Actual Firebase email/password through HRIS was
-accepted on Android; Google chooser/Back was accepted without a Google ID-token
-exchange. Those facts do not prove generic provider delivery on every target.
+accepted on Android. The user subsequently confirmed Google → Firebase → HRIS →
+company/Home on the installed Android phone, with independent server-session
+metadata. Those downstream facts do not prove provider delivery on every target.
 
 Local ignored Android config uses project `cmp-fajar`. The consuming HRIS server
 now has its private credential, and actual Android FCM delivery passed. iOS requires

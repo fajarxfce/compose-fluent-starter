@@ -16,8 +16,9 @@ Chromium passed in 4m20s (1,618 tasks: 1,404 executed, 214 up to date). The curr
 desktop report set contains 320 cases in 111 suites; identity Chromium passed 43
 cases in ten suites and the app passed three cases in three suites. All have zero
 failures/errors/skips. Ten runner/six distribution checks and architecture/format
-checks passed. The later port's own full CI is next; the earlier password-only
-Apple run `40861505322` retains its separate source boundary and is not cancelled.
+checks passed. The port's full [CI run 40864341588](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40864341588)
+is in progress at `e0c6071`. The accepted earlier password-only Apple run
+`40861505322` retains its separate source boundary.
 Actual iOS provider/device/APNs acceptance remains separate.
 
 
@@ -36,8 +37,11 @@ Local root checks, identity Chromium and configured Android dev assembly passed 
 308 cases in 108 suites; identity Chromium passed 31 cases in seven suites. All
 reports have zero failures/errors/skips. Ten Android-runner and six distribution
 checks passed, along with format/architecture checks for 45 modules. Starter's
-own simulator/Xcode verification is pending. This port does not yet include the
-later Mobile Google browser/code increment or claim actual iOS device acceptance.
+independent [Apple run 40861505322](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40861505322)
+passed at `8a75de5`: 62 simulator cases in 18 downloaded suites, zero failures/
+errors/skips and the complete unsigned Xcode app. Compilation took 611s, tests
+63s and Xcode 625s. This password-only source does not cover the later Google port
+or claim actual iOS device acceptance.
 
 
 ## Apple CI compilation budget

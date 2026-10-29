@@ -66,10 +66,10 @@ Product copy and backend-specific errors belong to the consuming application.
 
 ## Provenance and acceptance
 
-This foundation comes from Mobile `d191c61d`. Mobile's real Android acceptance
+The original foundation comes from Mobile `d191c61d`. Mobile's first Android acceptance
 completed Firebase password authentication, HRIS exchange and MFA using a temporary
 provider account, then removed it. Google system sign-in launch and dismissal also
-passed; actual Google token exchange and iOS remain separate acceptance. See the
+passed; that original run did not include Google token exchange or iOS. See the
 [Mobile validation record](https://github.com/fajarxfce/hris-mobile/blob/880f2a46/docs/validation.md).
 HRIS native sessions, account binding, MFA, login discovery and HRIS screens remain
 in Mobile. See [downstream development](downstream-development.md) for port checks.
@@ -79,6 +79,8 @@ cancellation-fixture correction `196c1171`. Its
 [Apple run 40855843460](https://github.com/fajarxfce/hris-mobile/actions/runs/40855843460)
 passed all 82 simulator cases and the full Xcode build before this port. Portable
 bundle/transport regressions and identity-native CI targets accompany the change.
+Starter's independent run `40861505322` at port `8a75de5` subsequently passed all
+62 native cases in 18 suites and the complete Xcode app.
 Actual iOS provider/device acceptance remains separate from these checks.
 
 This workspace has matching local ignored iOS configurations for the existing
