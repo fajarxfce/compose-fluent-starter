@@ -149,8 +149,27 @@
   "ci": {
     "run": 40916187442,
     "head": "77063862866bb52db5eade28733ceffce1588409",
-    "status": "in_progress",
-    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40916187442"
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40916187442",
+    "conclusion": "success",
+    "jobs": {
+      "verify": "success",
+      "windows": "success",
+      "apple": "success"
+    },
+    "apple": {
+      "tests": 84,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 24,
+      "stepSeconds": {
+        "Compile iOS simulator tests": 724,
+        "Run iOS simulator tests": 81,
+        "Build iOS simulator app": 744
+      },
+      "downloadedReportsInspected": true,
+      "xcodeAndDistributionMarkersConfirmed": true
+    }
   },
   "sourceSignedAndroidSeconds": 215.572,
   "newPomArtifacts": [
@@ -558,6 +577,12 @@
         "afterSha256": "d0e9bf5ab4d0398a00b8544815b650b1c41adc53a5b81cd5fe28750e42908bd2"
       }
     ],
-    "nativeCiBoundary": "77063862866bb52db5eade28733ceffce1588409; native/application code unchanged by this workflow-only follow-up"
-  }
+    "nativeCiBoundary": "77063862866bb52db5eade28733ceffce1588409; native/application code unchanged by this workflow-only follow-up",
+    "destinationFollowUp": "4c794e7bc6677154b51acbdc27110f5264473684",
+    "globIntegrity": "sha512-tST2rjPvJLRZLuT9NMUtyBjvj9Yo0MiJS3ow004slMvm8GFM+Zv9HvMJ7HWzfUyJnGrJvDsYkWBaaG3YKXRtCw==",
+    "actionSearchSource": "https://github.com/actions/upload-artifact/blob/ea165f8d65b6e75b540449e92b4886f43607fa02/src/shared/search.ts"
+  },
+  "status": "accepted",
+  "phoneInstalledThisIncrement": false,
+  "uploaded": false
 }
