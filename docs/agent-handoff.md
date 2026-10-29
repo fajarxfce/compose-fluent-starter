@@ -18,13 +18,25 @@ The local siblings are `/home/fajar/hris/hris-mobile` (`feat/native-push`) and
 pages are [Mobile](https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/agent-handoff.md)
 and [Platform](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/agent-handoff.md).
 The overall HRIS PRD remains in progress. Platform `b7f42070` integrates validated
-push-delivery observations (`409abad4`), original payroll period comparison
-(`f757bffd`) and actual one-hour export retirement (`1abdbce9`). Mobile `42f5e04d`
-reconciles its nine read-model registrations and six pending-action observers with
-tracked acceptance. These administrative features, fixture results and document
-corrections require no generic port. Platform is next exercising native Overtime
-commit-response loss with offline restart and Pending actions; inspect its latest
-handoff before resuming that fixture.
+push-delivery observations (`409abad4`), original payroll comparison (`f757bffd`)
+and actual one-hour export retirement (`1abdbce9`). Subsequent native fixtures
+`578a5031` (Overtime), `97e33310` (Expense), `ccae6f8f` (Leave) and `a837320f`
+(Attendance) pass real API/Android response-loss, offline restart and exact replay.
+The six Mobile pending-action observers now each have a native recovery example;
+those examples retain their specific scope. Application sources remain `02743a9f`.
+Mobile `ad675e57` records the latest evidence. No generic implementation port was
+needed for these HRIS fixtures; the Starter application remains unchanged since
+`9a13791`, whose cross-platform CI passed.
+
+Current continuation is complete CI/PRD reconciliation. Platform `d7184e83` adds
+manual Verify dispatch, now running as
+[40816036721](https://github.com/fajarxfce/hris-platform/actions/runs/40816036721).
+Mobile CI at `b0a95391` (same application sources) is running as
+[40815794384](https://github.com/fajarxfce/hris-mobile/actions/runs/40815794384),
+covering Linux/Android/Web, Windows and Apple simulator. Inspect their current
+status in the respective handoffs before claiming completion. No release or
+physical/provider acceptance is implied. All native-owned local resources are
+cleaned, emulator data retained and location restored.
 
 The user authorized continued work and pushing every atomic commit. Preserve
 unrelated edits, omit co-author trailers and retain implementation/tests/docs
