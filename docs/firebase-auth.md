@@ -1,7 +1,7 @@
 # Firebase provider foundation
 
-The identity module supplies bounded Firebase email/password REST and Android
-Google Credential Manager adapters. The provider returns opaque Firebase proof;
+The identity module supplies bounded Firebase email/password REST, Android Google
+Credential Manager and iOS Google system-browser adapters. The provider returns opaque Firebase proof;
 it never writes an application session or retains a Firebase SDK session/refresh
 credential. The starter's demo sign-in continues to use its existing demo backend.
 Applications integrate this provider with their own server exchange and account
@@ -29,10 +29,19 @@ Late or duplicate callbacks cannot complete a disposed interaction.
 iOS reads the selected application's bundled `GoogleService-Info.plist`, requires
 its exact running bundle ID and sends `X-Ios-Bundle-Identifier` for restricted
 Firebase keys. Missing configuration is unavailable; malformed, oversized or
-wrong-environment configuration fails explicitly. This accepted increment enables
-the bounded password protocol. Google interaction remains unavailable on iOS until
-its separate owned-browser adapter passes downstream verification and is ported.
-The public configuration stays local/ignored and is never copied from HRIS.
+wrong-environment configuration fails explicitly. Optional Google `CLIENT_ID` and
+`REVERSED_CLIENT_ID` must agree. `FirebaseClientOptions.googleClientId` describes
+the Android web client or iOS client for the selected host.
+
+The iOS Google source owns an `ASWebAuthenticationSession` and its window anchor
+for each attempt. S256 PKCE and independent cryptographic nonce/state values bind
+the exact callback. Wrong redirects, duplicate callback fields and late results
+are rejected. The shared credential session returns either an Android ID token or
+an iOS code result, closes native UI before network work, then exchanges the code
+through Google's fixed HTTPS endpoint. The returned ID token must match audience
+and nonce before Firebase verifies its signature. Code/error bodies are bounded,
+and neither Google access/refresh credentials nor a Firebase Auth SDK session are
+retained. Public configuration stays local/ignored and is never copied from HRIS.
 
 Desktop/browser hosts default to unavailable sources. `createAppContainer` accepts explicit
 `FirebaseClientOptionsSource` and `GoogleCredentialSource` implementations; a host
@@ -77,3 +86,12 @@ This workspace has matching local ignored iOS configurations for the existing
 `cmp-fajar`. They were fetched from those exact Starter apps, validated against
 bundle/project/app/OAuth metadata and saved mode 600. No HRIS plist was copied or
 Firebase app/account changed. A fresh clone must supply its own matching files.
+
+The Google browser/code increment follows Mobile `43cd8ec6`, whose complete CI
+[40858176601](https://github.com/fajarxfce/hris-mobile/actions/runs/40858176601)
+passed Linux/Android, Web, Windows and Apple before this port. Downloaded Apple
+reports contain 97 cases in 26 suites with no failures/errors/skips, and the full
+Xcode app passed. Twenty-two provider source/test files, host wiring and direct
+use of the existing OIDC 0.18.4 crypto module accompany this port. Actual HRIS
+Android Google/Home acceptance belongs to the consuming application; its account
+binding and native session policies are not included here.

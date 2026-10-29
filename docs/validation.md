@@ -1,5 +1,26 @@
 # Validation
 
+## Apple Google provider port
+
+The 22 provider source/test files were ported only after Mobile `43cd8ec6` passed
+all jobs in run `40858176601`, including 97 native cases and the full Xcode app.
+Every existing source baseline matched after the documented application-neutral
+fixture/comment substitutions. The iOS host owns system-browser PKCE/code requests;
+the repository closes the native resource before bounded Google/Firebase exchanges
+and rejects wrong nonce/audience or results arriving after cancellation. Android
+retains its Credential Manager flow. Direct OIDC crypto use stays on existing
+version 0.18.4 and verified artifacts; no dependency version/hash changed.
+
+Starter root checks, configured Android dev assembly and identity/application
+Chromium passed in 4m20s (1,618 tasks: 1,404 executed, 214 up to date). The current
+desktop report set contains 320 cases in 111 suites; identity Chromium passed 43
+cases in ten suites and the app passed three cases in three suites. All have zero
+failures/errors/skips. Ten runner/six distribution checks and architecture/format
+checks passed. The later port's own full CI is next; the earlier password-only
+Apple run `40861505322` retains its separate source boundary and is not cancelled.
+Actual iOS provider/device/APNs acceptance remains separate.
+
+
 ## Apple Firebase password configuration port
 
 The six portable provider source/test files derive from Mobile `196c1171`, whose

@@ -31,7 +31,7 @@ class FirebaseProviderBindingsTest {
             object : GoogleCredentialSource {
                 override val supported = false
 
-                override suspend fun open(webClientId: String): GoogleCredentialSession =
+                override suspend fun open(clientId: String): GoogleCredentialSession =
                     error("Unexpected Google interaction")
 
                 override fun close() {

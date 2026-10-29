@@ -1,5 +1,26 @@
 # Downstream development
 
+## Apple Google authorization-code ownership
+
+Mobile `43cd8ec6` passed all four jobs in full
+[run 40858176601](https://github.com/fajarxfce/hris-mobile/actions/runs/40858176601)
+before porting: 97 simulator cases in 26 downloaded JUnit suites, no failures/
+errors/skips, and the full Xcode app. Compilation took 832 seconds, simulator tests
+81 seconds and the Xcode step 1,425 seconds. Its local root/Android and 1,854 desktop
+report cases plus 82 identity/application Chromium cases passed separately.
+
+All 22 provider source/test baselines were compared before the Google increment
+was applied over the accepted password/configuration foundation. Differences stay
+limited to application-neutral comments/fixture identifiers. S256 PKCE, callback
+and nonce/audience correlation, code exchange, browser disposal, pending cancellation
+and late-result regressions are included. The iOS host supplies the owned source;
+Android keeps its existing nonce-validated Credential Manager path. The direct
+OIDC crypto catalog entry reuses version 0.18.4 and existing verified artifacts.
+The starter demo login and application-session policy remain unchanged. Local
+root checks, Android assembly, 320 desktop and 46 identity/application Chromium
+cases passed in 4m20s, with ten runner/six distribution checks and no failures/
+errors/skips. Full hosted CI follows the port commit.
+
 ## Apple Firebase password configuration
 
 Mobile `196c1171` passed

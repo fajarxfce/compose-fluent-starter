@@ -64,7 +64,7 @@ build-logic                  Gradle convention plugins
 
 Dependency versions are centralized in `gradle/libs.versions.toml`. Internal dependencies use type-safe accessors such as `implementation(projects.core.common)`. Koin annotations generate registrations during normal Gradle builds.
 
-See [SSO](docs/sso.md), [app lock](docs/app-lock.md), [app availability](docs/availability.md) and [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), [performance](docs/performance.md), and [localization](docs/localization.md).
+See [Firebase authentication](docs/firebase-auth.md), [SSO](docs/sso.md), [app lock](docs/app-lock.md), [app availability](docs/availability.md) and [access control](docs/access-control.md), [sessions and HTTP](docs/runtime.md), [observability](docs/observability.md), [performance](docs/performance.md), and [localization](docs/localization.md).
 
 See [internal distribution](docs/distribution.md) for signing and manual Firebase/TestFlight workflows.
 See [downstream development](docs/downstream-development.md) for the feedback workflow with HRIS Mobile and reviewed template updates.

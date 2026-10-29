@@ -43,8 +43,33 @@
     "hrisConfigurationCopied": false
   },
   "google": {
-    "source": "43cd8ec6",
-    "status": "not ported; awaiting Mobile full Apple verification"
+    "mobileSource": "43cd8ec68d3018f7418657ba5e57757a51f7a81a",
+    "mobileFullRun": 40858176601,
+    "mobileFullConclusion": "success",
+    "mobileNativeCases": 97,
+    "mobileNativeSuites": 26,
+    "mobileNativeFailures": 0,
+    "mobileXcode": "success",
+    "providerSourceAndTestFiles": 22,
+    "baselineMatched": true,
+    "local": {
+      "rootCheck": true,
+      "androidDevAssembly": true,
+      "desktopCases": 320,
+      "desktopSuites": 111,
+      "identityChromiumCases": 43,
+      "appChromiumCases": 3,
+      "runnerTests": 10,
+      "distributionTests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 260,
+      "gradleTasks": 1618,
+      "executedTasks": 1404,
+      "upToDateTasks": 214
+    },
+    "status": "local verification passed; complete hosted CI next"
   },
   "limits": [
     "Provider proof does not publish an application session or replace Starter demo login.",

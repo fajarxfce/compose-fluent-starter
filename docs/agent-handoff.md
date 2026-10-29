@@ -14,17 +14,21 @@ before edits. The current branch is `fix/push-token-lifecycle`; latest accepted
 CI port `1817e45` follows Mobile proof. The validated application foundation remains
 Firebase provider port `9a13791`; the new workflow changes no application sources.
 
-Current work ports Apple Firebase password/bundle configuration from Mobile
-`196c1171`, only after its corrected Apple run `40855843460` passed all 82 simulator
-cases and Xcode. Six generic provider source/test files, host wiring, Okio test
-support and identity-native CI targets are included. Local root checks, 308 desktop
-cases, 31 identity Chromium cases, ten runner/six distribution checks and Android
-assembly passed in 1m10s. Starter Apple run
-[40861505322](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40861505322)
-is testing port `8a75de5`. Matching local iOS dev/staging/prod plists were fetched
-from the existing Starter apps in Firebase; they remain ignored and mode 600. The later Mobile Google browser/code increment `43cd8ec6` passed
-native simulator tests but still awaits its Xcode result in run `40858176601`;
-**do not copy that later increment yet**. See [downstream development](downstream-development.md).
+Current work ports iOS Google browser/code ownership from Mobile `43cd8ec6`, after
+its full run `40858176601` passed all four jobs, 97 native cases and Xcode. All
+22 provider source/test baselines matched before copying; only application-neutral
+comments/fixture identifiers differ. Starter root/Android/Chromium validation
+passed in 4m20s: 320 desktop cases, 43 identity and three app Chromium cases, plus
+ten runner/six distribution checks. Its complete hosted CI is next. HRIS server exchange, bindings, login policy and configuration are
+excluded. [Downstream development](downstream-development.md) records the source proof.
+
+The preceding password/configuration port `8a75de5` follows Mobile `196c1171` and
+its accepted Apple run `40855843460`. Starter root/Android, 308 desktop cases and
+31 identity Chromium cases passed in 1m10s; its native tests also passed in
+[run 40861505322](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40861505322),
+whose Xcode step is still running. Do not cancel that run when dispatching the
+later Google port; use the separate full workflow scope. Matching local iOS
+plists for all three existing Starter apps were fetched and remain ignored/mode 600.
 
 Android Google → Firebase → HRIS → company/Home is now accepted on the user-operated
 phone, with a matching server session; Platform `5fd21caf` also records a successful
