@@ -532,5 +532,32 @@
     "No upload or distribution workflow dispatch",
     "No real signed Apple IPA; Xcode and signing fixtures are distinct",
     "No HRIS business policy, private config, UI fixtures or dev HTTP override ported"
-  ]
+  ],
+  "artifactUploadSelection": {
+    "actionRevision": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "globVersion": "0.5.0",
+    "pinnedGlobIntegrityVerified": true,
+    "beforeSelectedFiles": 5,
+    "beforeMissing": [
+      "app-links/links.example.invalid/.well-known/apple-app-site-association",
+      "app-links/links.example.invalid/.well-known/assetlinks.json"
+    ],
+    "afterSelectedFiles": 7,
+    "allChecksummedFilesSelectedAndVerified": true,
+    "actualUpload": false,
+    "sourceFollowUp": "d7e445a8e26696f3d07951037275ab7fbdee365b",
+    "fileChanges": [
+      {
+        "path": ".github/workflows/distribute-android.yml",
+        "beforeSha256": "87eb17e0565e3a11dd19e4624ac3d518e6733e31894c5e13bcdd7897342d989b",
+        "afterSha256": "5073ced4da997350f048b6cdcd162be76454f17424073d7cfc77aefb6ac082fc"
+      },
+      {
+        "path": ".github/workflows/distribute-ios.yml",
+        "beforeSha256": "cfa1a74923a258bb4f7d91ae9805f3728acf58f0e591f1e3731ad136e13f3dcb",
+        "afterSha256": "d0e9bf5ab4d0398a00b8544815b650b1c41adc53a5b81cd5fe28750e42908bd2"
+      }
+    ],
+    "nativeCiBoundary": "77063862866bb52db5eade28733ceffce1588409; native/application code unchanged by this workflow-only follow-up"
+  }
 }

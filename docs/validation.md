@@ -391,3 +391,14 @@ signed APK/AAB/SBOM in 136.647s, and restored normal demo/dev plus production SB
 in 23s. Both packages retain the selected API/registration; actual signatures
 and packaged domain files/checksums passed. No upload or installation occurred.
 Final hosted jobs and downloaded Apple reports/Xcode markers remain required.
+
+## Hidden association artifact discovery
+
+The workflow-only follow-up from Mobile `d7e445a8` enables hidden files only in
+the packaged artifact directory. The pinned action's actual `@actions/glob` 0.5.0
+selection reproduced both omitted `.well-known` files on Starter's signed fixture:
+five files before, all seven afterward, with every checksum verified. Both manual
+workflow inputs parse with the exact packaged-directory scope. Native/application
+code and CI definitions remain at `7706386`; its active full CI is still required.
+No actual upload occurred. The tracked measurement retains the separate source
+and exact before/after hashes of both workflow files.
