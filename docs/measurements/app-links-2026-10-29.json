@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-29",
+  "port": {
+    "source": "d36a1bc9e5f8b1e367d6d6db380d2da5ad312cad",
+    "destinationBaseline": "e29b0b22700b41ee31d2249c35935b327df67c27",
+    "portableUnchangedFiles": [
+      "build-logic/src/main/kotlin/starter.android.app-links.gradle.kts",
+      "build-logic/src/main/kotlin/tasks/AppLinkRegistration.kt",
+      "build-logic/src/main/kotlin/tasks/AppLinkXml.kt",
+      "build-logic/src/main/kotlin/tasks/GenerateAppLinks.kt",
+      "build-logic/src/main/kotlin/tasks/TransformAppLinksManifest.kt",
+      "build-logic/src/test/kotlin/tasks/AppLinkRegistrationTest.kt",
+      "core/common/src/commonMain/kotlin/dev/fajar/starter/common/config/AppLinkPath.kt",
+      "core/common/src/commonTest/kotlin/dev/fajar/starter/common/config/AppLinkPathTest.kt",
+      "tool/check_app_links.py"
+    ],
+    "matchedAppleBaselines": 5,
+    "adaptations": [
+      "Starter application/bundle IDs and FLUENT_ENVIRONMENT",
+      "Starter four-route allowlist and existing demo/onboarding lifecycle",
+      "Starter three-job CI matrix retained"
+    ],
+    "applied": true,
+    "sourceProof": {
+      "run": 40887772486,
+      "head": "d36a1bc9e5f8b1e367d6d6db380d2da5ad312cad",
+      "url": "https://github.com/fajarxfce/hris-mobile/actions/runs/40887772486",
+      "conclusion": "success",
+      "jobs": {
+        "apple": "success",
+        "verify": "success",
+        "windows": "success",
+        "web": "success"
+      },
+      "apple": {
+        "tests": 103,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "suites": 28,
+        "stepSeconds": {
+          "Compile iOS simulator tests": 648,
+          "Run iOS simulator tests": 64,
+          "Build iOS simulator app": 1082
+        },
+        "downloadedReportsInspected": true
+      }
+    },
+    "parserCorrection": {
+      "source": "72341ef666e7da516c8b6808e5c6cb5817f54742",
+      "files": [
+        "core/common/src/commonMain/kotlin/dev/fajar/starter/common/config/AppLinkPath.kt",
+        "core/common/src/commonTest/kotlin/dev/fajar/starter/common/config/AppLinkPathTest.kt"
+      ],
+      "sourceLocalProof": "Seven JVM and seven Chromium cases passed before this copy; full CI pending."
+    }
+  },
+  "local": {
+    "result": "passed",
+    "finalRootAndroidChromiumSeconds": 88,
+    "reports": {
+      "desktop": {
+        "tests": 326,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "suites": 112
+      },
+      "commonChromium": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "suites": 2
+      },
+      "appChromium": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "suites": 3
+      },
+      "buildLogic": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "suites": 1
+      }
+    },
+    "runnerTests": 10,
+    "distributionTests": 6,
+    "initialPortRootSeconds": 266,
+    "configuredArtifacts": {
+      "result": "passed",
+      "seconds": 13,
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ],
+      "androidManifestAppleEntitlementsAndPublicDomainFiles": true
+    },
+    "initialFailure": {
+      "seconds": 253,
+      "cause": "Starter build-logic had no direct JUnit test dependency, so imported generator tests failed compilation.",
+      "correction": "Port the existing Mobile JUnit 4.13.2 catalog entry/test dependency and include build-logic tests in root check. Existing verified artifacts are unchanged."
+    }
+  },
+  "sourceCorrectionFullCi": {
+    "run": 40895095518,
+    "source": "72341ef666e7da516c8b6808e5c6cb5817f54742",
+    "status": "in progress"
+  },
+  "ci": "dispatch follows this validated commit",
+  "limits": [
+    "Fictional configured host; no public domain or OS verification",
+    "Unsigned Apple/physical device proof remains separate; iPhone testing waived",
+    "No HRIS APIs, business routes, private configuration or dashboard landing ported"
+  ]
+}

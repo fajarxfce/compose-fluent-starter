@@ -27,3 +27,5 @@ artifacts/
 
 __pycache__/
 gha-creds-*.json
+
+/config/app-links/*.json

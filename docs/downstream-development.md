@@ -1,5 +1,40 @@
 # Downstream development
 
+## HTTPS application-link foundation
+
+Source Mobile `d36a1bc9` passed all four full CI jobs in
+[40887772486](https://github.com/fajarxfce/hris-mobile/actions/runs/40887772486)
+before this port: 103 native cases in 28 downloaded suites, no failures/errors/
+skips, configured native/domain artifacts and the complete Xcode application.
+Compilation took 648s, tests 64s and Xcode 1082s. Its local root/Android checks
+passed 1859 desktop cases and 26 common/app Chromium cases. The real Android
+HTTPS scoped/offline/archive case passed in 3.2m/3.6m with 28 requests and no
+company mutation before the generic foundation was applied here.
+
+Nine portable source/check files initially matched the foundation exactly; two
+parser files now include the separately proved correction recorded below. The five Apple source/scheme
+baselines matched after normalizing the application name. Starter keeps its
+bundle IDs, `FLUENT_ENVIRONMENT`, three-job CI matrix and four-route demo policy.
+An independent real-container UI regression exercises HTTPS through onboarding,
+login, invalid host and background/resume alongside the original custom URL case.
+No HRIS session, company/resource rules, web landing page or private config is
+copied. Local root/Android/Chromium checks passed in 1m28s after the Unicode correction:
+326 desktop cases in 112 suites, seven common/four app Chromium cases and six
+build-logic cases, with no failures/errors/skips. Ten runner and six distribution
+checks passed. All three configured Android manifests, Apple entitlements and
+public domain files passed separately in 13s. The initial port run found missing
+JUnit test setup; the existing Mobile catalog entry/test dependency and root-check
+wiring were added without changing verified artifact hashes. Its corrected base
+run passed in 4m26s before the final parser delta.
+
+Mobile parser correction `72341ef6` reproduced Unicode host case-folding aliasing,
+then passed seven JVM/seven Chromium cases before the two files were copied here.
+Full Mobile run `40895095518` covers that final source independently of the accepted
+foundation run. Starter full CI is next; record its actual outcome before calling
+the entire port accepted. [Measurements](measurements/app-links-2026-10-29.json)
+retain both source boundaries, the initial failure and final local results.
+
+
 ## Apple Google authorization-code ownership
 
 Mobile `43cd8ec6` passed all four jobs in full

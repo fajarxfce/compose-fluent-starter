@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+import tasks.GenerateAppLinks
 import tasks.GenerateEnvironment
 import tasks.GenerateOidcClients
 
@@ -41,3 +42,21 @@ val generateOidcClients =
 kotlin.sourceSets.commonMain { kotlin.srcDir(generateOidcClients.flatMap { it.outputDirectory }) }
 
 tasks.withType<KotlinCompilationTask<*>>().configureEach { dependsOn(generateOidcClients) }
+
+val generateAppLinks =
+    tasks.register<GenerateAppLinks>("generateAppLinks") {
+        val configuration =
+            providers.gradleProperty("appLinksConfigDirectory").orElse("config/app-links")
+        configurationFiles.from(rootProject.fileTree(configuration.get()) { include("*.json") })
+        baseApplicationId.set("dev.fajar.fluent.starter")
+        baseEntitlements.set(
+            rootProject.layout.projectDirectory.file("apps/ios/FluentStarter.entitlements")
+        )
+        outputDirectory.set(layout.buildDirectory.dir("generated/app-links"))
+    }
+
+kotlin.sourceSets.commonMain {
+    kotlin.srcDir(generateAppLinks.flatMap { it.outputDirectory }.map { it.dir("kotlin") })
+}
+
+tasks.withType<KotlinCompilationTask<*>>().configureEach { dependsOn(generateAppLinks) }

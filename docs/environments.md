@@ -40,3 +40,13 @@ aliases for dev/prod. Native release distribution still requires Apple signing.
 
 Firebase configuration and verified HTTPS link association are environment-specific.
 Never put server credentials in BuildConfig, generated Kotlin, or browser assets.
+
+## Optional HTTPS application links
+
+[App-link registration](app-links.md) uses ignored `config/app-links/{environment}.json`
+files. Generation supplies both runtime admission and the corresponding Android/
+Apple declarations. Unconfigured builds keep custom schemes and browser fragments.
+When changing the application's identity, align Android's application ID, the
+`starter.environment` convention's `baseApplicationId` and Xcode bundle IDs; the
+preparation step checks the selected Apple environment instead of signing a
+registration for another bundle.

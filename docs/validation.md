@@ -335,3 +335,21 @@ Root checks passed with 283 JVM/desktop tests. The database (25) and secure-stor
 Android dev assembly passed. This validates the storage foundation; it does not
 claim that a business collection is connected to a change feed or that UI/device
 acceptance has been performed for this increment.
+
+## HTTPS application-link port — 29 October 2026
+
+Local root/Android/Chromium checks passed in 1m28s after the Unicode correction:
+326 desktop cases in 112 suites, seven common/four app Chromium cases and six
+build-logic cases, with no failures/errors/skips. Ten runner and six distribution
+checks passed. All three configured Android manifests, Apple entitlements and
+public domain files passed separately in 13s. The initial port run found missing
+JUnit test setup; the existing Mobile catalog entry/test dependency and root-check
+wiring were added without changing verified artifact hashes. Its corrected base
+run passed in 4m26s before the final parser delta.
+
+Mobile parser correction `72341ef6` reproduced Unicode host case-folding aliasing,
+then passed seven JVM/seven Chromium cases before the two files were copied here.
+Full Mobile run `40895095518` covers that final source independently of the accepted
+foundation run. Starter full CI is next; record its actual outcome before calling
+the entire port accepted. [Measurements](measurements/app-links-2026-10-29.json)
+retain both source boundaries, the initial failure and final local results.

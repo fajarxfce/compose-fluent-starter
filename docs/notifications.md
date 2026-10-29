@@ -150,5 +150,7 @@ xcrun simctl openurl booted 'fluentstarter-dev://app/inbox'
 Web uses the current deployment URL followed by `#/inbox`, for example
 `http://localhost:8080/#/inbox`. Native desktop protocol registration is installer-specific;
 the starter accepts a URL as its launch argument. Custom mobile schemes are registered.
-Verified HTTPS App Links / Universal Links require a domain you own, Android asset links,
-and Apple's association file and entitlement; they are not claimed by this template.
+Optional [HTTPS application links](app-links.md) add bounded exact-host admission,
+Android App Links and Apple Universal Links through one public registration per
+environment. The build generates native declarations and domain association files;
+public DNS/TLS/OS verification still requires actual deployment configuration.

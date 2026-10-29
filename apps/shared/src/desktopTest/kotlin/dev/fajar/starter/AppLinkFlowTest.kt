@@ -14,6 +14,8 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.app.navigation.AppLinkChannel
+import dev.fajar.starter.app.navigation.ResolveAppLink
+import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.database.createAppDatabase
 import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.notifications.data.datasources.*
@@ -27,7 +29,14 @@ class AppLinkFlowTest {
     @get:Rule val compose = createComposeRule()
 
     @Test
-    fun aColdLinkWaitsForLoginAndLaterLinksWaitUntilTheHostResumes() {
+    fun aColdLinkWaitsForLoginAndLaterLinksWaitUntilTheHostResumes() =
+        exerciseLinkLifecycle("fluentstarter-dev://app/", null)
+
+    @Test
+    fun aConfiguredHttpsLinkKeepsOnboardingLoginAndForegroundOwnership() =
+        exerciseLinkLifecycle("https://links.example.invalid/app/dev/", "links.example.invalid")
+
+    private fun exerciseLinkLifecycle(prefix: String, httpsHost: String?) {
         val directory = Files.createTempDirectory("starter-links").toFile()
         val container =
             createAppContainer(
@@ -49,8 +58,11 @@ class AppLinkFlowTest {
                     single<PushTokenSource> { UnavailablePushTokenSource() }
                 },
             )
+        container.koin.loadModules(
+            listOf(module { factory { ResolveAppLink(AppEnvironment.Dev, httpsHost) } })
+        )
         val links = AppLinkChannel()
-        links.receive("fluentstarter-dev://app/account")
+        links.receive("${prefix}account")
         var hostState by mutableStateOf(Lifecycle.State.RESUMED)
         var visible by mutableStateOf(true)
         try {
@@ -78,11 +90,16 @@ class AppLinkFlowTest {
             compose.onNode(hasText("Sign in") and hasClickAction()).performScrollTo().performClick()
             waitFor("Alex Morgan")
             compose.onNode(hasText("Account") and isSelectable()).assertIsSelected()
-            compose.runOnIdle { links.receive("fluentstarter-dev://app/overview") }
+            compose.runOnIdle { links.receive("${prefix}overview") }
             waitFor("Projects")
+            if (httpsHost != null) {
+                compose.runOnIdle { links.receive("https://other.example.invalid/app/dev/account") }
+                compose.waitForIdle()
+                compose.onNode(hasText("Overview") and isSelectable()).assertIsSelected()
+            }
             compose.runOnIdle { hostState = Lifecycle.State.STARTED }
             compose.waitForIdle()
-            compose.runOnIdle { links.receive("fluentstarter-dev://app/activity") }
+            compose.runOnIdle { links.receive("${prefix}activity") }
             compose.waitForIdle()
             compose.onNode(hasText("Overview") and isSelectable()).assertIsSelected()
             compose.runOnIdle { hostState = Lifecycle.State.RESUMED }

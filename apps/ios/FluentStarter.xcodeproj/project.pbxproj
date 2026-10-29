@@ -100,7 +100,7 @@
         A00000000000000000000062 = {isa = XCBuildConfiguration; buildSettings = {
             FLUENT_ENVIRONMENT = dev; FLUENT_DISPLAY_NAME = "Fluent Starter Dev"; FLUENT_LINK_SCHEME = fluentstarter-dev;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
+            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/../../core/common/build/generated/app-links/ios/$(FLUENT_ENVIRONMENT).entitlements"; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
             ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = Info.plist;
             PRODUCT_BUNDLE_IDENTIFIER = dev.fajar.fluent.starter.dev; PRODUCT_NAME = "$(TARGET_NAME)";
             TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -111,7 +111,7 @@
         A00000000000000000000063 = {isa = XCBuildConfiguration; buildSettings = {
             FLUENT_ENVIRONMENT = prod; FLUENT_DISPLAY_NAME = "Fluent Starter"; FLUENT_LINK_SCHEME = fluentstarter;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
+            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/../../core/common/build/generated/app-links/ios/$(FLUENT_ENVIRONMENT).entitlements"; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
             ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = Info.plist;
             PRODUCT_BUNDLE_IDENTIFIER = dev.fajar.fluent.starter; PRODUCT_NAME = "$(TARGET_NAME)";
             TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -128,7 +128,7 @@
         B00000000000000000000101 = {isa = XCBuildConfiguration; buildSettings = {
             FLUENT_ENVIRONMENT = dev; KOTLIN_FRAMEWORK_BUILD_TYPE = debug; FLUENT_DISPLAY_NAME = "Fluent Starter Dev"; FLUENT_LINK_SCHEME = fluentstarter-dev;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
+            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/../../core/common/build/generated/app-links/ios/$(FLUENT_ENVIRONMENT).entitlements"; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
             ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = Info.plist;
             PRODUCT_BUNDLE_IDENTIFIER = dev.fajar.fluent.starter.dev; PRODUCT_NAME = "$(TARGET_NAME)";
             TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -144,7 +144,7 @@
         B00000000000000000000103 = {isa = XCBuildConfiguration; buildSettings = {
             FLUENT_ENVIRONMENT = dev; KOTLIN_FRAMEWORK_BUILD_TYPE = release; FLUENT_DISPLAY_NAME = "Fluent Starter Dev"; FLUENT_LINK_SCHEME = fluentstarter-dev;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
+            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/../../core/common/build/generated/app-links/ios/$(FLUENT_ENVIRONMENT).entitlements"; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
             ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = Info.plist;
             PRODUCT_BUNDLE_IDENTIFIER = dev.fajar.fluent.starter.dev; PRODUCT_NAME = "$(TARGET_NAME)";
             TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -160,7 +160,7 @@
         B00000000000000000000105 = {isa = XCBuildConfiguration; buildSettings = {
             FLUENT_ENVIRONMENT = staging; KOTLIN_FRAMEWORK_BUILD_TYPE = debug; FLUENT_DISPLAY_NAME = "Fluent Starter Staging"; FLUENT_LINK_SCHEME = fluentstarter-staging;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
+            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/../../core/common/build/generated/app-links/ios/$(FLUENT_ENVIRONMENT).entitlements"; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
             ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = Info.plist;
             PRODUCT_BUNDLE_IDENTIFIER = dev.fajar.fluent.starter.staging; PRODUCT_NAME = "$(TARGET_NAME)";
             TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -176,7 +176,7 @@
         B00000000000000000000107 = {isa = XCBuildConfiguration; buildSettings = {
             FLUENT_ENVIRONMENT = staging; KOTLIN_FRAMEWORK_BUILD_TYPE = release; FLUENT_DISPLAY_NAME = "Fluent Starter Staging"; FLUENT_LINK_SCHEME = fluentstarter-staging;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
+            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/../../core/common/build/generated/app-links/ios/$(FLUENT_ENVIRONMENT).entitlements"; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
             ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = Info.plist;
             PRODUCT_BUNDLE_IDENTIFIER = dev.fajar.fluent.starter.staging; PRODUCT_NAME = "$(TARGET_NAME)";
             TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -192,7 +192,7 @@
         B00000000000000000000109 = {isa = XCBuildConfiguration; buildSettings = {
             FLUENT_ENVIRONMENT = prod; KOTLIN_FRAMEWORK_BUILD_TYPE = debug; FLUENT_DISPLAY_NAME = "Fluent Starter"; FLUENT_LINK_SCHEME = fluentstarter;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
+            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/../../core/common/build/generated/app-links/ios/$(FLUENT_ENVIRONMENT).entitlements"; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
             ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = Info.plist;
             PRODUCT_BUNDLE_IDENTIFIER = dev.fajar.fluent.starter; PRODUCT_NAME = "$(TARGET_NAME)";
             TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -208,7 +208,7 @@
         B00000000000000000000111 = {isa = XCBuildConfiguration; buildSettings = {
             FLUENT_ENVIRONMENT = prod; KOTLIN_FRAMEWORK_BUILD_TYPE = release; FLUENT_DISPLAY_NAME = "Fluent Starter"; FLUENT_LINK_SCHEME = fluentstarter;
             ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = FluentStarter.entitlements; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
+            CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/../../core/common/build/generated/app-links/ios/$(FLUENT_ENVIRONMENT).entitlements"; APS_ENVIRONMENT = development; "APS_ENVIRONMENT[config=Release*]" = production; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0;
             ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = Info.plist;
             PRODUCT_BUNDLE_IDENTIFIER = dev.fajar.fluent.starter; PRODUCT_NAME = "$(TARGET_NAME)";
             TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
