@@ -112,7 +112,11 @@
     "source": "72341ef666e7da516c8b6808e5c6cb5817f54742",
     "status": "in progress"
   },
-  "ci": "dispatch follows this validated commit",
+  "ci": {
+    "source": "738db364efa08e4c033f9acdc921b8c0f87999df",
+    "run": 40895798634,
+    "status": "in progress"
+  },
   "limits": [
     "Fictional configured host; no public domain or OS verification",
     "Unsigned Apple/physical device proof remains separate; iPhone testing waived",

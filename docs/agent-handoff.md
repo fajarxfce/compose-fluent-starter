@@ -36,8 +36,9 @@ run passed in 4m26s before the final parser delta.
 Mobile parser correction `72341ef6` reproduced Unicode host case-folding aliasing,
 then passed seven JVM/seven Chromium cases before the two files were copied here.
 Full Mobile run `40895095518` covers that final source independently of the accepted
-foundation run. Starter full CI is next; record its actual outcome before calling
-the entire port accepted. [Measurements](measurements/app-links-2026-10-29.json)
+foundation run. Starter full [CI 40895798634](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40895798634)
+is running at `738db36`; inspect all jobs and downloaded Apple reports before
+accepting the port. [Measurements](measurements/app-links-2026-10-29.json)
 retain both source boundaries, the initial failure and final local results.
 
 ## Current user direction — 29 October 2026
