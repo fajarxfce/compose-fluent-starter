@@ -88,10 +88,10 @@ The source foundation at Mobile `d36a1bc9` passed all four full CI jobs in
 [40887772486](https://github.com/fajarxfce/hris-mobile/actions/runs/40887772486),
 including 103 native cases in 28 downloaded suites and the complete configured
 Xcode build. Actual downstream Android cold/login/company/scope/offline/archive
-acceptance also passed before porting. Nine portable files followed that source; the two parser files additionally
+acceptance also passed before porting. Nine portable files followed that source;
+the two parser files additionally
 include Mobile `72341ef6`, proved by JVM/Chromium before copying, to reject Unicode
-case-folding aliases. The
-Apple runner retains Starter identity, and the route resolver keeps only Starter
+case-folding aliases. The Apple runner retains Starter identity, and the route resolver keeps only Starter
 routes. HRIS backend, company/resource policy and private configuration stay in
 the consuming application.
 
@@ -101,3 +101,16 @@ Configured checks use an owned fictional-domain fixture and never publish DNS,
 TLS, Apple/Android association files or a release. Physical iPhone tests were
 waived by the user for this completion pass; unsigned builds do not claim APNs or
 actual device sign-in/link acceptance.
+
+## Final accepted verification
+
+Final Mobile source `72341ef6` passed all four jobs in full
+[40895095518](https://github.com/fajarxfce/hris-mobile/actions/runs/40895095518).
+Downloaded Apple reports confirm 104 cases in 28 suites, zero failures/errors/skips
+and the complete Xcode app; compilation/tests/Xcode took 701s/77s/1040s.
+Starter port `738db36` independently passed all three jobs in full
+[40895798634](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40895798634),
+with 84 Apple cases in 24 downloaded suites, no failures/errors/skips and Xcode;
+compilation/tests/Xcode took 561s/84s/703s. Generated Android/Apple association
+checks passed, and the Xcode/Apple artifact success markers were inspected.
+No CI or owned local acceptance remains active from this increment.

@@ -6,6 +6,27 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
+## Completed implementation checkpoint
+
+Final Mobile source `72341ef6` passed all four jobs in full
+[40895095518](https://github.com/fajarxfce/hris-mobile/actions/runs/40895095518).
+Downloaded Apple reports confirm 104 cases in 28 suites, zero failures/errors/skips
+and the complete Xcode app; compilation/tests/Xcode took 701s/77s/1040s.
+Starter port `738db36` independently passed all three jobs in full
+[40895798634](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40895798634),
+with 84 Apple cases in 24 downloaded suites, no failures/errors/skips and Xcode;
+compilation/tests/Xcode took 561s/84s/703s. Generated Android/Apple association
+checks passed, and the Xcode/Apple artifact success markers were inspected.
+No CI or owned local acceptance remains active from this increment.
+
+The implementation queue is complete for this development pass. Physical iPhone
+testing was explicitly waived. Public domain/DNS/TLS association, actual APNs,
+physical GPS and production deployment remain separate configuration/target
+observations; no result for those is inferred from builds or fixtures. Default
+native builds do not enable an unconfigured HTTPS host. Reopen implementation for
+an observed failure or a documented requirement; do not recreate accepted modules
+from old next-step paragraphs.
+
 ## HTTPS application-link foundation
 
 Source Mobile `d36a1bc9` passed all four full CI jobs in
@@ -37,8 +58,10 @@ Mobile parser correction `72341ef6` reproduced Unicode host case-folding aliasin
 then passed seven JVM/seven Chromium cases before the two files were copied here.
 Full Mobile run `40895095518` covers that final source independently of the accepted
 foundation run. Starter full [CI 40895798634](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40895798634)
-is running at `738db36`; inspect all jobs and downloaded Apple reports before
-accepting the port. [Measurements](measurements/app-links-2026-10-29.json)
+passed all three jobs at `738db36`. Its 84 Apple cases in 24 downloaded suites
+have no failures/errors/skips; Xcode and generated associations passed. Compile/
+tests/Xcode took 561s/84s/703s. Final Mobile `72341ef6` also passed all four jobs
+in `40895095518`, with 104 native cases/Xcode. Both runs are complete and accepted. [Measurements](measurements/app-links-2026-10-29.json)
 retain both source boundaries, the initial failure and final local results.
 
 ## Current user direction — 29 October 2026
@@ -48,8 +71,8 @@ The user explicitly waived physical iPhone testing for this completion pass
 completion, with each atomic commit pushed. Do not ask for an iPhone again or
 keep that test as a completion blocker. Simulator/contract tests and Xcode builds
 remain required; do not claim actual iOS sign-in or APNs delivery from them.
-Current work completes configurable HTTPS app-link admission and native/domain
-association output in Mobile before porting the reusable foundation to Starter.
+Configurable HTTPS admission/native associations and the independently verified
+Starter port are complete; retain the exact source/destination proof above.
 The controlled domain remains a deployment setting, not a reason to leave the
 configurable implementation unfinished. Preserve the accepted Google binding,
 phone data and running private development stack.
@@ -102,7 +125,8 @@ company mutation. All owned resources were cleaned. There is no reusable code
 change to port; this proves one HRIS Android provider flow, not actual delivery on
 every Starter target. Do not request the already supplied FCM credential again.
 
-The overall HRIS PRD remains in progress. Platform `b7f42070` integrates validated
+The initial implementation map is reconciled in Platform's current PRD status;
+physical/production observations remain separate. Platform `b7f42070` integrates validated
 push-delivery observations (`409abad4`), original payroll comparison (`f757bffd`)
 and actual one-hour export retirement (`1abdbce9`). Subsequent native fixtures
 `578a5031` (Overtime), `97e33310` (Expense), `ccae6f8f` (Leave) and `a837320f`
@@ -146,6 +170,7 @@ documents are the durable handoff; `.work` and chat history are supplementary.
 
 | Port | Source and destination | Recorded evidence |
 | --- | --- | --- |
+| HTTPS registration and ASCII URL admission | Mobile `d36a1bc9` + `72341ef6` → Starter `738db36` | Source foundation/full final CI and actual Android acceptance; independent Starter full CI `40895798634`, 84 native cases/Xcode and local 326 desktop/11 browser cases. |
 | Apple Google browser/code ownership | Mobile `43cd8ec6` → Starter `e0c6071` | Full Mobile run `40858176601` passed all four jobs and 97 native cases/Xcode before porting. Full Starter run `40864341588` passed all three jobs and 77 native cases in 22 suites/Xcode, with local root/Android/Chromium proof. |
 | Apple Firebase password/configuration | Mobile `196c1171` → Starter `8a75de5` | Mobile run `40855843460` passed 82 native cases/Xcode before porting. Starter run `40861505322` passed 62 native cases in 18 suites and the full Xcode app; root/Android/Chromium checks passed separately. |
 | Apple CI compilation budget | Mobile `451a2c4d` → Starter `1817e45` | Mobile run `40817592306` passed before Starter run `40820482699`; each retained 27 simulator tests and built the unsigned Xcode application. Separate 25/15/30-minute steps, 75-minute job bound, scoped manual dispatch and reports. |

@@ -31,8 +31,10 @@ Mobile parser correction `72341ef6` reproduced Unicode host case-folding aliasin
 then passed seven JVM/seven Chromium cases before the two files were copied here.
 Full Mobile run `40895095518` covers that final source independently of the accepted
 foundation run. Starter full [CI 40895798634](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40895798634)
-is running at `738db36`; inspect all jobs and downloaded Apple reports before
-accepting the port. [Measurements](measurements/app-links-2026-10-29.json)
+passed all three jobs at `738db36`. Its 84 Apple cases in 24 downloaded suites
+have no failures/errors/skips; Xcode and generated associations passed. Compile/
+tests/Xcode took 561s/84s/703s. Final Mobile `72341ef6` also passed all four jobs
+in `40895095518`, with 104 native cases/Xcode. Both runs are complete and accepted. [Measurements](measurements/app-links-2026-10-29.json)
 retain both source boundaries, the initial failure and final local results.
 
 
