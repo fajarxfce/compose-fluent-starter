@@ -1,5 +1,25 @@
 # Downstream development
 
+## Apple CI compilation budget
+
+The generic workflow correction from Mobile `451a2c4d` was ported only after its
+[Apple follow-up 40817592306](https://github.com/fajarxfce/hris-mobile/actions/runs/40817592306)
+passed 27 simulator tests, the full unsigned Xcode build and report upload. The
+original Mobile run had reached the combined compilation/test deadline; separating
+compile (25 minutes), tests (15) and Xcode (30), within a 75-minute job bound,
+retains all three existing simulator test targets without shortening coverage.
+
+Starter keeps its FluentStarter project/scheme and its three default jobs; Web
+remains in verify. Manual `scope=apple` runs only Apple with an independent
+concurrency group. Test reports upload even after a failure. Parsed workflow
+comparison matches the accepted Mobile Apple job except project/scheme naming.
+
+Local headless root checks passed in 21s (891 tasks: 48 executed, 843 up to date),
+plus all ten Python Android-runner regressions. The application is unchanged since
+`9a13791`, whose full CI passed. The changed Apple workflow still requires its own
+hosted run after this commit is pushed; do not claim that run passed in advance.
+No release, signing or physical provider/device acceptance is implied.
+
 ## Firebase provider ownership
 
 Twenty reusable provider source/test files derive from Mobile `d191c61d`, with

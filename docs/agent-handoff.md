@@ -28,15 +28,25 @@ Mobile `ad675e57` records the latest evidence. No generic implementation port wa
 needed for these HRIS fixtures; the Starter application remains unchanged since
 `9a13791`, whose cross-platform CI passed.
 
-Current continuation is complete CI/PRD reconciliation. Platform `d7184e83` adds
-manual Verify dispatch, now running as
-[40816036721](https://github.com/fajarxfce/hris-platform/actions/runs/40816036721).
-Mobile CI at `b0a95391` (same application sources) is running as
-[40815794384](https://github.com/fajarxfce/hris-mobile/actions/runs/40815794384),
-covering Linux/Android/Web, Windows and Apple simulator. Inspect their current
-status in the respective handoffs before claiming completion. No release or
-physical/provider acceptance is implied. All native-owned local resources are
-cleaned, emulator data retained and location restored.
+Current continuation is verification of the generic Apple CI correction. Mobile
+full run `40815794384` passed Linux/Android, Web and Windows, but Apple compilation
+hit its combined deadline. The corrected Mobile run
+[40817592306](https://github.com/fajarxfce/hris-mobile/actions/runs/40817592306)
+at `451a2c4d` passed all 27 simulator tests, the complete Xcode build and report
+upload before this port. Starter now has the same separate compile/test/Xcode
+bounds, manual Apple scope, independent concurrency and retained test reports.
+Its project/scheme and three-job default matrix are preserved; application sources
+remain `9a13791`. Local root checks passed in 21s and ten Python runner regressions
+passed. Push this port, dispatch `scope=apple` at its exact head, inspect the job
+and downloaded JUnit report, then record the outcome. See [validation](validation.md#apple-ci-compilation-budget).
+
+Platform's replacement full run
+[40820005213](https://github.com/fajarxfce/hris-platform/actions/runs/40820005213)
+is running at `70e5098d`: first run passed every test suite and actual schema-101
+restore but failed hidden-path artifact upload. Mobile `678783b3` separately fixes
+English Expense count copy, with local root/Android checks passed. Those HRIS
+sources/configuration stay in Mobile. All native-owned local resources are cleaned,
+emulator data retained and location restored. Provider/device inputs remain external.
 
 The user authorized continued work and pushing every atomic commit. Preserve
 unrelated edits, omit co-author trailers and retain implementation/tests/docs
@@ -69,9 +79,9 @@ Firebase/APNs/device setup. No service account, private key or app-specific
 configuration should enter a generic port. Recheck local configuration and the
 Mobile handoff before requesting previously supplied input.
 
-There is no outstanding reusable implementation identified by the latest accepted
-Mobile/Platform increments. Continue the next concrete downstream requirement,
-prove it in Mobile, compare source baselines and then port only the reusable part.
+Complete this Apple CI port's hosted acceptance first. Subsequent concrete downstream
+requirements must be proved in Mobile, compared against source baselines and ported
+only when reusable.
 Record deliberate naming/fixture differences and validate the Starter's real DI
 containers; copying matching source alone does not prove integration.
 
