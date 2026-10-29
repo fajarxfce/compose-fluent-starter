@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-10-29",
+  "password": {
+    "mobileSource": "196c11719f3c81f429bc2c70662ffa5c83900dc4",
+    "mobileAppleRun": 40855843460,
+    "mobileAppleConclusion": "success",
+    "mobileNativeCases": 82,
+    "mobileNativeSuites": 22,
+    "mobileNativeFailures": 0,
+    "mobileXcode": "success",
+    "starterSource": "8a75de5a905a5b10c1d66d8434bf10053ef3aac1",
+    "portableSourceAndTestFiles": 6,
+    "baselineCompared": true,
+    "deliberateDifferences": [
+      "Application-neutral comments, fixture names and identifiers."
+    ],
+    "local": {
+      "rootCheck": true,
+      "androidDevAssembly": true,
+      "desktopCases": 308,
+      "desktopSuites": 108,
+      "identityChromiumCases": 31,
+      "identityChromiumSuites": 7,
+      "runnerTests": 10,
+      "distributionTests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 70,
+      "gradleTasks": 1503,
+      "executedTasks": 97,
+      "upToDateTasks": 1406
+    },
+    "starterAppleRun": 40861505322,
+    "starterAppleStatus": "in progress"
+  },
+  "localConfiguration": {
+    "matchingStarterIosEnvironments": 3,
+    "existingFirebaseAppsOnly": true,
+    "bundleProjectAppAndOAuthMetadataChecked": true,
+    "filesIgnored": true,
+    "fileMode": "0600",
+    "hrisConfigurationCopied": false
+  },
+  "google": {
+    "source": "43cd8ec6",
+    "status": "not ported; awaiting Mobile full Apple verification"
+  },
+  "limits": [
+    "Provider proof does not publish an application session or replace Starter demo login.",
+    "Actual iOS/APNs/device acceptance is separate from simulator/Xcode validation."
+  ]
+}

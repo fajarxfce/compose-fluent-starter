@@ -19,7 +19,10 @@ Current work ports Apple Firebase password/bundle configuration from Mobile
 cases and Xcode. Six generic provider source/test files, host wiring, Okio test
 support and identity-native CI targets are included. Local root checks, 308 desktop
 cases, 31 identity Chromium cases, ten runner/six distribution checks and Android
-assembly passed in 1m10s. Starter Apple validation is next. The later Mobile Google browser/code increment `43cd8ec6` passed
+assembly passed in 1m10s. Starter Apple run
+[40861505322](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40861505322)
+is testing port `8a75de5`. Matching local iOS dev/staging/prod plists were fetched
+from the existing Starter apps in Firebase; they remain ignored and mode 600. The later Mobile Google browser/code increment `43cd8ec6` passed
 native simulator tests but still awaits its Xcode result in run `40858176601`;
 **do not copy that later increment yet**. See [downstream development](downstream-development.md).
 

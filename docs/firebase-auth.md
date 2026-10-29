@@ -71,3 +71,9 @@ cancellation-fixture correction `196c1171`. Its
 passed all 82 simulator cases and the full Xcode build before this port. Portable
 bundle/transport regressions and identity-native CI targets accompany the change.
 Actual iOS provider/device acceptance remains separate from these checks.
+
+This workspace has matching local ignored iOS configurations for the existing
+`dev.fajar.fluent.starter.dev`, `.staging` and production bundle IDs in project
+`cmp-fajar`. They were fetched from those exact Starter apps, validated against
+bundle/project/app/OAuth metadata and saved mode 600. No HRIS plist was copied or
+Firebase app/account changed. A fresh clone must supply its own matching files.
