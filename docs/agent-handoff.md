@@ -19,7 +19,8 @@ its full run `40858176601` passed all four jobs, 97 native cases and Xcode. All
 22 provider source/test baselines matched before copying; only application-neutral
 comments/fixture identifiers differ. Starter root/Android/Chromium validation
 passed in 4m20s: 320 desktop cases, 43 identity and three app Chromium cases, plus
-ten runner/six distribution checks. Its complete hosted CI is next. HRIS server exchange, bindings, login policy and configuration are
+ten runner/six distribution checks. Port `e0c6071` is under complete hosted
+verification in [40864341588](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40864341588). HRIS server exchange, bindings, login policy and configuration are
 excluded. [Downstream development](downstream-development.md) records the source proof.
 
 The preceding password/configuration port `8a75de5` follows Mobile `196c1171` and
