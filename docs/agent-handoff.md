@@ -14,6 +14,20 @@ before edits. The current branch is `fix/push-token-lifecycle`; latest accepted
 CI port `1817e45` follows Mobile proof. The validated application foundation remains
 Firebase provider port `9a13791`; the new workflow changes no application sources.
 
+Current work ports Apple Firebase password/bundle configuration from Mobile
+`196c1171`, only after its corrected Apple run `40855843460` passed all 82 simulator
+cases and Xcode. Six generic provider source/test files, host wiring, Okio test
+support and identity-native CI targets are included. Local root checks, 308 desktop
+cases, 31 identity Chromium cases, ten runner/six distribution checks and Android
+assembly passed in 1m10s. Starter Apple validation is next. The later Mobile Google browser/code increment `43cd8ec6` passed
+native simulator tests but still awaits its Xcode result in run `40858176601`;
+**do not copy that later increment yet**. See [downstream development](downstream-development.md).
+
+Android Google → Firebase → HRIS → company/Home is now accepted on the user-operated
+phone, with a matching server session; Platform `5fd21caf` also records a successful
+post-login recovery checkpoint. Do not request Home confirmation or the supplied
+Firebase credentials again. Real iOS/APNs/device acceptance remains separate.
+
 The local siblings are `/home/fajar/hris/hris-mobile` (`feat/native-push`) and
 `/home/fajar/hris/hris-platform` (`feat/firebase-auth`). Their tracked continuation
 pages are [Mobile](https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/agent-handoff.md)

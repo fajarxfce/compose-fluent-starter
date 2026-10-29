@@ -1,5 +1,24 @@
 # Validation
 
+## Apple Firebase password configuration port
+
+The six portable provider source/test files derive from Mobile `196c1171`, whose
+Apple run `40855843460` passed 82 simulator tests and the full Xcode app before
+porting. iOS reads the exact bundle's ignored public plist; the bounded password
+protocol sends the Apple restriction header, with malformed/wrong-environment
+and mixed Android/Apple metadata rejected. Native tests join the Apple workflow.
+Application-neutral comments/fixture IDs are the only provider-file differences;
+HRIS session/permission policy and configuration are excluded.
+
+Local root checks, identity Chromium and configured Android dev assembly passed in
+1m10s: 1,503 tasks, 97 executed and 1,406 up to date. The desktop report set contains
+308 cases in 108 suites; identity Chromium passed 31 cases in seven suites. All
+reports have zero failures/errors/skips. Ten Android-runner and six distribution
+checks passed, along with format/architecture checks for 45 modules. Starter's
+own simulator/Xcode verification is pending. This port does not yet include the
+later Mobile Google browser/code increment or claim actual iOS device acceptance.
+
+
 ## Apple CI compilation budget
 
 The generic workflow correction from Mobile `451a2c4d` was ported only after its

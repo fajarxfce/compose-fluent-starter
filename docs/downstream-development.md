@@ -1,5 +1,28 @@
 # Downstream development
 
+## Apple Firebase password configuration
+
+Mobile `196c1171` passed
+[Apple run 40855843460](https://github.com/fajarxfce/hris-mobile/actions/runs/40855843460)
+before this port: 82 simulator cases in 22 downloaded JUnit suites, zero failures,
+errors or skips, and the full unsigned Xcode app. Its initial `64039536` run failed
+an existing transport cancellation test; the corrected fixture waits for explicit
+engine cleanup under a bounded real-dispatcher deadline. Native compilation took
+711 seconds, tests 94 seconds and the Xcode step 1,408 seconds.
+
+Six portable source/test files add bundle-bound public configuration, the Apple
+restriction header, invalid/mixed metadata rejection and native plist regressions.
+The iOS host supplies the source, identity-data's native tests join Apple CI, and
+the iOS test source set uses existing Okio. Source baselines were compared; only
+application-neutral comments and fixture IDs deliberately differ. HRIS native
+session APIs, account binding, configuration and login policy remain downstream.
+Google browser/code exchange is a later Mobile increment, not part of this port.
+
+Starter root checks, Android dev assembly and identity Chromium passed in 1m10s
+(1,503 tasks). Reports retain 308 desktop and 31 Chromium cases, zero failures/
+errors/skips, plus ten runner and six distribution checks. Its independent Apple
+verification is next.
+
 ## Downstream actual FCM acceptance
 
 On 29 October, unchanged Mobile application `678783b3` passed the

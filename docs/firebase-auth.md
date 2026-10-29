@@ -26,7 +26,15 @@ before Firebase's HTTP exchange. Only Firebase's server validates Google's token
 signature. Google dismissal is a cancelled result; coroutine cancellation propagates.
 Late or duplicate callbacks cannot complete a disposed interaction.
 
-Other hosts default to unavailable sources. `createAppContainer` accepts explicit
+iOS reads the selected application's bundled `GoogleService-Info.plist`, requires
+its exact running bundle ID and sends `X-Ios-Bundle-Identifier` for restricted
+Firebase keys. Missing configuration is unavailable; malformed, oversized or
+wrong-environment configuration fails explicitly. This accepted increment enables
+the bounded password protocol. Google interaction remains unavailable on iOS until
+its separate owned-browser adapter passes downstream verification and is ported.
+The public configuration stays local/ignored and is never copied from HRIS.
+
+Desktop/browser hosts default to unavailable sources. `createAppContainer` accepts explicit
 `FirebaseClientOptionsSource` and `GoogleCredentialSource` implementations; a host
 that supplies them must own its UI attachment and the container's lifetime. The
 container closes Google resources and its lazily acquired, dedicated HTTP client.
@@ -56,3 +64,10 @@ passed; actual Google token exchange and iOS remain separate acceptance. See the
 [Mobile validation record](https://github.com/fajarxfce/hris-mobile/blob/880f2a46/docs/validation.md).
 HRIS native sessions, account binding, MFA, login discovery and HRIS screens remain
 in Mobile. See [downstream development](downstream-development.md) for port checks.
+
+The Apple password/configuration increment derives from Mobile `64039536` and the
+cancellation-fixture correction `196c1171`. Its
+[Apple run 40855843460](https://github.com/fajarxfce/hris-mobile/actions/runs/40855843460)
+passed all 82 simulator cases and the full Xcode build before this port. Portable
+bundle/transport regressions and identity-native CI targets accompany the change.
+Actual iOS provider/device acceptance remains separate from these checks.

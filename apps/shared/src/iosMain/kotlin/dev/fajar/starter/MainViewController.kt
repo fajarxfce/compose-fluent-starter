@@ -12,6 +12,7 @@ import dev.fajar.starter.datastore.createUserPreferences
 import dev.fajar.starter.featureflags.data.datasources.AppleFeatureFlagSource
 import dev.fajar.starter.featureflags.data.datasources.AppleRemoteConfigClient
 import dev.fajar.starter.fileio.AppleFileOutputSource
+import dev.fajar.starter.identity.data.firebase.datasources.AppleFirebaseClientOptionsSource
 import dev.fajar.starter.identity.data.sso.datasources.AppleBrowserAuthorizationSource
 import dev.fajar.starter.location.data.datasources.AppleLocationDataSource
 import dev.fajar.starter.notifications.data.datasources.*
@@ -55,6 +56,7 @@ class AppleAppHost(
             credentials = AppleCredentialStore(credentials),
             deviceAuthentication = AppleDeviceAuthenticationSource(),
             browserAuthorization = AppleBrowserAuthorizationSource(),
+            firebaseOptions = AppleFirebaseClientOptionsSource(),
             remoteFeatureFlags = AppleFeatureFlagSource(remoteConfig),
             platform = AppPlatform.Ios,
             location = AppleLocationDataSource(),
