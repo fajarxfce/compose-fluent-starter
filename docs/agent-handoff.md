@@ -36,9 +36,11 @@ at `451a2c4d` passed all 27 simulator tests, the complete Xcode build and report
 upload before this port. Starter now has the same separate compile/test/Xcode
 bounds, manual Apple scope, independent concurrency and retained test reports.
 Its project/scheme and three-job default matrix are preserved; application sources
-remain `9a13791`. Local root checks passed in 21s and ten Python runner regressions
-passed. Push this port, dispatch `scope=apple` at its exact head, inspect the job
-and downloaded JUnit report, then record the outcome. See [validation](validation.md#apple-ci-compilation-budget).
+remain `9a13791`. Local root checks passed in 21s with 306 desktop cases in 108
+reports, ten Python runner and six distribution regressions. Hosted Apple run
+[40820482699](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40820482699)
+is running at pushed port `1817e45`. Inspect the final job and downloaded JUnit
+report, then record the outcome. See [validation](validation.md#apple-ci-compilation-budget).
 
 Platform's replacement full run
 [40820005213](https://github.com/fajarxfce/hris-platform/actions/runs/40820005213)

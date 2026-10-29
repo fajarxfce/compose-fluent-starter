@@ -15,9 +15,11 @@ concurrency group. Test reports upload even after a failure. Parsed workflow
 comparison matches the accepted Mobile Apple job except project/scheme naming.
 
 Local headless root checks passed in 21s (891 tasks: 48 executed, 843 up to date),
-plus all ten Python Android-runner regressions. The application is unchanged since
-`9a13791`, whose full CI passed. The changed Apple workflow still requires its own
-hosted run after this commit is pushed; do not claim that run passed in advance.
+with 306 desktop cases in 108 reports, ten Python runner and six distribution
+regressions. The application is unchanged since `9a13791`, whose full CI passed.
+The changed Apple workflow is running as
+[40820482699](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40820482699)
+at pushed port `1817e45`; inspect its outcome before claiming it passed.
 No release, signing or physical provider/device acceptance is implied.
 
 ## Firebase provider ownership
