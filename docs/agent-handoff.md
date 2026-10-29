@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 28 October 2026 (UTC). This repository is the reusable foundation. HRIS
+Updated 29 October 2026 (UTC). This repository is the reusable foundation. HRIS
 Mobile was generated from it and is the proving ground: validate generic fixes
 there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
@@ -17,8 +17,14 @@ The local siblings are `/home/fajar/hris/hris-mobile` (`feat/native-push`) and
 `/home/fajar/hris/hris-platform` (`feat/firebase-auth`). Their tracked continuation
 pages are [Mobile](https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/agent-handoff.md)
 and [Platform](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/agent-handoff.md).
-The overall HRIS PRD remains in progress. Platform's recent worker report feature
-`e806caed` and Mobile's native acceptance-only increments require no generic port.
+The overall HRIS PRD remains in progress. Platform `b7f42070` integrates validated
+push-delivery observations (`409abad4`), original payroll period comparison
+(`f757bffd`) and actual one-hour export retirement (`1abdbce9`). Mobile `42f5e04d`
+reconciles its nine read-model registrations and six pending-action observers with
+tracked acceptance. These administrative features, fixture results and document
+corrections require no generic port. Platform is next exercising native Overtime
+commit-response loss with offline restart and Pending actions; inspect its latest
+handoff before resuming that fixture.
 
 The user authorized continued work and pushing every atomic commit. Preserve
 unrelated edits, omit co-author trailers and retain implementation/tests/docs
