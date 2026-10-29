@@ -1,5 +1,16 @@
 # Downstream development
 
+## Downstream actual FCM acceptance
+
+On 29 October, unchanged Mobile application `678783b3` passed the
+[owned Android FCM case](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/native-fcm-acceptance.md):
+two real foreground/background notifications, correct Inbox navigation, unchanged
+read/ack state and complete token retirement. Platform retains the opt-in driver,
+private host credential and sanitized measurements in `55288bc4`; Mobile records
+the result at `f740d658`. No reusable implementation
+change arose, so no code/configuration port applies. This downstream proof does
+not replace actual iOS/APNs or other target acceptance for Starter.
+
 ## Apple CI compilation budget
 
 The generic workflow correction from Mobile `451a2c4d` was ported only after its

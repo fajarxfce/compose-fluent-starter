@@ -18,6 +18,15 @@ The local siblings are `/home/fajar/hris/hris-mobile` (`feat/native-push`) and
 `/home/fajar/hris/hris-platform` (`feat/firebase-auth`). Their tracked continuation
 pages are [Mobile](https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/agent-handoff.md)
 and [Platform](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/agent-handoff.md).
+The latest downstream [actual FCM acceptance](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/native-fcm-acceptance.md)
+passed in Platform `55288bc4`, recorded by Mobile `f740d658`, with the user's
+supplied private server credential and unchanged Mobile application `678783b3`: two generic Android foreground/background notifications, correct Inbox
+navigation, unchanged unread/unacknowledged items, and complete token retirement.
+The fixture passed in 6.2m/6.6m including setup, with 55 requests and no native
+company mutation. All owned resources were cleaned. There is no reusable code
+change to port; this proves one HRIS Android provider flow, not actual delivery on
+every Starter target. Do not request the already supplied FCM credential again.
+
 The overall HRIS PRD remains in progress. Platform `b7f42070` integrates validated
 push-delivery observations (`409abad4`), original payroll comparison (`f757bffd`)
 and actual one-hour export retirement (`1abdbce9`). Subsequent native fixtures
@@ -48,9 +57,9 @@ API/worker/export integration and schema-101 restore with a checked sanitized
 artifact. Its prior upload and browser-locator failures remain in the Platform
 measurement history. The owned temporary CI ref was removed after verification.
 No CI or owned local test remains active. All native-owned resources are cleaned,
-emulator data retained and location restored. Real FCM, Google exchange and
-physical/iOS provider acceptance need their actual external input; build results
-do not close those cases.
+emulator data retained and location restored. Actual HRIS Android FCM delivery
+subsequently passed as recorded above. Google exchange and physical/iOS provider
+acceptance still need their actual external input; build results do not close them.
 
 The user authorized continued work and pushing every atomic commit. Preserve
 unrelated edits, omit co-author trailers and retain implementation/tests/docs
@@ -78,9 +87,9 @@ exchange, MFA and login policy. Actual Firebase email/password through HRIS was
 accepted on Android; Google chooser/Back was accepted without a Google ID-token
 exchange. Those facts do not prove generic provider delivery on every target.
 
-Local ignored Android config uses project `cmp-fajar`. Real FCM delivery requires
-the consuming server credentials and device registration; iOS requires its own
-Firebase/APNs/device setup. No service account, private key or app-specific
+Local ignored Android config uses project `cmp-fajar`. The consuming HRIS server
+now has its private credential, and actual Android FCM delivery passed. iOS requires
+its own Firebase/APNs/device setup. No service account, private key or app-specific
 configuration should enter a generic port. Recheck local configuration and the
 Mobile handoff before requesting previously supplied input.
 
