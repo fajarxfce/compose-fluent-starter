@@ -96,6 +96,20 @@ module's Chromium tests and other changed targets. Record local tests separately
 from actual hosted CI and provider/device acceptance. Never claim CI success from
 the presence of a workflow file.
 
+For this workspace, supply tool locations explicitly (adjust paths on another host):
+
+```sh
+JAVA_HOME=/usr/lib/jvm/java-21-openjdk \
+ANDROID_HOME=/home/fajar/Android/Sdk \
+ANDROID_SDK_ROOT=/home/fajar/Android/Sdk \
+CHROME_BIN=/home/fajar/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome \
+PATH=/usr/lib/jvm/java-21-openjdk/bin:$PATH \
+xvfb-run -a ./gradlew --no-daemon :check
+```
+
+Append the affected browser/build targets to that command. Keep fixture-specific
+API overrides local and explicit; this command preserves normal app configuration.
+
 Update this file, downstream development and the relevant contract in each port's
 commit, then push and verify the remote. For documentation-only continuation
 updates, verify links and the recorded Git history; application tests need not be
