@@ -20,7 +20,10 @@ The starter demo login and application-session policy remain unchanged. Local
 root checks, Android assembly, 320 desktop and 46 identity/application Chromium
 cases passed in 4m20s, with ten runner/six distribution checks and no failures/
 errors/skips. Full hosted [CI 40864341588](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40864341588)
-is in progress at port `e0c6071`.
+passed all three jobs at port `e0c6071`. Apple retained 77 native cases in 22
+downloaded suites with no failures/errors/skips, and the full Xcode app passed.
+Compilation took 526s, tests 87s and Xcode 589s. This closes the generic port;
+actual iOS/APNs/device acceptance remains separate.
 
 ## Apple Firebase password configuration
 

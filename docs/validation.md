@@ -17,7 +17,10 @@ desktop report set contains 320 cases in 111 suites; identity Chromium passed 43
 cases in ten suites and the app passed three cases in three suites. All have zero
 failures/errors/skips. Ten runner/six distribution checks and architecture/format
 checks passed. The port's full [CI run 40864341588](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40864341588)
-is in progress at `e0c6071`. The accepted earlier password-only Apple run
+passed all three jobs at `e0c6071`: Linux/Android/Web, Windows and Apple. Downloaded
+Apple reports retain 77 native cases in 22 suites, zero failures/errors/skips and
+the complete unsigned Xcode app. Compilation took 526s, simulator tests 87s and
+Xcode 589s. The accepted earlier password-only Apple run
 `40861505322` retains its separate source boundary.
 Actual iOS provider/device/APNs acceptance remains separate.
 

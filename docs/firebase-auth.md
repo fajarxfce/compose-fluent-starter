@@ -97,3 +97,7 @@ Xcode app passed. Twenty-two provider source/test files, host wiring and direct
 use of the existing OIDC 0.18.4 crypto module accompany this port. Actual HRIS
 Android Google/Home acceptance belongs to the consuming application; its account
 binding and native session policies are not included here.
+
+Starter port `e0c6071` independently passed all three jobs in full run `40864341588`,
+including 77 native cases in 22 downloaded suites and the complete Xcode app.
+The source, local checks and exact timing are retained in [measurements](measurements/apple-firebase-2026-10-29.json).

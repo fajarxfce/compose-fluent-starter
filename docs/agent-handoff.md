@@ -11,16 +11,20 @@ the consuming application.
 Read `AGENTS.md`, [architecture](architecture.md), [downstream development](downstream-development.md)
 and [validation](validation.md). Inspect `git status`, recent commits and upstream
 before edits. The current branch is `fix/push-token-lifecycle`. The latest accepted
-Apple password/configuration port is `8a75de5`; Google port `e0c6071` has passed
-local checks and is completing its own full hosted verification below.
+Apple Google port is `e0c6071`, following password/configuration port `8a75de5`.
+Both have passed their independent hosted verification below.
 
 Current work ports iOS Google browser/code ownership from Mobile `43cd8ec6`, after
 its full run `40858176601` passed all four jobs, 97 native cases and Xcode. All
 22 provider source/test baselines matched before copying; only application-neutral
 comments/fixture identifiers differ. Starter root/Android/Chromium validation
 passed in 4m20s: 320 desktop cases, 43 identity and three app Chromium cases, plus
-ten runner/six distribution checks. Port `e0c6071` is under complete hosted
-verification in [40864341588](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40864341588). HRIS server exchange, bindings, login policy and configuration are
+ten runner/six distribution checks. Port `e0c6071` passed all three jobs in
+[40864341588](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40864341588):
+Linux/Android/Web, Windows and Apple. Downloaded Apple reports retain 77 native
+cases in 22 suites with no failures/errors/skips, and the complete Xcode app passed.
+Compilation took 526s, simulator tests 87s and Xcode 589s. HRIS server exchange,
+bindings, login policy and configuration are
 excluded. [Downstream development](downstream-development.md) records the source proof.
 
 The preceding password/configuration port `8a75de5` follows Mobile `196c1171` and
@@ -79,7 +83,7 @@ passed all ten jobs at `9345c19b`: four backend/dashboard shards each, actual
 API/worker/export integration and schema-101 restore with a checked sanitized
 artifact. Its prior upload and browser-locator failures remain in the Platform
 measurement history. The owned temporary CI ref was removed after verification.
-Those earlier runs are complete; Google port run `40864341588` remains active.
+Those earlier runs and Google port run `40864341588` are complete and accepted.
 All earlier native fixture resources were cleaned, emulator data retained and
 location restored. Actual HRIS Android FCM and Google exchange subsequently passed
 as recorded above. Physical/iOS provider acceptance still needs actual external
@@ -94,6 +98,7 @@ documents are the durable handoff; `.work` and chat history are supplementary.
 
 | Port | Source and destination | Recorded evidence |
 | --- | --- | --- |
+| Apple Google browser/code ownership | Mobile `43cd8ec6` → Starter `e0c6071` | Full Mobile run `40858176601` passed all four jobs and 97 native cases/Xcode before porting. Full Starter run `40864341588` passed all three jobs and 77 native cases in 22 suites/Xcode, with local root/Android/Chromium proof. |
 | Apple Firebase password/configuration | Mobile `196c1171` → Starter `8a75de5` | Mobile run `40855843460` passed 82 native cases/Xcode before porting. Starter run `40861505322` passed 62 native cases in 18 suites and the full Xcode app; root/Android/Chromium checks passed separately. |
 | Apple CI compilation budget | Mobile `451a2c4d` → Starter `1817e45` | Mobile run `40817592306` passed before Starter run `40820482699`; each retained 27 simulator tests and built the unsigned Xcode application. Separate 25/15/30-minute steps, 75-minute job bound, scoped manual dispatch and reports. |
 | Firebase provider ownership | Mobile `d191c61d` → Starter `9a13791` | 20 provider source/test files, host wiring and two actual container regressions; 306 desktop/UI and 29 identity-data Chromium tests, configured Android assembly. CI run [40648662419](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40648662419) passed Linux/Android/Web, Windows and Apple simulator/Xcode. |
