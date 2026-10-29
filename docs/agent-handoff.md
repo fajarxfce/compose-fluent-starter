@@ -6,6 +6,32 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
+## Pending source proof: distribution configuration
+
+The user requested more work after the preceding checkpoint. A Mobile release
+audit at `3dc81d00` fixes selected API precedence, passes optional app-link inputs
+through signing and artifact packaging, and adds the POM hashes required by the
+release SBOM. Android's generic entry point first checks the normal repository
+configuration, then builds the explicitly selected release. Xcode pins backend,
+common API fallback and the selected environment through command-line properties.
+
+The source passed 17 distribution regressions and a real signed Android APK/AAB/
+SBOM exercise in 215.572s, using a disposable fictional key and invalid host.
+The APK endpoint, manifest, both signatures, domain files and checksums passed;
+nothing was uploaded or installed. Source full
+[CI 40909156570](https://github.com/fajarxfce/hris-mobile/actions/runs/40909156570)
+is still running. Do not accept/apply the reusable port until its final source
+jobs and Xcode evidence have been inspected.
+
+A 15-file proposal exists outside this repository in Mobile's ignored work area,
+with destination hashes and 17 passing script preflight tests. This is preparation,
+not a verified Starter application build. Keep Starter's demo/remote choice and
+its application/project IDs. HRIS's remote-only release policy, fake HRIS API
+fixtures and private dev network XML stay downstream. The 31 reviewed POM additions
+must preserve all 3,716 existing Starter artifact entries and their hashes.
+Read the [Mobile handoff](https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/agent-handoff.md)
+for the source result; the accepted application boundary remains the checkpoint below.
+
 ## Completed implementation checkpoint
 
 Final Mobile source `72341ef6` passed all four jobs in full
