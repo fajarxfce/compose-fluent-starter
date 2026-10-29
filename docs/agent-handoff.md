@@ -43,12 +43,14 @@ source/destination proof and distinguish prior full CI from this Apple-only scop
 
 No reusable implementation port remains from this increment. Platform's corrected
 full run [40820912608](https://github.com/fajarxfce/hris-platform/actions/runs/40820912608)
-is running at `9345c19b` after correcting hidden-path report upload and a browser
-heading ambiguity. All four dashboard shards now pass; backend/integration results
-must still be inspected. Read the Platform handoff before calling its CI complete.
-All native-owned local resources are cleaned, emulator data retained and location
-restored. Real FCM, Google exchange and physical/iOS provider acceptance need their
-external input; a build result does not close those cases.
+passed all ten jobs at `9345c19b`: four backend/dashboard shards each, actual
+API/worker/export integration and schema-101 restore with a checked sanitized
+artifact. Its prior upload and browser-locator failures remain in the Platform
+measurement history. The owned temporary CI ref was removed after verification.
+No CI or owned local test remains active. All native-owned resources are cleaned,
+emulator data retained and location restored. Real FCM, Google exchange and
+physical/iOS provider acceptance need their actual external input; build results
+do not close those cases.
 
 The user authorized continued work and pushing every atomic commit. Preserve
 unrelated edits, omit co-author trailers and retain implementation/tests/docs
