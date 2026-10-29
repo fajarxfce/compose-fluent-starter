@@ -10,8 +10,9 @@ the consuming application.
 
 Read `AGENTS.md`, [architecture](architecture.md), [downstream development](downstream-development.md)
 and [validation](validation.md). Inspect `git status`, recent commits and upstream
-before edits. The current branch is `fix/push-token-lifecycle`; the last accepted
-checkpoint is `a16325e`, documenting the validated Firebase provider port `9a13791`.
+before edits. The current branch is `fix/push-token-lifecycle`; latest accepted
+CI port `1817e45` follows Mobile proof. The validated application foundation remains
+Firebase provider port `9a13791`; the new workflow changes no application sources.
 
 The local siblings are `/home/fajar/hris/hris-mobile` (`feat/native-push`) and
 `/home/fajar/hris/hris-platform` (`feat/firebase-auth`). Their tracked continuation
@@ -23,32 +24,31 @@ and actual one-hour export retirement (`1abdbce9`). Subsequent native fixtures
 `578a5031` (Overtime), `97e33310` (Expense), `ccae6f8f` (Leave) and `a837320f`
 (Attendance) pass real API/Android response-loss, offline restart and exact replay.
 The six Mobile pending-action observers now each have a native recovery example;
-those examples retain their specific scope. Application sources remain `02743a9f`.
-Mobile `ad675e57` records the latest evidence. No generic implementation port was
+those examples retain their specific scope and used Mobile application `02743a9f`.
+Later Mobile `678783b3` corrects English Expense count copy, with root/Android checks. No generic implementation port was
 needed for these HRIS fixtures; the Starter application remains unchanged since
 `9a13791`, whose cross-platform CI passed.
 
-Current continuation is verification of the generic Apple CI correction. Mobile
-full run `40815794384` passed Linux/Android, Web and Windows, but Apple compilation
-hit its combined deadline. The corrected Mobile run
-[40817592306](https://github.com/fajarxfce/hris-mobile/actions/runs/40817592306)
-at `451a2c4d` passed all 27 simulator tests, the complete Xcode build and report
-upload before this port. Starter now has the same separate compile/test/Xcode
-bounds, manual Apple scope, independent concurrency and retained test reports.
-Its project/scheme and three-job default matrix are preserved; application sources
-remain `9a13791`. Local root checks passed in 21s with 306 desktop cases in 108
-reports, ten Python runner and six distribution regressions. Hosted Apple run
+The generic Apple CI correction is accepted. Mobile full run `40815794384` passed
+Linux/Android, Web and Windows but reached the combined Apple compile/test deadline.
+Its corrected run [40817592306](https://github.com/fajarxfce/hris-mobile/actions/runs/40817592306)
+at `451a2c4d` passed before porting. Starter independently passed
 [40820482699](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40820482699)
-is running at pushed port `1817e45`. Inspect the final job and downloaded JUnit
-report, then record the outcome. See [validation](validation.md#apple-ci-compilation-budget).
+at `1817e45`: all 27 simulator tests in ten downloaded JUnit suites, complete
+unsigned Xcode build, artifact upload and cleanup. Compilation took 6m28s, tests
+47s and the Xcode step 8m31s. Local root checks passed in 21s with 306 desktop
+cases, ten runner and six distribution regressions. Its project/scheme and three-job
+default matrix are preserved. [Measurements](measurements/ci-2026-10-29.json) retain
+source/destination proof and distinguish prior full CI from this Apple-only scope.
 
-Platform's replacement full run
-[40820005213](https://github.com/fajarxfce/hris-platform/actions/runs/40820005213)
-is running at `70e5098d`: first run passed every test suite and actual schema-101
-restore but failed hidden-path artifact upload. Mobile `678783b3` separately fixes
-English Expense count copy, with local root/Android checks passed. Those HRIS
-sources/configuration stay in Mobile. All native-owned local resources are cleaned,
-emulator data retained and location restored. Provider/device inputs remain external.
+No reusable implementation port remains from this increment. Platform's corrected
+full run [40820912608](https://github.com/fajarxfce/hris-platform/actions/runs/40820912608)
+is running at `9345c19b` after correcting hidden-path report upload and a browser
+heading ambiguity. All four dashboard shards now pass; backend/integration results
+must still be inspected. Read the Platform handoff before calling its CI complete.
+All native-owned local resources are cleaned, emulator data retained and location
+restored. Real FCM, Google exchange and physical/iOS provider acceptance need their
+external input; a build result does not close those cases.
 
 The user authorized continued work and pushing every atomic commit. Preserve
 unrelated edits, omit co-author trailers and retain implementation/tests/docs
@@ -59,6 +59,7 @@ documents are the durable handoff; `.work` and chat history are supplementary.
 
 | Port | Source and destination | Recorded evidence |
 | --- | --- | --- |
+| Apple CI compilation budget | Mobile `451a2c4d` → Starter `1817e45` | Mobile run `40817592306` passed before Starter run `40820482699`; each retained 27 simulator tests and built the unsigned Xcode application. Separate 25/15/30-minute steps, 75-minute job bound, scoped manual dispatch and reports. |
 | Firebase provider ownership | Mobile `d191c61d` → Starter `9a13791` | 20 provider source/test files, host wiring and two actual container regressions; 306 desktop/UI and 29 identity-data Chromium tests, configured Android assembly. CI run [40648662419](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40648662419) passed Linux/Android/Web, Windows and Apple simulator/Xcode. |
 | Notification resource paths | Mobile `b77d991f` → Starter `7562e67` | Four source/test files, 291 desktop/UI and eight notification-data Chromium cases, Android assembly and cross-platform CI recorded at `da0855b`. |
 | Provider token retirement | Mobile `e56ef32b` → Starter `9cb83a2` | Thirteen matching source/test files; current-token observation, SDK deletion and cancellation/late-result coverage. Use the downstream ledger for exact validation. |
@@ -81,9 +82,8 @@ Firebase/APNs/device setup. No service account, private key or app-specific
 configuration should enter a generic port. Recheck local configuration and the
 Mobile handoff before requesting previously supplied input.
 
-Complete this Apple CI port's hosted acceptance first. Subsequent concrete downstream
-requirements must be proved in Mobile, compared against source baselines and ported
-only when reusable.
+This Apple CI port is accepted. Subsequent concrete downstream requirements must
+be proved in Mobile, compared against source baselines and ported only when reusable.
 Record deliberate naming/fixture differences and validate the Starter's real DI
 containers; copying matching source alone does not prove integration.
 

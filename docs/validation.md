@@ -17,9 +17,14 @@ comparison matches the accepted Mobile Apple job except project/scheme naming.
 Local headless root checks passed in 21s (891 tasks: 48 executed, 843 up to date),
 with 306 desktop cases in 108 reports, ten Python runner and six distribution
 regressions. The application is unchanged since `9a13791`, whose full CI passed.
-The changed Apple workflow is running as
+The changed Apple workflow passed as
 [40820482699](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40820482699)
-at pushed port `1817e45`; inspect its outcome before claiming it passed.
+at port `1817e45`. Compilation took 6m28s, simulator execution 47s and the complete
+unsigned Xcode app step 8m31s. Downloaded JUnit confirms 27 tests in ten suites,
+with zero failures/errors/skips; report upload and cleanup passed. The manual Apple
+scope intentionally skipped verify/Windows; their unchanged application sources
+retain full run `40648662419`. [Tracked measurements](measurements/ci-2026-10-29.json)
+preserve the exact commit, source Mobile proof and both local/hosted results.
 No release, signing or physical provider/device acceptance is implied.
 
 ## Hierarchical notification destinations

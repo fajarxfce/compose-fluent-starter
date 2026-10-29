@@ -1,0 +1,139 @@
+{
+  "reviewedAt": "2026-10-29",
+  "sourceMobile": {
+    "commit": "451a2c4d",
+    "run": 40817592306,
+    "conclusion": "success before this port"
+  },
+  "port": {
+    "commit": "1817e45a46eab238c02f0f44d5349c7c8a2c37fc",
+    "applicationBaseline": "9a13791",
+    "localRoot": {
+      "conclusion": "passed",
+      "duration": "21s",
+      "tasks": 891,
+      "executed": 48,
+      "upToDate": 843,
+      "desktopTests": 306,
+      "desktopSuites": 108,
+      "runnerTests": 10,
+      "distributionTests": 6
+    }
+  },
+  "appleRun": {
+    "id": 40820482699,
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40820482699",
+    "conclusion": "success",
+    "steps": [
+      {
+        "name": "Compile iOS simulator tests",
+        "startedAt": "2026-10-29T04:56:13Z",
+        "completedAt": "2026-10-29T05:02:44Z",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run iOS simulator tests",
+        "startedAt": "2026-10-29T05:02:44Z",
+        "completedAt": "2026-10-29T05:03:33Z",
+        "conclusion": "success"
+      },
+      {
+        "name": "Build iOS simulator app",
+        "startedAt": "2026-10-29T05:03:33Z",
+        "completedAt": "2026-10-29T05:12:04Z",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/upload-artifact@v4",
+        "startedAt": "2026-10-29T05:12:04Z",
+        "completedAt": "2026-10-29T05:12:16Z",
+        "conclusion": "success"
+      }
+    ],
+    "junit": {
+      "tests": 27,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": [
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.fileio.AppleFileOutputTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.fileio.FileHandleRegistryTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.fileio.SafeFileCallTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.fileio.Sha256DigestTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.location.data.AppleLocationDataSourceTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.location.data.DeviceLocationRepositoryTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.notifications.data.ApplePushTokenSourceTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.notifications.data.NotificationDestinationTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.notifications.data.PushTokenLifecycleTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "iosSimulatorArm64Test.dev.fajar.starter.notifications.data.SafeNotificationCallTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ]
+    },
+    "reportArtifact": "ios-simulator-reports downloaded and checked",
+    "scope": "Apple only; verify and Windows intentionally skipped. Unchanged application targets retain full run 40648662419 at 9a13791."
+  },
+  "differences": "FluentStarter Xcode project/scheme; three default jobs with Web in verify; no application/configuration port.",
+  "limits": [
+    "Unsigned simulator build does not prove physical-device push/auth.",
+    "No release/distribution workflow invoked."
+  ]
+}
