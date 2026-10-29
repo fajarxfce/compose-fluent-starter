@@ -28,6 +28,42 @@ Optional `OIDC_CONFIG_BASE64` is the base64 encoding of that environment's publi
 OIDC registration JSON. The build validates it using the [SSO rules](sso.md).
 Private credentials never belong in that JSON.
 
+## Optional HTTPS application links
+
+Set the environment **variable** `APP_LINKS_CONFIG_BASE64` to the base64 encoding
+of the selected public [app-link registration](app-links.md). It is not a signing
+credential. Preparation bounds the decoded UTF-8 input to 16 KiB, writes only the
+selected `config/app-links/<environment>.json`, refuses existing files, and tracks
+its cleanup with the other owned runner files. Gradle performs the full registration
+and environment validation before building. Omission keeps HTTPS links disabled.
+
+For iOS the registration must name the signing profile's exact application
+identifier and the profile must permit its associated domain. Before packaging,
+Android checks the actual APK signer against the registered SHA-256 fingerprints;
+iOS checks the signed app's application identifier and exact associated domain.
+The selected generated Android/Apple domain statements must match the registration.
+A mismatch fails before upload. Keep the Play App Signing certificate separately
+in the fingerprint list when it differs from the distributed APK's signer.
+
+Successful artifacts include `app-links/<host>/.well-known/assetlinks.json` and
+`apple-app-site-association`, covered by `SHA256SUMS`. `build.json.appLinks` records
+the host, environment path and signing verification; it is null when unconfigured.
+Deploy the two files to their exact HTTPS paths using the domain owner's release
+procedure. Retained files do not publish DNS/TLS or establish OS verification.
+
+A workflow prepares only its selected environment. If several environments share
+one host, generate the deployment files from the complete public registration set
+for that host (all applicable `config/app-links/<environment>.json` files) before
+publishing. A single-environment artifact must not replace a shared host's other
+app registrations. Separate hosts can publish their own selected files directly.
+
+Android runs the default repository checks before compiling the selected release.
+Remote release builds pass a common API fallback and an explicit selected-flavor
+property, so existing per-flavor project configuration cannot redirect that release.
+The Xcode framework entry point forwards the same backend and endpoint selection;
+ordinary Xcode builds retain project configuration. Starter keeps both demo and
+remote choices. HRIS's remote-only policy is not part of this port.
+
 ## Android
 
 Environment variables:
@@ -130,7 +166,11 @@ an inventory alone does not establish license compliance or absence of advisorie
 It is an Android inventory, not an inventory of the Swift packages inside iOS.
 Gradle dependency verification remains enforced; see [quality gates](quality.md).
 
-`distributionCheck` exercises input validation, credential-file ownership, profile
+Ordinary CI also resolves the production Android SBOM to verify its license/POM
+metadata before manual distribution.
+
+`distributionCheck` exercises input validation, shell argument forwarding, app-link
+signing/profile matching, credential-file ownership, profile
 validation and the Firebase upload/poll/distribute sequence with fake responses.
 Live signing/distribution needs the configured secrets and a manual workflow run.
 The helper scripts require Python 3.11 or newer. No release upload is performed by

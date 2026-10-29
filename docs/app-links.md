@@ -114,3 +114,11 @@ with 84 Apple cases in 24 downloaded suites, no failures/errors/skips and Xcode;
 compilation/tests/Xcode took 561s/84s/703s. Generated Android/Apple association
 checks passed, and the Xcode/Apple artifact success markers were inspected.
 No CI or owned local acceptance remains active from this increment.
+
+## Distribution builds
+
+The manual Android/iOS workflows accept the environment variable
+`APP_LINKS_CONFIG_BASE64` for the selected public registration. They carry that
+input into the build, verify the signing identity, and retain matching domain
+files with checksums. See [distribution](distribution.md#optional-https-application-links).
+A regular unconfigured build still disables HTTPS admission.

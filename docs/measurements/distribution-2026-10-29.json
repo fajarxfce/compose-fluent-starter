@@ -1,0 +1,529 @@
+{
+  "date": "2026-10-29",
+  "source": {
+    "run": 40909156570,
+    "head": "3dc81d00632f965201c2eecc01cfe9a5627d7f1f",
+    "url": "https://github.com/fajarxfce/hris-mobile/actions/runs/40909156570",
+    "conclusion": "success",
+    "jobs": {
+      "web": "success",
+      "windows": "success",
+      "apple": "success",
+      "verify": "success"
+    },
+    "apple": {
+      "tests": 104,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 28,
+      "stepSeconds": {
+        "Compile iOS simulator tests": 791,
+        "Run iOS simulator tests": 122,
+        "Build iOS simulator app": 1295
+      },
+      "downloadedReportsInspected": true,
+      "xcodeAndDistributionMarkersConfirmed": true
+    }
+  },
+  "destinationBase": "3e2d3e315ae899e4d74ca1928c6b2ef238f36c9b",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "beforeSha256": "9bfd95e07a7fa881ee76b4edc9db008fb214dbd0562ff57d9fb0101e9d5c824b",
+      "afterSha256": "d51295d2122a1de97c2cb1ed6f2ada9cb19e07b0de2d4864cee178799672c712"
+    },
+    {
+      "path": ".github/workflows/distribute-android.yml",
+      "beforeSha256": "86f06cc2fb94faad87b229f460a32cf1b54bd29945790bc01aea0fb3227ae6f7",
+      "afterSha256": "87eb17e0565e3a11dd19e4624ac3d518e6733e31894c5e13bcdd7897342d989b"
+    },
+    {
+      "path": ".github/workflows/distribute-ios.yml",
+      "beforeSha256": "c131859b6030954072a6287d21cd6c8362f0fa71e8f991fb4d1b27d6b32dd053",
+      "afterSha256": "cfa1a74923a258bb4f7d91ae9805f3728acf58f0e591f1e3731ad136e13f3dcb"
+    },
+    {
+      "path": "apps/ios/FluentStarter.xcodeproj/project.pbxproj",
+      "beforeSha256": "2417e0a21efd75275c49c92b8e06e81ab068868297a39991365d03dd91a5c245",
+      "afterSha256": "a68f1a7a051e5aa8d3bec68ad4fba4ed4b871f9f3e450b50202de416609d8c80"
+    },
+    {
+      "path": "apps/ios/build_framework.sh",
+      "beforeSha256": null,
+      "afterSha256": "dda99cf5722d410abcd40bf7674b0711aabc7a58426a1d7425b9926ca4b7329f"
+    },
+    {
+      "path": "gradle/verification-metadata.xml",
+      "beforeSha256": "98a9c2a3bbb4c06c9d67dee407ba45ab10ca421db1d4c52ecd9a30a13623af72",
+      "afterSha256": "9e8dda076d4b7fa5ec2c5c296d800297d5d8f8dba39d3df2b14964775d83c7a3"
+    },
+    {
+      "path": "tool/distribution/app_links.py",
+      "beforeSha256": null,
+      "afterSha256": "54b7c49100bc57793eec3ed9d55f6b018ae0a545688d85ba1beaf93de431087a"
+    },
+    {
+      "path": "tool/distribution/apple_signing.py",
+      "beforeSha256": "f671e6fe9428586517a1b07ede387f4348473342440bb494b43a4bae1e3512c1",
+      "afterSha256": "c736ba3d9faa1922c356df3702d5045e294109ba97e4a32b1b43d795b062e28c"
+    },
+    {
+      "path": "tool/distribution/build_android.sh",
+      "beforeSha256": null,
+      "afterSha256": "f1ac29122fa56a08b05f3c29937fa0fdf75c7e1818d2436d2ce3e1b2ab05902d"
+    },
+    {
+      "path": "tool/distribution/checksums.py",
+      "beforeSha256": "b64b581511b01513d2023cb9c00f2f31cdcdec6b2cac9c3d1a426d8eb0e39e31",
+      "afterSha256": "0fcae1c805cf5b097f5cc80996eacdde6490eeca71be8b980677c9e7fc87b731"
+    },
+    {
+      "path": "tool/distribution/configuration.py",
+      "beforeSha256": "579716ab8d1046fa78453403a76c13d8ec5f6251f77a70e7e1705519b1dabbe4",
+      "afterSha256": "86085776786173792e2c65976da8faf069f6eda0348919ecd9e0bd270eb7eead"
+    },
+    {
+      "path": "tool/distribution/credentials.py",
+      "beforeSha256": "b1f455c49c341e6e3c0114809c3b3f273e8ee02639de9b4d15cd0535cf6d2613",
+      "afterSha256": "20d38dad8cd47abd17652294a85ee6fce054afd5846cc782bde043082a188046"
+    },
+    {
+      "path": "tool/distribution/test_app_links.py",
+      "beforeSha256": null,
+      "afterSha256": "aa9d0c38590a1bf8501af25015bbc14adbff66e7da47e48f217cf99bdbd52942"
+    },
+    {
+      "path": "tool/distribution/test_distribution.py",
+      "beforeSha256": "c792b97a9468e71dd62d561067c5474e710e48d6bf78c2784f24f52a7a73d46d",
+      "afterSha256": "3631866a5ceb948b3392b68956d1e6592193958c6e67341af21d6e5bb9f40a07"
+    },
+    {
+      "path": "tool/distribution/test_release_build.py",
+      "beforeSha256": null,
+      "afterSha256": "e0230a2c49e0132cd02320d5f02c0bcd0a606c835808be2629303c1d59c40c96"
+    }
+  ],
+  "local": {
+    "distributionTests": 17,
+    "runnerTests": 10,
+    "desktopReports": {
+      "tests": 326,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 112
+    },
+    "signedArtifactExercise": {
+      "passed": true,
+      "elapsedSeconds": 136.647,
+      "sourceParent": "3e2d3e315ae899e4d74ca1928c6b2ef238f36c9b",
+      "workingTreeIncrement": true,
+      "artifact": "Android dev release APK/AAB, ephemeral fictional certificate",
+      "apiOverrideVerifiedInDex": true,
+      "privateDevEndpointAbsent": true,
+      "manifestAssociationVerified": true,
+      "bundleApiAndManifestVerified": true,
+      "actualApkAndBundleSignaturesVerified": true,
+      "packagedAssociationFilesAndChecksumsVerified": true,
+      "apkBytes": 19037133,
+      "apkSha256": "1cb0143177a199b6c876c28bd91684d901ba015a36c94efed2b526d9e8d8763e",
+      "uploaded": false,
+      "installed": false,
+      "appleSigning": "fixture regressions only; no actual signed IPA",
+      "normalChecksSeconds": 36,
+      "signedBuildSeconds": 94
+    },
+    "normalDevRestoreAndProductionSbom": {
+      "passed": true,
+      "seconds": 23,
+      "demoBackend": true,
+      "version": 1,
+      "fixtureApiAndHostAbsentFromDexAndManifest": true,
+      "installed": false
+    },
+    "ephemeralFixtureKeysRemoved": true
+  },
+  "ci": "full independent CI next",
+  "sourceSignedAndroidSeconds": 215.572,
+  "newPomArtifacts": [
+    {
+      "group": "androidx.credentials",
+      "module": "credentials",
+      "version": "1.6.0",
+      "artifact": "credentials-1.6.0.pom",
+      "sha256": [
+        "3193f02566989b0e59334e374d9982d8f30a12fae907d7719efbc4d0054f9b04"
+      ],
+      "canonicalSource": "https://dl.google.com/dl/android/maven2/androidx/credentials/credentials/1.6.0/credentials-1.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "androidx.credentials",
+      "module": "credentials-play-services-auth",
+      "version": "1.6.0",
+      "artifact": "credentials-play-services-auth-1.6.0.pom",
+      "sha256": [
+        "9f748f8992ba5de9f9d62973a04f8ab71744b8ac486ee84b88a7e98be9bdd913"
+      ],
+      "canonicalSource": "https://dl.google.com/dl/android/maven2/androidx/credentials/credentials-play-services-auth/1.6.0/credentials-play-services-auth-1.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-bigint",
+      "version": "0.6.0",
+      "artifact": "cryptography-bigint-0.6.0.pom",
+      "sha256": [
+        "35c5098605d25c5be4d067642e885d04544209b22472c7fce46aa953e76efb02"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-bigint/0.6.0/cryptography-bigint-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-bigint-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-bigint-jvm-0.6.0.pom",
+      "sha256": [
+        "0af8bc490612ec7fa82944cbad4e360db3071460f83bc1b27fb19399067452c4"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-bigint-jvm/0.6.0/cryptography-bigint-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-core",
+      "version": "0.6.0",
+      "artifact": "cryptography-core-0.6.0.pom",
+      "sha256": [
+        "c3228b37e0f4e8f77a7943e2607127d45934a910206520bdf7254c727b23a9d3"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-core/0.6.0/cryptography-core-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-core-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-core-jvm-0.6.0.pom",
+      "sha256": [
+        "042ff2fda7c58963e3fe3bea7d4d2c4e9b3adf1fa034a83d4a01a9e1876c2830"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-core-jvm/0.6.0/cryptography-core-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-provider-base",
+      "version": "0.6.0",
+      "artifact": "cryptography-provider-base-0.6.0.pom",
+      "sha256": [
+        "cc63c203e92478bf63786b3020feadabd0cd4167e36f0918dbe821a3ca63c05a"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-provider-base/0.6.0/cryptography-provider-base-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-provider-base-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-provider-base-jvm-0.6.0.pom",
+      "sha256": [
+        "9fdefdec4185ea8d148b9350fdfe29305198c5f0f87d946b0cc0027d8e725008"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-provider-base-jvm/0.6.0/cryptography-provider-base-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-provider-jdk",
+      "version": "0.6.0",
+      "artifact": "cryptography-provider-jdk-0.6.0.pom",
+      "sha256": [
+        "054d62ae17d7acf6c2c758ed580e75bbc983c01486b7fdfae6e779529c00e907"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-provider-jdk/0.6.0/cryptography-provider-jdk-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-provider-jdk-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-provider-jdk-jvm-0.6.0.pom",
+      "sha256": [
+        "086e3709ac1801e42d776ef9c442a80e69a9d0f5281cb53ca23d4c47e895ee69"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-provider-jdk-jvm/0.6.0/cryptography-provider-jdk-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-provider-optimal",
+      "version": "0.6.0",
+      "artifact": "cryptography-provider-optimal-0.6.0.pom",
+      "sha256": [
+        "e72f7c2f260cbd7717a02f76daa1d46dad79ccba594bbcda24d45cefae085738"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-provider-optimal/0.6.0/cryptography-provider-optimal-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-provider-optimal-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-provider-optimal-jvm-0.6.0.pom",
+      "sha256": [
+        "c98ad5d1bdcd62b24c4bce4acf053874b7189df9833df9e273ef89e5e35436b8"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-provider-optimal-jvm/0.6.0/cryptography-provider-optimal-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-random",
+      "version": "0.6.0",
+      "artifact": "cryptography-random-0.6.0.pom",
+      "sha256": [
+        "890104cce8184d8aef77d3e680faef40bc2fb03063273270d0f24feca6973ba9"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-random/0.6.0/cryptography-random-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-random-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-random-jvm-0.6.0.pom",
+      "sha256": [
+        "e64b5004bc39f08e892aa132d762b8bc8f04babd341d5da76601c02d22e6d80b"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-random-jvm/0.6.0/cryptography-random-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-serialization-asn1",
+      "version": "0.6.0",
+      "artifact": "cryptography-serialization-asn1-0.6.0.pom",
+      "sha256": [
+        "248921bc04c95dc6b25bc0943a20feb2396d6baabbe34da0ad7bbf3c9f382a57"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-serialization-asn1/0.6.0/cryptography-serialization-asn1-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-serialization-asn1-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-serialization-asn1-jvm-0.6.0.pom",
+      "sha256": [
+        "5f8bc9835d746af00ce4b1656a1b1720a27ef2ae6b01ba000271f98ba5821589"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-serialization-asn1-jvm/0.6.0/cryptography-serialization-asn1-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-serialization-asn1-modules",
+      "version": "0.6.0",
+      "artifact": "cryptography-serialization-asn1-modules-0.6.0.pom",
+      "sha256": [
+        "46bb8d933786fefeee3907060b90e69ada4a8596f4c88c585d3282f038c83176"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-serialization-asn1-modules/0.6.0/cryptography-serialization-asn1-modules-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-serialization-asn1-modules-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-serialization-asn1-modules-jvm-0.6.0.pom",
+      "sha256": [
+        "4cdf7379e75c2120ba6f536eabcb0d58f263a94623320adac2e49e5cdd68bc45"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-serialization-asn1-modules-jvm/0.6.0/cryptography-serialization-asn1-modules-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-serialization-pem",
+      "version": "0.6.0",
+      "artifact": "cryptography-serialization-pem-0.6.0.pom",
+      "sha256": [
+        "ec113b5892bea51025810485a5b7cce6035d21a8a1aafe1a1e8bb0c1fc64c47e"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-serialization-pem/0.6.0/cryptography-serialization-pem-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "dev.whyoleg.cryptography",
+      "module": "cryptography-serialization-pem-jvm",
+      "version": "0.6.0",
+      "artifact": "cryptography-serialization-pem-jvm-0.6.0.pom",
+      "sha256": [
+        "3ab419ae0a4f7af10cccbac330b2f7c1249ce4f03907989c2aedd8d2bbfc2d4a"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/dev/whyoleg/cryptography/cryptography-serialization-pem-jvm/0.6.0/cryptography-serialization-pem-jvm-0.6.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.compose.ui",
+      "module": "ui-backhandler",
+      "version": "1.9.3",
+      "artifact": "ui-backhandler-1.9.3.pom",
+      "sha256": [
+        "21134e7fe1a4a3f91ee8f0df7421464daff38cbbf7d83d6ac7cd285af83e4231"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/ui/ui-backhandler/1.9.3/ui-backhandler-1.9.3.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-io-bytestring",
+      "version": "0.9.0",
+      "artifact": "kotlinx-io-bytestring-0.9.0.pom",
+      "sha256": [
+        "d4302f639a907b4025c07f3d2ee43edca0b7ebdfb6aed580da4d2076340b2067"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-io-bytestring/0.9.0/kotlinx-io-bytestring-0.9.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-io-bytestring-jvm",
+      "version": "0.9.0",
+      "artifact": "kotlinx-io-bytestring-jvm-0.9.0.pom",
+      "sha256": [
+        "8d00f6e5077f3bbe81a1df328beb5eefd008cc8f81fffe6cacd526f015dc9e84"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-io-bytestring-jvm/0.9.0/kotlinx-io-bytestring-jvm-0.9.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-io-core",
+      "version": "0.9.0",
+      "artifact": "kotlinx-io-core-0.9.0.pom",
+      "sha256": [
+        "ad86bb89840d68b0365b3d219d10024adad4c6464e04136c6a429e1bb768fea6"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-io-core/0.9.0/kotlinx-io-core-0.9.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-io-core-jvm",
+      "version": "0.9.0",
+      "artifact": "kotlinx-io-core-jvm-0.9.0.pom",
+      "sha256": [
+        "7cb911e263d1cf42e6d7363ed5601a61ac58819768d5207df91b0f69e22a6ce8"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-io-core-jvm/0.9.0/kotlinx-io-core-jvm-0.9.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-serialization-core",
+      "version": "1.10.0",
+      "artifact": "kotlinx-serialization-core-1.10.0.pom",
+      "sha256": [
+        "6428b9284325d336319921eb058ef515df01cd8e8ef6cdc1341ecfa8ef6b3574"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-core/1.10.0/kotlinx-serialization-core-1.10.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-serialization-core-jvm",
+      "version": "1.10.0",
+      "artifact": "kotlinx-serialization-core-jvm-1.10.0.pom",
+      "sha256": [
+        "5c4c0c8010042b7f542ab484dea8a3687b96c20944e72c063eac16a2739ad8e4"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-core-jvm/1.10.0/kotlinx-serialization-core-jvm-1.10.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-serialization-json",
+      "version": "1.10.0",
+      "artifact": "kotlinx-serialization-json-1.10.0.pom",
+      "sha256": [
+        "fae5e7b44ea219bdeace84a50bff32d3ac7f6dd19be4a8e24536e1833c54a0d6"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json/1.10.0/kotlinx-serialization-json-1.10.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-serialization-json-io",
+      "version": "1.10.0",
+      "artifact": "kotlinx-serialization-json-io-1.10.0.pom",
+      "sha256": [
+        "087e643bc390bee388c07c34ae0cd794d3a65fe06e0faf19e8737578a888d3bd"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-io/1.10.0/kotlinx-serialization-json-io-1.10.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-serialization-json-io-jvm",
+      "version": "1.10.0",
+      "artifact": "kotlinx-serialization-json-io-jvm-1.10.0.pom",
+      "sha256": [
+        "ef0db2b10805b45af6caa5d5ca5a113a6979381dacf703c1df207a85857a7aba"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-io-jvm/1.10.0/kotlinx-serialization-json-io-jvm-1.10.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    },
+    {
+      "group": "org.jetbrains.kotlinx",
+      "module": "kotlinx-serialization-json-jvm",
+      "version": "1.10.0",
+      "artifact": "kotlinx-serialization-json-jvm-1.10.0.pom",
+      "sha256": [
+        "786ca9c81c3c7ec53d924bb236a008f214c2c096d1317dc9f7b378ecd10fd5cd"
+      ],
+      "canonicalSource": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-jvm/1.10.0/kotlinx-serialization-json-jvm-1.10.0.pom",
+      "canonicalSha256Matches": true,
+      "coordinatesMatch": true
+    }
+  ],
+  "existingArtifactEntriesPreserved": 3716,
+  "limits": [
+    "No upload or distribution workflow dispatch",
+    "No real signed Apple IPA; Xcode and signing fixtures are distinct",
+    "No HRIS business policy, private config, UI fixtures or dev HTTP override ported"
+  ]
+}

@@ -21,8 +21,11 @@ def configuration(values):
         raise ValueError('Select the demo or remote backend explicitly.')
     endpoint = values.get('API_BASE_URL', '')
     if backend == 'remote':
+        if not endpoint or len(endpoint) > 2048 or any(ord(c) < 33 or ord(c) > 126 for c in endpoint) or '\\' in endpoint:
+            raise ValueError('A remote endpoint requires a bounded ASCII HTTPS URL.')
         url = urlparse(endpoint)
-        if url.scheme != 'https' or not url.hostname or url.username or url.password or url.query or url.fragment:
+        if (url.scheme != 'https' or not url.hostname or url.username is not None or url.password is not None
+                or '?' in endpoint or '#' in endpoint or url.port == 0):
             raise ValueError('A remote build requires an HTTPS API_BASE_URL without credentials or query.')
     identifier = 'dev.fajar.fluent.starter' + ('' if environment == 'prod' else f'.{environment}')
     return {'environment': environment, 'variant': environment.capitalize(),

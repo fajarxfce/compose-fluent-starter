@@ -1,5 +1,34 @@
 # Downstream development
 
+## Distribution configuration — independent validation active
+
+Mobile source `3dc81d00` passed all four jobs in full
+[CI 40909156570](https://github.com/fajarxfce/hris-mobile/actions/runs/40909156570) before this port. Downloaded Apple reports
+retain 104 tests with zero failures/errors/skips; Xcode and
+its explicit selected-release-API assertion passed. The source's actual signed
+Android APK/AAB/SBOM exercise passed in 215.572s, checking the endpoint in DEX,
+native associations, both signatures and packaged domain files/checksums. The
+fictional key was removed; no release was uploaded or installed.
+
+The 15 portable files retain Starter's application/project IDs, demo/remote
+choice and three-job CI. Android checks the default repository configuration
+before compiling the selected release; Xcode forwards the selected environment
+explicitly. Common API fallback remains available for otherwise unspecified
+environments. Optional public app-link input is owned through cleanup, validated
+against signing identities and retained as checksummed deployment files.
+Thirty-one reviewed POM entries preserve all 3,716 existing Starter entries and
+hashes. HRIS's UI fixtures, remote-only policy and private dev network XML remain
+in Mobile. Local Starter validation passed: 326 desktop cases in 112 suites, ten runner
+and 17 distribution cases; normal checks took 36s. The actual remote signed APK/AAB/SBOM
+exercise passed in 136.647s (signed build 94s), with selected API and
+native registration verified in both APK and AAB, both signatures and packaged
+domain/checksum files. The normal demo/dev build and production SBOM were restored
+in 23s; release-fixture API/host values are absent from its DEX and manifest.
+The disposable key was removed; nothing was uploaded or installed. Its independent
+hosted CI remains required. See the tracked
+[measurement](measurements/distribution-2026-10-29.json).
+
+
 ## HTTPS application-link foundation
 
 Source Mobile `d36a1bc9` passed all four full CI jobs in

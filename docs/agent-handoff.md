@@ -6,31 +6,33 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
-## Pending source proof: distribution configuration
+## Distribution configuration — independent validation active
 
-The user requested more work after the preceding checkpoint. A Mobile release
-audit at `3dc81d00` fixes selected API precedence, passes optional app-link inputs
-through signing and artifact packaging, and adds the POM hashes required by the
-release SBOM. Android's generic entry point first checks the normal repository
-configuration, then builds the explicitly selected release. Xcode pins backend,
-common API fallback and the selected environment through command-line properties.
+Mobile source `3dc81d00` passed all four jobs in full
+[CI 40909156570](https://github.com/fajarxfce/hris-mobile/actions/runs/40909156570) before this port. Downloaded Apple reports
+retain 104 tests with zero failures/errors/skips; Xcode and
+its explicit selected-release-API assertion passed. The source's actual signed
+Android APK/AAB/SBOM exercise passed in 215.572s, checking the endpoint in DEX,
+native associations, both signatures and packaged domain files/checksums. The
+fictional key was removed; no release was uploaded or installed.
 
-The source passed 17 distribution regressions and a real signed Android APK/AAB/
-SBOM exercise in 215.572s, using a disposable fictional key and invalid host.
-The APK endpoint, manifest, both signatures, domain files and checksums passed;
-nothing was uploaded or installed. Source full
-[CI 40909156570](https://github.com/fajarxfce/hris-mobile/actions/runs/40909156570)
-is still running. Do not accept/apply the reusable port until its final source
-jobs and Xcode evidence have been inspected.
-
-A 15-file proposal exists outside this repository in Mobile's ignored work area,
-with destination hashes and 17 passing script preflight tests. This is preparation,
-not a verified Starter application build. Keep Starter's demo/remote choice and
-its application/project IDs. HRIS's remote-only release policy, fake HRIS API
-fixtures and private dev network XML stay downstream. The 31 reviewed POM additions
-must preserve all 3,716 existing Starter artifact entries and their hashes.
-Read the [Mobile handoff](https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/agent-handoff.md)
-for the source result; the accepted application boundary remains the checkpoint below.
+The 15 portable files retain Starter's application/project IDs, demo/remote
+choice and three-job CI. Android checks the default repository configuration
+before compiling the selected release; Xcode forwards the selected environment
+explicitly. Common API fallback remains available for otherwise unspecified
+environments. Optional public app-link input is owned through cleanup, validated
+against signing identities and retained as checksummed deployment files.
+Thirty-one reviewed POM entries preserve all 3,716 existing Starter entries and
+hashes. HRIS's UI fixtures, remote-only policy and private dev network XML remain
+in Mobile. Local Starter validation passed: 326 desktop cases in 112 suites, ten runner
+and 17 distribution cases; normal checks took 36s. The actual remote signed APK/AAB/SBOM
+exercise passed in 136.647s (signed build 94s), with selected API and
+native registration verified in both APK and AAB, both signatures and packaged
+domain/checksum files. The normal demo/dev build and production SBOM were restored
+in 23s; release-fixture API/host values are absent from its DEX and manifest.
+The disposable key was removed; nothing was uploaded or installed. Its independent
+hosted CI remains required. See the tracked
+[measurement](measurements/distribution-2026-10-29.json).
 
 ## Completed implementation checkpoint
 
