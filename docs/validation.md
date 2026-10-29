@@ -384,3 +384,10 @@ in 23s; release-fixture API/host values are absent from its DEX and manifest.
 The disposable key was removed; nothing was uploaded or installed. Its independent
 hosted CI remains required. See the tracked
 [measurement](measurements/distribution-2026-10-29.json).
+
+Full [Starter CI 40916187442](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40916187442) is active at port `7706386`. All local
+checks passed: 326 desktop cases, 17 distribution and ten runner cases, actual
+signed APK/AAB/SBOM in 136.647s, and restored normal demo/dev plus production SBOM
+in 23s. Both packages retain the selected API/registration; actual signatures
+and packaged domain files/checksums passed. No upload or installation occurred.
+Final hosted jobs and downloaded Apple reports/Xcode markers remain required.

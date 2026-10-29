@@ -132,7 +132,9 @@
       "installed": false,
       "appleSigning": "fixture regressions only; no actual signed IPA",
       "normalChecksSeconds": 36,
-      "signedBuildSeconds": 94
+      "signedBuildSeconds": 94,
+      "source": "77063862866bb52db5eade28733ceffce1588409",
+      "codeMatchesCommittedSource": true
     },
     "normalDevRestoreAndProductionSbom": {
       "passed": true,
@@ -144,7 +146,12 @@
     },
     "ephemeralFixtureKeysRemoved": true
   },
-  "ci": "full independent CI next",
+  "ci": {
+    "run": 40916187442,
+    "head": "77063862866bb52db5eade28733ceffce1588409",
+    "status": "in_progress",
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40916187442"
+  },
   "sourceSignedAndroidSeconds": 215.572,
   "newPomArtifacts": [
     {
