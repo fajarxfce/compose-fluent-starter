@@ -34,3 +34,11 @@ maps all fifteen application/foundation areas to contracts and reports. Existing
 portable changes and their independent acceptance remain in
 [downstream development](downstream-development.md). Physical iPhone testing is
 waived; signing/APNs and public production deployment remain target-specific.
+
+## Workspace closure
+
+Platform `64eb0d14` and Mobile `5ffb7300` record complete feature acceptance and
+verified private API/worker delivery. Final Platform CI `41094285531` passed;
+Starter retains its independently accepted unchanged implementation and generic
+ports. This closing documentation change requires no new build, test or port.
+[The current handoff](agent-handoff.md) records the final workspace state.

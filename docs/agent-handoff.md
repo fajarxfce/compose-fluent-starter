@@ -6,25 +6,38 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
-## Active workspace goal — final Platform gates
+## Completed workspace audit — 30 October 2026
 
-[Applicable foundation review](foundation-review-2026-10-30.md) is complete, with
-[recorded source/CI evidence](measurements/foundation-review-2026-10-30.json).
-657 shared files match and all 60 differences are classified as HRIS integration,
-fixtures, branding or configuration. All shared dependency digests match. Current
-Starter application/build/test trees retain accepted `77063862`; only the separately
-proved two distribution upload workflows differ. No new generic port is required.
-Mobile's complete review is committed at `f4f101a1`; its source still matches accepted
-CI `d170810f`. Historical provider-pending statements are corrected downstream.
+The complete HRIS Platform/Mobile/applicable Starter audit is closed. Platform
+`64eb0d14` records all 61 initial requirements and eleven detailed module reviews
+accepted. Final [CI 41094285531](https://github.com/fajarxfce/hris-platform/actions/runs/41094285531)
+passed all ten jobs at `93438f99`, with 3,090 API cases, 104 active worker cases,
+1,111 mocked browser scenarios, 56 actual workflows and schema-103 recovery.
+Temporarily stale GitHub step metadata was reconciled against final logs, reports
+and artifact digests; no cancellation, rerun or source change was necessary.
 
-Platform Payroll passes complete local acceptance: 682 API, three worker, 114 domain
-and twelve data cases, quality/packages and seven actual browser workflows.
-Workforce correction `2c2a59e3` passes 57 API and 61 domain cases after reproducing
-24 defects and three existing controls. Its broad Platform run is active in PTY
-`41070`; actual browser/full source CI follows. Reporting/Payroll CI `41087903927`
-remains active at `eec8a53a`; do not cancel it. Platform still has 41 accepted / 20
-unverified rows pending those gates. Keep the full workspace goal active and finish
-the combined development update. Runtime and phone are unchanged by this review.
+The private API/worker now serve verified application `2c2a59e3` after a fresh
+schema-103 recovery checkpoint. Runtime health, migration/identity/session/document
+integrity and unchanged environments are verified; SMTP remains disabled. Dashboard
+`1e0522c0` and the installed Mobile application `3c6db4eb` remain unchanged.
+[Platform handoff](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/agent-handoff.md)
+and [runtime evidence](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/measurements/final-development-rollout-2026-10-30.json)
+retain recovery locations, old image tags and current ownership. Mobile closure is
+committed at `5ffb7300`; its fifteen-area review retains independent full CI
+`d170810f`/`41077194465` and the earlier actual Android Google/Home/FCM acceptance.
+Physical iPhone testing is explicitly waived; simulator and Xcode checks passed.
+
+[Applicable foundation review](foundation-review-2026-10-30.md) and
+[its source/CI evidence](measurements/foundation-review-2026-10-30.json) remain
+accepted at `7605916`. All 657 identical shared files and 60 differences are
+classified, and shared dependency digests match. Current application/build/test
+sources retain accepted `77063862`/`40916187442`, with the separately proved two
+artifact-upload workflow changes. No additional generic implementation port is due.
+This closing update changes documentation only; no implementation, CI or local
+test remains active. For new work, prove reusable fixes in Mobile before porting
+here and keep HRIS policy/configuration in its application. Historical pending
+paragraphs below are not an active queue. Undefined future extensions and production
+release are not represented as completed features or deployments by this audit.
 
 ## Retained acceptance history
 
