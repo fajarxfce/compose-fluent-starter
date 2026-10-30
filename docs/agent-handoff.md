@@ -6,6 +6,18 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
+## Active workspace goal — full feature completion audit
+
+On 30 October the user requested verification of every specified feature and a
+long run for unfinished work. Platform's [feature audit](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/feature-audit-2026-10-30.md)
+now records a confirmed missing Communications email channel; existing SMTP only
+serves identity invitations/recovery. Platform is implementing its explicit
+announcement choice, immutable capture, bounded delivery and dashboard status.
+The earlier foundation/CI results below retain their narrower scope. Continue
+the full module and Mobile requirement audit afterward; do not infer completion
+from the prior module summary. No generic client port is currently due for this
+server/dashboard capability. Preserve the installed phone and private runtime.
+
 ## Distribution configuration — accepted
 
 The audit fixes selected release API precedence over per-environment project
