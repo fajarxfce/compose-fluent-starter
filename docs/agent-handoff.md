@@ -6,20 +6,29 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
-## Active workspace goal — full feature completion audit
+## Active workspace goal — final Platform gates
 
-Platform Administration now passed all ten jobs at exact source `3c8fb15a` in
-[CI 41081153648](https://github.com/fajarxfce/hris-platform/actions/runs/41081153648).
-Downloaded reports verify 3,015 API cases, 104 active worker cases per shard,
-41 normal/14 worker/one export browser scenarios and schema-103 recovery.
-The Platform inventory is 41 accepted / 20 unverified. Reporting's seven late-policy
-MFA failures have full local acceptance; Payroll's forty enrollment/input/receipt/
-stage-delegation failures are corrected and broad local validation is running.
-[Final Reporting/Payroll CI 41087903927](https://github.com/fajarxfce/hris-platform/actions/runs/41087903927)
-uses exact source `eec8a53a`; keep it running. Workforce and complete Mobile/Starter
-review remain active. These backend business corrections require no Starter port.
-The private runtime and installed metadata APK are unchanged by this work.
+[Applicable foundation review](foundation-review-2026-10-30.md) is complete, with
+[recorded source/CI evidence](measurements/foundation-review-2026-10-30.json).
+657 shared files match and all 60 differences are classified as HRIS integration,
+fixtures, branding or configuration. All shared dependency digests match. Current
+Starter application/build/test trees retain accepted `77063862`; only the separately
+proved two distribution upload workflows differ. No new generic port is required.
+Mobile's complete review is committed at `f4f101a1`; its source still matches accepted
+CI `d170810f`. Historical provider-pending statements are corrected downstream.
 
+Platform Payroll passes complete local acceptance: 682 API, three worker, 114 domain
+and twelve data cases, quality/packages and seven actual browser workflows.
+Workforce correction `2c2a59e3` passes 57 API and 61 domain cases after reproducing
+24 defects and three existing controls. Its broad Platform run is active in PTY
+`41070`; actual browser/full source CI follows. Reporting/Payroll CI `41087903927`
+remains active at `eec8a53a`; do not cancel it. Platform still has 41 accepted / 20
+unverified rows pending those gates. Keep the full workspace goal active and finish
+the combined development update. Runtime and phone are unchanged by this review.
+
+## Retained acceptance history
+
+Earlier pending statements below are historical; use the active queue above.
 
 Current downstream acceptance: Mobile application `3c6db4eb` plus test/docs source
 `d170810f` passed all four jobs in [CI 41077194465](https://github.com/fajarxfce/hris-mobile/actions/runs/41077194465).

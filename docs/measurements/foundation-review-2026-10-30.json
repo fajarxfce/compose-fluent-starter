@@ -1,0 +1,520 @@
+{
+  "date": "2026-10-30",
+  "status": "applicable foundation review complete; no new implementation port required",
+  "sourceCi": {
+    "runId": 40916187442,
+    "source": "77063862866bb52db5eade28733ceffce1588409",
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/40916187442",
+    "allJobsPassed": 3,
+    "unchangedTrees": {
+      "apps": "b3df21495c1217d6660fb0c795ddca15aa9f1dc9",
+      "core": "cec6e11689a91d9600880c33b1f15e02804f1e96",
+      "features": "46715bf57fbd7e91dac4b3538d3d8e9a137aaae3",
+      "build-logic": "2761bb7a6870931e2a67440c0d092ae8fede4484",
+      "gradle": "bc4c0b54eee4074b7ae52e4863975fb698a89de0",
+      "tool": "8897d2a7b0e2091d796aafd2ac62a3f25211d2ab"
+    },
+    "workflowException": "Only distribute-android.yml/distribute-ios.yml differ: separately accepted hidden association-file artifact upload from 4c794e7; no ordinary CI/application change."
+  },
+  "downstreamCi": {
+    "runId": 41077194465,
+    "source": "d170810f03852f46a948f9f4d5dea9ca4104bdbd",
+    "url": "https://github.com/fajarxfce/hris-mobile/actions/runs/41077194465",
+    "allJobsPassed": 4,
+    "linuxTargets": {
+      "desktopTest": {
+        "suites": 61,
+        "tests": 1994,
+        "failures": 0,
+        "skipped": 0
+      },
+      "wasmJsBrowserTest": {
+        "suites": 51,
+        "tests": 1676,
+        "failures": 0,
+        "skipped": 0
+      },
+      "test": {
+        "suites": 1,
+        "tests": 10,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    "apple": {
+      "tests": 104,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "evidence": "docs/measurements/document-metadata-final-ci-2026-10-30.json",
+    "unchangedTrees": {
+      "apps": "bcd31d705f5148f5d124d6f5ed7795129e275fce",
+      "core": "a1bb59dcb85d6bf775117994c9c7db6ce152f5a0",
+      "features": "a35107fc50327f639b7ec4d9211201709fe56be1",
+      "build-logic": "33e150681446bf9891e9ccc4b29b206b99b31307",
+      "gradle": "d32291033d6bff5d47b7fb72d6cf0205a88e7c0b",
+      "tool": "906a222f7026040680d53c82f31005f6d75654ed",
+      ".github": "afba243c1528384740159d2d29184a642daa00c8"
+    }
+  },
+  "comparison": {
+    "identicalFiles": 657,
+    "differentFiles": [
+      {
+        "path": "build-logic/src/main/kotlin/starter.android.application.gradle.kts",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "f2da7ed8c70ccd236b153238c37ad122cccebc47a094acd16556ad4f8b527b9f",
+        "starterSha256": "dc0e846fba8cc80b89b37d165632122fc30fe86a77758234241818d065b49e3b"
+      },
+      {
+        "path": "build-logic/src/main/kotlin/starter.android.flavors.gradle.kts",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "bbb79d206d13ffc2f593d9b298bef538eab6083768024493865faf9d0e819b18",
+        "starterSha256": "6b06e50bdd7bef84f9582be2d3bf0a716e9be489d7e113e085767f010daa08a9"
+      },
+      {
+        "path": "build-logic/src/main/kotlin/starter.environment.gradle.kts",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "89732a0c84c62e103224da01aac5a43eec5cb929e44854ba2244d6512b60d71c",
+        "starterSha256": "75480018f3ae777cb93fdbf63bae8597f0fd95dcd5d030f2fe6de4178e68a710"
+      },
+      {
+        "path": "build-logic/src/main/kotlin/starter.sbom.gradle.kts",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "04b1e0b3325b7bde71cac22fc66ee848a0c031c9a905db9e362b0e0513bd2196",
+        "starterSha256": "d756f9e5863300cc7e24f5cf423284f10687677fa66f6f0f3f95f9fd19bfba29"
+      },
+      {
+        "path": "build-logic/src/main/kotlin/tasks/GenerateEnvironment.kt",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "26744b4ab0bd6c5cc62a4339448acf523663a67ded9f055f91ede08a4bcbb258",
+        "starterSha256": "104f79e01d5068e4f16197f3e75a83645d478911ecde626b584539df2796237c"
+      },
+      {
+        "path": "build-logic/src/main/kotlin/tasks/GenerateOidcClients.kt",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "8e681946d6e397f871c31abc5f56a6f6e6a9d914982384ab95121a255073e5f4",
+        "starterSha256": "08ddada622ba1b22618ef3db499120e308cb4dd2fb3a2deef637a3b2be61720d"
+      },
+      {
+        "path": "core/common/src/commonMain/kotlin/dev/fajar/starter/common/config/AppEnvironment.kt",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "509884d88a8aec0197cf0277c40d528b1342a85eb1836161866f3dc7270fe67d",
+        "starterSha256": "0101780f1df84199a296de06452c9589c4afb8b248ae596111060bf3ada4102f"
+      },
+      {
+        "path": "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/components/AppBrand.kt",
+        "reason": "Application branding in logo, OS notification label or device-authentication prompt.",
+        "mobileSha256": "e9cd73906a2827db0c68c437cc3b4f303d83c69fec5013603f1c09fd128f05c0",
+        "starterSha256": "9a698d7183c7b206afb8d4d69b285bdfbde7e915e8ae5b00200070f43a76334a"
+      },
+      {
+        "path": "core/identity/data/build.gradle.kts",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "078afa077e95fde7aa1328c7abe368397e97288f8fdad6b57aa5602f9fe65c2d",
+        "starterSha256": "59d1dede12095ef0e62c16d792df6148d478627b4ed377e959db41f0f9ffe022"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/api/AuthApi.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "9f8db759845c329a98f07687a719f2ac9833139ef1a046b1c4e94ff4c306950f",
+        "starterSha256": "a1c3686f0c416dd278d3108c16ad4d3070930ce22008004fb26c26f26a93d48b"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/datasources/ApiAuthRemoteDataSource.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "16cdf13c93e9ffc9f3ee8bef8424ac100f2f032b43098767a4767bd0dde69999",
+        "starterSha256": "6bb1195050cd12b8aebfe9da6104b103494ec9ec713d3813d4a1c3f85c8b3ea6"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/datasources/AuthRemoteDataSource.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "29b7783a95d7363fd80f53e9fd472a1c2f9ba80240afedc556b0abe11a120667",
+        "starterSha256": "b7734d15da87e6edb0da67660adc8ccd552206f3332ec25dd74c68a5b3d1b863"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/di/IdentityModule.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "b7c73e4bc9c9e274cd9824d243169803097b3ddbb521ca0f806791956c2b735e",
+        "starterSha256": "2695dfc5d8d61490fb5c09231748b9c476c18016e991c81c55a92305f5a569d7"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/dto/AuthResponse.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "33794f672d4dd468bb4776e9a1cd49bf5f94bbd9dc68349c1d68ad9e639ee720",
+        "starterSha256": "1f0d16fcb4c23c30b67ec04e21e8a066da824fcd03309c82fbc56300076241c4"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/dto/SessionDto.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "8c1adc88062f4b1577196a4f33f11cc36279811a22ddc0ef5c4639eca82554b1",
+        "starterSha256": "6dc79523020eb0d52bfe2959918c91fe4c646fb0d58ae5cfc1405539db37e268"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/dto/SignInRequest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "7fd56970d2e15d3931c3f14a6e28d861fe1e7c3a9816fae2b30aeb3082037b9f",
+        "starterSha256": "d51b7f1d65d9ba43be660d61b2ce49d00aa416807c0ae0b3f043f70af90b943d"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/firebase/api/FirebaseProviderApi.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "aff491aa80d543e17e85469e12efada09b9ea12cc09c03ec0eef69918f5ee155",
+        "starterSha256": "a23872c664224a7d46d3b46e96f474d3eab8bdfc36ef04b561873df5cb233dc7"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/mappers/SessionMapper.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "da3b308f40b73de5eef17dc9fce0e728bfde14be24ef9da514946f6ea82c8ffc",
+        "starterSha256": "bd8904a70f8f9df0a457aa5c9c6af76507ae002a4b8474d1d78871201e258986"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/repositories/DefaultIdentityRepository.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "062c11ada8f429b31321905275e2e3963a541ad381e4d3b6fb62cbe068318f56",
+        "starterSha256": "c3c6dbc30d3f1b43f3858733ca0dadb5bb56329c4c6a1987902809d167705118"
+      },
+      {
+        "path": "core/identity/data/src/commonMain/kotlin/dev/fajar/starter/identity/data/repositories/StoredSessionRepository.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "8b16bcb76b3ae20ca8b88e4b2ce05f010ec3273cd509cd724a19a95ace6d475e",
+        "starterSha256": "9a42514a25af6d4a1d3ef75a8a2ba9240a0adbd2f54766d96c0b388d9e46d813"
+      },
+      {
+        "path": "core/identity/data/src/commonTest/kotlin/dev/fajar/starter/identity/data/FirebaseProviderTransportTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "e5979a09db193e6942335b474d15a9ba3558f65c269c5d3800cb55c63eead743",
+        "starterSha256": "9d0bb3e58545b1d12a5edda9af134b37addcb14c659f5a39d2a1f4fac358214f"
+      },
+      {
+        "path": "core/identity/data/src/commonTest/kotlin/dev/fajar/starter/identity/data/IdentityRepositoryTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "dd257623764a8c4ea95ced280663693851c77f46799f29ae77c9d3e0f2291f6f",
+        "starterSha256": "50688804cf639e16e13ed46c2d0265bae1c3421d667d3a9916fba112fa30d199"
+      },
+      {
+        "path": "core/identity/data/src/commonTest/kotlin/dev/fajar/starter/identity/data/InstalledFirebaseAuthenticationTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "90ae7c0c688c7a24c9ac2546f3b0fa5b9a0109fdbab7a3b91da08001941fda1a",
+        "starterSha256": "be6e59496db66b3e153fd0521dec90d9d548ba00ed4b02b012dc939d3ad11561"
+      },
+      {
+        "path": "core/identity/data/src/commonTest/kotlin/dev/fajar/starter/identity/data/RefreshTransportTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "1d22ef2de4c159596006a5f40f1672d9d4357e924d2ff958f31d79c9fd506aa6",
+        "starterSha256": "ed585d1233456b5f62a10c2b89141cde90f40ac8015666171211b5daf55983d5"
+      },
+      {
+        "path": "core/identity/data/src/commonTest/kotlin/dev/fajar/starter/identity/data/StoredSessionRepositoryTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "46de39636d576e63732ee64284bf9db2a2b4723d4d5300b59e89a65fb1ad4b1c",
+        "starterSha256": "5ed35e58fe736319219abdc7e9a84527dea1b97ba329defa869ae5699779a23d"
+      },
+      {
+        "path": "core/identity/domain/build.gradle.kts",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "8eb2a4e6021c9139ca72f896fb21be7d5ff58d0dc7268cdd8bd55696a828d8f9",
+        "starterSha256": "8b384aec0f0429bf04a70b0a69e1d7ef8e49de8c8d572c332d61e93ef90933e0"
+      },
+      {
+        "path": "core/identity/domain/src/commonMain/kotlin/dev/fajar/starter/identity/domain/entities/AuthenticatedUser.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "1eccef6f6d99f55441940a69cbc14d1e699edf01165d4a98ee098f9e658273ee",
+        "starterSha256": "c65512e2180f47f5c4f679ab2218223c1581a6ddf6b78edf7585672a64b6e4e6"
+      },
+      {
+        "path": "core/identity/domain/src/commonMain/kotlin/dev/fajar/starter/identity/domain/entities/Session.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "e90fc952e32b05fd7f9634b484bec47fd7e10b2e3a5d1cd3947f95828e606f55",
+        "starterSha256": "9f2104254d299d4d971916a97854bfa922ef64c2f36558b7cff2026d906d398a"
+      },
+      {
+        "path": "core/identity/domain/src/commonMain/kotlin/dev/fajar/starter/identity/domain/firebase/entities/FirebaseSignIn.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "688a6bfe6504d0a3f0e4f92e820228cb6179b32782ac307bcec376f02e4f0e2c",
+        "starterSha256": "f252f856b6b5ef2f4d7dd73048cf8b9df123164b55b9168799e7555f519dce0f"
+      },
+      {
+        "path": "core/identity/domain/src/commonMain/kotlin/dev/fajar/starter/identity/domain/repositories/IdentityRepository.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "5479868eb72a7365b4715fc6fafe934a18a92c444a9b8d904753ff6d43a6f5d5",
+        "starterSha256": "0b965ee08ad7a2ac7bdf505d835a5ad8c113a21086be22ecbb0a2cd1ab3d1a6e"
+      },
+      {
+        "path": "core/identity/domain/src/commonMain/kotlin/dev/fajar/starter/identity/domain/sso/usecases/SignInWithSso.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "11bc5f47d9bdf2768eaacec12a28876f749595f5c2ce5b64cd429442c5098e3e",
+        "starterSha256": "91e9b8fd9be22cdde69d074100b335710839e3ffab0a7e7be0880fe903925d8d"
+      },
+      {
+        "path": "core/identity/domain/src/commonMain/kotlin/dev/fajar/starter/identity/domain/usecases/AcquireSessionTokens.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "7aa772bc9aa366a60e4cbd520f1a23f1dedc11da8a539a5553a080ae0704605c",
+        "starterSha256": "1a0b3d3b772b47e1f8cea915e335d1b292219e8fadecb8550b70e5d10c348f03"
+      },
+      {
+        "path": "core/identity/domain/src/commonMain/kotlin/dev/fajar/starter/identity/domain/usecases/RestoreSession.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "c587c871612dfd0fbaeb0f77b0b8d36d37f28fd05e59ae54db28590f6ea0ce9d",
+        "starterSha256": "13a6fbc10c25af22b5612fb36eed47559f8c0d9008c55ae7f9dab91f7c7e00b0"
+      },
+      {
+        "path": "core/identity/domain/src/commonMain/kotlin/dev/fajar/starter/identity/domain/usecases/SignIn.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "ec441951f370f85bec5be6571beec5567346e4dc1331076bb7634f9140a8a9b9",
+        "starterSha256": "d43934fd2c9ef299c7bd2e7738d292f6b15092fd2dcf698823f003924a66f378"
+      },
+      {
+        "path": "core/identity/domain/src/commonTest/kotlin/dev/fajar/starter/identity/domain/ObserveSessionIdentityTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "1118a245513d25f248ff9dd2756d6eb4328f9d3e18c55fba66c8c06db8805d7f",
+        "starterSha256": "cb4922f55c02964677427756dad8f19f59a94dc1523e809c917105e9e0b4061d"
+      },
+      {
+        "path": "core/identity/domain/src/commonTest/kotlin/dev/fajar/starter/identity/domain/RefreshRecoveryTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "11aa165b11a88f499c8b3b470f46a2d7aca0a71ba46cb97593e417f9613aa62a",
+        "starterSha256": "bf66a556db37dd85090dbb8db2e96d41ba6c54e8bb77b8f285f1ab1b02e5d4ad"
+      },
+      {
+        "path": "core/identity/domain/src/commonTest/kotlin/dev/fajar/starter/identity/domain/SessionPolicyTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "222a5dd42d37455798ebce8dfb0857e027ef640e32d02c5f29be2a3dafc05cba",
+        "starterSha256": "76c5829b66f9c958fbeaf33a0c86be06b6da22d8d3deb62aeffec0d5b43899b9"
+      },
+      {
+        "path": "core/identity/domain/src/commonTest/kotlin/dev/fajar/starter/identity/domain/SignInTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "7e8658bf5cebfa12cff04f096a65e95c8d9fb2b385bbf79ac51f6eca7c239931",
+        "starterSha256": "d4af8a0af2a9906112bb51caa8d4456352f6bb20c480475e7dc7f4dea0ab5983"
+      },
+      {
+        "path": "core/identity/domain/src/commonTest/kotlin/dev/fajar/starter/identity/domain/sso/SignInWithSsoTest.kt",
+        "reason": "HRIS native API/session binding, MFA/push composition and matching fixtures; shared provider behavior retained (comments/branding where applicable).",
+        "mobileSha256": "48befedf72d24cac5b4390440f1fe37f3ae2e1f76b5f5f45504a7c37484ef712",
+        "starterSha256": "5bcdb3a8e63e087af95a20623463d7a1d14a8d01342ea74adde7df8ebd1645c2"
+      },
+      {
+        "path": "core/localization/src/commonMain/composeResources/values/strings_en.xml",
+        "reason": "HRIS feature vocabulary/error codes and onboarding copy; shared keys retained.",
+        "mobileSha256": "8dd1bfc4c92e16392c3bd358964d54d14f5f049a1975b83817189944a71ddb1b",
+        "starterSha256": "e0a96604bafc1049555d731dd2015d7546f9ab1880aba8077ac3782f5a76ed09"
+      },
+      {
+        "path": "core/localization/src/commonMain/composeResources/values/strings_id.xml",
+        "reason": "HRIS feature vocabulary/error codes and onboarding copy; shared keys retained.",
+        "mobileSha256": "925fe114366e83c6795e9f0637b1d4c325c7d0aa6cdf4e7c8f8a4e2349b86755",
+        "starterSha256": "a4166a2904e92edfcf57851b5dfaab12d5becacbe32fee71829b2a874bef0051"
+      },
+      {
+        "path": "core/localization/src/commonMain/kotlin/dev/fajar/starter/localization/AppString.kt",
+        "reason": "HRIS feature vocabulary/error codes and onboarding copy; shared keys retained.",
+        "mobileSha256": "30894b3ec72768a8e68c30652b31cd6d322bcc5378f980f260a66948b8bdd590",
+        "starterSha256": "da718355717b058bafb629ffc25838667247d0917b730e9cfc9aaa6aaf94abac"
+      },
+      {
+        "path": "core/localization/src/commonMain/kotlin/dev/fajar/starter/localization/LocalizedFailure.kt",
+        "reason": "HRIS feature vocabulary/error codes and onboarding copy; shared keys retained.",
+        "mobileSha256": "c04c239d874dbb8af4b43b91e823e9508607dfc8f63a2125b3da699ab4f4eb1b",
+        "starterSha256": "d56846ccd7c164b3c191f3d0c96c7ec6739a0a330dae59bcff6f0fb316029a6d"
+      },
+      {
+        "path": "core/notifications/data/src/desktopMain/kotlin/dev/fajar/starter/notifications/data/datasources/DesktopNotificationDisplaySource.kt",
+        "reason": "Application branding in logo, OS notification label or device-authentication prompt.",
+        "mobileSha256": "41e6af422b7c7bd6a9f285885031485c289002e0b890a8ddc4b84f0b165c08ef",
+        "starterSha256": "a0d6bd653af32504c777f1db13ca3ea0e7eb56a3ecd3361cd68bd78806bc153b"
+      },
+      {
+        "path": "core/security/data/src/androidMain/res/values-in/strings.xml",
+        "reason": "Application branding in logo, OS notification label or device-authentication prompt.",
+        "mobileSha256": "db6b3ab6570c8b649be5d5502f19797c99c7b1ea297920724ee9dd2d7d777569",
+        "starterSha256": "d02c42879b7a860a6a2e27943ffe555a15f1ecb0c0cfe8347cb2dd5d098c7b79"
+      },
+      {
+        "path": "core/security/data/src/androidMain/res/values/strings.xml",
+        "reason": "Application branding in logo, OS notification label or device-authentication prompt.",
+        "mobileSha256": "a0585037ac3099856669c122fd67b6165696fef816f6afbde5f2b5f221d62f94",
+        "starterSha256": "654c1b86e606298f29ccd8ba8741e7572c0cee5cf3ace21dcf9ceb02a67e39af"
+      },
+      {
+        "path": "core/security/data/src/iosMain/kotlin/dev/fajar/starter/security/data/lock/datasources/AppleDeviceAuthenticationSource.kt",
+        "reason": "Application branding in logo, OS notification label or device-authentication prompt.",
+        "mobileSha256": "8df95446ae7b0bd86481da0ab6625aa816918b4a61e1b7cce25be9de9a30d525",
+        "starterSha256": "1c7c862cd7c85bcf2dc3c343a3148f58599d8de39e2f63aa86103202798e2b6a"
+      },
+      {
+        "path": "core/security/domain/src/commonTest/kotlin/dev/fajar/starter/security/domain/PermissionExpiryTest.kt",
+        "reason": "HRIS server-session binding added to generic fixture constructors; generic assertions retained.",
+        "mobileSha256": "affe36be4ca9c2602941872722c57730cb5393004b0e56750f0a2495addd5a6c",
+        "starterSha256": "f40d551d59cdb213df69acbc6e8a7676ff00096be10f597e74edb44785b30b8e"
+      },
+      {
+        "path": "core/security/domain/src/commonTest/kotlin/dev/fajar/starter/security/domain/lock/AppLockTest.kt",
+        "reason": "HRIS server-session binding added to generic fixture constructors; generic assertions retained.",
+        "mobileSha256": "a5a4de9bfa3fc32c3993caf655408c2bea242cfed65b92f56e903d03ef17a6a4",
+        "starterSha256": "8e0cdd63f2f775e89017c46486632f250e1979baa94bc72c370d00b1a5c1fce3"
+      },
+      {
+        "path": "core/sync/data/build.gradle.kts",
+        "reason": "HRIS company change-feed DTO/HTTP adapter dependencies; generic task/scheduling implementation unchanged.",
+        "mobileSha256": "7f3bf0948ae1e802b2f8beaec55d0d1ff3c536d636b25d2f548d4daca4838c15",
+        "starterSha256": "78f38f2a14baa8bac8898fdcfb4361f68ebd4f8527b6060fbd767d8a6d405dcf"
+      },
+      {
+        "path": "core/transfers/domain/src/commonTest/kotlin/dev/fajar/starter/transfers/domain/TransferFixture.kt",
+        "reason": "HRIS server-session binding added to generic fixture constructors; generic assertions retained.",
+        "mobileSha256": "e0a563360e8785c34d204fb91e01fefa25bab25883ad1e27c121d43e066ce07e",
+        "starterSha256": "201199d4327ffdbbfbb3ebd560f4ced82c470bdad0461c6f22941151c585ce7f"
+      },
+      {
+        "path": "gradle/libs.versions.toml",
+        "reason": "HRIS date/time/icon dependencies and their verification entries; all shared dependency digests and verification policy identical.",
+        "mobileSha256": "54017db659eb23f339df60c51bc301a68778640a3940a09f3531cc24ed795052",
+        "starterSha256": "20afea7b3ab5e0479d79ea288fe34e204392b82cce899ca9851fc68bf9509d0d"
+      },
+      {
+        "path": "gradle/verification-metadata.xml",
+        "reason": "HRIS date/time/icon dependencies and their verification entries; all shared dependency digests and verification policy identical.",
+        "mobileSha256": "21ea2d522bc9433e4ff41d73719525c8288a93ca0b5263fd1a5489ba5dd9f412",
+        "starterSha256": "9e8dda076d4b7fa5ec2c5c296d800297d5d8f8dba39d3df2b14964775d83c7a3"
+      },
+      {
+        "path": "tool/distribution/apple_signing.py",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "eca047429646aad6f870f6c47d512bff4d1062863b74f0f01dcf2ef757756b2e",
+        "starterSha256": "c736ba3d9faa1922c356df3702d5045e294109ba97e4a32b1b43d795b062e28c"
+      },
+      {
+        "path": "tool/distribution/checksums.py",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "daa1db20db0222953b847f337bf2f9939de6e0ca55179a78996cd8fca0c2fc50",
+        "starterSha256": "0fcae1c805cf5b097f5cc80996eacdde6490eeca71be8b980677c9e7fc87b731"
+      },
+      {
+        "path": "tool/distribution/configuration.py",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "395e4b9167a97d371bf43923831c3a1096032d8182f70d3667b4dd2ccdea397a",
+        "starterSha256": "86085776786173792e2c65976da8faf069f6eda0348919ecd9e0bd270eb7eead"
+      },
+      {
+        "path": "tool/distribution/credentials.py",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "68202278e4f2385f2201473c815e2950ef2a0a8794b4c9e0eb9dbc5a2165e652",
+        "starterSha256": "20d38dad8cd47abd17652294a85ee6fce054afd5846cc782bde043082a188046"
+      },
+      {
+        "path": "tool/distribution/test_app_links.py",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "8ec2a0c4f47724b7c413a89b2f41a7b70880b424f5a7da5a2ec87d329f279ea5",
+        "starterSha256": "aa9d0c38590a1bf8501af25015bbc14adbff66e7da47e48f217cf99bdbd52942"
+      },
+      {
+        "path": "tool/distribution/test_distribution.py",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "21efcf9391150c7d76faf8613c6dda812a4b39ec302dde0f15630b7f461e533e",
+        "starterSha256": "3631866a5ceb948b3392b68956d1e6592193958c6e67341af21d6e5bb9f40a07"
+      },
+      {
+        "path": "tool/run_android.py",
+        "reason": "Application IDs, branding, remote-only HRIS transport/private dev API rules and matching package/configuration fixtures.",
+        "mobileSha256": "c33b0df0c5d72b2b647c00917b090e2d3f4d7dd521a2b05416d298cd38e7ecc9",
+        "starterSha256": "026181bec4f5bed893fa5e091daa2e208690fa87126361ea313231098b65d068"
+      }
+    ],
+    "mobileOnlyFiles": 419,
+    "mobileOnlyGroups": {
+      "build-logic/src/main": 1,
+      "build-logic/src/test": 1,
+      "core/documents/data": 115,
+      "core/documents/domain": 148,
+      "core/identity/data": 44,
+      "core/identity/domain": 44,
+      "core/sync/data": 10,
+      "core/sync/domain": 6,
+      "core/transfers/data": 1,
+      "core/workspace/data": 16,
+      "core/workspace/domain": 33
+    },
+    "starterOnlyFiles": 0,
+    "verification": {
+      "sharedArtifacts": 3747,
+      "sameSharedDigests": true,
+      "mobileAdditionalArtifacts": 35,
+      "starterOnlyArtifacts": 0,
+      "sameVerificationPolicy": true
+    },
+    "localization": {
+      "core/localization/src/commonMain/composeResources/values/strings_en.xml": {
+        "shared": 129,
+        "additional": 790,
+        "removed": 0,
+        "changed": {
+          "onboarding_activity_description_en": {
+            "starter": "Review recent activity and follow progress.",
+            "mobile": "Switch between companies assigned to your account."
+          },
+          "onboarding_activity_en": {
+            "starter": "Stay up to date",
+            "mobile": "Company access"
+          },
+          "onboarding_ready_en": {
+            "starter": "Ready to begin",
+            "mobile": "Ready to sign in"
+          },
+          "onboarding_workspace_en": {
+            "starter": "Your workspace",
+            "mobile": "Employee services"
+          },
+          "onboarding_ready_description_en": {
+            "starter": "Sign in to open your workspace.",
+            "mobile": "Continue with your work account."
+          },
+          "onboarding_workspace_description_en": {
+            "starter": "Access your projects and account in one place.",
+            "mobile": "Access attendance, requests, and work information."
+          }
+        }
+      },
+      "core/localization/src/commonMain/composeResources/values/strings_id.xml": {
+        "shared": 129,
+        "additional": 790,
+        "removed": 0,
+        "changed": {
+          "onboarding_activity_description_id": {
+            "starter": "Lihat aktivitas terbaru dan progres proyek.",
+            "mobile": "Pindah antarperusahaan yang terhubung dengan akun Anda."
+          },
+          "onboarding_activity_id": {
+            "starter": "Ikuti perkembangan",
+            "mobile": "Akses perusahaan"
+          },
+          "onboarding_workspace_description_id": {
+            "starter": "Akses proyek dan akun dalam satu aplikasi.",
+            "mobile": "Akses absensi, pengajuan, dan informasi pekerjaan."
+          },
+          "onboarding_workspace_id": {
+            "starter": "Workspace Anda",
+            "mobile": "Layanan karyawan"
+          },
+          "onboarding_ready_description_id": {
+            "starter": "Masuk untuk membuka workspace Anda.",
+            "mobile": "Lanjutkan dengan akun kerja Anda."
+          },
+          "onboarding_ready_id": {
+            "starter": "Siap memulai",
+            "mobile": "Siap masuk"
+          }
+        }
+      }
+    },
+    "newGenericPortRequired": false
+  },
+  "downstreamReview": "https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/feature-review-2026-10-30.md",
+  "limits": [
+    "This review reuses complete CI on unchanged source and historical source-scoped actual native workflows; no duplicate build/test execution or fresh device measurement is claimed.",
+    "Per-area CI report lists overlap and are not additive distinct test totals.",
+    "Physical iPhone testing was explicitly waived; signed IPA/APNs and public production domain/deployment remain target-specific configuration, not demonstrated device delivery.",
+    "Private development runtime remains unchanged by this documentation review."
+  ]
+}
