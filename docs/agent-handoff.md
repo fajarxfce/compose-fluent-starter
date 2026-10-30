@@ -9,8 +9,8 @@ the consuming application.
 ## Active workspace goal — full feature completion audit
 
 The full PRD review remains active. Platform's [audit](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/feature-audit-2026-10-30.md)
-now retains thirty reviewed rows across Approvals, Communications, Identity, Expenses,
-Leave and four Document rows; thirty-one Platform rows and full Mobile review remain. Keep the original
+now retains thirty-four reviewed rows across Approvals, Communications, Identity, Expenses,
+Leave, four Document and four People rows; twenty-seven Platform rows and full Mobile review remain. Keep the original
 scope; accepted increments do not establish whole-product completion.
 
 - Platform `8014d733` adds optional announcement email, atomic publication capture,
@@ -195,7 +195,14 @@ twenty-second module configuration passes all 75 affected browser cases locally
 Starter; Starter's generic database capacity tests already use that same deadline.
 No generic implementation port is due.
 
-Finish complete hosted Mobile/Apple verification and the controlled schema-103
+Platform `b241d5e8` accepts four People rows against unchanged implementation and
+completed matching CI. Mobile first metadata CI `41071828262` passed 104 Apple
+tests and the complete simulator app, while retaining the Linux browser deadline
+failure. Replacement full CI `41077194465` tests exact `d170810f` and remains active.
+The current private schema-101 stack has a fresh verified checkpoint and staged
+replacement images/dashboard; runtime migration and phone installation are pending.
+
+Finish complete hosted Mobile verification and the controlled schema-103
 API/static-dashboard/Mobile rollout, followed by detailed People review and
 remaining Platform/Mobile/Starter scope. Neither metadata requirement nor the
 full PRD goal is accepted yet. Reusable foundation fixes discovered during this
