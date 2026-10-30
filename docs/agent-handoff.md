@@ -179,11 +179,27 @@ later administrative edits; three overview screenshots were inspected. Both comm
 are pushed; Mobile Git retains exact cases, source/APK hashes and failed predecessors.
 No runtime/phone/provider change or reusable Starter implementation port occurred.
 
-Continue the bounded metadata summary/direct overview link in Account Pending actions,
-then final Apple and owned emulator/API/storage acceptance.
-Finish the detailed People review and remaining Platform/Mobile/Starter scope;
-neither metadata requirement nor the full PRD goal is accepted yet. Reusable
-foundation fixes discovered during this work must still be proven in Mobile first.
+Mobile `3c6db4eb` completes Account's bounded metadata summary/direct overview link:
+1,994 desktop/230 browser cases and dev APK pass locally. Platform `1e0522c0` records
+actual Android/API/private-storage acceptance in 432.451s: incomplete draft and
+original command survive two offline process restarts; retry after a later admin
+edit confirms the same operation/body without replacing newer facts. Done clears
+the command/matching draft, all seven pending groups empty, and three history
+revisions plus binary facts remain intact. Summary reloads stay 36→36 and 48→48;
+all owned fixture resources were cleaned. User runtime and phone remain unchanged.
+
+Mobile `d170810f` records this proof and fixes a CI browser capacity deadline:
+Mocha's two-second default failed its real 1,000-revision storage test. A bounded
+twenty-second module configuration passes all 75 affected browser cases locally
+(21.607s), preserving every assertion. This HRIS-only module does not exist in
+Starter; Starter's generic database capacity tests already use that same deadline.
+No generic implementation port is due.
+
+Finish complete hosted Mobile/Apple verification and the controlled schema-103
+API/static-dashboard/Mobile rollout, followed by detailed People review and
+remaining Platform/Mobile/Starter scope. Neither metadata requirement nor the
+full PRD goal is accepted yet. Reusable foundation fixes discovered during this
+work must still be proven in Mobile first.
 
 The private API remains schema 101 with SMTP disabled. No new APK installation or
 live rollout occurred. Preserve the Google binding, installed phone and independent
