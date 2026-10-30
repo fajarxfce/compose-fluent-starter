@@ -110,10 +110,16 @@ desktop and 131 Document Chromium tests pass, with root quality and the dev APK
 a long form; its route now reveals the retained failure. HRIS business behavior
 continues to require no Starter implementation port.
 
-Continue native definite initial server-rejection recovery without a server revision,
-owned metadata details/history and versioned corrections with durable recovery, then
-final Apple and owned emulator/API/storage acceptance. Never release an earlier
-uncertain command after a later rejection.
+Mobile `e2690fd6` completes first definite upload-rejection recovery. Explicit
+reconfirmation replaces only an exact observed rejected intent; bytes remain intact,
+and earlier uncertainty stays pinned. Root checks, the dev APK and Document browser
+suites pass (189.354s): 1,888 desktop and 140 browser cases. Two genuine baseline
+failures and existing safety controls are retained in Mobile Git, along with actual
+encrypted competing-write/restart and assembled-app acceptance. This remains HRIS
+business policy, with no generic Starter implementation port.
+
+Continue native owned metadata details/history and versioned corrections with
+durable recovery, then final Apple and owned emulator/API/storage acceptance.
 Finish the detailed People review and remaining Platform/Mobile/Starter scope;
 neither metadata requirement nor the full PRD goal is accepted yet. Reusable
 foundation fixes discovered during this work must still be proven in Mobile first.
