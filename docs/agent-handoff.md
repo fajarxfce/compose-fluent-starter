@@ -86,7 +86,12 @@ initial upload and dashboard corrections. Combined accepted local selections cov
 689 API, 104 ordinary worker, 27 database, 18 domain and nine data cases, 4,054
 dashboard unit cases, 25 mocked and five actual browser workflows. Full
 [CI 41038369597](https://github.com/fajarxfce/hris-platform/actions/runs/41038369597)
-is running for exact `27e7f77e722da9e8ac2bde47836353ef92dcc3b3`; do not cancel it.
+finished with nine jobs passed and one recovery failure for exact `27e7f77e722da9e8ac2bde47836353ef92dcc3b3`.
+The verifier still limited schema to 102. Platform correction `292a30f1` now passes
+42 Python tests and actual schema-103 restore in 57.356s, including three metadata
+snapshots, company RLS, immutability and deferred history/head checks.
+[Replacement CI 41043798660](https://github.com/fajarxfce/hris-platform/actions/runs/41043798660) is queued for exact
+`292a30f14498b2eee97a9255f22fe645639658e5`; observe its terminal result without cancelling it.
 
 Mobile `7f352cfd` retains the new facts in its owned encrypted document projection.
 A genuine metadata-loss reproduction is fixed. Root `:check` passes all 1,869
@@ -98,8 +103,17 @@ The new direct calendar-date dependency uses the existing locked version. Shared
 finance/leave evidence remains free of identity fields. These HRIS-specific model,
 API and schema changes require no Starter implementation port.
 
-Continue native metadata upload, retained display, history and versioned correction
-with durable recovery, then final Apple and owned emulator/API/storage acceptance.
+Mobile initial-upload increment `41fe79f9` is pushed. Category/identity/printed dates
+freeze with the encrypted original intent and retain old wire omissions. All 1,878
+desktop and 131 Document Chromium tests pass, with root quality and the dev APK
+(163.698s). The assembled form reproduced and fixed validation feedback hidden above
+a long form; its route now reveals the retained failure. HRIS business behavior
+continues to require no Starter implementation port.
+
+Continue native definite initial server-rejection recovery without a server revision,
+owned metadata details/history and versioned corrections with durable recovery, then
+final Apple and owned emulator/API/storage acceptance. Never release an earlier
+uncertain command after a later rejection.
 Finish the detailed People review and remaining Platform/Mobile/Starter scope;
 neither metadata requirement nor the full PRD goal is accepted yet. Reusable
 foundation fixes discovered during this work must still be proven in Mobile first.
