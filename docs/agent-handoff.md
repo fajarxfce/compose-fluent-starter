@@ -161,8 +161,26 @@ recovery. Full checks passed 1,973 desktop/221 browser cases and dev APK in 183.
 two screenshots were inspected. All commits are pushed with durable Mobile evidence.
 These are HRIS business changes; no generic Starter implementation port is due.
 
-Continue the native versioned editor and retained command/draft overview with durable
-recovery, then final Apple and owned emulator/API/storage acceptance.
+Mobile `832bbc09` and `017aa506` now complete the locally validated metadata editor
+and independent retained overview. The editor preserves incomplete input and the
+reviewed header, coalesces local writes, freezes confirmed input and reuses original
+operations after response loss. Acquired current facts remain separate from old
+receipts. Two real command-admission failures and hidden stale-draft feedback were
+corrected; its full checks passed 1,980 desktop/223 browser cases plus the dev APK.
+
+The overview reopens local drafts/corrections after published binary rows disappear,
+with bounded 20-copy pages, original cursors and neutral resource recovery. Opening
+or reloading sends no HTTP or commands. Two reproduced presentation failures showed
+that one failed reader could leave another stale private projection visible; both
+readers must now be ready/admitted. Full root checks, dev APK and Document browsers
+passed in 190.845s: 1,987 desktop/224 browser, zero failures/errors/skips. The actual
+storage/controlled-HTTP UI cases pass offline draft recovery and original retry after
+later administrative edits; three overview screenshots were inspected. Both commits
+are pushed; Mobile Git retains exact cases, source/APK hashes and failed predecessors.
+No runtime/phone/provider change or reusable Starter implementation port occurred.
+
+Continue the bounded metadata summary/direct overview link in Account Pending actions,
+then final Apple and owned emulator/API/storage acceptance.
 Finish the detailed People review and remaining Platform/Mobile/Starter scope;
 neither metadata requirement nor the full PRD goal is accepted yet. Reusable
 foundation fixes discovered during this work must still be proven in Mobile first.
