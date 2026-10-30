@@ -73,26 +73,41 @@ one independently accepted manual test skipped (226s). Production/package hashes
 matched the broad API run. Three normal browser workflows passed in 36.1s and two
 worker/browser workflows in 36.8s, including setup. Platform `158b81ac` commits the
 complete correction and evidence. Exact source `158b81acce89f637dbf715bb573fffb7b99b92c9`
-is running in [CI 41032184925](https://github.com/fajarxfce/hris-platform/actions/runs/41032184925).
-Observe the terminal result without cancelling the same-branch workflow.
+passed all ten jobs in [CI 41032184925](https://github.com/fajarxfce/hris-platform/actions/runs/41032184925).
+Its complete terminal evidence is retained in the Platform repository.
 
 The audit confirmed missing distinct document category and foreign identity/document
 business-validity metadata in `documents.02` and `people.03`. Upload deadlines are
 operational; tax residency already belongs separately to Payroll. The previous
 Documents review omitted category, so that row is reopened. See the
 [gap and continuation](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/document-identity-metadata-gap-2026-10-30.md).
-People command acceptance is complete locally; metadata implementation is now
-active under the [working contract](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/document-business-metadata.md)
-committed in `9d0a2677`. Preserve legacy upload/receipt payloads and owned cache
-facts; new metadata must be acquired even after an older client consumed the same
-document version. Finish that feature and the detailed People review, then continue
-remaining Platform/Mobile requirements. The full goal stays active.
+Platform `27e7f77e` implements category/identity/business validity, immutable history,
+initial upload and dashboard corrections. Combined accepted local selections cover
+689 API, 104 ordinary worker, 27 database, 18 domain and nine data cases, 4,054
+dashboard unit cases, 25 mocked and five actual browser workflows. Full
+[CI 41038369597](https://github.com/fajarxfce/hris-platform/actions/runs/41038369597)
+is running for exact `27e7f77e722da9e8ac2bde47836353ef92dcc3b3`; do not cancel it.
 
-No client implementation or generic port is due from these server/dashboard
-increments. The private API remains schema 101 with SMTP disabled; preserve the
-accepted Google binding and installed phone. The dashboard serves an isolated
-baseline directory documented in Platform's handoff, so local test builds cannot
-replace it. Physical iPhone testing stays explicitly waived.
+Mobile `7f352cfd` retains the new facts in its owned encrypted document projection.
+A genuine metadata-loss reproduction is fixed. Root `:check` passes all 1,869
+desktop cases; Document Chromium suites pass 123 cases and the dev APK builds.
+Its [contract and measurements](https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/document-business-metadata.md)
+record old-format/unchanged-version refresh, server capability transitions,
+staging/restart retention and persistent admission denial after failed cleanup.
+The new direct calendar-date dependency uses the existing locked version. Shared
+finance/leave evidence remains free of identity fields. These HRIS-specific model,
+API and schema changes require no Starter implementation port.
+
+Continue native metadata upload, retained display, history and versioned correction
+with durable recovery, then final Apple and owned emulator/API/storage acceptance.
+Finish the detailed People review and remaining Platform/Mobile/Starter scope;
+neither metadata requirement nor the full PRD goal is accepted yet. Reusable
+foundation fixes discovered during this work must still be proven in Mobile first.
+
+The private API remains schema 101 with SMTP disabled. No new APK installation or
+live rollout occurred. Preserve the Google binding, installed phone and independent
+static dashboard snapshot. Phone delivery remains install-only with advance notice;
+physical iPhone testing is explicitly waived.
 
 ## Distribution configuration — accepted
 
