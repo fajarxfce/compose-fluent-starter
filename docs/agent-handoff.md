@@ -90,8 +90,11 @@ finished with nine jobs passed and one recovery failure for exact `27e7f77e722da
 The verifier still limited schema to 102. Platform correction `292a30f1` now passes
 42 Python tests and actual schema-103 restore in 57.356s, including three metadata
 snapshots, company RLS, immutability and deferred history/head checks.
-[Replacement CI 41043798660](https://github.com/fajarxfce/hris-platform/actions/runs/41043798660) is queued for exact
-`292a30f14498b2eee97a9255f22fe645639658e5`; observe its terminal result without cancelling it.
+[Replacement CI 41043798660](https://github.com/fajarxfce/hris-platform/actions/runs/41043798660) passed all ten jobs for exact `292a30f14498b2eee97a9255f22fe645639658e5`, including
+normal/worker browser integration, private exports and schema-103 recovery. Platform Git
+retains every terminal job/step and the downloaded recovery summary: 104 objects,
+2,098,795 bytes, restored metadata/history/RLS/constraints and completed cleanup.
+The original run remains recorded as a failure; no CI run is pending for this source.
 
 Mobile `7f352cfd` retains the new facts in its owned encrypted document projection.
 A genuine metadata-loss reproduction is fixed. Root `:check` passes all 1,869
@@ -117,6 +120,15 @@ suites pass (189.354s): 1,888 desktop and 140 browser cases. Two genuine baselin
 failures and existing safety controls are retained in Mobile Git, along with actual
 encrypted competing-write/restart and assembled-app acceptance. This remains HRIS
 business policy, with no generic Starter implementation port.
+
+Mobile `3ce42fed` adds validated header/history/correction transport; `966e883c`
+adds encrypted metadata/history and per-resource read admission. Both are pushed.
+Current root checks, dev APK and Document browser suites pass in 184.621s: 1,912
+desktop and 164 browser cases. Actual SQLite/IndexedDB tests retain 1,000 immutable
+revisions and verify exact-page reads, restart, scope, lost keys, cancellation,
+competing writes and pending/failed admission storage. Native read orchestration,
+detail/history UI and durable correction commands remain next. These changes reuse
+existing database/credential contracts and require no Starter implementation port.
 
 Continue native owned metadata details/history and versioned corrections with
 durable recovery, then final Apple and owned emulator/API/storage acceptance.
