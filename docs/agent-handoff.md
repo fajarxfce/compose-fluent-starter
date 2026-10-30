@@ -8,9 +8,30 @@ the consuming application.
 
 ## Active workspace goal — full feature completion audit
 
+Current downstream acceptance: Mobile application `3c6db4eb` plus test/docs source
+`d170810f` passed all four jobs in [CI 41077194465](https://github.com/fajarxfce/hris-mobile/actions/runs/41077194465).
+Downloaded reports verify 1,994 desktop, 1,676 browser, ten build-logic and 104 Apple
+simulator tests; the full Xcode app and other target builds pass. The normal private
+API APK is installed on the authorized phone with its binary hash verified and no
+UI launch. [Mobile final evidence](https://github.com/fajarxfce/hris-mobile/blob/feat/native-push/docs/measurements/document-metadata-final-ci-2026-10-30.json)
+retains every job/step, artifact reports, failed predecessor and install-only result.
+Platform runtime is schema 103/dashboard `1e0522c0`; SMTP remains disabled. Older
+schema-101/phone-72341ef6 statements below are historical. Both metadata PRD rows
+are now accepted; the full audit remains active.
+
+The HRIS metadata browser capacity test now has the same bounded 20-second I/O
+deadline already used by Starter's generic database capacity test. HRIS metadata
+models, API adapters and recovery flows do not belong in the template. No new
+implementation port is due. Platform Administration `3c8fb15a` is pushed with full
+CI `41081153648` active; Reporting's seven reproduced late-policy MFA cases pass
+focused checks and broader validation continues. Finish remaining Platform,
+Mobile and applicable Starter requirements without treating these increments as
+the complete objective.
+
+
 The full PRD review remains active. Platform's [audit](https://github.com/fajarxfce/hris-platform/blob/feat/firebase-auth/docs/feature-audit-2026-10-30.md)
-now retains thirty-four reviewed rows across Approvals, Communications, Identity, Expenses,
-Leave, four Document and four People rows; twenty-seven Platform rows and full Mobile review remain. Keep the original
+now retains thirty-six reviewed rows across Approvals, Communications, Identity, Expenses,
+Leave, Documents and People; twenty-five Platform rows and full Mobile review remain. Keep the original
 scope; accepted increments do not establish whole-product completion.
 
 - Platform `8014d733` adds optional announcement email, atomic publication capture,
