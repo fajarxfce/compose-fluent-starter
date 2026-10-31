@@ -6,46 +6,37 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
-## Current CI follow-up — compact filters
+## Completed layout and compact-filter ports — 31 October 2026
 
-The production implementation remains `58623f5`, identical to Mobile `e5af27fd`.
-CI `41170061606` found one overly strict screenshot-layout assertion: its host
-font metrics use a second row at 390 dp. The component intentionally reflows.
-The portable test retains that phone case, verifies non-overlap/full labels,
-and separately proves one 48 dp row at 640 dp. Large-text and keyboard checks
-remain. Fresh root validation passed in 1m25s (331 tests / 114 suites).
+The user's Mobile review produced reusable labelled choices, read-only detail
+fields, badge tones, lightweight wrapping filter actions and trailing paired
+period navigation. These are proven downstream before being ported here. HRIS
+routes, date/status scopes, runtime configuration and sample data remain there.
 
-CI now accepts a manual `verify` scope for Linux checks/builds, leaving the existing
-Apple/Windows run active. Default all/PR/push and Apple-only behavior are retained.
-Next: record the scoped verify result and unaffected full-run jobs; update Mobile
-with the identical test. No production component or Android artifact changed.
+- `54cabf5`: form/detail/badge foundation from Mobile `b73031be`, independently
+  validated by root/Android/Web and all jobs in CI `41167913080`.
+- `58623f5`: `AppFilterChip`, `AppPeriodNavigation` and the portable layout test,
+  identical to Mobile `e5af27fd`.
+- `df2906f`: portable test correction for host-font reflow and manual Linux
+  `verify` scope. Production code remains exactly `58623f5`.
 
-## Active compact filter port — 31 October 2026
+Final local root checks passed **331 desktop cases / 114 suites**. Android dev
+assembly and production Web distribution passed independently. Hosted validation
+is complete: Windows and Apple passed in [41170061606](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41170061606)
+at production source `58623f5`; the corrected Linux root/browser/Android/Web checks
+passed in [41170810070](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41170810070)
+at `df2906f`. The earlier full run's Linux failure was an unconditional 48 dp
+assertion at 390 dp: its desktop font required valid reflow. The test retains the
+phone/non-overlap/full-label case, proves one row at 640 dp, and preserves 200%
+text, keyboard and disabled-action checks. This is explicit source-matched
+verification across the two runs, not a claim that the earlier red run passed.
 
-The user requested lighter filters in HRIS Mobile after reviewing build 3. Mobile
-plain Compose screenshots/tests proved a single 48 dp row at 390 dp for period,
-status and trailing paired chevrons, plus complete label reflow at 320 dp / 200%
-text. The identical `AppFilterChip`, `AppPeriodNavigation` and portable test are
-independently verified here: root checks, Android dev assembly and production
-Web distribution passed in 2m45s, with 330 desktop cases / 114 suites and zero
-failures/errors/skips. Native HRIS adoption stays downstream.
-See [filter evidence](measurements/compact-filters-2026-10-31.json). Remaining:
-record the final Mobile commit and hosted CI result; no further port is pending.
-
-## Current layout foundation port — 31 October 2026
-
-Mobile `b73031be` proves labelled picker fields, read-only detail fields and
-optional status badge tones in actual employee workflows. Its final root check
-passed 1,998 desktop cases (208 shared UI cases) with no failures/errors/skips.
-The three generic components and `FormChoiceLayoutTest` are identical here.
-Application statuses, metadata, workflow actions, credentials and API adapters
-remain in HRIS Mobile. See [port evidence](measurements/layout-foundation-2026-10-31.json).
-
-Independent Starter root checks, Android dev assembly and production Web build
-passed in 3m55s: 327 desktop cases in 113 suites, zero failures/errors/skips.
-The demo transport/application IDs and default badge style are unchanged. Hosted
-cross-platform CI 41167913080 passed all three jobs (verify, Windows and Apple).
-Earlier audit completion below is historical and does not replace this evidence.
+See [filter evidence](measurements/compact-filters-2026-10-31.json) and
+[earlier foundation evidence](measurements/layout-foundation-2026-10-31.json).
+No additional Starter implementation, port, approval or verification is pending.
+Continue proving generic changes in Mobile first; current Mobile release and
+remaining Mobile-only CI are recorded in its handoff. Do not port its attendance
+fixture synchronization, account data or environment into this template.
 
 ## Completed workspace audit — 30 October 2026
 

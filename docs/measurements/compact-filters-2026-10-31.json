@@ -20,8 +20,30 @@
     }
   },
   "ci": {
-    "run": 41170061606,
-    "status": "in_progress"
+    "result": "accepted_across_source_matched_runs",
+    "productionSource": "58623f595f693558b7e4cb82170676eb41270985",
+    "testAndWorkflowSource": "df2906f088752d33d6c15de2a4abbc134fa84956",
+    "productionUnchangedAfterPort": true,
+    "runs": [
+      {
+        "run": 41170061606,
+        "acceptedJobs": [
+          "windows",
+          "apple"
+        ],
+        "overallConclusion": "failure",
+        "failedJob": "verify",
+        "reason": "Overly strict 390 dp single-row assertion; corrected by the subsequent test-only change."
+      },
+      {
+        "run": 41170810070,
+        "scope": "verify",
+        "acceptedJobs": [
+          "verify"
+        ],
+        "overallConclusion": "success"
+      }
+    ]
   },
   "boundaries": [
     "No HRIS routes, selection policy or backend configuration ported",
@@ -37,5 +59,13 @@
       "failure": "Only the unconditional 48 dp phone-row assertion failed."
     },
     "ciFollowUp": "Manual verify scope reruns Linux checks/builds while existing Apple/Windows validation continues."
+  },
+  "finalLocalRoot": {
+    "durationSeconds": 85,
+    "tests": 331,
+    "suites": 114,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
   }
 }
