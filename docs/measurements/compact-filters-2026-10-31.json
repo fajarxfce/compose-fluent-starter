@@ -1,11 +1,11 @@
 {
   "date": "2026-10-31",
   "scope": "Lightweight wrapping filters and trailing paired period navigation",
-  "mobileSource": "pending final Mobile commit; proven unchanged components identified by hashes",
+  "mobileSource": "e5af27fd",
   "identicalFiles": {
     "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/components/AppFilterChip.kt": "daa140d13eb4c8831823b40f593832940eb609dca8046fb2868b7d6908ba0ce3",
     "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/components/AppPeriodNavigation.kt": "16042a2dbde17d699e2e7e741bb79e494f61313907b00599a754814bc3df0962",
-    "apps/shared/src/desktopTest/kotlin/dev/fajar/starter/CompactFiltersLayoutTest.kt": "62b285fc7c9237508518b5a2f566b61d33a7ff0a778d9ebcbf004d367294d931"
+    "apps/shared/src/desktopTest/kotlin/dev/fajar/starter/CompactFiltersLayoutTest.kt": "91495af9b3c6520466a167cbe36908961bdd1e7dec7ac94c03ebb01389e2ae72"
   },
   "validation": {
     "command": "xvfb-run -a ./gradlew formatKotlin :check :apps:android:assembleDevDebug :apps:shared:wasmJsBrowserDistribution --no-daemon",
@@ -19,9 +19,23 @@
       "skipped": 0
     }
   },
-  "ci": "pending",
+  "ci": {
+    "run": 41170061606,
+    "status": "in_progress"
+  },
   "boundaries": [
     "No HRIS routes, selection policy or backend configuration ported",
     "Filter targets remain at least 48 dp; full labels reflow at large text"
-  ]
+  ],
+  "portableTestUpdate": {
+    "reason": "CI host text metrics wrap the 390 dp fixture to 96 dp; reflow is supported. Retain phone and 200% cases; separately assert one 48 dp row at 640 dp.",
+    "validation": "Fresh root check passed in 85s; 331 desktop tests / 114 suites",
+    "runtimeSourceUnchanged": "58623f5",
+    "ciFailure": {
+      "run": 41170061606,
+      "job": 124445888830,
+      "failure": "Only the unconditional 48 dp phone-row assertion failed."
+    },
+    "ciFollowUp": "Manual verify scope reruns Linux checks/builds while existing Apple/Windows validation continues."
+  }
 }

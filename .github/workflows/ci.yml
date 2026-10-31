@@ -9,7 +9,7 @@ on:
       scope:
         description: Verification scope
         type: choice
-        options: [all, apple]
+        options: [all, apple, verify]
         default: all
 
 permissions:
@@ -52,6 +52,7 @@ jobs:
           name: web
           path: apps/shared/build/dist/wasmJs/productionExecutable/
   apple:
+    if: github.event_name != 'workflow_dispatch' || inputs.scope != 'verify'
     runs-on: macos-15
     timeout-minutes: 75
     env:
@@ -108,7 +109,7 @@ jobs:
             **/build/reports/tests/iosSimulatorArm64Test/
             **/build/test-results/iosSimulatorArm64Test/
   windows:
-    if: github.event_name != 'workflow_dispatch' || inputs.scope != 'apple'
+    if: github.event_name != 'workflow_dispatch' || inputs.scope == 'all'
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4

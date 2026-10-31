@@ -6,6 +6,20 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
+## Current CI follow-up — compact filters
+
+The production implementation remains `58623f5`, identical to Mobile `e5af27fd`.
+CI `41170061606` found one overly strict screenshot-layout assertion: its host
+font metrics use a second row at 390 dp. The component intentionally reflows.
+The portable test retains that phone case, verifies non-overlap/full labels,
+and separately proves one 48 dp row at 640 dp. Large-text and keyboard checks
+remain. Fresh root validation passed in 1m25s (331 tests / 114 suites).
+
+CI now accepts a manual `verify` scope for Linux checks/builds, leaving the existing
+Apple/Windows run active. Default all/PR/push and Apple-only behavior are retained.
+Next: record the scoped verify result and unaffected full-run jobs; update Mobile
+with the identical test. No production component or Android artifact changed.
+
 ## Active compact filter port — 31 October 2026
 
 The user requested lighter filters in HRIS Mobile after reviewing build 3. Mobile
