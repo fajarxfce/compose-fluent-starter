@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-31",
+  "sourceMobileCommit": "9f83dcdc2f42e69441569f050c5428746ef38f8a",
+  "change": "Declare the manifest-owned AppAuth activity dependency directly in the Android application; run Android lint in CI. Existing catalog version 0.11.1 is unchanged.",
+  "local": {
+    "command": "xvfb-run -a ./gradlew --no-daemon --no-parallel --max-workers=1 -Dorg.gradle.jvmargs=-Xmx1536m :check :apps:android:assembleDevDebug :apps:android:lintDevDebug",
+    "result": "passed",
+    "reportedDuration": "1m",
+    "desktop": {
+      "tests": 331,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 114
+    },
+    "lint": {
+      "Warning": 45
+    },
+    "logSha256": "0d69ad069113ed947b1520547880a5a024cabcb75a990394384cd3a2085aaccd"
+  },
+  "sourceSha256": {
+    "apps/android/build.gradle.kts": "363f9eb9252918a5473767dffffd25412534a0729f50841d8efab46734d486e1",
+    ".github/workflows/ci.yml": "1f9d96b94d942fb276534c43ec8a80e3b1366291e101f818d51b97e37bdc016c",
+    "gradle/libs.versions.toml": "20afea7b3ab5e0479d79ea288fe34e204392b82cce899ca9851fc68bf9509d0d"
+  },
+  "limitations": [
+    "No device installation or release.",
+    "No HRIS collaboration code or policy ported.",
+    "Hosted verification pending dispatch."
+  ]
+}

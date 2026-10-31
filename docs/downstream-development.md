@@ -554,3 +554,12 @@ wrapping `AppFilterChip` and `CompactFiltersLayoutTest`. The Mobile fixture prov
 390 dp single-row density and 320 dp / 200% text reflow before this independent
 root/Android/Web check (330 cases, 114 suites). Keep application filter scope and
 period limits downstream. See `measurements/compact-filters-2026-10-31.json`.
+
+## Android manifest-owned AppAuth receiver
+
+The Android app directly declares the existing catalog AppAuth dependency, matching
+Mobile `9f83dcdc`. Android lint resolves the manifest's redirect receiver and now
+runs in CI; its `MissingClass` rule is the regression guard. Independent Starter
+root/Android/lint verification is recorded in
+[port evidence](measurements/appauth-manifest-port-2026-10-31.json). No HRIS session
+or collaboration policy is included.

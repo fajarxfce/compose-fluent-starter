@@ -6,7 +6,7 @@ The user approved HRIS chat/calls/meetings implementation. Branch
 `feat/communications` starts from `44d164c`. Follow the canonical
 [PRD](https://github.com/fajarxfce/hris-platform/blob/feat/communications/docs/collaboration/prd.md)
 and [delivery](https://github.com/fajarxfce/hris-platform/blob/feat/communications/docs/collaboration/delivery.json).
-P0 starts in Platform/Mobile; there is no proven generic collaboration port yet.
+P0 starts in Platform/Mobile; collaboration policy remains downstream.
 Port only reusable foundations and their regressions after Mobile proof; retain
 HRIS directory, context, permission, routes and service configuration downstream.
 Record source equivalence and platform checks per port, and push atomic commits.
@@ -17,6 +17,16 @@ Mobile was generated from it and is the proving ground: validate generic fixes
 there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
+
+## AppAuth manifest dependency port — 31 October 2026
+
+Mobile `9f83dcdc` exposed `MissingClass` when Android lint began checking the
+application's manifest receiver. Both apps now declare the existing AppAuth 0.11.1
+dependency directly, and CI runs `:apps:android:lintDevDebug`. Starter root checks,
+dev assembly and lint passed independently in 1m; see
+[port evidence](measurements/appauth-manifest-port-2026-10-31.json). This ports only
+the dependency and lint guard. HRIS native chat runtime ownership stays in Mobile.
+Hosted verification follows this commit; no device installation or release.
 
 ## Completed layout and compact-filter ports — 31 October 2026
 
