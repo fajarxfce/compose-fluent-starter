@@ -548,3 +548,9 @@ regressions match HRIS Mobile; Leave integration remains application work.
 
 Root checks, 41 database/secure-storage Chromium tests and Android dev assembly
 passed. No device performance or business sync coverage is inferred from these checks.
+
+The 31 October compact-filter follow-up ports `AppPeriodNavigation`, the lighter
+wrapping `AppFilterChip` and `CompactFiltersLayoutTest`. The Mobile fixture proves
+390 dp single-row density and 320 dp / 200% text reflow before this independent
+root/Android/Web check (330 cases, 114 suites). Keep application filter scope and
+period limits downstream. See `measurements/compact-filters-2026-10-31.json`.

@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-31",
+  "scope": "Lightweight wrapping filters and trailing paired period navigation",
+  "mobileSource": "pending final Mobile commit; proven unchanged components identified by hashes",
+  "identicalFiles": {
+    "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/components/AppFilterChip.kt": "daa140d13eb4c8831823b40f593832940eb609dca8046fb2868b7d6908ba0ce3",
+    "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/components/AppPeriodNavigation.kt": "16042a2dbde17d699e2e7e741bb79e494f61313907b00599a754814bc3df0962",
+    "apps/shared/src/desktopTest/kotlin/dev/fajar/starter/CompactFiltersLayoutTest.kt": "62b285fc7c9237508518b5a2f566b61d33a7ff0a778d9ebcbf004d367294d931"
+  },
+  "validation": {
+    "command": "xvfb-run -a ./gradlew formatKotlin :check :apps:android:assembleDevDebug :apps:shared:wasmJsBrowserDistribution --no-daemon",
+    "durationSeconds": 165,
+    "result": "passed",
+    "desktop": {
+      "tests": 330,
+      "suites": 114,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "ci": "pending",
+  "boundaries": [
+    "No HRIS routes, selection policy or backend configuration ported",
+    "Filter targets remain at least 48 dp; full labels reflow at large text"
+  ]
+}

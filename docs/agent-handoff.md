@@ -6,6 +6,18 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
+## Active compact filter port — 31 October 2026
+
+The user requested lighter filters in HRIS Mobile after reviewing build 3. Mobile
+plain Compose screenshots/tests proved a single 48 dp row at 390 dp for period,
+status and trailing paired chevrons, plus complete label reflow at 320 dp / 200%
+text. The identical `AppFilterChip`, `AppPeriodNavigation` and portable test are
+independently verified here: root checks, Android dev assembly and production
+Web distribution passed in 2m45s, with 330 desktop cases / 114 suites and zero
+failures/errors/skips. Native HRIS adoption stays downstream.
+See [filter evidence](measurements/compact-filters-2026-10-31.json). Remaining:
+record the final Mobile commit and hosted CI result; no further port is pending.
+
 ## Current layout foundation port — 31 October 2026
 
 Mobile `b73031be` proves labelled picker fields, read-only detail fields and
@@ -18,7 +30,7 @@ remain in HRIS Mobile. See [port evidence](measurements/layout-foundation-2026-1
 Independent Starter root checks, Android dev assembly and production Web build
 passed in 3m55s: 327 desktop cases in 113 suites, zero failures/errors/skips.
 The demo transport/application IDs and default badge style are unchanged. Hosted
-cross-platform CI will verify the port; update this paragraph with its result.
+cross-platform CI 41167913080 passed all three jobs (verify, Windows and Apple).
 Earlier audit completion below is historical and does not replace this evidence.
 
 ## Completed workspace audit — 30 October 2026

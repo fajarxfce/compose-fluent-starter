@@ -103,3 +103,16 @@ out of detail labels and format displayed dates for the selected language.
 Always include the full status text; color alone must not carry meaning. Keep
 primary creation/save actions in the fixed `AppActionBar`, secondary navigation
 labelled, and refresh progress beside its existing action.
+
+## Compact filters and period navigation
+
+Use `AppFilterChip` as a lightweight text/dropdown action with a 48 dp minimum
+target. Labels wrap by default; selected values keep selected semantics and
+accent text. Optional leading icons should add meaning. Avoid card/pill borders
+and redundant icons for explicit month/status values.
+
+`AppPeriodNavigation` keeps caller-owned content on the left and paired chevrons
+on the right, separate from the left-aligned app Back control. A caller `FlowRow`
+lets period and status share a 48 dp row when they fit and reflow at narrow widths
+or large text. Features still own period limits, selection and data acquisition.
+Do not truncate selected labels or shrink targets to enforce a single line.

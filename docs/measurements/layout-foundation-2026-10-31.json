@@ -20,7 +20,15 @@
       "skipped": 0
     }
   },
-  "ci": "pending",
+  "ci": {
+    "run": 41167913080,
+    "result": "success",
+    "jobs": [
+      "verify",
+      "windows",
+      "apple"
+    ]
+  },
   "boundaries": [
     "No HRIS feature, API, identity, sample data or status mapping copied",
     "Default badge tone and demo backend retained"
