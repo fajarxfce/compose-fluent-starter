@@ -26,7 +26,10 @@ dependency directly, and CI runs `:apps:android:lintDevDebug`. Starter root chec
 dev assembly and lint passed independently in 1m; see
 [port evidence](measurements/appauth-manifest-port-2026-10-31.json). This ports only
 the dependency and lint guard. HRIS native chat runtime ownership stays in Mobile.
-Hosted verification follows this commit; no device installation or release.
+Hosted Linux `verify` [41245287269](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41245287269)
+passed at `9740cb5`: every verify step succeeds, and source hashes match the local
+port evidence. Apple/Windows were intentionally outside this dispatch scope.
+No device installation or release.
 
 ## Completed layout and compact-filter ports — 31 October 2026
 

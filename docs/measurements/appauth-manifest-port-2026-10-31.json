@@ -25,7 +25,25 @@
   },
   "limitations": [
     "No device installation or release.",
-    "No HRIS collaboration code or policy ported.",
-    "Hosted verification pending dispatch."
-  ]
+    "No HRIS collaboration code or policy ported."
+  ],
+  "hosted": {
+    "runId": 41245287269,
+    "headSha": "9740cb5bf971b7b4e0b3446d04aabc142a1465ac",
+    "scope": "verify",
+    "result": "passed",
+    "allVerifyStepsPassed": true,
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41245287269",
+    "logSha256": "44142a8a77e27654c1deef0b45c81cdcfc345cb8b772fe775b119834bfdb85a4",
+    "statusSha256": "9b7891656e6cfa42614b5c0d791f08404b54adda748d61533eec895b45353988",
+    "sourceHashesVerified": true,
+    "intentionallySkippedJobs": [
+      "apple",
+      "windows"
+    ],
+    "checks": [
+      "Root, portable/browser checks, Android dev/staging/prod compilation, Android lint, Web distribution, SBOM and app-link verification"
+    ],
+    "limit": "Hosted case counts were not independently extracted from report artifacts."
+  }
 }
