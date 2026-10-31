@@ -6,6 +6,21 @@ there before porting their implementation and portable regressions here. HRIS
 business policy, backend adapters, routes and deployment configuration stay in
 the consuming application.
 
+## Current layout foundation port — 31 October 2026
+
+Mobile `b73031be` proves labelled picker fields, read-only detail fields and
+optional status badge tones in actual employee workflows. Its final root check
+passed 1,998 desktop cases (208 shared UI cases) with no failures/errors/skips.
+The three generic components and `FormChoiceLayoutTest` are identical here.
+Application statuses, metadata, workflow actions, credentials and API adapters
+remain in HRIS Mobile. See [port evidence](measurements/layout-foundation-2026-10-31.json).
+
+Independent Starter root checks, Android dev assembly and production Web build
+passed in 3m55s: 327 desktop cases in 113 suites, zero failures/errors/skips.
+The demo transport/application IDs and default badge style are unchanged. Hosted
+cross-platform CI will verify the port; update this paragraph with its result.
+Earlier audit completion below is historical and does not replace this evidence.
+
 ## Completed workspace audit — 30 October 2026
 
 The complete HRIS Platform/Mobile/applicable Starter audit is closed. Platform

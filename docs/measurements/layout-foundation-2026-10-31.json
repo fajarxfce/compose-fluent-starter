@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-31",
+  "mobileSource": "b73031be",
+  "scope": "Three reusable layout components, portable interaction regression and usage guidance",
+  "identicalFiles": {
+    "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/components/AppSelectField.kt": "677ea11bbe3f4cdc372472d686e08fbac0909b68086d95ab2b7e3b0089162277",
+    "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/components/AppDetailField.kt": "373fbea9f51f30d0eea00849cb21ed60e2e8c984f721fb134486347efadbd2a8",
+    "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/components/AppBadge.kt": "2841a53be6a8db772f2c443f9b701c46ba2c633457559384dc02840831155a59",
+    "apps/shared/src/desktopTest/kotlin/dev/fajar/starter/FormChoiceLayoutTest.kt": "10eae798d730585613f415abf03f3132e73dcc06a2523b99e3de1f29df9cbe01"
+  },
+  "validation": {
+    "command": "xvfb-run -a ./gradlew :check :apps:android:assembleDevDebug :apps:shared:wasmJsBrowserDistribution --no-daemon",
+    "durationSeconds": 235,
+    "result": "passed",
+    "desktop": {
+      "tests": 327,
+      "suites": 113,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "ci": "pending",
+  "boundaries": [
+    "No HRIS feature, API, identity, sample data or status mapping copied",
+    "Default badge tone and demo backend retained"
+  ]
+}

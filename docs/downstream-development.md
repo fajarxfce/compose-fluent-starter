@@ -1,5 +1,14 @@
 # Downstream development
 
+## Labelled form and detail fields — 31 October 2026
+
+Mobile `b73031be` supplies `AppSelectField`, `AppDetailField`, additive
+`AppBadgeTone` and the 320 dp/200% text interaction regression. The four files
+match exactly. Selection remains controlled by the consuming feature; no HRIS
+routes, status mappings or credentials were copied. Independent root checks,
+Android dev and production Web builds passed in 3m55s (327 desktop cases).
+See [evidence](measurements/layout-foundation-2026-10-31.json).
+
 ## Distribution configuration — accepted
 
 The audit fixes selected release API precedence over per-environment project
