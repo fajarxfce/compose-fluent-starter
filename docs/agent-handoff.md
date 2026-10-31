@@ -1,5 +1,17 @@
 # Agent continuation — Compose Fluent Starter
 
+## Active downstream collaboration work — 31 October 2026
+
+The user approved HRIS chat/calls/meetings implementation. Branch
+`feat/communications` starts from `44d164c`. Follow the canonical
+[PRD](https://github.com/fajarxfce/hris-platform/blob/feat/communications/docs/collaboration/prd.md)
+and [delivery](https://github.com/fajarxfce/hris-platform/blob/feat/communications/docs/collaboration/delivery.json).
+P0 starts in Platform/Mobile; there is no proven generic collaboration port yet.
+Port only reusable foundations and their regressions after Mobile proof; retain
+HRIS directory, context, permission, routes and service configuration downstream.
+Record source equivalence and platform checks per port, and push atomic commits.
+The completed prior scope below does not close this new request.
+
 Updated 30 October 2026 (UTC). This repository is the reusable foundation. HRIS
 Mobile was generated from it and is the proving ground: validate generic fixes
 there before porting their implementation and portable regressions here. HRIS
