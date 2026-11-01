@@ -1,5 +1,19 @@
 # Agent continuation — Compose Fluent Starter
 
+## Starter Apple replica execution audited — 1 November 2026
+
+[Hosted run 41338065450](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41338065450)
+at `c46151e7` now passes the Starter iOS simulator tests and Xcode application. Exact source
+and XML hashes are recorded in [the port evidence](measurements/apple-replica-hosted-2026-11-01.json).
+86 cases in 25 suites, zero failures/errors/skips. The two AppleReplicaStoreTest cases execute against isolated temporary
+Room/BundledSQLite storage. Compile/tests/Xcode take 594s/68s/627s. Apple association checks pass;
+portable and Windows jobs were intentionally skipped by this Apple-only dispatch.
+
+This completes hosted validation of the proven database test port, not the communications PRD.
+Continue Mobile prepared-draft worker recovery, its integration checks and release 8+ install-only;
+keep application policy out of Starter. The phone remains on release 7 and no physical iPhone
+execution is claimed.
+
 ## Mobile-proven Apple replica fixture ported — 1 November 2026
 
 Mobile [run 41334974289](https://github.com/fajarxfce/hris-mobile/actions/runs/41334974289)
