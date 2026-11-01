@@ -1,5 +1,29 @@
 # Agent continuation — Compose Fluent Starter
 
+## Proven reverse indexed pages — 1 November 2026
+
+Source: [Mobile `bf83c71e`](https://github.com/fajarxfce/hris-mobile/commit/bf83c71e1688ce5f57ba1dad39f95900b82f8276).
+
+Eight raw-query source/test files match the Mobile proving ground exactly. Mobile first
+passed SQLite/browser/quality checks in 76s; Starter's independent 268s run passes root
+checks (341 desktop cases/115 suites), 35 database browser cases, Android dev assembly/lint
+(zero fatal/errors, 45 warnings) and production Web. [Evidence](measurements/replica-reverse-query-2026-11-01.json)
+binds all source and report hashes. Starter APK `b446d8f2` is built, not installed.
+
+`ReplicaQuery.before` returns descending nearest keys and excludes its anchor; after
+remains ascending and the anchors cannot be combined. Shared tests traverse 603 records,
+tagged and untagged reads, same-checkpoint forward/reverse queries, deletion/retagging,
+reauthentication and cancelled observers. The existing 1–4 query / 200-row total bound
+and all schema/ciphertext ownership rules remain. No migration, credentials, HRIS
+message policy or chat UI is copied. Mobile's 150/50 overlapping window is downstream.
+
+Continue Mobile delivery and all unaccepted communication PRD groups. This port has no
+new Apple simulator execution: the generic database currently has no iosTest wrapper.
+Add an isolated temporary Room/BundledSQLite wrapper and hosted CI step in Mobile first;
+port it only after its own proof. Physical iPhone testing was waived, implementation and
+simulator checks were not. Existing Apple command-archive evidence below has an older
+source and must not be attributed to this change.
+
 ## Command archive Apple audit — 1 November 2026
 
 Hosted [run 41298641454](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41298641454)

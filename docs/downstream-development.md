@@ -1,5 +1,17 @@
 # Downstream development
 
+## Reverse indexed pages — 1 November 2026
+
+Source: [Mobile `bf83c71e`](https://github.com/fajarxfce/hris-mobile/commit/bf83c71e1688ce5f57ba1dad39f95900b82f8276).
+
+The Mobile-proven `ReplicaQuery.before` implementation and shared regressions are copied
+as eight identical files. Baselines matched before porting. The 603-record fixture checks
+nearest-key reverse traversal, both tag modes, bounds, coherent forward/reverse reads,
+mutation and ownership. Mobile focused checks pass in 76s; independent Starter root,
+SQLite/browser, Android/lint and production Web checks pass in 268s. No schema or HRIS
+window policy is copied. [Measurement](measurements/replica-reverse-query-2026-11-01.json).
+Additional Apple database execution remains a separately tracked follow-up.
+
 ## Labelled form and detail fields — 31 October 2026
 
 Mobile `b73031be` supplies `AppSelectField`, `AppDetailField`, additive
