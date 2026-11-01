@@ -10,7 +10,10 @@ nearest-key reverse traversal, both tag modes, bounds, coherent forward/reverse 
 mutation and ownership. Mobile focused checks pass in 76s; independent Starter root,
 SQLite/browser, Android/lint and production Web checks pass in 268s. No schema or HRIS
 window policy is copied. [Measurement](measurements/replica-reverse-query-2026-11-01.json).
-Additional Apple database execution remains a separately tracked follow-up.
+The separate Apple fixture now also has Mobile proof: run 41334974289 at `c0e91d6b`
+passes its two real SQLite cases and the complete simulator app. The exact iosTest wrapper
+and compile/test CI tasks are ported with local quality checks. Starter's own hosted execution
+is pending; [source and XML evidence](measurements/apple-replica-hosted-2026-11-01.json).
 
 ## Labelled form and detail fields — 31 October 2026
 

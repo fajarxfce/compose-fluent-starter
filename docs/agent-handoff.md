@@ -1,5 +1,20 @@
 # Agent continuation — Compose Fluent Starter
 
+## Mobile-proven Apple replica fixture ported — 1 November 2026
+
+Mobile [run 41334974289](https://github.com/fajarxfce/hris-mobile/actions/runs/41334974289)
+at `c0e91d6b` passes 106 iOS simulator cases in 29 suites and the Xcode simulator app.
+The two new AppleReplicaStoreTest cases pass in 1.047s: actual Room/BundledSQLite 603-record
+reverse pages, mutation/publication/ownership/cancellation/bounds, close/reopen and same-account
+reauthentication. Compile/tests/Xcode take 628s/83s/941s. [Audited XML and port inputs](measurements/apple-replica-hosted-2026-11-01.json).
+
+Only the exact fixture and its two CI task additions are ported. The fixture creates and
+removes its own UUID-named temporary directory; it never opens starter.db. Local format,
+architecture and detekt pass. Existing raw-source/runtime validation remains cd7022e; no
+production change. **Next:** dispatch Apple-only Starter CI after pushing, audit its exact
+XML before calling Starter native execution complete. Continue Mobile indexed draft recovery
+and the communications PRD while hosted checks run. Physical iPhone testing remains waived.
+
 ## Proven reverse indexed pages — 1 November 2026
 
 Source: [Mobile `bf83c71e`](https://github.com/fajarxfce/hris-mobile/commit/bf83c71e1688ce5f57ba1dad39f95900b82f8276).
