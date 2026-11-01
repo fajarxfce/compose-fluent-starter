@@ -1,5 +1,16 @@
 # Agent continuation — Compose Fluent Starter
 
+## Command archive Apple audit — 1 November 2026
+
+Hosted [run 41298641454](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41298641454)
+at `8afab2a30c7313ecaa1d4b2c88359f45d942aa18` passes all 16 Apple steps,
+84 iOS simulator cases in 24 suites and the Xcode app build. Reports have zero
+failures, errors or skips; all 15 immutable archive source/test/schema hashes
+match. Windows and portable jobs were explicitly skipped by the Apple-only dispatch.
+See `hostedStarterApple` in the command archive measurement. HRIS completion
+policy and journal cleanup continue in Mobile and are not part of this generic port.
+
+
 ## Validated command completion archive — 1 November 2026
 
 The generic raw archive now passes Mobile and Starter validation.
