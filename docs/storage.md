@@ -6,6 +6,9 @@ separate credential records used by encrypted caches.
 See [durable command storage](command-storage.md) for requests retained across logout,
 explicit account binding, immutable payloads, revision checks and bounded queues.
 
+See [durable work wakes](work-wake-storage.md) for bounded application-global
+scheduling checkpoints, generation fencing and SQLite12/IndexedDB11 migrations.
+
 ## Failure boundary
 
 Repositories use `safeStorageCall` and `safeStorageFlow` for acquisition and mapping.

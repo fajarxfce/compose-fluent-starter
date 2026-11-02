@@ -1,5 +1,25 @@
 # Agent continuation — Compose Fluent Starter
 
+## Durable work wake storage — 2 November 2026
+
+[Mobile source `be8ebc7b`](https://github.com/fajarxfce/hris-mobile/commit/be8ebc7b03bf765a4d4f34c493be4653d6e56d7f)
+provides 15 identical raw storage, shared test and schema files. Pending generations
+survive restart and account replacement; exact-generation acknowledgment preserves
+new requests. Transactional capacity, replay, cancellation and previous-schema
+migration are covered on SQLite and IndexedDB. [Contract](work-wake-storage.md) /
+[evidence](measurements/work-wake-storage-2026-11-02.json).
+
+Independent root, SQLite/browser, Android dev/lint and production Web checks pass
+in 301s / 305.231s on unchanged inputs: 348 desktop,
+42 database-browser and 6 build-logic cases,
+zero failures/errors/skips. Android lint has zero fatal/errors and 45 existing
+warnings. The APK is built, not installed. Room11→12 and IndexedDB10→11 are additive.
+
+Mobile's six-case Apple wrapper is excluded until its hosted run41396150119 is
+audited; then port the fixture and run Starter Apple CI independently. No HRIS
+recovery policy, application binding or configuration is copied. Continue Mobile
+recovery coordination and the unfinished communications PRD after this port.
+
 ## Starter Apple replica execution audited — 1 November 2026
 
 [Hosted run 41338065450](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41338065450)
