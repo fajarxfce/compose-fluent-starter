@@ -39,3 +39,9 @@ scheduler instances, generation fencing and process-death repair. Starter's demo
 configuration remains independent and no task opts in automatically. The companion
 Apple wake-store fixture passed Mobile hosted execution before copying; its own
 Starter hosted result is tracked separately in the same measurement.
+
+Starter's independent Apple run 41400133440 at `136d2e5a` is now audited: 92 cases
+in 26 suites, including six raw wake cases, zero failures/errors/skips, and the
+complete Xcode simulator application. The measurement binds the exact four ported
+source hashes and every downloaded XML report. This covers the generic Apple
+storage fixture; HRIS recovery policy is downstream work.

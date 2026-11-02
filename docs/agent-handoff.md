@@ -1,5 +1,23 @@
 # Agent continuation — Compose Fluent Starter
 
+## Starter Apple port independently audited — 2 November 2026
+
+[Run 41400133440](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41400133440)
+completed successfully at exact `136d2e5a607fb20b6f5ccd07bd88ed14b0a6b668`.
+Downloaded XML contains 92 simulator cases in 26 suites, with zero failures,
+errors or skips. All six AppleWorkWakeStoreTest cases ran (0.178s). Compile took
+564s, simulator tests 78s, Xcode application 586s and associations 1s. Four ported
+source hashes match that committed head. Verify/windows jobs were intentionally
+skipped by the Apple-only scope. [Evidence](measurements/bounded-work-2026-11-02.json)
+retains report hashes, case names and timing. No physical iPhone execution is claimed.
+
+The generic port is complete. Continue Mobile account-owned company recovery and
+its actual consumer, incoming discovery/decryption, notifications and replies.
+Mobile company-progress focused checks pass 542 domain, 308 data and two DI cases;
+full/browser checks are running on its uncommitted source. That HRIS policy stays
+in Mobile. Phone remains release15; all54 communications acceptance groups remain
+open. Continue after this documentation push; no duplicate CI dispatch is needed.
+
 ## Starter Apple execution in progress — 2 November 2026
 
 [Run41400133440](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41400133440)
