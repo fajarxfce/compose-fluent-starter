@@ -1,5 +1,18 @@
 # Agent continuation — Compose Fluent Starter
 
+## Starter Apple execution in progress — 2 November 2026
+
+[Run41400133440](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41400133440)
+is executing at exact `136d2e5a607fb20b6f5ccd07bd88ed14b0a6b668`. Local root/worker-
+browser/Android/lint/Web validation already passes (356 desktop,13 worker-browser,
+six build-logic;148s /152.12s). Do not dispatch a second same-branch Apple run while
+active. Audit downloaded XML, including six AppleWorkWakeStoreTest cases, and the
+complete Xcode app before accepting native Starter execution. [Evidence](measurements/bounded-work-2026-11-02.json).
+
+Continue Mobile all-company recovery cursor/consumer, incoming sync, notifications
+and replies while hosted execution proceeds. Phone remains Mobile15; all54 PRD
+groups are still open. No task opts into collapsed scheduling automatically.
+
 ## Bounded scheduling and Apple wake fixture port — 2 November 2026
 
 [Mobile e00ab4ee](https://github.com/fajarxfce/hris-mobile/commit/e00ab4ee22dfcc68e705de42b65658c636aad9b4)

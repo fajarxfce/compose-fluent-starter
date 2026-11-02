@@ -321,7 +321,11 @@
     "limits": "Raw storage source at be8ebc7b only. Later HRIS wake policy and Android slot scheduler are outside this hosted run. No physical iPhone execution."
   },
   "starterApple": {
-    "status": "not dispatched yet",
+    "runId": 41400133440,
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41400133440",
+    "headSha": "136d2e5a607fb20b6f5ccd07bd88ed14b0a6b668",
+    "scope": "apple",
+    "status": "in_progress",
     "acceptance": false
   },
   "limits": [
