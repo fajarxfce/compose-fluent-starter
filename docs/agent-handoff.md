@@ -1,5 +1,24 @@
 # Agent continuation — Compose Fluent Starter
 
+## Android backup exclusions port accepted — 2 November 2026
+
+[Mobile c6347c75](https://github.com/fajarxfce/hris-mobile/commit/c6347c75278408256f775e65eb30d7ecae9b605e)
+proves the two Android configuration inputs before this generic port. Starter uses
+identical data_extraction_rules.xml and explicit allowBackup/fullBackupContent=false.
+[Contract](android-data-extraction.md) / [evidence](measurements/android-data-extraction-2026-11-02.json).
+Independent root/resources/lint pass 70.128s (Gradle 1m6s): 356 desktop cases in118
+suites and six build-logic cases, zero failures/errors/skips. Task provenance includes
+up-to-date reports. Actual compiled XML has both nine-domain exclusion sections;
+merged manifest matches. Lint has zero errors and44 existing dependency/version
+warnings; DataExtractionRules is removed. No physical transfer/backup or APK install.
+
+No shared Kotlin/Apple changes require another Apple run for this port. Continue
+Mobile release17+ from its clean c6347c75 source and server private pilot after full
+Verify41448616746 at2334e266 succeeds. Mobile Apple41446374520 atcc4c11f1 remains
+active. Phone remains15; notice plus explicit10.77.77.3:5555 install-only are required.
+No HRIS policy/configuration is ported. Communications implementation continues;
+all54 acceptance groups remain open.
+
 ## Starter Apple port independently audited — 2 November 2026
 
 [Run 41400133440](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41400133440)
