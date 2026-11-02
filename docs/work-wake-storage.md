@@ -38,5 +38,7 @@ remain in their own encrypted durable stores and platform jobs carry only task k
 and IndexedDB generation races,40 competing capacity requests, same-generation
 replay, cancellation, account replacement, close/reopen and previous-schema
 migration. Mobile found and fixed the already-cancelled Room transaction before this port.
-Starter independently validates the exact 15 shared inputs. Its Apple wrapper
-awaits Mobile hosted proof before copying and independent Starter execution.
+Starter independently validates the exact 15 shared inputs. The six-case Apple
+wrapper is now copied after Mobile run41396150119 passed all112 simulator cases
+and the Xcode app; [Starter hosted validation](measurements/bounded-work-2026-11-02.json)
+remains separate.

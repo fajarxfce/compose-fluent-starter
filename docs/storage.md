@@ -76,3 +76,6 @@ accounts also removes its chunks. Browser transfer invalidations use their own s
 so checkpoints do not trigger dashboard/inbox reads.
 
 See [file transfers](file-transfers.md) for limits, resume policy and retention.
+
+See [bounded Android scheduling](bounded-work-scheduling.md) for consuming durable
+wakes with two independently named slots and explicit admission limits.

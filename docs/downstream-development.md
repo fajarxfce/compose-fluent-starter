@@ -1,5 +1,27 @@
 # Downstream development
 
+## Bounded scheduling and Apple wake fixture port — 2 November 2026
+
+[Mobile e00ab4ee](https://github.com/fajarxfce/hris-mobile/commit/e00ab4ee22dfcc68e705de42b65658c636aad9b4)
+provides three identical generic scheduler/test files. The six-case Apple raw wake
+fixture is also copied after audited Mobile run41396150119 at be8ebc7b:112 cases,
+zero failures/errors/skips and complete simulator application. [Port evidence](measurements/bounded-work-2026-11-02.json)
+binds four exact files, reports and artifacts; [scheduler contract](bounded-work-scheduling.md).
+
+Starter independently passes root, worker-browser, Android dev/lint and production
+Web checks in148s /152.12s: 356 desktop,13 worker-browser
+and6 build-logic cases, zero failures/errors/skips. Lint has zero fatal/errors
+and45 existing warnings. APK is built, not installed. No HRIS policy, proof
+application, configuration or task opt-in is copied. Fresh opted-in keys use two
+independent slots; ordinary APPEND_OR_REPLACE scheduling remains.
+
+Next: after pushing, dispatch one Apple-only Starter CI at the committed branch.
+Audit downloaded XML including all six AppleWorkWakeStoreTest cases, exact source
+and full Xcode build before marking native Starter execution accepted. Continue
+Mobile all-company recovery/receive/notifications while hosted checks run. Phone
+remains Mobile15. Owned5562 is stopped;5560 currently belongs to unrelated CodePush.
+All54 communications PRD groups remain open; continue after each commit/push.
+
 ## Durable work wake storage — 2 November 2026
 
 [Mobile source `be8ebc7b`](https://github.com/fajarxfce/hris-mobile/commit/be8ebc7b03bf765a4d4f34c493be4653d6e56d7f)
