@@ -1,0 +1,11 @@
+{
+  "source": "cb36373af4986696e31be4d3438071711d5ca583",
+  "run": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41626260198",
+  "status": "pending",
+  "sourceCount": 32,
+  "requirements": [
+    "Full Xcode application",
+    "All simulator tests and ten new common notification shape/inventory cases",
+    "Downloaded source/report/archive digest verification"
+  ]
+}
