@@ -1,5 +1,29 @@
 # Agent continuation — Compose Fluent Starter
 
+## Device-owned raw storage port accepted locally — 3 November 2026
+
+[Contract](device-records.md) / [evidence](measurements/device-records-port-2026-11-03.json).
+Sixteen exact Mobile76bd inputs (15 Kotlin/schema13), also identical at accepted full
+Mobile Apple81c7/run41592237356. Eight AppleDeviceRecordStoreTest cases passed there.
+Four preexisting Kotlin files and schema12 matched before porting. SQLite12->13 and
+IndexedDB11->12 add device_records; all previous Room entity definitions are unchanged.
+No HRIS input encryption, keys, session policy or worker is copied.
+
+Independent root/database-browser/Android dev/lint/production Web PASSED325.503s:
+365 desktop/120 suites,51 actual browser/eight, six build-logic/one;217 fresh/63,
+zero failures/errors/skips,16 unchanged hashes. Browser51 executed fresh. Lint0 errors
+and44 existing warnings. Android APK built, not installed; Web built with existing
+size/runtime warnings. .work/device-records-port-2026-11-03/check-1 reports/audit complete.
+
+NEXT after this accepted source is pushed, dispatch ONE Apple-only ci.yml run. Freeze
+these16 sources and require the eight AppleDeviceRecordStoreTest cases plus complete
+Xcode application, actual XML counts and artifact/source digest verification. Do not
+mark independent Apple acceptance from Mobile's result. No repeat local checks absent
+new changes or failure. Continue Mobile's device-input worker/callback integration;
+Mobile5bc5a7a3 is pushed, phone21 installed, all54 communications groups remain open.
+Platform304/schema116 unchanged. Starter never installs an APK on the user's phone.
+
+
 ## Android backup exclusions port accepted — 2 November 2026
 
 [Mobile c6347c75](https://github.com/fajarxfce/hris-mobile/commit/c6347c75278408256f775e65eb30d7ecae9b605e)

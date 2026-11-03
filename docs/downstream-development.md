@@ -1,5 +1,16 @@
 # Downstream development
 
+## Device-owned opaque storage — 3 November 2026
+
+[Mobile76bd7673](https://github.com/fajarxfce/hris-mobile/commit/76bd7673e898b2c5ca4b6af98827a03848fc6071)
+and full Mobile Apple41592237356 prove the16 copied raw storage/schema/test inputs,
+including eight Apple cases. Starter independently passes root, actual SQLite/browser,
+Android dev/lint and production Web:365 desktop,51 browser and six build-logic cases,
+zero failures/errors/skips in325.503s. All previous schema entities remain identical.
+[Contract](device-records.md) / [evidence](measurements/device-records-port-2026-11-03.json).
+Independent Starter Apple is the remaining port gate. No HRIS keys/policy are copied.
+
+
 ## Bounded scheduling and Apple wake fixture port — 2 November 2026
 
 [Mobile e00ab4ee](https://github.com/fajarxfce/hris-mobile/commit/e00ab4ee22dfcc68e705de42b65658c636aad9b4)
