@@ -2,6 +2,14 @@
 
 ## Device-owned raw storage port accepted locally — 3 November 2026
 
+Port16f4b237 is committed/pushed. ONE full Apple run
+[41596469348](measurements/device-records-apple-2026-11-03.json) was dispatched at
+2026-11-03T07:27:45.975025+00:00 on exact16f4b23718c98e49cc69970dcf71e96ec8cceb2a. Sixteen source
+hashes frozen. Audit script ready in .work/device-records-apple-2026-11-03; do not
+repeat dispatch or cancel. Check all actual simulator XML, eight raw storage cases,
+full Xcode, GitHub artifact digest and source hashes. Local work is complete.
+
+
 [Contract](device-records.md) / [evidence](measurements/device-records-port-2026-11-03.json).
 Sixteen exact Mobile76bd inputs (15 Kotlin/schema13), also identical at accepted full
 Mobile Apple81c7/run41592237356. Eight AppleDeviceRecordStoreTest cases passed there.

@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-03",
+  "startedAt": "2026-11-03T07:27:45.975025+00:00",
+  "sourceCommit": "16f4b23718c98e49cc69970dcf71e96ec8cceb2a",
+  "run": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41596469348",
+  "runId": 41596469348,
+  "scope": "apple",
+  "status": "pending",
+  "sourceSha256": {
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/AppDatabase.kt": "f7a7a8093a21ea67461ca843dc99c9923f8d9b3f2447095a20b42467234ab787",
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/DeviceRecordStore.kt": "920d3f7e9c6ed341f53bbd7983b48dc7d244377fffe67fc22346ff9efd1b0a03",
+    "core/database/src/commonTest/kotlin/dev/fajar/starter/database/DeviceRecordStoreContract.kt": "0a2c74cf8580048acb5672566e63170a9ef9f9c59c19a3ab4f8e1e4556fd2c04",
+    "core/database/src/desktopTest/kotlin/dev/fajar/starter/database/DeviceRecordMigrationTest.kt": "7d1ebcfe6ff35a19da80cc27929b309a3d24ad584c3b4655f573e757e9f02640",
+    "core/database/src/desktopTest/kotlin/dev/fajar/starter/database/DeviceRecordStoreTest.kt": "b0fa5d472256153c5beaa7623cf42bf5964c23f45db5792c623c886b05a81a70",
+    "core/database/src/iosTest/kotlin/dev/fajar/starter/database/AppleDeviceRecordStoreTest.kt": "3e138f4ee7c2eb65cdffb5ed5905d0f441bfc8011d3f2ffaa172eeacb5ac6314",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/RoomAppDatabase.kt": "05b333c439c95e7eaceb5260e318272dc8696d5dbd47c036e1dbb1470e4e784b",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/RoomDeviceRecordStore.kt": "2e75a32e340e7ecac748506476779f5ad01ddaf09f8842a7a163f0564e6657e5",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/StarterDatabase.kt": "e6f54fe7b5f9eba804cc7cccee4490dc8ccbd9df72421ac6921d9ed0161f3aa3",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/dao/DeviceRecordDao.kt": "300f7feb38d040831233d33166845f4538cc77be55cf63f3be6b3d65d2769fdb",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/entities/DeviceRecordEntity.kt": "55ff298b82c5d19fa8a7a5bc5a7b16e518a533f0c1b793cbc051c4684114df15",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/BrowserDatabase.kt": "54cdfb4d9e1a81ded59473f6afeb50f0ca72286104cde65547a39910f52c930e",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/IndexedDbDeviceRecordStore.kt": "ff257eafd451b102dd64a8ffba56f8e08987d9e5008aff9cb0f8b5b99b9be1b0",
+    "core/database/src/wasmJsTest/kotlin/dev/fajar/starter/database/BrowserDeviceRecordStoreTest.kt": "63f6f0f24e3c79684ac348b40b19899a351b225f14f4bd66af6db21cec169607",
+    "core/database/src/wasmJsTest/kotlin/dev/fajar/starter/database/DeviceRecordMigrationFixture.kt": "b2d3ef7cb72e6ef87e4acd2f528b7d42be638bf594837a5eec8affd5f2ef0b30",
+    "core/database/schemas/dev.fajar.starter.database.StarterDatabase/13.json": "cc1e2eed8142dc2e507e182f4a4dfca53acf3bb2cbbbe2cc30f62cc041809dfb"
+  },
+  "requires": [
+    "Eight AppleDeviceRecordStoreTest cases",
+    "All simulator reports with zero failures/errors/skips",
+    "Complete Xcode application build",
+    "Source and GitHub artifact SHA256 verification"
+  ],
+  "phoneTouched": false
+}
