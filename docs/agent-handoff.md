@@ -1,5 +1,17 @@
 # Agent continuation — Compose Fluent Starter
 
+
+## Command prevention Apple accepted — 3 November 2026
+
+[Apple41612522666](measurements/command-prevention-apple-2026-11-03.json) at
+aa58a21b is accepted:102 simulator tests/28 suites, zero failures/errors/skips.
+All24 source hashes and GitHub artifact13220159432 verified; ZIP SHA256
+b376fb03653e3d267c745ae1bc505d2b200f2c66f81a1e83145295127f776161.
+Compile544s/tests103s/full Xcode686s. Includes two real Apple command-prevention
+cases and eight device-record cases. Local and independent hosted acceptance
+complete; do not repeat. No HRIS policy/config or phone build in this port.
+Audit retained in .work/command-prevention-apple-2026-11-03/apple-input-audit.json.
+
 ## Full Apple archive port dispatched — 3 November 2026
 
 Source aa58a21b6a0e432c455624ccbb45e51eb4ad2ce8, run[41612522666](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41612522666),24 frozen sources.
