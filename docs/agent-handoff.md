@@ -1,14 +1,15 @@
 # Agent continuation — Compose Fluent Starter
 
-## Device-owned raw storage port accepted locally — 3 November 2026
+## Device-owned raw storage port accepted locally and on Apple — 3 November 2026
 
-Port16f4b237 is committed/pushed. ONE full Apple run
-[41596469348](measurements/device-records-apple-2026-11-03.json) was dispatched at
-2026-11-03T07:27:45.975025+00:00 on exact16f4b23718c98e49cc69970dcf71e96ec8cceb2a. Sixteen source
-hashes frozen. Audit script ready in .work/device-records-apple-2026-11-03; do not
-repeat dispatch or cancel. Check all actual simulator XML, eight raw storage cases,
-full Xcode, GitHub artifact digest and source hashes. Local work is complete.
-
+Port16f4b237 is committed/pushed. Full Apple
+[41596469348](measurements/device-records-apple-2026-11-03.json) is ACCEPTED on exact
+16f4b23718c98e49cc69970dcf71e96ec8cceb2a. Actual reports contain100 simulator cases/
+27 suites, including all eight AppleDeviceRecordStoreTest cases, zero failures,
+errors or skips. Compile673s/tests65s/full Xcode758s. Sixteen source hashes and
+GitHub artifact13213137388 verified; ZIP SHA256
+`ec937baf41b41f1fc27768502a1e76bab3d30318c7e8a4816707b3ad9c388d35`.
+Audit complete in .work/device-records-apple-2026-11-03; do not repeat. No phone install.
 
 [Contract](device-records.md) / [evidence](measurements/device-records-port-2026-11-03.json).
 Sixteen exact Mobile76bd inputs (15 Kotlin/schema13), also identical at accepted full
@@ -23,13 +24,12 @@ zero failures/errors/skips,16 unchanged hashes. Browser51 executed fresh. Lint0 
 and44 existing warnings. Android APK built, not installed; Web built with existing
 size/runtime warnings. .work/device-records-port-2026-11-03/check-1 reports/audit complete.
 
-NEXT after this accepted source is pushed, dispatch ONE Apple-only ci.yml run. Freeze
-these16 sources and require the eight AppleDeviceRecordStoreTest cases plus complete
-Xcode application, actual XML counts and artifact/source digest verification. Do not
-mark independent Apple acceptance from Mobile's result. No repeat local checks absent
-new changes or failure. Continue Mobile's device-input worker/callback integration;
-Mobile5bc5a7a3 is pushed, phone21 installed, all54 communications groups remain open.
-Platform304/schema116 unchanged. Starter never installs an APK on the user's phone.
+The generic raw storage port is complete. Continue Mobile's integrated notification
+callback/OS-death proof and input review. Mobile finite input workeradc0a486 is
+committed/pushed after full local acceptance; Mobile Apple41599066906 is running.
+Native41595695537 at earlier5bc is running. Phone21 remains installed, all54 groups
+open, Platform304/schema116 unchanged. Generic notification primitives wait for
+integrated Mobile proof; HRIS policy and configuration stay in Mobile.
 
 
 ## Android backup exclusions port accepted — 2 November 2026
