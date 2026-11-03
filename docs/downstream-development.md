@@ -1,5 +1,17 @@
 # Downstream development
 
+## Owned action notification primitives — 3 November 2026
+
+[Mobile f3843601](https://github.com/fajarxfce/hris-mobile/commit/f3843601fd8fb7af48a6d89171df0e42bc41f714)
+proves the actual Android PendingIntent, RemoteInput, encrypted callback consumer
+and notification shade before this eight-file raw port. Exact generic sources and
+common regressions are copied; HRIS policy, callback wiring and configuration stay
+in Mobile. Independent Starter checks pass in 260.027s: 377 desktop, 18 browser and
+six build-logic cases, zero failures/errors/skips. [Contract](action-notifications.md)
+and [evidence](measurements/action-notification-port-2026-11-03.json). Full hosted
+Apple remains required for this port.
+
+
 ## Permanent absent-command outcome — 3 November 2026
 
 [Mobile8b5f8750](https://github.com/fajarxfce/hris-mobile/commit/8b5f87501d618ac40fdcaccc94d4d97b85270e00)
@@ -8,7 +20,7 @@ The transaction archives an absent operation without publishing it to the queue;
 late retries cannot reuse its ID. Independent Starter root/browser/Android/lint/Web
 checks pass, with367 desktop and53 browser cases. No schema or HRIS policy copied.
 [Contract](command-prevention.md) / [evidence](measurements/command-prevention-port-2026-11-03.json).
-Full hosted Apple remains pending.
+Full hosted Apple41612522666 is accepted: 102 simulator cases/28 suites and full Xcode; see [Apple evidence](measurements/command-prevention-apple-2026-11-03.json).
 
 
 ## Device-owned opaque storage — 3 November 2026
@@ -19,7 +31,7 @@ including eight Apple cases. Starter independently passes root, actual SQLite/br
 Android dev/lint and production Web:365 desktop,51 browser and six build-logic cases,
 zero failures/errors/skips in325.503s. All previous schema entities remain identical.
 [Contract](device-records.md) / [evidence](measurements/device-records-port-2026-11-03.json).
-Independent Starter Apple is the remaining port gate. No HRIS keys/policy are copied.
+Independent Starter Apple41596469348 is accepted: 100 simulator cases/27 suites and full Xcode; see [Apple evidence](measurements/device-records-apple-2026-11-03.json). No HRIS keys/policy are copied.
 
 
 ## Bounded scheduling and Apple wake fixture port — 2 November 2026

@@ -1,0 +1,499 @@
+{
+  "date": "2026-11-03",
+  "status": "accepted-local",
+  "mobileSource": "f3843601fd8fb7af48a6d89171df0e42bc41f714",
+  "sourceSha256": {
+    "core/notifications/data/src/androidMain/kotlin/dev/fajar/starter/notifications/data/datasources/AndroidActionNotificationDisplaySource.kt": "06c65a6d23eaa4035783acaf737a2fe29f60e48e3aff1f00c934f5dab371136b",
+    "core/notifications/data/src/androidMain/kotlin/dev/fajar/starter/notifications/data/datasources/AndroidActionNotificationIntents.kt": "47976ffb174277d81fa27c9c5c7434611416eba4d3592810f96d7f11edc565fb",
+    "core/notifications/data/src/commonMain/kotlin/dev/fajar/starter/notifications/data/datasources/ActionNotificationDisplaySource.kt": "02c108362ebce4bd51332187f5c3a1fae9db61eb3abd671db83984ea743ebaf8",
+    "core/notifications/data/src/commonMain/kotlin/dev/fajar/starter/notifications/data/dto/ActionNotificationPayload.kt": "3c4254b510667fd7e2ccdffaef542fc3d10758e2ebecb21814acc5c3af5ac46c",
+    "core/notifications/data/src/commonMain/kotlin/dev/fajar/starter/notifications/data/mappers/ActionNotificationPendingIndex.kt": "798ee96dab96a3bea68a127ab05807a4aec4a28104479073f11577f4774a7013",
+    "core/notifications/data/src/commonMain/kotlin/dev/fajar/starter/notifications/data/mappers/ActionNotificationShape.kt": "03353f16075ecd6712a08eaabf218bf05a736de864a65d003f616d62ffd8b7da",
+    "core/notifications/data/src/commonTest/kotlin/dev/fajar/starter/notifications/data/ActionNotificationPendingIndexTest.kt": "8ceca8d5eaf8c06ce385aadfef43fe442ec038a99fee17a96b55a830367b66b3",
+    "core/notifications/data/src/commonTest/kotlin/dev/fajar/starter/notifications/data/ActionNotificationShapeTest.kt": "a828a3204fa25e9872491744ce49bff6e1a2abc893d43c691922990bd1fb0f2f"
+  },
+  "allEightFilesNew": true,
+  "dependencyFileEqual": true,
+  "seconds": 260.027,
+  "startedAt": "2026-11-03T11:07:49.025717+00:00",
+  "command": [
+    "xvfb-run",
+    "-a",
+    "./gradlew",
+    ":check",
+    ":core:notifications:data:wasmJsBrowserTest",
+    ":apps:android:assembleDevDebug",
+    ":apps:android:lintDevDebug",
+    ":apps:shared:wasmJsBrowserDistribution",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    "--no-daemon",
+    "--no-parallel",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1536m"
+  ],
+  "counts": {
+    "desktop": {
+      "tests": 377,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 123,
+      "tasks": {
+        ":apps:demo:desktopTest": "UP-TO-DATE",
+        ":apps:shared:desktopTest": "EXECUTED",
+        ":core:common:desktopTest": "UP-TO-DATE",
+        ":core:database:desktopTest": "UP-TO-DATE",
+        ":core:datastore:desktopTest": "UP-TO-DATE",
+        ":core:fileio:desktopTest": "UP-TO-DATE",
+        ":core:localization:desktopTest": "UP-TO-DATE",
+        ":core:network:desktopTest": "UP-TO-DATE",
+        ":core:observability:desktopTest": "UP-TO-DATE",
+        ":core:presentation:desktopTest": "UP-TO-DATE",
+        ":core:securestorage:desktopTest": "UP-TO-DATE",
+        ":core:storage:desktopTest": "UP-TO-DATE",
+        ":core:worker:desktopTest": "UP-TO-DATE",
+        ":core:availability:data:desktopTest": "UP-TO-DATE",
+        ":core:availability:domain:desktopTest": "UP-TO-DATE",
+        ":core:featureflags:data:desktopTest": "UP-TO-DATE",
+        ":core:featureflags:domain:desktopTest": "UP-TO-DATE",
+        ":core:identity:data:desktopTest": "UP-TO-DATE",
+        ":core:identity:domain:desktopTest": "UP-TO-DATE",
+        ":core:location:data:desktopTest": "UP-TO-DATE",
+        ":core:notifications:data:desktopTest": "EXECUTED",
+        ":core:notifications:domain:desktopTest": "UP-TO-DATE",
+        ":core:security:data:desktopTest": "UP-TO-DATE",
+        ":core:security:domain:desktopTest": "UP-TO-DATE",
+        ":core:settings:data:desktopTest": "UP-TO-DATE",
+        ":core:sync:data:desktopTest": "UP-TO-DATE",
+        ":core:transfers:data:desktopTest": "UP-TO-DATE",
+        ":core:transfers:domain:desktopTest": "UP-TO-DATE",
+        ":features:auth:presentation:desktopTest": "UP-TO-DATE",
+        ":features:dashboard:data:desktopTest": "UP-TO-DATE",
+        ":features:dashboard:domain:desktopTest": "UP-TO-DATE",
+        ":features:dashboard:presentation:desktopTest": "UP-TO-DATE",
+        ":features:files:presentation:desktopTest": "UP-TO-DATE",
+        ":features:notifications:presentation:desktopTest": "UP-TO-DATE",
+        ":features:onboarding:data:desktopTest": "UP-TO-DATE",
+        ":features:onboarding:presentation:desktopTest": "UP-TO-DATE",
+        ":features:security:presentation:desktopTest": "UP-TO-DATE",
+        ":features:settings:presentation:desktopTest": "UP-TO-DATE"
+      },
+      "reportSha256": {
+        "apps/demo/build/test-results/desktopTest/TEST-dev.fajar.starter.demo.DemoIdempotencyTest.xml": "eb37ce17cbaf0881a985b0e3103b1a226180537db6c50e56ed2f416f62c5237e",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AdaptiveUiTest.xml": "ad348d02ef7b87fc761b3df084e9aa868df7ed705c8e346c556c3cba4829a490",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AppFlowTest.xml": "1978cb58e611e2d3faf49823b1666a65f6a78087f3d68bf1f51a17488e3a70a4",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AppLinkFlowTest.xml": "2a6ef23b30b7ede7e823c15900190b36ce191fde5865f6b0a5cea52db61b0cc9",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.BootstrapRecoveryTest.xml": "ce587f6dbe3abb114b882dd6663ee8e08a21b2cb12f1255b8fa3cf4e3028bc3b",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.CompactFiltersLayoutTest.xml": "40c4187da446b077edf85d13a77cb8077397203ca45ed5cabf5f4c651eb02417",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.ContentTabsUiTest.xml": "9be8b42ae8ecc64ace4a6eda411f7fc8234fa67e393ba477b2fbe570d422b842",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.DatePickerUiTest.xml": "696a0432d1b72d137a5a0282b36485015c36180adf122a388a63311a7f4a62b2",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FilterChipLabelUiTest.xml": "fa8dd2e4c7d0d763f6729d0b645cad2d15e18711657559a5b787ad7638af73df",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FirebaseProviderBindingsTest.xml": "ffb67501da91603f8b351a787cda720cdd61a5266639e0d66d4a5be3232da538",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FormChoiceLayoutTest.xml": "27fbbd88b169e6e629f684ee7168a16cc63978bce1b752aa8fcff9c657c30f41",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.LoadingUiTest.xml": "ee374de3494a988c0fa5cdd29ebb77f9cd1917f6c0ca3e97bcb7498bb809ac3c",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.MonthPickerUiTest.xml": "8c1daafbda46f55fcccca844636dd1dfa3355b594579364b7a11b5528a7af06c",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.MotionUiTest.xml": "c7aaf25a644f52494dc4fd11f919767d2be38d80563dc2fd9b50f04f2ca8f8d0",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationBadgeUiTest.xml": "84eeb0e701e34831e75c40eaf71cccd9f6993d6786ee33384531d212e150c243",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationOwnershipTest.xml": "c13e2c20b81c22eef38dc1eecd916a722ddd62d221770002748cfc887e4b82e3",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationRestorationTest.xml": "ff3d3c6b631ea543698051469042735d887d2e37f59f6e19e209ea81cf8c31d0",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.PageActionUiTest.xml": "09e5886b236be2cf118ecc6678481f7ed712cc562f8de5061fef90fca63f4b53",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.PageLayoutTest.xml": "82b75acef14d7260a9239ff5099b142abed6a13e03f27cc077e9662817d72bb2",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.SearchAndFiltersUiTest.xml": "d982cbb24610cdf5a67839ed35b1a4e2474735549a64092dba9166eedf8275ab",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.TextFieldLayoutTest.xml": "e30a9284b84a393f740a31b364607c0ce22e84530a8a05895a7fef75a977e89a",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.TimeInputLayoutTest.xml": "f2f50a73d471c7310f23934a4bf5e9079954b093d2355b99ae348f47bce81982",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.bootstrap.AppViewModelTest.xml": "be94b94977d6dffa2cf99b1048ab63d66aaebb9f448a9a67e22ee86fe72b3567",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.navigation.PendingAppLinkTest.xml": "a40f83dd6aa03b6fe507d9964cd10dac9bde73722f2068e98c374dcb94f4abe1",
+        "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.navigation.ResolveAppLinkTest.xml": "7228abbca7740eea77f06cc8cbb560eccea5ea1464275bcbdd10f8d456f0f77e",
+        "core/common/build/test-results/desktopTest/TEST-dev.fajar.starter.common.config.AppLinkPathTest.xml": "55f97b94fe3bb095b38d19f851aa7df448003a7621fee0d2d2182ff96c602550",
+        "core/common/build/test-results/desktopTest/TEST-dev.fajar.starter.common.decimal.DecimalAmountTest.xml": "d19a2958819fa7056a663ae939cd2a66c1fca06f97512a057e2c01a167b8539d",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.BlobMigrationTest.xml": "b1d8c3b1d17f7f8c6758edde07da084b10f964db54dd868daba0369242a3e63c",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.BlobStoreTest.xml": "ae5d570327c18a1ce4c398668ddf3a7581f82e0e7dc9d1c3bb81253b06180e73",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.CommandArchiveMigrationTest.xml": "97959a74f1d0598d53326f8976d1c96e2671e499ec7d79c5af711c08034d089a",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.CommandPreventionTest.xml": "276afa8103d1ce209433a7d72b1ef50fbc5cc283032c69718d54ac2b883d420d",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.CommandStoreTest.xml": "83f608c15612050374e12b72e87dc12a5da6f0060d51a387b83fbebac2d553e8",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.DashboardStoreTest.xml": "a7746971e3dce6ddcb3dee5f9992e43c2549796cf416cf8c606b9d1ca519d84a",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.DeviceRecordMigrationTest.xml": "3037221519c86331f6b50fc8eb4c63e487f089ec0c590012043376e580e916c5",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.DeviceRecordStoreTest.xml": "bdd1f41a00dac0b2fb40f210b13f408931e00372276270b5e1ac07df74e2548b",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.InboxStoreTest.xml": "0f87838c20204e4d23945b621f5bebd4f96c1f922694e2aaad357eeb9cdb184b",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.ReplicaIndexMigrationTest.xml": "02c88b2f3a8bca16b24b671d84811202d3f6d717df5e3550cd96133cd2ccdc54",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.ReplicaOwnershipMigrationTest.xml": "bf216b0e1755f320e38b5e2334de441ac8c213311cb08688b6a435967b812f1f",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.ReplicaStoreTest.xml": "4baadd080640a40a6c6325ee8dfeb07693b0313c213571ab26a80271fef34978",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.TransferStoreTest.xml": "783b9afe819947a86239ddf68d89b609ea0324f2a3cb39a11cc84bac28f7404f",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.WorkWakeMigrationTest.xml": "7f3ca22e99a160f637ce369cb418f27dcc157ae34768fc76da152f042fc76eac",
+        "core/database/build/test-results/desktopTest/TEST-dev.fajar.starter.database.WorkWakeStoreTest.xml": "006a808719c6fa94052d835cbef6a32ef4121257589f11dea61132f373dc5dd9",
+        "core/datastore/build/test-results/desktopTest/TEST-dev.fajar.starter.datastore.FeatureFlagProtoTest.xml": "876784b7c2b8d1dacfca9fe69ae57c2af2ef40bce5bc1217db82f7dba1b470e2",
+        "core/datastore/build/test-results/desktopTest/TEST-dev.fajar.starter.datastore.ProtoUserPreferencesStoreTest.xml": "b3094b551e3a225b0c4fb9275b6bed0c896871cba2314ecc2f18f631d21c9219",
+        "core/fileio/build/test-results/desktopTest/TEST-dev.fajar.starter.fileio.FileHandleRegistryTest.xml": "23cb881d02e2c5627a8f11c009696049dee8f487699f7d4159a492a863853e9f",
+        "core/fileio/build/test-results/desktopTest/TEST-dev.fajar.starter.fileio.ReadFileChannelTest.xml": "e87a46c47109f39fbec717be63810bcbc5583636ce42a67502bf0f8be9a2145d",
+        "core/fileio/build/test-results/desktopTest/TEST-dev.fajar.starter.fileio.SafeFileCallTest.xml": "c429285a2ae628293b72bd0cec562315e62d478b3f8ac595be58335a535dad7d",
+        "core/fileio/build/test-results/desktopTest/TEST-dev.fajar.starter.fileio.Sha256DigestTest.xml": "4e62ec6e3e64958604814de92f050c7b16e84c9cc2973652fd8d6e3c5c3727ac",
+        "core/fileio/build/test-results/desktopTest/TEST-dev.fajar.starter.fileio.WriteFileChannelTest.xml": "853737f911ae824479c911f136cb0ba6b31ecc04ee429e0f68f18dc0177c22dc",
+        "core/localization/build/test-results/desktopTest/TEST-dev.fajar.starter.localization.DecimalFormattingTest.xml": "d84edf231139bdce13124c904e441027a0d1c2c7d8c8f5c12bbbc5d911b11883",
+        "core/localization/build/test-results/desktopTest/TEST-dev.fajar.starter.localization.LocalDateFormatTest.xml": "46c33079aa4adc8fb8dd48c66d7966cadc0f42ac94d24f1e10630e0341cf556e",
+        "core/localization/build/test-results/desktopTest/TEST-dev.fajar.starter.localization.LocalizedResourcesTest.xml": "e4cf8a0da5f25c25297ab8b42379a308b610fe0e5bc6f5c83b52fcadfd112264",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.ApiProblemTest.xml": "98f01101a1ad6df5f4f0d942b6a0fabcb74d0d81153920caec769cdc4211b1a7",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.ApiResponseBodyTest.xml": "ef8cf3cd9e41721c939d35669d996f42d32f05e1dea0a5247081f37c4b0df5db",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.ApiValidationTest.xml": "7f9216ae38f63026bb16557bc65ac2580c06d159386e0136a2bf6648f849fd8a",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.ApplicationAvailabilityTest.xml": "74d77dc82d25ef412d431730317a785f7b47f10e9dfe33aef617fe79698c95d2",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.BinaryRangeRequestTest.xml": "a0aa6481fa120a0e13fc06670af24ecffaa838e8fb8ea5e8b39fd8b78d72b565",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.HttpClientOwnershipTest.xml": "e1ec0d0d36b8c10ee5270014b49450387776dcc21ea8d25afe1ca90b849a53bd",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.HttpDiagnosticsTest.xml": "e3cb796a1ac337ebbb24dc91d2f2153de430ba74ddbd544d17ec1894af354e04",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.JsonRequestTest.xml": "8ce7dd0be3afc3c66f5f03356bec5ef380d22698655d9c2eec3e96800cc8e98b",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.SafeApiCallTest.xml": "12b830f038807c4642a7116ae689ccd64529b867010c6af6dd5ef12a2b603fdb",
+        "core/network/build/test-results/desktopTest/TEST-dev.fajar.starter.network.SessionAuthenticationTest.xml": "732d875043dedf31f9b2be1cff5def85aed91360a672b7ec52cac4a476dd4807",
+        "core/observability/build/test-results/desktopTest/TEST-dev.fajar.starter.observability.DiagnosticsTest.xml": "97616f21eb2ce0fc7dd36a9de713574018ab6bec0a6537a81603e80aef20fd82",
+        "core/observability/build/test-results/desktopTest/TEST-dev.fajar.starter.observability.PerformanceTest.xml": "7d86c96516c70952c81dec6ea5b5ff7dd4eaef3f100828b94808f8849ceb82d6",
+        "core/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.presentation.mvi.MviViewModelTest.xml": "35c5aad02e802c66106b1863380eaab2bddb4fb4921dffb127c6c65d672ac2b2",
+        "core/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.presentation.navigation.EnumNavTypeTest.xml": "b046ddae24f09ba8045e42fc97cc39a7cf4949d84709348e2b84649dd8797e8e",
+        "core/securestorage/build/test-results/desktopTest/TEST-dev.fajar.starter.securestorage.ContentCipherTest.xml": "4ccc91fc4dafb9b4b6265c3af6f0e7aeb3456cc040cd514b1ca4ae29e6983ad8",
+        "core/securestorage/build/test-results/desktopTest/TEST-dev.fajar.starter.securestorage.ContentIndexesTest.xml": "9eb1db72b3abbffe90abb5265ab2d0349cc8880b1f2cc31fd1b7f9f7525b0781",
+        "core/securestorage/build/test-results/desktopTest/TEST-dev.fajar.starter.securestorage.CredentialRecordLockTest.xml": "ff6542d70f27d2bc14b974bddacc849b042633b11045af124f0dc9f2670c0565",
+        "core/securestorage/build/test-results/desktopTest/TEST-dev.fajar.starter.securestorage.MemoryCredentialStoreTest.xml": "e0067fff59e231149f0933e0e83f3b7cdff493d836b60c28f2bd63288fddc481",
+        "core/storage/build/test-results/desktopTest/TEST-dev.fajar.starter.storage.SafeStorageCallTest.xml": "a5269656f0c63521309b2cc35c2e1cc53d6069c379c7e18077ad27e89ec15412",
+        "core/storage/build/test-results/desktopTest/TEST-dev.fajar.starter.storage.SafeStorageMappedFlowTest.xml": "eb2dd3544c7b22184367dc227225e67adae436f533ca3a53bc940c40b931d8d7",
+        "core/worker/build/test-results/desktopTest/TEST-dev.fajar.starter.worker.CollapsedWorkGateTest.xml": "a4992d5737579da8c511d06c836dd9f2b00a4b8057170b91b136d7f13cb95016",
+        "core/worker/build/test-results/desktopTest/TEST-dev.fajar.starter.worker.ForegroundSyncWorkerTest.xml": "a7d9daf3cbc1f7d18d94ae4d359dd1ab91e330c070899d084ae20500c5547baf",
+        "core/availability/data/build/test-results/desktopTest/TEST-dev.fajar.starter.availability.data.StoredAvailabilityRepositoryTest.xml": "6f8137ec4931445cc9d408a801ec211d2559707a29d3637e18c2118d4a11f8b8",
+        "core/availability/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.availability.domain.AppPolicyTest.xml": "8aa3bc9fbe57f5425f66356a19683303b0d333d6bde42b7ff45c2891d5608e79",
+        "core/availability/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.availability.domain.AvailabilityCancellationTest.xml": "57d621b9132d5aecc1488f9dae9a2a9407b3625f9d0f3561afa6967a5f672e50",
+        "core/availability/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.availability.domain.MaintenanceExpiryTest.xml": "5609ae08d28e23b8a3a51b5c0cf3f2fed5dd88054da623fda53540956b94930b",
+        "core/featureflags/data/build/test-results/desktopTest/TEST-dev.fajar.starter.featureflags.data.CachedFeatureFlagRepositoryTest.xml": "e23c0b2cea1dfd2f2a739d31e1d5f3f6b3680be9a7580865f3a9ddcb196e96c9",
+        "core/featureflags/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.featureflags.domain.FeatureFlagPolicyTest.xml": "05b2a41cbe668eff8e10d90619da1d38646c2f3e657d4f26a92754cdbf96b6a2",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.FirebaseProviderTransportTest.xml": "2315d620856661b5118fa4cb4df8ac399d9863b867a378b4b933f38865d5bdd4",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.GoogleAuthorizationExchangeTest.xml": "0b2ae145e935700b74c742232e4e49f2e0d96090b3141b03967f7e5f8971f2a1",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.GoogleAuthorizationProtocolTest.xml": "65726c00b0700b308357d97acd98d77956e8919fca8a6b71b5baa86d05fc0052",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.GoogleCodeTransportTest.xml": "872e84d4f8f7e755781ad72aac3ca4f2740964c33a53c56df10d31e373542fb3",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.GoogleCredentialSessionTest.xml": "7efeaac9c0c39dd827265f1f197b5420f305a16ff47969fedfd399ae99962bb8",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.IdentityRepositoryTest.xml": "cc04fb38d605cc622e4da6b506531de25ad05de90df6cc51acfb5c01d744f252",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.InstalledFirebaseAuthenticationTest.xml": "5d0f024baaf6d002b9ec042dc35349859a06d7d368b0eb2161f052c7f5fcbef5",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.RefreshTransportTest.xml": "b66cc4a0d3c4d1ef443e0adc4aae727602a3bf0c889077eede796cf9b597d544",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.StoredSessionRepositoryTest.xml": "448cdf5c7df50c35c5eab31d25ac6c4d137322d0b367f6537fe9df518fdc5321",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.sso.BrowserSsoRepositoryTest.xml": "a1fd032d315568fec54cbbcff8f58837886777359968781d757464a9935ffbc8",
+        "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.sso.DesktopAuthorizationTest.xml": "830bfd5274eb00f1c5efe04d78f80b5c770346cd760b38e27d3eb364227ceae3",
+        "core/identity/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.domain.ObserveSessionIdentityTest.xml": "f23c5817b60ce578d80771543983e333643776ac9d828f20ead6d90a78766e72",
+        "core/identity/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.domain.RefreshRecoveryTest.xml": "773b15b2fe2e8ca36adc778cde3f2d9b5331cbc84104f53d51f116d6b0239717",
+        "core/identity/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.domain.SessionPolicyTest.xml": "88c55954587708498572e671172ff48163d1d010342024e8469d63808f7fa880",
+        "core/identity/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.domain.SignInTest.xml": "7c24cf4bf4e5aceaff190e217f591f45ead2f3205dba7e760321adea1321d21c",
+        "core/identity/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.domain.sso.SignInWithSsoTest.xml": "a2c19ec2c373e7c46e390b4726371ee612b0f88063dea5272df3b87ab8cfa4cd",
+        "core/location/data/build/test-results/desktopTest/TEST-dev.fajar.starter.location.data.DeviceLocationRepositoryTest.xml": "4676a0f38dc228d3604548486e4b8ad027ec1bc05cb61319f6fff9843a56be68",
+        "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.ActionNotificationPendingIndexTest.xml": "c5b8218d17f284cfcabeb5617eedf60843df29ad917472a878dd6f7c4f92c3cf",
+        "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.ActionNotificationShapeTest.xml": "9caa5db813967765f6a2cc5972d3f1f172360f4338cce749621925c313607a50",
+        "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.NotificationDestinationTest.xml": "4c8bda7157d95a9dfe7db0fd0b1af55789158ad06ba493822e9a40b0cc7163d2",
+        "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.PushTokenLifecycleTest.xml": "f04d5fcb0bcc1ee864f94a2427dcac07ba8a08627717503c9aeb531bf5218bb4",
+        "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.SafeNotificationCallTest.xml": "3455d0b1b1eff9e55e08e281bae7292c380596f8b5f0a21bc9e6ae9a7ecbc26d",
+        "core/notifications/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.domain.NotificationPolicyTest.xml": "7f6f44c6cc836919a1b7de8a5acc0edf41fa8dd0ae7f978293e2707eaba21be6",
+        "core/security/data/build/test-results/desktopTest/TEST-dev.fajar.starter.security.data.AccessRepositoryTest.xml": "d884657cf5c54a26c68a421cf30a6542989f0de59445d9688e64231efb4f56f3",
+        "core/security/data/build/test-results/desktopTest/TEST-dev.fajar.starter.security.data.lock.StoredAppLockRepositoryTest.xml": "46f6db93380a5028efa8fe611008dbf71407287faf745972a7bc5dfa53457e80",
+        "core/security/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.security.domain.AccessPolicyTest.xml": "c6006fe43be8b1693945dca37706bdc22e67c24a2bdaee0aabfb79acf80c59fe",
+        "core/security/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.security.domain.PermissionExpiryTest.xml": "0fdfa917e3a047197ca33a243b2995490b3ff0aa2df258e9fc48bebf0ee909b5",
+        "core/security/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.security.domain.lock.AppLockTest.xml": "e76373766ace8a51293160611e4e139d41d74b610d679d32ac8cf63e893d7cd4",
+        "core/settings/data/build/test-results/desktopTest/TEST-dev.fajar.starter.settings.data.StoredSettingsRepositoryTest.xml": "c07bb6fdcc0eb40fab2f2c4490ddcfd0828aa06d5b9d3b1718f31fba168963ec",
+        "core/sync/data/build/test-results/desktopTest/TEST-dev.fajar.starter.sync.data.SafeWorkCallTest.xml": "c4d97e912263f4aee90983e8c41a0e69cf8a49da7282792c681062ed750455c5",
+        "core/sync/data/build/test-results/desktopTest/TEST-dev.fajar.starter.sync.data.SyncScheduleRepositoryTest.xml": "a0c80aa514d632683275b8813d246a1f950ce19ac6109268f74105cbe79f5395",
+        "core/transfers/data/build/test-results/desktopTest/TEST-dev.fajar.starter.transfers.data.TransferProtocolTest.xml": "df2d01fb9a1170a9be94038be7250d7b4ce9193aa99931e1f33a104155167f5e",
+        "core/transfers/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.transfers.domain.TransferLifecycleTest.xml": "fa4ad3eefea086bbec9000332ad0fc0b07824dfab649fb6710529f120dfcfc91",
+        "features/auth/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.auth.presentation.login.LoginViewModelTest.xml": "9ead90b71e7d78a8989a3f9eb1c83bec2dfba5593b1def7f84eb9161293d544a",
+        "features/dashboard/data/build/test-results/desktopTest/TEST-dev.fajar.starter.dashboard.data.LocalFirstDashboardRepositoryTest.xml": "95a6d93df63327cd58006141cf031814e58c437fc1acb2a745321637da312c6e",
+        "features/dashboard/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.dashboard.domain.SyncDashboardTest.xml": "a1fac8b61d22a4057c9d3f39801bb444bafabdf861af867e7a982fe9154074d0",
+        "features/dashboard/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.dashboard.presentation.home.DashboardViewModelTest.xml": "b24d110ad40e1e5d385ee7efa988eaf9241b5b15097a20b8e6dd61e44301d9ee",
+        "features/files/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.files.presentation.FilesViewModelTest.xml": "e0aabb25e0826853d1ea370cd57b4fa5dee9abfaa1b044234ddcb35b81f5f0be",
+        "features/notifications/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.presentation.NotificationViewModelTest.xml": "831cb24840309c940eb4439f0115423cfbb5dab1f3e2ca837b803eb4a844865f",
+        "features/onboarding/data/build/test-results/desktopTest/TEST-dev.fajar.starter.onboarding.data.StoredOnboardingRepositoryTest.xml": "a4ab47fd9b245425e4b01209e99a2c2d78efb5bce5d18a3da70e42e68ab0bd2b",
+        "features/onboarding/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.onboarding.presentation.welcome.OnboardingViewModelTest.xml": "eb4f4222b03150997b307950cdeefdb66e5990b5aac8088fa713b4b9889f6b09",
+        "features/security/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.security.presentation.lock.AppLockViewModelTest.xml": "c03bcbc4bee4478373022cf6c7289bd5446fd47fc4b1002075cd1de7c75730a9",
+        "features/settings/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.settings.presentation.LanguageViewModelTest.xml": "2904ecbd1413dd8b2c3296ecb219425fdc5752826728847817e918d54a49eebe"
+      }
+    },
+    "buildLogic": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 1,
+      "tasks": {
+        ":build-logic:test": "UP-TO-DATE"
+      },
+      "reportSha256": {
+        "build-logic/build/test-results/test/TEST-tasks.AppLinkRegistrationTest.xml": "d63fd3c42b72af6b6f13b1d4dcb5754d509c128204f9f21e05a904164a03c73d"
+      }
+    },
+    "browser": {
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 5,
+      "tasks": {
+        ":core:notifications:data:wasmJsBrowserTest": "EXECUTED"
+      },
+      "reportSha256": {
+        "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.ActionNotificationPendingIndexTest.xml": "10a3cdc46f155d0c7bbc78390d66af5be78647afe0f8921002be7403451008d5",
+        "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.ActionNotificationShapeTest.xml": "cc16441a3d108fe120b0bc1d6a45ac63dc96afe3608bb4cea7b151d61ec1cf86",
+        "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.NotificationDestinationTest.xml": "92333f02e995835ddfa828ae5751b4fb4cf70522d93cbdad0d705fb0914567e7",
+        "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.PushTokenLifecycleTest.xml": "97d2057f3aa1e68da58b86721a2ab3cbcc7afbcb844d920222bfbfb61b535b7a",
+        "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.SafeNotificationCallTest.xml": "339792d30d18c9df783efadf6e04b2ab7df3ea37620824500b2575491f47828d"
+      }
+    }
+  },
+  "freshReports": {
+    "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.ActionNotificationPendingIndexTest.xml": {
+      "sha256": "c5b8218d17f284cfcabeb5617eedf60843df29ad917472a878dd6f7c4f92c3cf",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.NotificationDestinationTest.xml": {
+      "sha256": "4c8bda7157d95a9dfe7db0fd0b1af55789158ad06ba493822e9a40b0cc7163d2",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.PushTokenLifecycleTest.xml": {
+      "sha256": "f04d5fcb0bcc1ee864f94a2427dcac07ba8a08627717503c9aeb531bf5218bb4",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.SafeNotificationCallTest.xml": {
+      "sha256": "3455d0b1b1eff9e55e08e281bae7292c380596f8b5f0a21bc9e6ae9a7ecbc26d",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.data.ActionNotificationShapeTest.xml": {
+      "sha256": "9caa5db813967765f6a2cc5972d3f1f172360f4338cce749621925c313607a50",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.ActionNotificationShapeTest.xml": {
+      "sha256": "cc16441a3d108fe120b0bc1d6a45ac63dc96afe3608bb4cea7b151d61ec1cf86",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.NotificationDestinationTest.xml": {
+      "sha256": "92333f02e995835ddfa828ae5751b4fb4cf70522d93cbdad0d705fb0914567e7",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.PushTokenLifecycleTest.xml": {
+      "sha256": "97d2057f3aa1e68da58b86721a2ab3cbcc7afbcb844d920222bfbfb61b535b7a",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.SafeNotificationCallTest.xml": {
+      "sha256": "339792d30d18c9df783efadf6e04b2ab7df3ea37620824500b2575491f47828d",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/notifications/data/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.notifications.data.ActionNotificationPendingIndexTest.xml": {
+      "sha256": "10a3cdc46f155d0c7bbc78390d66af5be78647afe0f8921002be7403451008d5",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AppFlowTest.xml": {
+      "sha256": "1978cb58e611e2d3faf49823b1666a65f6a78087f3d68bf1f51a17488e3a70a4",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AppLinkFlowTest.xml": {
+      "sha256": "2a6ef23b30b7ede7e823c15900190b36ce191fde5865f6b0a5cea52db61b0cc9",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.BootstrapRecoveryTest.xml": {
+      "sha256": "ce587f6dbe3abb114b882dd6663ee8e08a21b2cb12f1255b8fa3cf4e3028bc3b",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.CompactFiltersLayoutTest.xml": {
+      "sha256": "40c4187da446b077edf85d13a77cb8077397203ca45ed5cabf5f4c651eb02417",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.ContentTabsUiTest.xml": {
+      "sha256": "9be8b42ae8ecc64ace4a6eda411f7fc8234fa67e393ba477b2fbe570d422b842",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.DatePickerUiTest.xml": {
+      "sha256": "696a0432d1b72d137a5a0282b36485015c36180adf122a388a63311a7f4a62b2",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FilterChipLabelUiTest.xml": {
+      "sha256": "fa8dd2e4c7d0d763f6729d0b645cad2d15e18711657559a5b787ad7638af73df",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FirebaseProviderBindingsTest.xml": {
+      "sha256": "ffb67501da91603f8b351a787cda720cdd61a5266639e0d66d4a5be3232da538",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FormChoiceLayoutTest.xml": {
+      "sha256": "27fbbd88b169e6e629f684ee7168a16cc63978bce1b752aa8fcff9c657c30f41",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.LoadingUiTest.xml": {
+      "sha256": "ee374de3494a988c0fa5cdd29ebb77f9cd1917f6c0ca3e97bcb7498bb809ac3c",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.MonthPickerUiTest.xml": {
+      "sha256": "8c1daafbda46f55fcccca844636dd1dfa3355b594579364b7a11b5528a7af06c",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.MotionUiTest.xml": {
+      "sha256": "c7aaf25a644f52494dc4fd11f919767d2be38d80563dc2fd9b50f04f2ca8f8d0",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationBadgeUiTest.xml": {
+      "sha256": "84eeb0e701e34831e75c40eaf71cccd9f6993d6786ee33384531d212e150c243",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationOwnershipTest.xml": {
+      "sha256": "c13e2c20b81c22eef38dc1eecd916a722ddd62d221770002748cfc887e4b82e3",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationRestorationTest.xml": {
+      "sha256": "ff3d3c6b631ea543698051469042735d887d2e37f59f6e19e209ea81cf8c31d0",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.PageActionUiTest.xml": {
+      "sha256": "09e5886b236be2cf118ecc6678481f7ed712cc562f8de5061fef90fca63f4b53",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.PageLayoutTest.xml": {
+      "sha256": "82b75acef14d7260a9239ff5099b142abed6a13e03f27cc077e9662817d72bb2",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.SearchAndFiltersUiTest.xml": {
+      "sha256": "d982cbb24610cdf5a67839ed35b1a4e2474735549a64092dba9166eedf8275ab",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.TextFieldLayoutTest.xml": {
+      "sha256": "e30a9284b84a393f740a31b364607c0ce22e84530a8a05895a7fef75a977e89a",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.TimeInputLayoutTest.xml": {
+      "sha256": "f2f50a73d471c7310f23934a4bf5e9079954b093d2355b99ae348f47bce81982",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.bootstrap.AppViewModelTest.xml": {
+      "sha256": "be94b94977d6dffa2cf99b1048ab63d66aaebb9f448a9a67e22ee86fe72b3567",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.navigation.PendingAppLinkTest.xml": {
+      "sha256": "a40f83dd6aa03b6fe507d9964cd10dac9bde73722f2068e98c374dcb94f4abe1",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.navigation.ResolveAppLinkTest.xml": {
+      "sha256": "7228abbca7740eea77f06cc8cbb560eccea5ea1464275bcbdd10f8d456f0f77e",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AdaptiveUiTest.xml": {
+      "sha256": "ad348d02ef7b87fc761b3df084e9aa868df7ed705c8e346c556c3cba4829a490",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "lint": {
+    "severities": {
+      "Fatal": 0,
+      "Error": 0,
+      "Warning": 44,
+      "Information": 0
+    },
+    "sha256": "0307f0a28521e10348d9aee1ceb474b1552b9b9e18e0a8633eecc8d710eff716"
+  },
+  "apk": {
+    "sha256": "550c01b18d91cfc39ca74ca9d87be417fbaeac6c017a5a20c05544294a900352",
+    "bytes": 25390709,
+    "installed": false
+  },
+  "webIndexSha256": "5d42754baa01a5ef5aea0334ba1e558c13c70f5be0a43730f5e5993a35efecc6",
+  "limits": [
+    "Eight raw primitives only; no HRIS business policy, credentials, callback facade or fixture copied.",
+    "New common contract cases execute freshly on desktop and actual browser. Other root reports include recorded cache reuse.",
+    "Actual Android IPC/SystemUI proof remains Mobile evidence f3843601. Starter APK built and linted, not installed.",
+    "Independent full hosted Apple pending; no iPhone claim."
+  ]
+}

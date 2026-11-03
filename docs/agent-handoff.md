@@ -1,5 +1,29 @@
 # Agent continuation — Compose Fluent Starter
 
+## Action notification raw port accepted locally — 3 November 2026
+
+[Contract](action-notifications.md) / [evidence](measurements/action-notification-port-2026-11-03.json).
+Eight exact new files from Mobile f3843601fd8fb7af48a6d89171df0e42bc41f714;
+module dependencies match and no application policy/configuration was copied.
+Mobile's actual API35 proof includes 16 raw groups, five application actions and
+SystemUI inline-reply retirement; three screenshots inspected. Starter adds only
+raw contracts, Android adapters and two common test classes.
+
+Independent full1 PASSED in 260.027s: 377 desktop/123 suites, 18 actual browser/five,
+six build-logic/one; zero failures/errors/skips. 85 fresh cases/34 suites, including
+all ten new common contracts on both desktop and browser. Android dev/lint and
+production Web pass; lint zero errors and 44 existing warnings. APK built, not installed.
+Source/report/artifact audit complete in .work/action-notification-port-2026-11-03.
+No local heavy job remains in Starter. Next commit/push, then dispatch ONE full
+Starter Apple at the exact port and require ten new notification simulator cases
+plus full Xcode. Earlier aa58/raw-device Apple audits below are already accepted.
+
+Mobile is implementing guarded company selection and typed native Activity routing;
+its product hosts remain unbound and push OFF. Workspace/company policy lives only
+in Mobile (Starter has no core/workspace module), so do not copy that HRIS scope.
+Mobile phone23 already installed; no Starter phone action. All54 groups remain open.
+
+
 
 ## Command prevention Apple accepted — 3 November 2026
 
