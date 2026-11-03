@@ -14,11 +14,14 @@ six build-logic/one; zero failures/errors/skips. 85 fresh cases/34 suites, inclu
 all ten new common contracts on both desktop and browser. Android dev/lint and
 production Web pass; lint zero errors and 44 existing warnings. APK built, not installed.
 Source/report/artifact audit complete in .work/action-notification-port-2026-11-03.
-No local heavy job remains in Starter. Port cb36373 is committed/pushed. ONE full
-Starter Apple41626260198 is dispatched at that source; require ten new notification
-simulator cases plus full Xcode. 32-source manifest/audit script prepared in
-.work/action-notification-apple-2026-11-03. Earlier aa58/raw-device Apple audits below
-are already accepted.
+No local heavy job remains in Starter. Port cb36373 is committed/pushed. Full
+[Apple41626260198](measurements/action-notification-apple-2026-11-03.json) is ACCEPTED:
+112 simulator cases/30 suites, zero failures/errors/skips, including all ten new
+notification contracts. Compile571s/tests154s/full Xcode664s. All32 source hashes
+and GitHub artifact13228195169 are verified; ZIP SHA256
+e9d10f038feed299af204319c090e19dc0bc90af5ce6adb9a0ce0309c7938c68.
+Audit complete in .work/action-notification-apple-2026-11-03. No port acceptance
+remains; earlier aa58/raw-device Apple audits below are already accepted.
 
 Mobile is implementing guarded company selection and typed native Activity routing;
 its product hosts remain unbound and push OFF. Workspace/company policy lives only

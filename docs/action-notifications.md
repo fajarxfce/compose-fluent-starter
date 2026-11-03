@@ -29,4 +29,7 @@ failure timing remain separate integration checks.
 records the 260.027-second root/Android/lint/browser/production-Web pass: 377 desktop,
 18 browser and six build-logic cases, zero failures/errors/skips. All ten new common
 contract cases execute freshly on both desktop and browser. Lint has zero errors;
-the generated APK is not installed. Full hosted Apple is tracked separately.
+the generated APK is not installed. [Full hosted Apple](measurements/action-notification-apple-2026-11-03.json)
+also passes:112 simulator cases/30 suites, including the ten new common contracts,
+and a complete Xcode application build. All32 source hashes and the downloaded
+artifact digest are verified.
