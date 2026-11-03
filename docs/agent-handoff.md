@@ -1,5 +1,27 @@
 # Agent continuation — Compose Fluent Starter
 
+## Exact absent-command archive accepted locally — 3 November 2026
+
+[Contract](command-prevention.md) /
+[evidence](measurements/command-prevention-port-2026-11-03.json).
+Eight generic files match Mobile8b5f87501d618ac40fdcaccc94d4d97b85270e00 exactly;
+four prior implementation baselines matched. No schema migration, HRIS encryption,
+notification policy or UI copied. Source hashes unchanged through independent checks.
+
+Full1 PASS253.982s:367 desktop/121 suites,53 actual browser/nine, six build-logic/one,
+zero failures/errors/skips;221 fresh cases/65 suites. The two new desktop and two
+browser prevention cases executed freshly. Root quality/Android dev/lint/production
+Web passed with recorded cache reuse. Lint zero errors/same44 existing warnings.
+No APK installation or physical-device claim. Runner/audit/record complete in
+.work/command-prevention-port-2026-11-03; no local heavy job remains.
+
+NEXT commit/push and dispatch ONE full hosted Starter Apple on this source. Require
+two AppleCommandPreventionTest cases, all simulator reports and full Xcode. Mobile's
+own saved-reply Apple41610059249 remains pending and excludes subsequent actions.
+Phone Mobile23 is installed; do not reinstall from Starter. Continue Mobile native
+actions, durable dismissal and reviewed-send integration. Platform304/schema116
+unchanged; chat push OFF and all54 communications groups remain open.
+
 ## Device-owned raw storage port accepted locally and on Apple — 3 November 2026
 
 Port16f4b237 is committed/pushed. Full Apple

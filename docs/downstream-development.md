@@ -1,5 +1,16 @@
 # Downstream development
 
+## Permanent absent-command outcome — 3 November 2026
+
+[Mobile8b5f8750](https://github.com/fajarxfce/hris-mobile/commit/8b5f87501d618ac40fdcaccc94d4d97b85270e00)
+proves the Saved replies discard consumer before this generic eight-file port.
+The transaction archives an absent operation without publishing it to the queue;
+late retries cannot reuse its ID. Independent Starter root/browser/Android/lint/Web
+checks pass, with367 desktop and53 browser cases. No schema or HRIS policy copied.
+[Contract](command-prevention.md) / [evidence](measurements/command-prevention-port-2026-11-03.json).
+Full hosted Apple remains pending.
+
+
 ## Device-owned opaque storage — 3 November 2026
 
 [Mobile76bd7673](https://github.com/fajarxfce/hris-mobile/commit/76bd7673e898b2c5ca4b6af98827a03848fc6071)
