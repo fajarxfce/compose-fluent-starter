@@ -1,5 +1,13 @@
 # Agent continuation — Compose Fluent Starter
 
+## Full Apple archive port dispatched — 3 November 2026
+
+Source aa58a21b6a0e432c455624ccbb45e51eb4ad2ce8, run[41612522666](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/41612522666),24 frozen sources.
+[Checkpoint](measurements/command-prevention-apple-2026-11-03.json). Status pending;
+require two new AppleCommandPrevention cases and full Xcode before accepting native
+execution. Audit script ready in .work/command-prevention-apple-2026-11-03. No duplicate
+same-branch Apple run. Local root/browser/Android/lint/Web is accepted below.
+
 ## Exact absent-command archive accepted locally — 3 November 2026
 
 [Contract](command-prevention.md) /
