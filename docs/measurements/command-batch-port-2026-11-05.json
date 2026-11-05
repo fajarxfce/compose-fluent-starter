@@ -326,5 +326,5 @@
   },
   "phoneInstalled": false,
   "physicalIPhoneTested": false,
-  "appleAcceptance": "Pending independent Starter CI on the committed port."
+  "appleAcceptance": "Accepted exact source 0fa8e094 in CI 42061944252; 118 cases/31 suites, six batch tests and complete simulator app. See command-batch-apple-2026-11-05.json."
 }

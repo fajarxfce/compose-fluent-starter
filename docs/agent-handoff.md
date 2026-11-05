@@ -16,13 +16,12 @@ reuse their recorded up-to-date results. Lint zero errors and 44 existing warnin
 The APK was built, not installed. All local wrappers/children are drained.
 
 Port 0fa8e094d29b4a4bb690962db2c48f87a98f4d34 is committed/pushed. Independent
-[Apple run 42061944252](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/42061944252)
-is running that exact source: simulator tests passed and complete Xcode app is still
-building at 16:34 UTC. The initial dispatch returned HTTP 502; recent runs were
-queried before one successful retry. Do not dispatch another same-branch Apple run.
-NEXT: audit downloaded reports for all six AppleCommandBatchTest cases and complete
-Xcode/association steps. Compare all ten hashes; no physical iPhone claim.
-Work lives in .work/command-batch-port-2026-11-05.
+[Apple run 42061944252](measurements/command-batch-apple-2026-11-05.json) PASSES:
+118 simulator cases/31 suites, zero failures/errors/skips, including all six
+AppleCommandBatchTest cases. Complete simulator app and generated associations pass.
+Downloaded reports are counted/hashed and all ten port source hashes match the
+exact CI commit. No physical iPhone test claimed; no further batch-port gate remains.
+Work/evidence archive: .work/command-batch-port-2026-11-05. No local Starter job remains.
 
 Mobile release 37 is installed on the authorized phone; do not install Starter there.
 Mobile Forward/native and retained Bima history checks pass, and its Apple 42054097304
