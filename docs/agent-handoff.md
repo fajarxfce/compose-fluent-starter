@@ -15,10 +15,14 @@ including six new batch cases each on actual SQLite and IndexedDB. Existing task
 reuse their recorded up-to-date results. Lint zero errors and 44 existing warnings.
 The APK was built, not installed. All local wrappers/children are drained.
 
-NEXT: commit/push this port, dispatch ONE independent Starter Apple run and audit
-downloaded reports for all six AppleCommandBatchTest cases plus complete Xcode app.
-Do not cancel an existing same-branch Apple run. Preserve the exact committed source
-and compare all ten hashes. Work lives in .work/command-batch-port-2026-11-05.
+Port 0fa8e094d29b4a4bb690962db2c48f87a98f4d34 is committed/pushed. Independent
+[Apple run 42061944252](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/42061944252)
+is running that exact source: simulator tests passed and complete Xcode app is still
+building at 16:34 UTC. The initial dispatch returned HTTP 502; recent runs were
+queried before one successful retry. Do not dispatch another same-branch Apple run.
+NEXT: audit downloaded reports for all six AppleCommandBatchTest cases and complete
+Xcode/association steps. Compare all ten hashes; no physical iPhone claim.
+Work lives in .work/command-batch-port-2026-11-05.
 
 Mobile release 37 is installed on the authorized phone; do not install Starter there.
 Mobile Forward/native and retained Bima history checks pass, and its Apple 42054097304
