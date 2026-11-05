@@ -467,5 +467,12 @@
   "physicalIPhoneTested": false,
   "sourceInputs": 1015,
   "scope": "Only four generic DS components, onAccent color and seven reusable desktop UI cases. No HRIS routes, lifecycle, policy or config.",
-  "apple": "Independent Starter Apple CI pending; dispatch once after committing."
+  "apple": {
+    "run": 42088401280,
+    "source": "e501d4da0a4298c963f84ce0a015be4e645972e6",
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/42088401280",
+    "status": "in_progress",
+    "createdAt": "2026-11-05T18:52:16Z",
+    "physicalIPhoneTested": false
+  }
 }

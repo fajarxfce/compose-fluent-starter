@@ -12,12 +12,14 @@ Independent full1 gate PASSES327.311s with unchanged inputs:390 desktop cases/12
 suites and six build-logic cases, zero failures/errors/skips.69 fresh cases include
 all seven new UI cases. Android dev/lint and production Web pass; lint zero errors,
 44 existing warnings. APK built only. All local wrappers and children drained.
-NEXT: commit/push, dispatch one Apple-only run on this exact source, then audit
-source/report identity and the full simulator app/associations. No physical iPhone
-or Starter phone installation. Mobile39 is already installed on the user's phone.
+Porte501d4da0a4298c963f84ce0a015be4e645972e6 is committed/pushed. Independent
+Apple42088401280 is in progress on that exact source, dispatched18:52UTC. Do not
+dispatch another run; audit downloaded reports and full simulator app/associations
+before accepting it. No physical iPhone or Starter phone installation. Mobile39
+is already installed on the user's phone.
 
 Mobile delivery4a60e9e6 is pushed; native hub156.226s and retained Bima history109.519s
-pass. Mobile Apple42081732094 exact2539 is successful, downloaded-report audit pending.
+pass. Mobile Apple42081732094 exact2539 is fully audited:1,274 cases/148 suites and full app pass.
 Platform worker31fa5067 is committed/pushed and passed full worker graph123 cases/
 378.467s with one existing opt-in skip. Native summary endpoint work is uncommitted
 and feed1 is running; its sources are frozen. Live remains11a98115/schema116/chat
