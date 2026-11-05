@@ -133,3 +133,18 @@ Staging-only partitions remain absent; replacing a published generation leaves i
 previous metadata visible until publication. Prefix and cursor accept only bounded
 ASCII keys, and a cursor must belong to the requested prefix. No document payloads
 are read. Feature repositories own decryption and define any narrower page limits.
+
+`discardStaging` conditionally removes only the exact unpublished checkpoint,
+including its generation, revision and payload. A competing continuation or publication
+wins atomically; the published snapshot and its indexes remain intact. Cancellation
+before admission makes no change. Cancellation during an admitted transaction leaves
+one complete outcome; the caller still receives cancellation.
+
+`workingDocuments` reads at most200 distinct IDs, ordered by ID, together with their
+working checkpoint in one owned transaction. It includes tombstones and selects the
+staging generation when present. This is for bounded acquisition decisions; visible
+UI must keep using the published projection. Neither method chooses a server cursor,
+retries, authorizes access, or publishes incomplete data. SQLite and IndexedDB share
+five staging/race/bounds/restart scenarios. The downstream Mobile40 consumer was
+validated before this port; independent local evidence is recorded in
+[the port ledger](measurements/replica-staging-port-2026-11-05.json).

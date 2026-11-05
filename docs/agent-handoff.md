@@ -1,5 +1,29 @@
 # Agent continuation — Compose Fluent Starter
 
+## Staging primitives accepted locally after Mobile40 — 5 November 2026
+
+Nine exact raw database files from Mobile5f0eacdd are ported after its actual
+release40 incremental HTTP/offline/cold-reopen proof on927407ad. No HRIS policy,
+provider adapter, encryption format or configuration copied. No schema migration.
+[Evidence](measurements/replica-staging-port-2026-11-05.json), [contract](replica-storage.md).
+
+Independent root/database-browser/Android-dev/lint/production-Web PASS268.298s on
+unchanged inputs:395 desktop cases/126 suites,64 browser/11,6 build-logic/one;
+zero failures/errors/skips.260 cases/72 suites freshly executed, including five new
+scenarios each on real SQLite and IndexedDB. Lint zero errors/44 existing warnings.
+Nine source hashes match accepted Mobile source. APK built only; no phone action.
+All local Starter wrappers/children drained. NEXT commit/push and dispatch ONE
+Apple-only CI on this exact port, requiring five AppleReplicaStagingTest cases and
+complete Xcode app before accepting the port for Apple. Keep original UI acceptance.
+
+Mobile phone40 is installed; Mobile Apple42106835639 on927407ad fully accepted
+1,298 simulator cases/full app. Mobile34fbefbc records it; seven edit files are WIP
+and focused decoder1 is running. Continue edit storage/outbox/UI and remaining54
+communications PRD groups. Platform live54b10ce8/schema116.1 with push/FCM ON and
+SMTP OFF; rollout and retained-data proof recorded in7883d117. Do not repeat it.
+Both retained Rani/Bima emulators stopped; keep userdata/keys and protected stashes.
+
+
 ## Swipe controls Apple accepted; continue downstream work — 5 November 2026
 
 Apple42088401280 PASSES exact e501d4da0a4298c963f84ce0a015be4e645972e6:
