@@ -1,5 +1,15 @@
 # Downstream development
 
+## Swipe tabs, search filter and floating actions — 5 November 2026
+
+Six exact Mobile2539c658 files follow actual Android consumer acceptance on release39.
+Four generic components, semantic onAccent token and seven UI cases remain free of
+HRIS feature policy. Root/Android/lint/production Web pass327.311s:390 desktop cases,
+six build-logic cases, zero failures/errors/skips;69 fresh cases. Independent Starter
+Apple remains pending. [Contract](swipe-controls.md) and
+[evidence](measurements/swipe-controls-port-2026-11-05.json).
+
+
 ## Atomic command batches — 5 November 2026
 
 Ten exact generic files from Mobile e3c1e326 add bounded transactional batches,

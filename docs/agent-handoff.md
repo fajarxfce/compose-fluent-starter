@@ -1,5 +1,30 @@
 # Agent continuation — Compose Fluent Starter
 
+## Swipe controls port accepted locally — 5 November 2026
+
+Six exact files from Mobile2539c6585f77c4f6898ff28426604c3583927fa4 follow its actual
+release39 Android proof. Four slotted/controlled DS components, onAccent color and
+seven reusable UI cases; existing color baseline/dependencies matched. No HRIS
+navigation, directory, localization or feature lifecycle was copied.
+[Contract](swipe-controls.md) / [evidence](measurements/swipe-controls-port-2026-11-05.json).
+
+Independent full1 gate PASSES327.311s with unchanged inputs:390 desktop cases/125
+suites and six build-logic cases, zero failures/errors/skips.69 fresh cases include
+all seven new UI cases. Android dev/lint and production Web pass; lint zero errors,
+44 existing warnings. APK built only. All local wrappers and children drained.
+NEXT: commit/push, dispatch one Apple-only run on this exact source, then audit
+source/report identity and the full simulator app/associations. No physical iPhone
+or Starter phone installation. Mobile39 is already installed on the user's phone.
+
+Mobile delivery4a60e9e6 is pushed; native hub156.226s and retained Bima history109.519s
+pass. Mobile Apple42081732094 exact2539 is successful, downloaded-report audit pending.
+Platform worker31fa5067 is committed/pushed and passed full worker graph123 cases/
+378.467s with one existing opt-in skip. Native summary endpoint work is uncommitted
+and feed1 is running; its sources are frozen. Live remains11a98115/schema116/chat
+pushOFF. Continue metadata deltas/atomic consumer, editing/deletion/groups/media/
+calls/meetings; all54 PRD groups remain open. Preserve Mobile stashes and fixtures.
+
+
 ## Atomic command batch port accepted locally — 5 November 2026
 
 Ten exact core/database files from Mobile e3c1e3262e8a306ea587f73de8bfa974dd54188c

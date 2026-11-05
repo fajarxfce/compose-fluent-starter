@@ -91,6 +91,16 @@ inside a scrollable dialog so large text does not displace the fixed close actio
 large text sizes, targets remain at least 48 dp, and disabled tabs do not dispatch
 selection. Features own the selected value and the corresponding data request.
 
+`AppSwipeTabContent` adds horizontal gestures with retained, uniquely keyed pages.
+Acquire data and consume navigation effects only for the settled active page;
+prefetching a neighbouring page is not a refresh signal. Keep the header outside
+scrolling content. `AppFloatingActionLayout` can hide an overlaid action on downward
+scroll and restore it upward without changing the selected page or data ownership.
+See [swipe controls](swipe-controls.md) for the slots and interruption contract.
+
+For a compact search row, use the 48dp `AppFilterButton` beside the field. Keep the
+selected value accessible and show its full name in the feature-owned picker.
+
 ## Form choices and detail fields
 
 Use `AppSelectField` for a labelled value that opens a picker, with a calendar or
