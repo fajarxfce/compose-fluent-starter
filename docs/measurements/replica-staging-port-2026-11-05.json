@@ -286,9 +286,11 @@
   "apple": {
     "createdAt": "2026-11-05T21:32:05Z",
     "headSha": "ab4cac74e7898f4148eed2a2a89d5f19df932565",
-    "status": "in_progress",
+    "status": "completed",
     "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/42113508947",
-    "run": 42113508947
+    "run": 42113508947,
+    "conclusion": "success",
+    "acceptanceRecord": "replica-staging-apple-2026-11-05.json"
   },
   "phoneInstalled": false,
   "physicalIPhoneTested": false,

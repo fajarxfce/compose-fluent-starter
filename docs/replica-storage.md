@@ -148,3 +148,8 @@ retries, authorizes access, or publishes incomplete data. SQLite and IndexedDB s
 five staging/race/bounds/restart scenarios. The downstream Mobile40 consumer was
 validated before this port; independent local evidence is recorded in
 [the port ledger](measurements/replica-staging-port-2026-11-05.json).
+
+Independent Apple acceptance of the nine-file staging port is recorded in
+[the Apple ledger](measurements/replica-staging-apple-2026-11-05.json):123 simulator
+cases including the five staging scenarios and a complete Xcode application build.
+This does not claim a physical iPhone test or HRIS feature acceptance in Starter.

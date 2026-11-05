@@ -1,5 +1,30 @@
 # Agent continuation — Compose Fluent Starter
 
+## Replica staging port accepted on all checked targets — 5 November 2026
+
+Port ab4cac74e7898f4148eed2a2a89d5f19df932565 is accepted locally and on Apple.
+[Apple evidence](measurements/replica-staging-apple-2026-11-05.json): CI42113508947
+PASS123 cases/32 suites, zero failures/errors/skips, including all five new
+AppleReplicaStagingTest cases. Full Xcode app697s and generated associations pass;
+compile637s/tests83s. Artifact13455719577 digest a3167ed3… and nine exact source
+hashes verified. All Apple audit wrappers drained. No physical iPhone test or
+Starter installation. Do not dispatch another run or repeat the port.
+
+Local268.298s gate395 desktop/64 browser/6 buildlogic and accepted Mobile40 native
+consumer remain recorded below. No HRIS policy/configuration was copied. Phone
+Mobile40 remains installed. Rani/Bima emulators stopped with original data/keys.
+
+Continue Mobile editing. Its twenty uncommitted Kotlin files pass first full gate
+4,941 fresh cases739.11s/lint0, then review found a required earliest-alias edit-window
+correction. The corrected optional firstAcceptedAt index and additional regression
+cases are unvalidated under storage3; do not call the edit feature delivered.
+Native receiver draft is prepared but unapplied; outbox/long-press UI remain next.
+Platform nine-file encrypted replacement envelope is uncommitted; first native HTTP
+fixture lacked the new fixture-edit route (two related failures), now corrected;
+rerun awaits Mobile local gate. Live remains54b10ce8/schema116.1/push+FCM ON/SMTP OFF.
+All54 PRD groups remain open. Preserve Mobile stashes and do not repeat Forward sends.
+
+
 ## Staging primitives accepted locally after Mobile40 — 5 November 2026
 
 Nine exact raw database files from Mobile5f0eacdd are ported after its actual
