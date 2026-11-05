@@ -284,7 +284,11 @@
     "Fatal": 0
   },
   "apple": {
-    "status": "pending dispatch on committed port"
+    "createdAt": "2026-11-05T21:32:05Z",
+    "headSha": "ab4cac74e7898f4148eed2a2a89d5f19df932565",
+    "status": "in_progress",
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/42113508947",
+    "run": 42113508947
   },
   "phoneInstalled": false,
   "physicalIPhoneTested": false,

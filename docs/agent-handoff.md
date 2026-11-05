@@ -12,9 +12,10 @@ unchanged inputs:395 desktop cases/126 suites,64 browser/11,6 build-logic/one;
 zero failures/errors/skips.260 cases/72 suites freshly executed, including five new
 scenarios each on real SQLite and IndexedDB. Lint zero errors/44 existing warnings.
 Nine source hashes match accepted Mobile source. APK built only; no phone action.
-All local Starter wrappers/children drained. NEXT commit/push and dispatch ONE
-Apple-only CI on this exact port, requiring five AppleReplicaStagingTest cases and
-complete Xcode app before accepting the port for Apple. Keep original UI acceptance.
+All local Starter wrappers/children drained. Port ab4cac74e7898f4148eed2a2a89d5f19df932565
+is committed/pushed. Apple-only CI42113508947 is running on that exact source,
+dispatched21:32UTC. Audit the five AppleReplicaStagingTest cases and complete
+Xcode app before accepting Apple. Do not dispatch another run. Keep UI acceptance.
 
 Mobile phone40 is installed; Mobile Apple42106835639 on927407ad fully accepted
 1,298 simulator cases/full app. Mobile34fbefbc records it; seven edit files are WIP
