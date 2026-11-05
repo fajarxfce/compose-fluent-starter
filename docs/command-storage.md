@@ -28,6 +28,8 @@ Every scoped query and write checks the current session/account in the same
 transaction. Pages contain at most 50 records. Pending storage is limited to 128
 records per account and 512 per database, with 128 KiB request and 32 KiB outcome
 envelopes.
+The [atomic batch operation](command-batches.md) publishes up to 128 commands
+together, retaining immutable active/archive replay and these same capacity bounds.
 Cancellation leaves an absent or complete transaction. A committed browser write
 still notifies observers if its caller is cancelled. Owners close database resources.
 

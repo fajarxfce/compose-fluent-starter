@@ -1,5 +1,30 @@
 # Agent continuation — Compose Fluent Starter
 
+## Atomic command batch port accepted locally — 5 November 2026
+
+Ten exact core/database files from Mobile e3c1e3262e8a306ea587f73de8bfa974dd54188c
+are ported after Mobile's actual offline Forward consumer was accepted on release 37.
+All four prior-file baselines matched; six files are new. No schema migration or
+HRIS encryption, metadata, policy, SDK adapter or UI copied.
+[Contract](command-batches.md) / [evidence](measurements/command-batch-port-2026-11-05.json).
+
+Independent root check/database browser/Android dev/lint/production Web PASS
+803.314 s on unchanged source inputs: 383 desktop/124 suites, 59 browser/10 suites,
+six build-logic/one suite, zero failures/errors/skips. 243 fresh cases/69 suites,
+including six new batch cases each on actual SQLite and IndexedDB. Existing tasks
+reuse their recorded up-to-date results. Lint zero errors and 44 existing warnings.
+The APK was built, not installed. All local wrappers/children are drained.
+
+NEXT: commit/push this port, dispatch ONE independent Starter Apple run and audit
+downloaded reports for all six AppleCommandBatchTest cases plus complete Xcode app.
+Do not cancel an existing same-branch Apple run. Preserve the exact committed source
+and compare all ten hashes. Work lives in .work/command-batch-port-2026-11-05.
+
+Mobile release 37 is installed on the authorized phone; do not install Starter there.
+Mobile Forward/native and retained Bima history checks pass, and its Apple 42054097304
+passes 1,273 simulator cases/148 suites with a complete app. Continue Mobile editing,
+delete for everyone, groups/calls/meet; all 54 PRD groups remain open.
+
 ## Action notification raw port accepted locally — 3 November 2026
 
 [Contract](action-notifications.md) / [evidence](measurements/action-notification-port-2026-11-03.json).

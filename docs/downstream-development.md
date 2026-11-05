@@ -1,5 +1,15 @@
 # Downstream development
 
+## Atomic command batches — 5 November 2026
+
+Ten exact generic files from Mobile e3c1e326 add bounded transactional batches,
+immutable active/archive replay and rollback, without a schema change. Mobile's
+offline Forward consumer proves restart and encrypted delivery to two Android
+receivers before this port. Independent Starter root/browser/Android/lint/Web
+checks pass in 803.314 s; HRIS message policy stays downstream.
+[Contract](command-batches.md) / [evidence](measurements/command-batch-port-2026-11-05.json).
+Independent Starter Apple acceptance remains pending.
+
 ## Owned action notification primitives — 3 November 2026
 
 [Mobile f3843601](https://github.com/fajarxfce/hris-mobile/commit/f3843601fd8fb7af48a6d89171df0e42bc41f714)
