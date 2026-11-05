@@ -38,3 +38,9 @@ other reports are from unchanged up-to-date tasks. Lint has zero errors and44
 existing warnings. The APK was built, not installed. No pixel-baseline or frame-time
 claim. [Source and gate evidence](measurements/swipe-controls-port-2026-11-05.json).
 Independent hosted Apple compilation and complete simulator app remain required.
+
+Independent Apple run42088401280 passes exact e501d4da:118 simulator cases across
+31 suites, zero failures/errors/skips. Complete Xcode simulator application and
+Apple associations pass. The downloaded artifact digest and all six ported source
+hashes match the accepted commit. [Apple evidence](measurements/swipe-controls-apple-2026-11-05.json).
+This completes the six-file UI port's platform checks; no physical iPhone was tested.

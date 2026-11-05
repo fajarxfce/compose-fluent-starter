@@ -1,5 +1,28 @@
 # Agent continuation — Compose Fluent Starter
 
+## Swipe controls Apple accepted; continue downstream work — 5 November 2026
+
+Apple42088401280 PASSES exact e501d4da0a4298c963f84ce0a015be4e645972e6:
+118 simulator cases/31 suites, zero failures/errors/skips, full Xcode simulator app
+and generated Apple associations. Downloaded artifact13445072772 digest115ea6dd…
+and all six ported source hashes verified. [Apple evidence](measurements/swipe-controls-apple-2026-11-05.json).
+The Mobile39-validated six-file UI port is complete, with independent local390
+desktop+6buildlogic cases, Android/lint/Web and Apple evidence. Do not rerun or
+reinstall for this documentation. No physical iPhone test. All local jobs drained.
+
+NEXT: Mobile a931a09d adds validated native metadata transport (617 browser and10
+focused desktop cases; no consumer active). Platform d03fb472 serves the new native
+summary feed locally and is running full CI42091460931 plus control42090785206;
+live remains11a98115/schema116/chat pushOFF. Mobile now tests reusable raw staging
+discard and bounded working-generation reads including tombstones; these are WIP,
+not ready to port. A first SQLite cancellation test caught work starting after
+cancellation; explicit admission check is corrected and storage2 is running. Wait
+for full Mobile storage/consumer/native acceptance before copying new primitives.
+Preserve HRIS boundaries, device keys/images and both protected Mobile stashes.
+User explicitly wants the broader chat/calls/meeting long run to continue;54 PRD
+groups remain open. Push every commit and retain the exact validation/port ledger.
+
+
 ## Swipe controls port accepted locally — 5 November 2026
 
 Six exact files from Mobile2539c6585f77c4f6898ff28426604c3583927fa4 follow its actual
