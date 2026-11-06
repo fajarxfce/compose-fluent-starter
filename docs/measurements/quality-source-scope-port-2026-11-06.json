@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-11-06T22:56:36.633904+00:00",
-  "status": "accepted locally",
+  "recordedAt": "2026-11-06T23:31:31.650127+00:00",
+  "status": "local full gate and first Apple CI accepted",
   "port": {
     "at": "2026-11-06T22:42:33.659410+00:00",
     "mobileCommit": "5081e629259e33af286304ccd79d91fbd7e8dade",
@@ -46,5 +46,103 @@
   "lintSha256": "10d62553a1179327bd6fd1f14eeb8a04ab5677370b8af92421a268ceaf62eebc",
   "regression": "The real root quality tasks passed with the unchanged owned malformed .work/fixture/Generated.kt present throughout the gate. It was removed only after acceptance.",
   "runtimeApiOrDependencyChanged": false,
-  "hrisCodePorted": false
+  "hrisCodePorted": false,
+  "apple": {
+    "runId": 42308538803,
+    "headSha": "5fb4eca355e3d3761c0c976c42b4386a3c7e31aa",
+    "conclusion": "success",
+    "artifactId": 13548473056,
+    "sha256": "7517404fa7edc9f8572eeb2670a74adc80f2c34269360b0c04e39bf09955eebc",
+    "bytes": 146758,
+    "counts": {
+      "tests": 138,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": 35,
+    "jobs": [
+      {
+        "name": "apple",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Select Xcode 26.3",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-java@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run gradle/actions/setup-gradle@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify distribution configuration and shell entry points",
+            "conclusion": "success"
+          },
+          {
+            "name": "Prepare public app-link test registrations",
+            "conclusion": "success"
+          },
+          {
+            "name": "Compile iOS simulator tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run iOS simulator tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build iOS simulator app",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify generated Apple associations",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run gradle/actions/setup-gradle@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-java@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "windows",
+        "conclusion": "skipped",
+        "steps": []
+      },
+      {
+        "name": "verify",
+        "conclusion": "skipped",
+        "steps": []
+      }
+    ],
+    "redispatched": false
+  }
 }

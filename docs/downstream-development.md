@@ -9,6 +9,8 @@ original scratch files retained. Starter independently passed 490 fresh cases/
 143 suites in 824.801s, including root/browser/Android/Web and the real quality
 tasks while an owned malformed scratch fixture remained present. No runtime API,
 dependency or HRIS policy was copied. [Evidence](measurements/quality-source-scope-port-2026-11-06.json).
+First Apple42308538803 on port5fb4eca also passed138 cases, actual simulator app build
+and generated associations; its immutable artifact digest was verified. No redispatch.
 
 
 ## Atomic command handoff — 6 November 2026

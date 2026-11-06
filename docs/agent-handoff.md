@@ -1,24 +1,37 @@
 # Agent continuation — Compose Fluent Starter
 
-## Current: quality-source scope port accepted locally — 6 November 2026
+## Current: quality-source scope port and first Apple CI accepted — 6 November 2026
 
-The exact one-file generic convention from Mobile 5081e629 is accepted: full 47695
-PASS in 824.801s, with 490 fresh cases/143 suites, zero failures/errors/skips,
-994 stable inputs. Root/browser/Android/lint/production Web pass; lint
-0 errors/44 warnings. Detekt/formatter pass with an
-owned malformed .work fixture retained through the gate, then only that fixture
-removed. [Evidence](measurements/quality-source-scope-port-2026-11-06.json).
-No HRIS source, dependency or runtime API was ported. Commit/push this accepted port,
-then continue Mobile's physical queue-family regression; its prepared tests/code and
-release 51 drivers remain unbuilt. Read Mobile docs/agent-handoff.md for current jobs.
+Starter program5fb4eca355e3d3761c0c976c42b4386a3c7e31aa is committed/pushed. The exact
+one-file generic convention from Mobile5081e629 passed full47695 in824.801s:490 fresh
+cases/143 suites, zero failures/errors/skips,994 stable inputs, root/browser/Android/
+production Web and quality gates. Lint0 errors/44 existing warnings. The real malformed
+private .work fixture remained during formatter/Detekt acceptance, then only that
+owned fixture was removed. No HRIS runtime, dependency or policy was ported.
 
-Mobile 5081e629 first CI control42306713193/native42306713065/protocol42306715423 is
-running. Do not redispatch. SDK4 is immutable and accepted locally; phone 50 stays
-installed with pending-send report OPEN. Passive 22:31UTC found QueueMappingNativeFamily
-in the real phone, without UI/install/send. Preserve Bima data, sidecars and keys.
-Group V117–137 stays unshipped and live10485916/schema116.1 unchanged. Continue all 54
-communications groups. Push each commit; phone installs require advance notice and
-explicit serial/install-only. No emulator or heavy local job remains from this gate.
+First Apple42308538803 on exact5fb4eca PASSED and its artifact was audited:138 cases in
+35 suites, zero failures/errors/skips, actual simulator app build and generated Apple
+associations. Artifact13548473056/146758bytes SHA256
+7517404fa7edc9f8572eeb2670a74adc80f2c34269360b0c04e39bf09955eebc matches GitHub REST.
+Verify/windows were intentionally skipped by Apple-only dispatch; local gates remain
+separate. [Evidence](measurements/quality-source-scope-port-2026-11-06.json). Do not
+redispatch or rerun accepted evidence. No Starter emulator/build is running.
+
+Mobile68d848b7 isolates current chat delivery from retained older-device commands,
+with76 focused/5,454 full fresh cases accepted. Exact release51 is installed on the
+phone after original Bima data passed two offline/two online entries; keys/data/UID
+preserved, no phone UI driven, zero new sends. Original pending-send report stays OPEN.
+Mobile15063 (runtime-transfer-next/full-1) is the ONLY heavy local job; its ten applied
+files are uncommitted/frozen. No emulator is active. Always read the
+[current Mobile handoff](https://github.com/fajarxfce/hris-mobile/blob/feat/communications/docs/agent-handoff.md)
+before starting work; the older checkpoints below are historical.
+
+SDK4 publication remains immutable. Mobile5081 first protocol42306715423 passed;
+control42306713193/native42306713065 remain running. Queue68d first control42310411055/
+native42310411202 are pending behind those runs and must not be displaced. Group
+V117–137 remains disabled/unshipped, live10485916/schema116.1 unchanged. Continue
+original-parent recovery, ownership/adoption and all54 communications groups. Push
+every commit; announce each explicit-serial install-only phone update.
 
 
 ## Current: accepted port retained; Mobile private-account work continues — 6 November 2026
