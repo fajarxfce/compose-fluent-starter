@@ -1,5 +1,26 @@
 # Agent continuation — Compose Fluent Starter
 
+## Current: quality-source scope port accepted locally — 6 November 2026
+
+The exact one-file generic convention from Mobile 5081e629 is accepted: full 47695
+PASS in 824.801s, with 490 fresh cases/143 suites, zero failures/errors/skips,
+994 stable inputs. Root/browser/Android/lint/production Web pass; lint
+0 errors/44 warnings. Detekt/formatter pass with an
+owned malformed .work fixture retained through the gate, then only that fixture
+removed. [Evidence](measurements/quality-source-scope-port-2026-11-06.json).
+No HRIS source, dependency or runtime API was ported. Commit/push this accepted port,
+then continue Mobile's physical queue-family regression; its prepared tests/code and
+release 51 drivers remain unbuilt. Read Mobile docs/agent-handoff.md for current jobs.
+
+Mobile 5081e629 first CI control42306713193/native42306713065/protocol42306715423 is
+running. Do not redispatch. SDK4 is immutable and accepted locally; phone 50 stays
+installed with pending-send report OPEN. Passive 22:31UTC found QueueMappingNativeFamily
+in the real phone, without UI/install/send. Preserve Bima data, sidecars and keys.
+Group V117–137 stays unshipped and live10485916/schema116.1 unchanged. Continue all 54
+communications groups. Push each commit; phone installs require advance notice and
+explicit serial/install-only. No emulator or heavy local job remains from this gate.
+
+
 ## Current: accepted port retained; Mobile private-account work continues — 6 November 2026
 
 Starter program0ff7e59 and its accepted280 local/138 Apple cases are unchanged. First

@@ -1,5 +1,16 @@
 # Downstream development
 
+## Private quality-source scope — 6 November 2026
+
+The exact Mobile 5081e629 quality convention excludes private `.work` files from
+formatter selection and Detekt. Mobile's real generated SDK files caused the first
+full gate to fail; its corrected full gate passed 7,388 fresh cases with all 37
+original scratch files retained. Starter independently passed 490 fresh cases/
+143 suites in 824.801s, including root/browser/Android/Web and the real quality
+tasks while an owned malformed scratch fixture remained present. No runtime API,
+dependency or HRIS policy was copied. [Evidence](measurements/quality-source-scope-port-2026-11-06.json).
+
+
 ## Atomic command handoff — 6 November 2026
 
 Eleven exact generic database files from Mobile7ef01cd57caad50f7bdb7ebee782c7cc45413bcf

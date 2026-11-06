@@ -1,0 +1,50 @@
+{
+  "recordedAt": "2026-11-06T22:56:36.633904+00:00",
+  "status": "accepted locally",
+  "port": {
+    "at": "2026-11-06T22:42:33.659410+00:00",
+    "mobileCommit": "5081e629259e33af286304ccd79d91fbd7e8dade",
+    "starterBase": "0cf92d4b6b6540ce36a7a0f4f1c75bee8aea568c",
+    "file": "build-logic/src/main/kotlin/starter.quality.gradle.kts",
+    "beforeSha256": "ca9db1cc75f71b448c193e1e85b74277d482f117d62b03515526bd97f4ae6288",
+    "afterSha256": "f61dec1331e7e5abd604336ef85e4050b4f8c1f4712b953266a6fe3edea63aa3",
+    "fixture": ".work/quality-source-scope-2026-11-06/fixture/Generated.kt",
+    "fixtureSha256": "187a02af4dfde26ea7cb0b63949833767892311d5290a99b4b602d40c6b3dbc0",
+    "fixtureRemoved": true
+  },
+  "validation": {
+    "startedAt": "2026-11-06T22:42:33.788800+00:00",
+    "elapsedSeconds": 824.801,
+    "exitCode": 0,
+    "sourceFiles": 994,
+    "sourcesUnchanged": true,
+    "freshCounts": {
+      "tests": 490,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "freshSuites": 143,
+  "reusedSuites": 21,
+  "targets": [
+    ":check",
+    ":core:database:wasmJsBrowserTest",
+    ":apps:shared:wasmJsBrowserTest",
+    ":apps:android:assembleDevDebug",
+    ":apps:android:lintDevDebug",
+    ":apps:shared:wasmJsBrowserDistribution",
+    ":formatCheck",
+    ":architectureCheck"
+  ],
+  "resultSha256": "826aba48e4c4e1fc832bce380755d005b40e418beee556201ec43de844cd54b9",
+  "sourceManifestSha256": "7b190b50b63b738d9e89302ef84eb526dde9b23e95cd1c00cd408b5a328d40b3",
+  "detektFindings": 0,
+  "detektSarifSha256": "389c5ae396e211a0a0bc876fd100b58d043fe70085d467fd4e747684e0e5e693",
+  "lintErrors": 0,
+  "lintWarnings": 44,
+  "lintSha256": "10d62553a1179327bd6fd1f14eeb8a04ab5677370b8af92421a268ceaf62eebc",
+  "regression": "The real root quality tasks passed with the unchanged owned malformed .work/fixture/Generated.kt present throughout the gate. It was removed only after acceptance.",
+  "runtimeApiOrDependencyChanged": false,
+  "hrisCodePorted": false
+}

@@ -11,7 +11,8 @@ Kotlin/AGP versions. Light analysis checks source-level rules; it does not repla
 the compiler, lifecycle tests or architecture review. Reports are written under
 `build/reports/detekt`. There is no blanket baseline suppressing existing findings. Analysis inputs cover
 manual source trees and Gradle scripts; generated files and validation caches are
-excluded before traversal. Unchanged inputs reuse the previous reports.
+excluded before traversal. Both the formatter source tree and Detekt exclude `build`,
+`.gradle`, `.kotlin` and private `.work` directories. Unchanged inputs reuse the previous reports.
 
 The CI workflow also runs browser contracts and builds Android flavors, Web,
 iOS Simulator and Windows. Platform build success does not establish OS permission
