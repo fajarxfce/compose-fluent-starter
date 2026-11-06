@@ -15,10 +15,10 @@ Starter30376 PASSED244.326s:280 fresh tests/74 suites, zero failures/errors/skip
 stable inputs; root :check, SQLite/browser, Android dev assembly/lint and production Web.
 Lint0 errors/44 existing warnings. No heavy local process or owned emulator remains active.
 
-NEXT: commit and push this exact port, then dispatch ONE first-source CI scope=apple on
-feat/communications. Existing workflows already include database simulator tests and iOS
-build. Do not redispatch accepted old42185888342/e39747c or earlier proofs. Record the
-new run ID/head and audit exact artifacts before Apple acceptance. Current Apple is pending.
+Port0ff7e59e0d0acc4b73918e1504e516598b2a32fb is committed and pushed. ONE first-source
+Apple run42283698949 was dispatched19:54:15UTC on that exact head and is in progress.
+It includes database simulator tests and iOS build. Do not dispatch again, including
+accepted old42185888342/e39747c. Audit exact artifacts before Apple acceptance; pending.
 Then continue Mobile private-store possession/inventory, hard-parent recovery, freeze/drain,
 original SDK adoption, organization runtime/UI/background routing and all54 PRD groups.
 

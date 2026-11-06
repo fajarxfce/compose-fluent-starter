@@ -621,8 +621,16 @@
       "warnings": 44
     }
   },
-  "appleStatus": "pending first source run",
+  "appleStatus": "in_progress",
   "hrisPolicyCopied": false,
   "schemaChanged": false,
-  "phoneInstall": false
+  "phoneInstall": false,
+  "starterCommit": "0ff7e59e0d0acc4b73918e1504e516598b2a32fb",
+  "appleRun": {
+    "id": 42283698949,
+    "headSha": "0ff7e59e0d0acc4b73918e1504e516598b2a32fb",
+    "dispatchAt": "2026-11-06T19:54:15.405050+00:00",
+    "scope": "apple",
+    "firstRun": true
+  }
 }
