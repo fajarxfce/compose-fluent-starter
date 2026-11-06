@@ -1,5 +1,23 @@
 # Agent continuation — Compose Fluent Starter
 
+## Downstream room preparation accepted — 6 November 2026
+
+Mobile91902546/891e41e7 now records actual Android first-entry render acceptance
+for bounded prepared conversations. Six recordings across three fresh processes
+(including two offline startups) show bubbles during transitions; full Mobile gate
+passed2,299 fresh cases/lint0. Phone40 remains unchanged. All retained emulators
+are stopped with data/keys preserved. This is HRIS navigation/local-read policy;
+no additional generic foundation port is identified beyond the accepted MVI fix below.
+
+The downstream raw-event SDK patch passed nine Rust cases. Rust1.96.0 Android
+targets, NDK28.2.13676358 and cargo-ndk4.1.2 are installed. Actual arm64 SDK release
+build is active as Mobile driver42167, child3264835/startTicks162095421; do not
+start another heavy local task until it drains. Native edit proof and phone update
+remain next, followed by the layer audit and all54 communications PRD groups.
+Mobile/docs/agent-handoff.md owns the live continuation. Platform runtime remains
+10485916/schema116.1; ef8a41b3 adds only native-test diagnostics. Never replay its
+rollout or accepted Forward publications. This repo's MVI port remains accepted.
+
 ## MVI effect-retirement port accepted locally and on Apple — 6 November 2026
 
 Port f92b272 is committed/pushed. Two exact generic files from Mobile74152c0b,
