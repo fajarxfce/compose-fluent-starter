@@ -1,5 +1,30 @@
 # Agent continuation — Compose Fluent Starter
 
+## Current: accepted port retained; Mobile private-account work continues — 6 November 2026
+
+Starter program0ff7e59 and its accepted280 local/138 Apple cases are unchanged. First
+Apple42283698949, actual simulator app build and associations remain PASSED. No new generic
+source port, build or redispatch in this checkpoint. The HRIS private-account reader and
+organization ownership rules belong in Mobile. Follow the
+[current Mobile handoff](https://github.com/fajarxfce/hris-mobile/blob/feat/communications/docs/agent-handoff.md)
+(checkpointd90278b9) before starting a local job; it supersedes older active-job references below.
+
+Mobile35df original-store inventory is accepted with43 focused/5,405 full fresh cases,
+zero failures/errors/skips. Preceding7ef first CI control42282707724/native42282707833
+now PASSED too:4,345 portable,1,747 Apple and395 cases per ABI; actual iOS host and all
+native/worker/notification proofs pass. Artifact digests verified. First35df CI is running.
+
+SDK4 private-account candidate passed11 cipher,6 SQLite and1 FFI cases; ARM64/x86_64
+pairs are built and verified with matching nine Kotlin files. SDK3 published artifacts,
+shipping dependency and historical manifest remain unchanged. ARMv7 57560 is the ONLY
+heavy local job; x86, complete AAR, real two-ABI consumer and product gates remain. No
+emulator is active. A fresh Mobile-owned AVD5564 and isolated22-Kotlin-file possession
+implementation (15 new tests) are prepared only; no compilation/runtime acceptance yet.
+Continue original-parent recovery, freeze/drain/adoption, organization routing and all54
+communications groups. Group V117–137 stay unshipped/disabled, live10485916/schema116.1
+unchanged. Phone50 remains installed and pending-send report OPEN; preserve Bima data and
+keys, no phone UI or repeat installation. Push each commit and announce future installs.
+
 ## Current: atomic handoff port accepted on Apple too — 6 November 2026
 
 Starter program 0ff7e59e0d0acc4b73918e1504e516598b2a32fb passed its first Apple run
