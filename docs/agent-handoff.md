@@ -1,5 +1,27 @@
 # Agent continuation — Compose Fluent Starter
 
+## Downstream replay and retained feedback review — 6 November 2026
+
+Mobileac7668ae/abccff51 are pushed. Stable encrypted history replay now preserves
+unchanged ciphertext/revisions and updates only changed records in mixed batches;
+2,353 full-gate cases passed, Android/lint0. Paired SDK arm64 JNI/nine Kotlin files
+also built/hashed with four16KB LOAD segments. AAR/native edit consumption is still
+pending. This HRIS history behavior introduces no generic foundation port here.
+
+Phone remains40. Mobile release41 is built and verified, with four emulator entry
+recordings showing bubbles during transitions (including offline). Online repeat
+also exposed stale SDK-error presentation during OFFLINE/CONNECTING; a later
+three-entry online probe was clean with normal server token renewal. Mobile is
+correcting the stale warning/Retry UI while preserving local-read failures. Its
+release acceptance remains false pending that increment. All original emulator
+keys/data are retained; Mobile owns the current local UI test. Follow its newest
+agent-handoff checkpoint and announce every install-only phone delivery.
+
+Platformef8 native-driver Control/provider checks passed; LIVE remains10485916 /
+schema116.1. Never replay its rollout or accepted Forward sends. Continue phone
+update, native edit proof, layer ownership review and all54 PRD groups. This repo's
+MVI effect-retirement port remains accepted locally and on Apple; no re-dispatch.
+
 ## Downstream room preparation accepted — 6 November 2026
 
 Mobile91902546/891e41e7 now records actual Android first-entry render acceptance
