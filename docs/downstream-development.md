@@ -1,5 +1,16 @@
 # Downstream development
 
+## Atomic command handoff — 6 November 2026
+
+Eleven exact generic database files from Mobile7ef01cd57caad50f7bdb7ebee782c7cc45413bcf
+retain an original command plus opaque evidence and one pending successor atomically.
+Its real encrypted HRIS consumer passed72 focused and5,941 complete fresh cases before
+this port. Independent Starter root/browser/Android/lint/production-Web passed280
+fresh cases/244.326s with1,024 stable inputs and no failures/errors/skips. Apple remains
+pending. [Contract](command-storage.md#atomic-handoff-to-a-pending-successor),
+[evidence](measurements/command-handoff-port-2026-11-06.json). No HRIS policy or schema.
+
+
 ## Retiring effects from a removed route — 6 November 2026
 
 Two exact generic files from Mobile74152c0b add explicit retirement of queued effects

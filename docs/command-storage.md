@@ -90,3 +90,27 @@ projection, local deletion and retention are separate feature policies; no sched
 or automatic cleanup is introduced by these methods. Executed validation and the
 Starter port are recorded in the [measurement](measurements/command-archive-2026-11-01.json)
 and Git handoff. Both repositories pass their full local checks.
+
+## Atomic handoff to a pending successor
+
+`CommandStore.archiveAndInsert` retains the exact observed row and opaque evidence,
+removes it from active work, and inserts one initial successor in a single transaction.
+The successor must have another ID in the same account, partition and resource. Its ID
+must be absent from both active rows and archives. Current account/session, the full
+original row and normal size bounds are checked together. It reuses the occupied slot
+at full queue capacity. There is no intermediate empty/partial observer snapshot.
+
+Evidence can represent a local handoff rather than remote completion. The feature
+owns that distinction, encryption and the relationship between the two operations.
+A committed handoff returns true. Repeating it returns false, even with identical
+arguments or after the successor has finished/disappeared. Callers explicitly read
+and validate their retained link; the raw store never recreates missing work or
+claims that an earlier remote request succeeded. Ordinary archive behavior is unchanged.
+
+The exact eleven generic files were ported from Mobile7ef01cd5 after its actual
+encrypted HRIS consumer passed focused and complete checks. Starter's root, database
+browser, Android assembly/lint and production Web checks passed in244.326s on1,024
+unchanged inputs:280 fresh cases/74 suites, zero failures/errors/skips. Android lint
+has zero errors and44 existing warnings. Apple simulator acceptance remains pending.
+[Evidence](measurements/command-handoff-port-2026-11-06.json). HRIS setup policy,
+protocol, encrypted formats and owning use cases remain in Mobile; no schema changes.
