@@ -286,6 +286,7 @@
     "core presentation browser tests",
     "production Web distribution"
   ],
-  "appleAccepted": false,
-  "phoneInstalled": false
+  "appleAccepted": true,
+  "phoneInstalled": false,
+  "appleEvidence": "mvi-effect-retirement-apple-2026-11-06.json"
 }

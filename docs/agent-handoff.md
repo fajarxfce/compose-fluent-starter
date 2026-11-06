@@ -1,30 +1,30 @@
 # Agent continuation — Compose Fluent Starter
 
-## MVI effect-retirement port accepted locally — 6 November 2026
+## MVI effect-retirement port accepted locally and on Apple — 6 November 2026
 
-Two exact generic files from Mobile74152c0b plus common regression are validated;
-commit/push this increment next. [Evidence](measurements/mvi-effect-retirement-port-2026-11-06.json).
-check-1 PASS271.266s on unchanged inputs,81 fresh tests/36 suites, zero failures,
-errors/skips. All396 desktop cases and six targeted presentation-browser cases pass.
-Android dev debug/lint and production Web distribution pass; lint has zero errors
-and44 existing warnings. Local54568 is drained. No Starter installation.
+Port f92b272 is committed/pushed. Two exact generic files from Mobile74152c0b,
+including the common regression, are validated. [Local evidence](measurements/mvi-effect-retirement-port-2026-11-06.json).
+check-1 PASS271.266s on unchanged inputs:81 fresh tests/36 suites, no failures,
+errors/skips.396 desktop and six targeted presentation-browser cases pass. Android
+dev debug/lint and production Web pass; lint0 errors/44 existing warnings.
 
-The protected MVI primitive retires effects queued for a permanently popped route
-without resetting state or closing future delivery. Its130-effect regression covers
-buffered and blocked senders plus future delivery. Normal stopped-route buffering
-is unchanged. The screen cancels obsolete producers first. No HRIS room cache,
-configuration or policy was copied. Existing Apple CI now compiles and runs
-core:presentation tests. After pushing, inspect automatic runs; if none covers the
-new commit, dispatch one Apple-only check and audit its exact source/reports/app.
-Do not duplicate an existing hosted run.
+[Apple evidence](measurements/mvi-effect-retirement-apple-2026-11-06.json): exact
+f92b272 run42164549935 PASS129 cases/34 suites, including six core-presentation
+cases. Full Xcode simulator app and association verification passed. Source hashes
+match the port; artifact13478974294 digest3f9e5fa8…. No physical iPhone test or
+Starter installation. The one requested Apple run is complete; do not dispatch again.
 
-Mobile74152c0b is pushed and proves repeated Android room openings render during
-transition. First process opening still shows233ms blank. A new optional navigation
-scope hint is APPLIED/UNCOMPILED in Mobile; focused thread-hint1 driver13650 is active.
-It starts guarded private reads alongside workspace observation and retains fresh
-publication checks. Phone remains Mobile40. All emulators are stopped/data retained.
-Platform10485916 is live; do not replay deployment or accepted Forward messages.
-Continue all54 PRD groups after these increments. Older checkpoints are history.
+The MVI primitive retires buffered/blocked effects after permanent route removal;
+state and future delivery remain usable. The screen cancels obsolete producers
+first. No HRIS room cache, configuration or policy was copied.
+
+Mobile74152c0b proves repeated Android room entries render during transition. Its
+follow-up guarded initial-scope hint passed focused228 cases and complete root/
+browser/Android checks. First process opening still shows133–200ms blank; a cold-
+online contextual reconnect prompt remains under investigation before release.
+All Mobile emulators are stopped with data/keys retained. Phone remains Mobile40.
+Platform10485916 is live. Never replay deployment or accepted Forward sends.
+Continue all54 communications PRD groups. Older checkpoints below are history.
 
 ## Replica staging port accepted on all checked targets — 5 November 2026
 
