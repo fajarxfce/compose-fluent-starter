@@ -72,7 +72,8 @@ jobs:
         run: python3 tool/check_app_links.py prepare --application-id dev.fajar.fluent.starter
       - name: Compile iOS simulator tests
         run: >-
-          ./gradlew :core:common:linkDebugTestIosSimulatorArm64 :core:location:data:linkDebugTestIosSimulatorArm64
+          ./gradlew :core:common:linkDebugTestIosSimulatorArm64 :core:presentation:linkDebugTestIosSimulatorArm64
+          :core:location:data:linkDebugTestIosSimulatorArm64
           :core:fileio:linkDebugTestIosSimulatorArm64
           :core:database:linkDebugTestIosSimulatorArm64
           :core:identity:data:linkDebugTestIosSimulatorArm64
@@ -80,7 +81,8 @@ jobs:
         timeout-minutes: 25
       - name: Run iOS simulator tests
         run: >-
-          ./gradlew :core:common:iosSimulatorArm64Test :core:location:data:iosSimulatorArm64Test :core:fileio:iosSimulatorArm64Test
+          ./gradlew :core:common:iosSimulatorArm64Test :core:presentation:iosSimulatorArm64Test
+          :core:location:data:iosSimulatorArm64Test :core:fileio:iosSimulatorArm64Test
           :core:database:iosSimulatorArm64Test
           :core:identity:data:iosSimulatorArm64Test :core:notifications:data:iosSimulatorArm64Test --no-daemon
         timeout-minutes: 15

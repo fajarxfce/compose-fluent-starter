@@ -54,6 +54,12 @@ completion effect only after persistence succeeds; startup reads the stored comp
 again after process recreation. Auth navigation follows the session state rather than a
 transient login effect. Durable data and business outcomes never live only in an effect.
 
+A screen retained beyond a popped navigation entry can explicitly call
+`discardPendingEffects()` when that entry is permanently released. This retires
+queued effects, including blocked senders, while preserving state and future
+delivery. The owning screen must cancel obsolete producers first. Do not call it
+for an ordinary lifecycle stop; stopped routes still buffer their effects.
+
 ## Errors and concurrency
 
 Safe functions execute an operation once and map technical exceptions to AppResult.Failed.

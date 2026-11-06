@@ -1,5 +1,31 @@
 # Agent continuation — Compose Fluent Starter
 
+## MVI effect-retirement port accepted locally — 6 November 2026
+
+Two exact generic files from Mobile74152c0b plus common regression are validated;
+commit/push this increment next. [Evidence](measurements/mvi-effect-retirement-port-2026-11-06.json).
+check-1 PASS271.266s on unchanged inputs,81 fresh tests/36 suites, zero failures,
+errors/skips. All396 desktop cases and six targeted presentation-browser cases pass.
+Android dev debug/lint and production Web distribution pass; lint has zero errors
+and44 existing warnings. Local54568 is drained. No Starter installation.
+
+The protected MVI primitive retires effects queued for a permanently popped route
+without resetting state or closing future delivery. Its130-effect regression covers
+buffered and blocked senders plus future delivery. Normal stopped-route buffering
+is unchanged. The screen cancels obsolete producers first. No HRIS room cache,
+configuration or policy was copied. Existing Apple CI now compiles and runs
+core:presentation tests. After pushing, inspect automatic runs; if none covers the
+new commit, dispatch one Apple-only check and audit its exact source/reports/app.
+Do not duplicate an existing hosted run.
+
+Mobile74152c0b is pushed and proves repeated Android room openings render during
+transition. First process opening still shows233ms blank. A new optional navigation
+scope hint is APPLIED/UNCOMPILED in Mobile; focused thread-hint1 driver13650 is active.
+It starts guarded private reads alongside workspace observation and retains fresh
+publication checks. Phone remains Mobile40. All emulators are stopped/data retained.
+Platform10485916 is live; do not replay deployment or accepted Forward messages.
+Continue all54 PRD groups after these increments. Older checkpoints are history.
+
 ## Replica staging port accepted on all checked targets — 5 November 2026
 
 Port ab4cac74e7898f4148eed2a2a89d5f19df932565 is accepted locally and on Apple.

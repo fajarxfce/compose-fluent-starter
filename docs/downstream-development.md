@@ -1,5 +1,21 @@
 # Downstream development
 
+## Retiring effects from a removed route — 6 November 2026
+
+Two exact generic files from Mobile74152c0b add explicit retirement of queued effects
+while retaining screen state and future delivery. The regression includes130 queued
+notifications to cover buffered and blocked senders. Ordinary lifecycle-stop buffering
+is unchanged; screen owners cancel obsolete producers before retiring effects.
+
+Mobile's guarded room reentry consumer is measured on Android, with final full gates
+recorded downstream. Independent Starter root/Android/lint/production-Web validation
+passed271.266s with81 fresh cases, zero failures/errors/skips. All396 desktop cases
+and six targeted browser cases pass; lint has zero errors and44 existing warnings.
+Existing Apple CI now includes core presentation compilation/tests; hosted Apple
+acceptance remains pending. [Evidence](measurements/mvi-effect-retirement-port-2026-11-06.json).
+No HRIS cache, routing, permissions, configuration or message rules were copied.
+
+
 ## Swipe tabs, search filter and floating actions — 5 November 2026
 
 Six exact Mobile2539c658 files follow actual Android consumer acceptance on release39.
