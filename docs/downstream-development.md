@@ -690,3 +690,12 @@ runs in CI; its `MissingClass` rule is the regression guard. Independent Starter
 root/Android/lint verification is recorded in
 [port evidence](measurements/appauth-manifest-port-2026-10-31.json). No HRIS session
 or collaboration policy is included.
+
+## Directional page transitions
+
+The shared ScopedNavHost, AppMotion and NavigationOwnershipTest match
+[Mobile 23ce87fa](https://github.com/fajarxfce/hris-mobile/commit/23ce87fa70b162a9aab5a5c1a1f6c4a00a5e2095).
+Forward pages move from the trailing edge and Back reverses the motion; reduced
+motion disables it, and RTL mirrors it. Mobile release42 passed eight Android
+recordings before this port. Independent Starter root/Android/Web checks pass;
+Apple remains separately tracked. See [navigation](navigation-motion.md).

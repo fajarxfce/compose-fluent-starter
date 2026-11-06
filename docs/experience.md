@@ -10,8 +10,9 @@ clear without turning the phone screen into a compressed administrative portal.
 - Preserve each tab's position, keep keyboard and system insets correct, and
   prevent a response from moving controls while the user is interacting.
 - Use brief page transitions, selection changes, and inline feedback. Motion
-  should explain a change of context or state, usually within 120–180 ms. Avoid
-  decorative loops, large bounces, or staggered animation on every list row.
+  should explain a change of context or state: page push/pop uses 280 ms directional
+  movement; tabs and selection keep 120–140 ms feedback. Avoid decorative loops,
+  large bounces, or staggered animation on every list row.
 - Honor reduced motion and system animation settings. Completion, errors, and
   pending synchronization must remain understandable without animation.
 - Replace account/company content immediately when its authorization scope changes;

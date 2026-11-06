@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-06",
+  "mobileSource": "23ce87fa70b162a9aab5a5c1a1f6c4a00a5e2095",
+  "phoneRelease": 42,
+  "mobileAndroidEvidence": "https://github.com/fajarxfce/hris-mobile/blob/feat/communications/docs/measurements/collaboration-release42-2026-11-06.json",
+  "sourceFiles": {
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/navigation/ScopedNavHost.kt": "6a019272ee640ced4b5da6ae359663db5bee0e92fed970d551e58d718f807dc3",
+    "core/designsystem/src/commonMain/kotlin/dev/fajar/starter/designsystem/theme/AppMotion.kt": "45a6708683199eacb2bad67bcb6679043be79c735daf092df557a0bc10217303",
+    "apps/shared/src/desktopTest/kotlin/dev/fajar/starter/NavigationOwnershipTest.kt": "4f92127db8ba94e9851b391f046a9486caa34fb60e0e7a31e4b079918d6dfc6b"
+  },
+  "portExact": true,
+  "startedAt": "2026-11-06T08:05:37.251009+00:00",
+  "wallSeconds": 272.99,
+  "exitCode": 0,
+  "inputsUnchanged": true,
+  "freshSuites": 32,
+  "freshCounts": {
+    "tests": 71,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tasks": [
+    ":check",
+    ":core:presentation:wasmJsBrowserTest",
+    ":apps:android:assembleDevDebug",
+    ":apps:android:lintDevDebug",
+    ":apps:shared:wasmJsBrowserDistribution"
+  ],
+  "lintErrors": 0,
+  "lintWarnings": 44,
+  "lintSha256": "10d62553a1179327bd6fd1f14eeb8a04ab5677370b8af92421a268ceaf62eebc",
+  "appleAcceptancePending": true,
+  "phoneStarterInstalled": false,
+  "scope": "Shared directional NavHost and motion token, including exact regression. No HRIS configuration, cache or policy."
+}
