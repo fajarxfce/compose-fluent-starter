@@ -30,7 +30,21 @@
   "lintErrors": 0,
   "lintWarnings": 44,
   "lintSha256": "10d62553a1179327bd6fd1f14eeb8a04ab5677370b8af92421a268ceaf62eebc",
-  "appleAcceptancePending": true,
+  "appleAcceptancePending": false,
   "phoneStarterInstalled": false,
-  "scope": "Shared directional NavHost and motion token, including exact regression. No HRIS configuration, cache or policy."
+  "scope": "Shared directional NavHost and motion token, including exact regression. No HRIS configuration, cache or policy.",
+  "apple": {
+    "runId": 42185888342,
+    "sourceCommit": "e39747c9b67548e8d2a67f5a1dff9f678722b0fd",
+    "artifactId": 13489600174,
+    "sha256": "7e34c593fe6c5c7a8fdf422d2f52a8ca9726c614ec32138a66785a843e88947a",
+    "suites": 34,
+    "counts": {
+      "tests": 129,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "physicalIPhoneTested": false
+  }
 }

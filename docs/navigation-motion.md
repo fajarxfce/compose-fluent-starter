@@ -16,5 +16,6 @@ The actual NavHost regression covers forward/Back movement and content in LTR/RT
 reduced motion, route-owner restoration and account disposal. Independent Starter
 root, Android and Web validation passed on unchanged inputs.
 [Port evidence](measurements/navigation-motion-port-2026-11-06.json) records fresh
-test counts, Android lint and exact source hashes. Apple CI follows this tested
-commit; no Starter application is installed on the phone.
+test counts, Android lint and exact source hashes. Apple CI on the exact port also
+passes129 cases across34 suites; its artifact digest is verified. No Starter
+application is installed on the phone.

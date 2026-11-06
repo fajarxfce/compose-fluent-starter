@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-## Directional navigation port accepted locally — 6 November 2026
+## Directional navigation port accepted on Android/Web and Apple — 6 November 2026
 
 Three exact generic files from Mobile23ce87fa now provide280ms directional page
 push/pop with RTL mirroring, viewport clipping and reduced-motion None. The actual
@@ -14,16 +14,21 @@ cases/32 suites, zero failures/errors/skips. Root, Android dev
 assembly/lint and production Web passed. Android lint0 errors/44 warnings.
 [Evidence](measurements/navigation-motion-port-2026-11-06.json). No emulator active;
 original Bima data/keys retained. Port e39747c9b67548e8d2a67f5a1dff9f678722b0fd is pushed. Apple scope was
-dispatched ONCE:42185888342, exact e39747c, now running. Inspect its result/artifact;
-do not dispatch again. No Starter phone install.
+dispatched ONCE:42185888342, exact e39747c, now SUCCESS. Artifact13489600174
+SHA7e34c593fe6c5c7a8fdf422d2f52a8ca9726c614ec32138a66785a843e88947a
+verified129 cases/34 suites, no failures/errors/skips. Do not dispatch again.
+Physical iPhone was waived; no Starter phone install.
 
 PHONE Mobile42 was announced then installed08:06UTC with same identity/data and
 no UI action. SHA09eea50a9ad0ef1f3b1294ba2e1fceb4503e418d3d6e795029c205c08376259f;
 Mobilee74c613f has delivery evidence. Do not repeat this install. Continue Mobile's
-SDK x86_64 build95397 is now the ONLY heavy local job, child13949/
-startTicks162936862 since08:11UTC; wait before another build/emulator. Shipping SDK
-has four ABIs; the32-bit and Apple pairs remain pending. Next paired consumer/native
-edit proof and history-pager domain ownership; all54 PRD groups remain active.
+current send-feedback/order repair: focused16 cases pass; its full gate97634 is
+the only heavy local job. Phone remains42;43 is not built yet. SDK x86_64 build95397
+finished901.084s with matching Kotlin pair and16KiB ELF alignment. Two-ABI AAR and
+native consumer remain unexecuted; shipping dependency unchanged. Follow Mobile's
+current handoff before another heavy job. After send fixes, continue SDK/edit proof,
+history-pager domain ownership and all54 PRD groups. No new generic port applies
+to the current HRIS collaboration projection/feedback changes.
 PlatformLIVE10485916/schema116.1 unchanged; never replay rollout or accepted Forward.
 
 
