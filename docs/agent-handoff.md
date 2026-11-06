@@ -13,13 +13,16 @@ Local check18630 PASS272.99s on unchanged inputs: 71 fresh
 cases/32 suites, zero failures/errors/skips. Root, Android dev
 assembly/lint and production Web passed. Android lint0 errors/44 warnings.
 [Evidence](measurements/navigation-motion-port-2026-11-06.json). No emulator active;
-original Bima data/keys retained. Commit/push this port, then dispatch Apple scope
-ONCE on the exact commit and inspect its result/artifact. No Starter phone install.
+original Bima data/keys retained. Port e39747c9b67548e8d2a67f5a1dff9f678722b0fd is pushed. Apple scope was
+dispatched ONCE:42185888342, exact e39747c, now running. Inspect its result/artifact;
+do not dispatch again. No Starter phone install.
 
 PHONE Mobile42 was announced then installed08:06UTC with same identity/data and
 no UI action. SHA09eea50a9ad0ef1f3b1294ba2e1fceb4503e418d3d6e795029c205c08376259f;
 Mobilee74c613f has delivery evidence. Do not repeat this install. Continue Mobile's
-prepared SDK x86_64 build after this local job drains, then paired consumer/native
+SDK x86_64 build95397 is now the ONLY heavy local job, child13949/
+startTicks162936862 since08:11UTC; wait before another build/emulator. Shipping SDK
+has four ABIs; the32-bit and Apple pairs remain pending. Next paired consumer/native
 edit proof and history-pager domain ownership; all54 PRD groups remain active.
 PlatformLIVE10485916/schema116.1 unchanged; never replay rollout or accepted Forward.
 
