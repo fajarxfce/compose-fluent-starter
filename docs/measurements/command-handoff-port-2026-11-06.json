@@ -621,7 +621,7 @@
       "warnings": 44
     }
   },
-  "appleStatus": "in_progress",
+  "appleStatus": "success",
   "hrisPolicyCopied": false,
   "schemaChanged": false,
   "phoneInstall": false,
@@ -632,5 +632,49 @@
     "dispatchAt": "2026-11-06T19:54:15.405050+00:00",
     "scope": "apple",
     "firstRun": true
+  },
+  "appleAudit": {
+    "auditAt": "2026-11-06T20:22:11.210881+00:00",
+    "runId": 42283698949,
+    "headSha": "0ff7e59e0d0acc4b73918e1504e516598b2a32fb",
+    "conclusion": "success",
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/42283698949",
+    "artifactId": 13537838227,
+    "artifactSha256": "49865a8b3b1bbd6b40e3957275779fab024de86a62c66d805daf14c6c2fcb397",
+    "artifactBytes": 146583,
+    "githubDigestVerified": true,
+    "counts": {
+      "tests": 138,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": 35,
+    "commandHandoff": {
+      "sha256": "864ba55ef71576a9a7c114e03701f9312ea02f112e3c6cee83c25c48d755825a",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "steps": {
+      "Set up job": "success",
+      "Run actions/checkout@v4": "success",
+      "Select Xcode 26.3": "success",
+      "Run actions/setup-java@v4": "success",
+      "Run gradle/actions/setup-gradle@v4": "success",
+      "Verify distribution configuration and shell entry points": "success",
+      "Prepare public app-link test registrations": "success",
+      "Compile iOS simulator tests": "success",
+      "Run iOS simulator tests": "success",
+      "Build iOS simulator app": "success",
+      "Verify generated Apple associations": "success",
+      "Run actions/upload-artifact@v4": "success",
+      "Post Run gradle/actions/setup-gradle@v4": "success",
+      "Post Run actions/setup-java@v4": "success",
+      "Post Run actions/checkout@v4": "success",
+      "Complete job": "success"
+    },
+    "otherJobs": "verify/windows skipped by explicit apple scope"
   }
 }

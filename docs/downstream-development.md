@@ -710,3 +710,10 @@ Forward pages move from the trailing edge and Back reverses the motion; reduced
 motion disables it, and RTL mirrors it. Mobile release42 passed eight Android
 recordings before this port. Independent Starter root/Android/Web checks pass;
 Apple remains separately tracked. See [navigation](navigation-motion.md).
+
+
+The atomic command handoff port in `0ff7e59` also passed its first Apple run
+[42283698949](https://github.com/fajarxfce/compose-fluent-starter/actions/runs/42283698949):
+138 simulator tests, including nine atomic-handoff cases, and the actual iOS app
+build. The artifact digest and local acceptance remain in the
+[port evidence](measurements/command-handoff-port-2026-11-06.json).

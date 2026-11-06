@@ -1,5 +1,26 @@
 # Agent continuation — Compose Fluent Starter
 
+## Current: atomic handoff port accepted on Apple too — 6 November 2026
+
+Starter program 0ff7e59e0d0acc4b73918e1504e516598b2a32fb passed its first Apple run
+42283698949. Artifact 13537838227 has 138 cases in 35 suites, zero failures/errors/skips,
+including all 9 AppleCommandHandoffTest cases. Actual simulator app build and generated
+associations passed. Artifact SHA-256 matches GitHub REST:
+49865a8b3b1bbd6b40e3957275779fab024de86a62c66d805daf14c6c2fcb397.
+[Evidence](measurements/command-handoff-port-2026-11-06.json). No redispatch or local rerun.
+Verify/windows were deliberately skipped by the Apple-only scope; their local acceptance
+remains the separate 280-case gate below. No physical iPhone or new Starter installation.
+
+Mobile's original-SDK inventory is now implemented and passed 43 focused cases in
+215.601 seconds. Its complete gate 51677 is the only heavy local job. Do not start another
+build or emulator until it finishes. An isolated read-only crypto-account reader is being
+prepared in /home/fajar/hris/.worktrees/matrix-sdk-inventory-2026-11-06; it is untested and
+unpublished. SDK 3 and its original checkout remain unchanged. Group V117–137 stay disabled/
+unshipped; live 10485916/schema 116.1 unchanged. Phone 50 stays installed, pending-send report
+OPEN. Continue Mobile ownership/adoption and the complete communications PRD; push each commit.
+Mobile 3d666135 first CI is now accepted; 7ef01cd5 first CI still runs. Audit, never redispatch.
+
+
 ## Current: atomic command handoff port accepted locally — 6 November 2026
 
 Eleven exact generic files from Mobile7ef01cd57caad50f7bdb7ebee782c7cc45413bcf add atomic
