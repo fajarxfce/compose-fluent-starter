@@ -5,8 +5,10 @@ escapes after suspension and rethrows the original exception. Cancellation remai
 separate. The original Apple network regression exposed a null failure sample; its
 assertion remains unchanged and a dispatcher-hop regression supplements it.
 [Port evidence](measurements/native-failure-outcome-port-2026-11-07.json) retains
-that first failure and the accepted local checks. Apple verification of the changed
-source remains pending; no precise Native compiler cause is claimed.
+that first failure and the accepted local checks. The changed source's first Apple
+run 42337213669 passed 197 cases, simulator app and generated associations; the
+artifact digest is verified. Earlier Mobile c141 also passed its Apple network tests
+without the explicit catch, so no deterministic Native compiler cause is claimed.
 
 `core/observability` exposes a process-owned structured diagnostic sink. Platform
 hosts install it before creating the application container. Desktop and Web use
