@@ -1,5 +1,31 @@
 # Agent continuation — Compose Fluent Starter
 
+## Typed-result measurement port accepted — 7 November 2026, 23:51 UTC
+
+Full87993 is reaped and passes442.54s:268 fresh cases/86 suites, zero failures/errors/
+skips,1,033 unchanged inputs/45 unchanged library inputs. Root checks, Android dev
+assembly/lint, actual browser tests/production web, iOS source and quality gates pass.
+Three exact Mobile09e7eaf7 core files plus api(core.common) implement typed-result
+measurement. [Exact evidence](measurements/result-timing-port-2026-11-07.json).
+No new Starter application behavior or HRIS policy is ported.
+
+Mobile351c36c8 records installed58, original-account timing/HTTP/visual/offline checks.
+The user clarified that the inspector needs a notification shortcut like Chucker;
+do NOT spend work relocating its existing menu. Implement an optional reusable Android
+notification adapter and app-owned guarded navigation, test on Mobile and then port
+its generic host wiring here. It is not implemented yet at this checkpoint.
+
+Inspector is now PUBLIC with explicit approval. PR1 current source34974bd has first
+public run42426760171 in progress. Prior setup/missing-parent-POM failures are retained;
+SDK5 and library packages remain unpublished. Library checkout fast-forwarded only
+AFTER this Starter gate, which correctly used d78c0a6. No local compiler/emulator runs.
+
+Memory cleanup moved7.93GiB of unused generated Karma files from tmpfs to disk with
+hash checks; available memory is now about13GiB after the compiler exited. Use
+TMPDIR=/home/fajar/hris/.work/build-tmp for future builds, one compiler OR emulator,
+and --no-daemon. No unrelated Java service or Codex session was killed. Continue all54
+original PRDgroups; none newly complete. Live API/schema/Group routing remain unchanged.
+
 ## Inspector port accepted — 7 November 2026, 23:11 UTC
 
 The feat/network-inspector-20261107 candidate fromb11437a passes the complete gate78354:

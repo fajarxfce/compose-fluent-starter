@@ -63,3 +63,16 @@ and heap tools on Web. Profile a release-like build on the target device through
 repeated navigation, account changes, background/resume, and large-font layouts.
 The starter's lifecycle tests establish resource contracts; they do not establish
 an app-wide absence of leaks, a frame-rate target, or a measured speedup.
+
+## Typed result timing
+
+`measureAppResult` classifies `AppResult.Success` and `AppResult.Failed` while preserving
+the exact returned object, original exception/cause and cancellation. Successful false
+or null results stay successful; the calling operation still owns their meaning. The
+closed operation names include draft persistence and command preparation/queue/confirmation.
+The utility creates no scope or delivery policy and logs no content or account fields.
+
+The generic port is byte-identical to Mobile09e7eaf7 after build58's actual Android
+phase capture. Starter's full gate passes268 fresh cases, Android assembly/lint, browser
+tests/production web and iOS source compilation on1,033 unchanged inputs. Lint has zero
+errors and44 existing warnings. [Exact port evidence](measurements/result-timing-port-2026-11-07.json).

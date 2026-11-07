@@ -777,3 +777,7 @@ The atomic command handoff port in `0ff7e59` also passed its first Apple run
 138 simulator tests, including nine atomic-handoff cases, and the actual iOS app
 build. The artifact digest and local acceptance remain in the
 [port evidence](measurements/command-handoff-port-2026-11-06.json).
+
+The result-timing core from Mobile09e7eaf7 is accepted after Mobile58 device checks.
+Three exact files and the common result dependency pass the Starter gate; no chat policy
+is included. See [measurement](measurements/result-timing-port-2026-11-07.json).
