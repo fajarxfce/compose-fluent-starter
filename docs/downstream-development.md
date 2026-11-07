@@ -1,5 +1,20 @@
 # Downstream development
 
+## Application network inspector — 7 November 2026
+
+The generic core/Ktor/Compose integration follows accepted Mobile52df4ee1 and its
+installed build57. Five source/fixture files are identical; the session fixture uses
+Starter's constructor, and Firebase keeps the engine factory last for existing
+trailing-lambda callers. Mobile also verifies that correction through two Ktor/Koin
+integration cases. No Matrix SDK, HRIS account policy or endpoint is copied.
+
+The complete independent Starter gate passes root/Android/browser/production web/iOS
+source/quality checks. First fixture/lockfile failures remain in the
+[measurement](measurements/network-inspector-port-2026-11-07.json). The npm update adds
+only three local inspector workspaces; no registry package changes. See the
+[ownership and build contract](network-inspector.md). The dependency is still private
+and unpublished, so this candidate is not promoted to the primary branch yet.
+
 ## Explicit Android notification retirement — 7 November 2026
 
 One exact generic adapter from Mobile11e2b36b preserves OS fallback expiry while

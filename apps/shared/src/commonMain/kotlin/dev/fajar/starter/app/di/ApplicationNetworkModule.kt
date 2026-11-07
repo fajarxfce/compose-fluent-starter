@@ -1,5 +1,7 @@
 package dev.fajar.starter.app.di
 
+import dev.fajar.inspector.NetworkInspection
+import dev.fajar.inspector.ktor.KtorNetworkInspector
 import dev.fajar.starter.availability.domain.usecases.CheckAppAvailability
 import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.common.config.BuildRuntime
@@ -15,47 +17,61 @@ import org.koin.dsl.module
 import org.koin.dsl.onClose
 
 /** The application container owns each client and closes it with its platform lifetime. */
-fun applicationNetworkModule(environment: AppEnvironment) = module {
-    single { DemoTransferServer() }
-    single<HttpClient>(named(HttpClients.Oidc)) {
-            createHttpClient(
-                if (BuildRuntime.demoBackend) createDemoEngine(transfers = get())
-                else createPlatformHttpEngine(),
-                HttpClientSettings("https://oidc.invalid/"),
-            )
-        }
-        .onClose { it?.cancelAndClose() }
-    single<HttpClient>(named(HttpClients.Public)) {
-            val policy = get<CheckAppAvailability>()
-            createHttpClient(
-                if (BuildRuntime.demoBackend) createDemoEngine(transfers = get())
-                else createPlatformHttpEngine(),
-                HttpClientSettings(BuildRuntime.apiEndpoints.getValue(environment)),
-            ) {
-                install(ApplicationAvailability) { check = { policy() } }
+fun applicationNetworkModule(environment: AppEnvironment, inspection: NetworkInspection? = null) =
+    module {
+        single { DemoTransferServer() }
+        single<HttpClient>(named(HttpClients.Oidc)) {
+                createHttpClient(
+                    if (BuildRuntime.demoBackend) createDemoEngine(transfers = get())
+                    else createPlatformHttpEngine(),
+                    HttpClientSettings("https://oidc.invalid/"),
+                ) {
+                    if (inspection != null)
+                        install(KtorNetworkInspector) {
+                            recorderProvider = { inspection.recorders.value }
+                        }
+                }
             }
-        }
-        .onClose { it?.cancelAndClose() }
-    single<HttpClient>(named(HttpClients.Authenticated)) {
-            val acquireTokens = get<AcquireSessionTokens>()
-            val policy = get<CheckAppAvailability>()
-            val endpoint = BuildRuntime.apiEndpoints.getValue(environment)
-            createHttpClient(
-                if (BuildRuntime.demoBackend) createDemoEngine(transfers = get())
-                else createPlatformHttpEngine(),
-                HttpClientSettings(endpoint),
-            ) {
-                install(ApplicationAvailability) { check = { policy() } }
-                install(SessionAuthentication) {
-                    origin = Url(endpoint)
-                    acquire = { sessionId, rejected ->
-                        when (val result = acquireTokens(sessionId, rejected)) {
-                            is AppResult.Failed -> result
-                            is AppResult.Success -> AppResult.Success(result.value?.accessToken)
+            .onClose { it?.cancelAndClose() }
+        single<HttpClient>(named(HttpClients.Public)) {
+                val policy = get<CheckAppAvailability>()
+                createHttpClient(
+                    if (BuildRuntime.demoBackend) createDemoEngine(transfers = get())
+                    else createPlatformHttpEngine(),
+                    HttpClientSettings(BuildRuntime.apiEndpoints.getValue(environment)),
+                ) {
+                    if (inspection != null)
+                        install(KtorNetworkInspector) {
+                            recorderProvider = { inspection.recorders.value }
+                        }
+                    install(ApplicationAvailability) { check = { policy() } }
+                }
+            }
+            .onClose { it?.cancelAndClose() }
+        single<HttpClient>(named(HttpClients.Authenticated)) {
+                val acquireTokens = get<AcquireSessionTokens>()
+                val policy = get<CheckAppAvailability>()
+                val endpoint = BuildRuntime.apiEndpoints.getValue(environment)
+                createHttpClient(
+                    if (BuildRuntime.demoBackend) createDemoEngine(transfers = get())
+                    else createPlatformHttpEngine(),
+                    HttpClientSettings(endpoint),
+                ) {
+                    if (inspection != null)
+                        install(KtorNetworkInspector) {
+                            recorderProvider = { inspection.recorders.value }
+                        }
+                    install(ApplicationAvailability) { check = { policy() } }
+                    install(SessionAuthentication) {
+                        origin = Url(endpoint)
+                        acquire = { sessionId, rejected ->
+                            when (val result = acquireTokens(sessionId, rejected)) {
+                                is AppResult.Failed -> result
+                                is AppResult.Success -> AppResult.Success(result.value?.accessToken)
+                            }
                         }
                     }
                 }
             }
-        }
-        .onClose { it?.cancelAndClose() }
-}
+            .onClose { it?.cancelAndClose() }
+    }

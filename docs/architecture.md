@@ -1,5 +1,8 @@
 # Architecture
 
+[Development network inspection](network-inspector.md) is owned by application composition;
+transport adapters observe attempts and the optional viewer renders bounded snapshots.
+
 ## Ownership
 
 | Layer | Responsibility |

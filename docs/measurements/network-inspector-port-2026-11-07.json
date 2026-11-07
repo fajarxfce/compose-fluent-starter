@@ -1,0 +1,491 @@
+{
+  "recordedAt": "2026-11-07T23:10:58.068616+00:00",
+  "accepted": true,
+  "scope": "Generic app-owned core/Ktor/Compose inspector port; no Matrix SDK or HRIS policy.",
+  "baseCommit": "b11437abf94ec75ad9d2d21b0feb3db0de2b81ec",
+  "libraryRevision": "58877fe7b1fec6959070044686dc4eb6b5768164",
+  "privateDependencyUnpublished": true,
+  "mobilePort": {
+    "sourceCommit": "52df4ee1e9239505719ac31d260a66e19f093299",
+    "files": {
+      "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/inspection/ApplicationNetworkInspection.kt": {
+        "mobileSha256": "9481525c7ad2f21f947e83272f71bb0e08ecede9ff3913b850ce17b20ff7ba43",
+        "starterSha256": "9481525c7ad2f21f947e83272f71bb0e08ecede9ff3913b850ce17b20ff7ba43",
+        "byteIdentical": true
+      },
+      "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/inspection/NetworkInspectionNavigation.kt": {
+        "mobileSha256": "572fba8ce24dd59262eb14415811456ca3b510a7712cb2a4a8fbc3420ca9039d",
+        "starterSha256": "572fba8ce24dd59262eb14415811456ca3b510a7712cb2a4a8fbc3420ca9039d",
+        "byteIdentical": true
+      },
+      "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/inspection/NetworkInspectionPage.kt": {
+        "mobileSha256": "86df2d77c45a2a89e9c70d7169fb8c54f0b26ed6c1f805b7d67283eab7ef464a",
+        "starterSha256": "86df2d77c45a2a89e9c70d7169fb8c54f0b26ed6c1f805b7d67283eab7ef464a",
+        "byteIdentical": true
+      },
+      "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/di/ApplicationNetworkInspectionModule.kt": {
+        "mobileSha256": "4ace374a31ea91dffafc0f07cde58e9cee62ae9c07658560168f0722823ddebe",
+        "starterSha256": "4ace374a31ea91dffafc0f07cde58e9cee62ae9c07658560168f0722823ddebe",
+        "byteIdentical": true
+      },
+      "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/di/ApplicationFirebaseModule.kt": {
+        "mobileSha256": "c0821d2f9e141caa17d90bb947fa4dec08f36eb076b95937e4e3ba6cb2d3a8a9",
+        "starterSha256": "bd4c0f3cb68d500ae917042f4fa3b0233ce1257d248b4d27a72848bf92c1011f",
+        "byteIdentical": false
+      },
+      "apps/shared/src/commonTest/kotlin/dev/fajar/starter/ApplicationNetworkInspectionTest.kt": {
+        "mobileSha256": "de01bf77d3fa6d3ea53f264ca225e75b6678f5286129d74d5492ad3c4ba594ab",
+        "starterSha256": "af88eacdbddf70a432f6ddedf9d10bb391cbdc37d3ca062fe892738f674b526e",
+        "byteIdentical": false
+      },
+      "apps/shared/src/desktopTest/kotlin/dev/fajar/starter/NetworkInspectionUiTest.kt": {
+        "mobileSha256": "cd953cb257134d4403984f3ab902dc7debc3e2759478af3e5faea28e5b35acdf",
+        "starterSha256": "cd953cb257134d4403984f3ab902dc7debc3e2759478af3e5faea28e5b35acdf",
+        "byteIdentical": true
+      }
+    }
+  },
+  "adaptations": [
+    "Use Starter Session constructor in lifetime fixture.",
+    "Keep optional inspection before final engineFactory so existing trailing-lambda callers compile; the identical correction passes two Mobile Ktor/Koin integration cases in focused-1."
+  ],
+  "checks": {
+    "startedAt": "2026-11-07T23:09:09.553293+00:00",
+    "exitCode": 0,
+    "wallSeconds": 61.419,
+    "inputsUnchanged": true,
+    "inputCount": 1031,
+    "libraryInputsUnchanged": true,
+    "libraryInputCount": 45,
+    "libraryRevision": "58877fe7b1fec6959070044686dc4eb6b5768164",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--dependency-verification",
+      "strict",
+      ":check",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:lintDevDebug",
+      ":apps:shared:wasmJsBrowserTest",
+      ":apps:shared:wasmJsBrowserDistribution",
+      ":apps:shared:compileKotlinIosArm64",
+      ":formatCheck",
+      ":architectureCheck",
+      ":detekt",
+      "-PnetworkInspectorDirectory=/home/fajar/hris/kmp-network-inspector",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--continue",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx2048m"
+    ]
+  },
+  "freshTestCounts": {
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "freshSuites": 4,
+  "reports": {
+    "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.app.bootstrap.AppViewModelTest.xml": {
+      "sha256": "92ac0d4bfaf606a775ea59cf4f6e5c013e1b193722c1d8bf3628d2cd4783dd19",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.app.navigation.PendingAppLinkTest.xml": {
+      "sha256": "658c761e1f81f2a29b15a8748464fe3f00a98f646d5bdaa184304683addaf84a",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.app.navigation.ResolveAppLinkTest.xml": {
+      "sha256": "012ea3e90add2d3ae6d885d9508cf8ea57a2fb64befbf9ce748bc4b95fe00c41",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.ApplicationNetworkInspectionTest.xml": {
+      "sha256": "fd9c32822f582ba02b263bab0e39dd9946d369cf540aa5c5b3d159f99ede41d2",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 44,
+    "sha256": "1219c9c772217d22481cdc0cb075b4739da601d0a369f7602885edcf158ab6e7"
+  },
+  "firstAttempt": {
+    "startedAt": "2026-11-07T22:41:47.828945+00:00",
+    "exitCode": -15,
+    "wallSeconds": 403.28,
+    "inputsUnchanged": true,
+    "inputCount": 1031,
+    "libraryInputsUnchanged": true,
+    "libraryInputCount": 45,
+    "libraryRevision": "58877fe7b1fec6959070044686dc4eb6b5768164",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--dependency-verification",
+      "strict",
+      ":check",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:lintDevDebug",
+      ":apps:shared:wasmJsBrowserTest",
+      ":apps:shared:wasmJsBrowserDistribution",
+      ":apps:shared:compileKotlinIosArm64",
+      ":formatCheck",
+      ":architectureCheck",
+      ":detekt",
+      "-PnetworkInspectorDirectory=/home/fajar/hris/kmp-network-inspector",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--continue",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx2048m"
+    ]
+  },
+  "secondAttempt": {
+    "startedAt": "2026-11-07T22:48:55.466381+00:00",
+    "exitCode": 1,
+    "wallSeconds": 611.48,
+    "inputsUnchanged": true,
+    "inputCount": 1031,
+    "libraryInputsUnchanged": true,
+    "libraryInputCount": 45,
+    "libraryRevision": "58877fe7b1fec6959070044686dc4eb6b5768164",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--dependency-verification",
+      "strict",
+      ":check",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:lintDevDebug",
+      ":apps:shared:wasmJsBrowserTest",
+      ":apps:shared:wasmJsBrowserDistribution",
+      ":apps:shared:compileKotlinIosArm64",
+      ":formatCheck",
+      ":architectureCheck",
+      ":detekt",
+      "-PnetworkInspectorDirectory=/home/fajar/hris/kmp-network-inspector",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--continue",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx2048m"
+    ],
+    "reports": {
+      "features/settings/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.settings.presentation.LanguageViewModelTest.xml": {
+        "sha256": "c6e864d92d2a111894da2c58fa4ebde282bbf723e7feda67117e30e5c2ceba40",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "features/security/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.security.presentation.lock.AppLockViewModelTest.xml": {
+        "sha256": "da7f4a8c8c638fb4f435555253a0ebf004700e00e0b70b0e356267017ed4f16b",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "features/onboarding/data/build/test-results/desktopTest/TEST-dev.fajar.starter.onboarding.data.StoredOnboardingRepositoryTest.xml": {
+        "sha256": "e339c8265b954d831f8c652dbc6f7c63d494547624146fbd98705223f51919f6",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "features/onboarding/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.onboarding.presentation.welcome.OnboardingViewModelTest.xml": {
+        "sha256": "cc676a5651196d17f601b6d083d988a73caa018b6c2879fe15d2398bccec974c",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "features/notifications/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.notifications.presentation.NotificationViewModelTest.xml": {
+        "sha256": "9da52ed5f6ea40458cb0322bffbd30d1e69fa248b01eb05d906911740a8974f7",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "features/files/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.files.presentation.FilesViewModelTest.xml": {
+        "sha256": "025c5aced995513b81ff4ed2a5a9fe5d1e90a9f37941b74efb158b31544c7b35",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "features/dashboard/data/build/test-results/desktopTest/TEST-dev.fajar.starter.dashboard.data.LocalFirstDashboardRepositoryTest.xml": {
+        "sha256": "bf72fac0d9d6663ea43a85d6dc87e9b238c262185f9068f6c94d4fec2fd3b24a",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "features/dashboard/domain/build/test-results/desktopTest/TEST-dev.fajar.starter.dashboard.domain.SyncDashboardTest.xml": {
+        "sha256": "cd23c52b2749b71bf57bf73ddbd09e118944cba71b54f17c5effa1e859a25856",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "features/dashboard/presentation/build/test-results/desktopTest/TEST-dev.fajar.starter.dashboard.presentation.home.DashboardViewModelTest.xml": {
+        "sha256": "e85f7495bdfaee5d4719baf61ebed2572d2332d25a547f026cb3a8aa0996a8c3",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AppFlowTest.xml": {
+        "sha256": "924d858f910ac9146aa57863e4e9876375ce0e40ad1727ba6e1182866ef97df7",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AppLinkFlowTest.xml": {
+        "sha256": "7c5e6a60ef495cdb4722dfb02641e5fb386cedde1b2628ae118f68b70abd77f2",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.ApplicationNetworkInspectionTest.xml": {
+        "sha256": "f1d2f53461224525212fcc892ccfd60e37baf69eb41bef995b224a74b5f743f2",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.BootstrapRecoveryTest.xml": {
+        "sha256": "b1f6d8e93ef8fecd063dfa3d4dcf0e53aea610003831c78c4caf50b747a3653e",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.CompactFiltersLayoutTest.xml": {
+        "sha256": "b56cac984bbbc2a94516fe569c0bb7e261b438b595014dd9f268687fe3613cf2",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.ContentTabsUiTest.xml": {
+        "sha256": "0e81067fb5d5dfafdebe1f3b665f48c428518370f05b6d895af1bf6ee3d001a2",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.DatePickerUiTest.xml": {
+        "sha256": "a0746c1a84fa7a03578431dcea652002bfbab506b9e802937b3029f5c0ca0b78",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FilterChipLabelUiTest.xml": {
+        "sha256": "9083fc297d90be4b8c89c51b4271e68ae706b999310ad97cc684b96f07027d96",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FirebaseProviderBindingsTest.xml": {
+        "sha256": "32630c1b8d77f7ca93c01aa7da43b0aab6193210b48c1466e9b38f9a7112afc0",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.FormChoiceLayoutTest.xml": {
+        "sha256": "0ab9f5f0fbb607168eaffc19192b9565ecc5a7b55ecbd37b0eefb3213b1aa889",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.LoadingUiTest.xml": {
+        "sha256": "1602317c2bfaf33dc6df0f29c41c5fbed2a761ca1672860c3c9a78211cbca48e",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.MonthPickerUiTest.xml": {
+        "sha256": "99832d3f67794145b79f3fee1baec7a2a8e2b11af3d8006a0dd72adb73f22eee",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.MotionUiTest.xml": {
+        "sha256": "c6f8806453f9bf3350bb9cf990d12bd5fd5f25bf9acf1df34ac6d78580c27e5b",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationBadgeUiTest.xml": {
+        "sha256": "633cacbe498401dcff9b0a3994bd2e74efa58ec6f8f17cefb8f332d601fa7478",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationOwnershipTest.xml": {
+        "sha256": "c3a6533f60fa675b45642ab72875aac6805956c0b48c4e7ec6abc7278724b630",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NavigationRestorationTest.xml": {
+        "sha256": "2380da5f7e7dabf898dc175a93856f8c5cf87866854d7671beabd8d845420f78",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NetworkInspectionUiTest.xml": {
+        "sha256": "429dda0eadd0a2496766fb3d1dee57ddb59d3ddc0de906727772f6767b3a0894",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.PageActionUiTest.xml": {
+        "sha256": "b75ddef4695de19f1f1cc729c10190892d768aec5aecf80f31c70fd5c4847a39",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.PageLayoutTest.xml": {
+        "sha256": "9a0d2d409a9c9bed2eacae1e09749cf5121b2aec97c3f1849ebb0a545dc91297",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.SearchAndFiltersUiTest.xml": {
+        "sha256": "d944b90ca64a34c25e59be78978d07c661111128091311fa9beaba5b6d676ccd",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.SwipeTabsUiTest.xml": {
+        "sha256": "ff3500d4a51db0aef97000aa8c97dd85f275c0dd1d930130176466d77d536858",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.TextFieldLayoutTest.xml": {
+        "sha256": "cb1e0278c97764a091f49d5000006699538aae6032264da1725942f401ae320e",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.TimeInputLayoutTest.xml": {
+        "sha256": "c005d9919312583675102cbb7a967379109d6d00a9012b381e28fdf872c2e356",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.bootstrap.AppViewModelTest.xml": {
+        "sha256": "ab59dcd0efa6e04a3f2bf2383fe6b4379f47c293ff43512a7096ccb23a887415",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.navigation.PendingAppLinkTest.xml": {
+        "sha256": "d197982bf84099c05f1e9f9c43c7b621f4ef56c19910f0f74cf2c32375b38538",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.app.navigation.ResolveAppLinkTest.xml": {
+        "sha256": "75df6788f9ad3bc72565107a5123072962c60f34e749856fbd040d8fac20ee12",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AdaptiveUiTest.xml": {
+        "sha256": "5842c95a7d2d9fa0c5ff1dde7dd5d9ae3a282fb90e0335fc0eee0fddd867c9e1",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "secondAttemptFailure": "Declared private-composite modules added seven local npm lock entries. All other results are retained; final gate validates the updated lock.",
+  "firstAttemptFailure": "FirebaseProviderBindingsTest trailing engine lambdas bound to newly appended inspection parameter. Explicitly stopped dependent work after compile failure; retained 335 completed fresh tests, not a full pass.",
+  "sourceFiles": {
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/di/ApplicationNetworkInspectionModule.kt": "4ace374a31ea91dffafc0f07cde58e9cee62ae9c07658560168f0722823ddebe",
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/inspection/ApplicationNetworkInspection.kt": "9481525c7ad2f21f947e83272f71bb0e08ecede9ff3913b850ce17b20ff7ba43",
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/inspection/NetworkInspectionNavigation.kt": "572fba8ce24dd59262eb14415811456ca3b510a7712cb2a4a8fbc3420ca9039d",
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/inspection/NetworkInspectionPage.kt": "86df2d77c45a2a89e9c70d7169fb8c54f0b26ed6c1f805b7d67283eab7ef464a",
+    "apps/shared/src/commonTest/kotlin/dev/fajar/starter/ApplicationNetworkInspectionTest.kt": "af88eacdbddf70a432f6ddedf9d10bb391cbdc37d3ca062fe892738f674b526e",
+    "apps/shared/src/desktopTest/kotlin/dev/fajar/starter/NetworkInspectionUiTest.kt": "cd953cb257134d4403984f3ab902dc7debc3e2759478af3e5faea28e5b35acdf",
+    "apps/shared/build.gradle.kts": "69703b11a1375f57bc4fb9c3ffd1dc31343dbf2113b2281acf870554894fc765",
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/di/AppContainer.kt": "da97b504d1560214d50826cc27110c760efa1d97d89c9d45149a4cb290a85b32",
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/di/ApplicationFirebaseModule.kt": "bd4c0f3cb68d500ae917042f4fa3b0233ce1257d248b4d27a72848bf92c1011f",
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/di/ApplicationNetworkModule.kt": "6da60870014360902af9cd8f7df45fde043b7a4f59d9dd9ac05adb6847f18552",
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/navigation/AppNavigation.kt": "a571e11d90a9e5998ce0607e5c4872eaefc9ad374db4280acd82ac090b5252e7",
+    "core/localization/src/commonMain/composeResources/values/strings_en.xml": "828b3cd568147bdd7d48354d103a8654226b47769dfcb6e62109a902437c4a21",
+    "core/localization/src/commonMain/composeResources/values/strings_id.xml": "0f210fc22e8ddb39705a5a8362be590cff905ac3ebc42d099602d142c56aabd9",
+    "core/localization/src/commonMain/kotlin/dev/fajar/starter/localization/AppString.kt": "b8c4524867894cc3f97a82828f32b2eaf3702de483b6560899e0cc063aec17e3",
+    "gradle/libs.versions.toml": "3e37e00effadd40ac2a6bbaab4aca8a53711b7c9ff7996f25a10221f10af8db9",
+    "gradle/verification-metadata.xml": "75b94ecd7540aac4872048138bfaa126a7d3357241e97997fdf35ac99a69c0f3",
+    "kotlin-js-store/wasm/package-lock.json": "71f04adad15d7406cee006db3157b833990cce3e66d350c374e9c1381416bd7f",
+    "settings.gradle.kts": "a73180e7858db56a61de9ff309c76b8ff60b998ed037efa9f5c46eea1c11a9c5"
+  },
+  "limitations": [
+    "Apple source compilation only; no new simulator or iPhone run.",
+    "Private library CI billing remains blocked; visibility unchanged.",
+    "No primary-branch promotion until distribution is available.",
+    "No capture-overhead or chat latency acceptance."
+  ],
+  "npmLockReview": {
+    "oldSha256": "1b054dce2ee64ac08b3a336f39525c620d9fd38d5664412a442515dfb553ff4f",
+    "newSha256": "71f04adad15d7406cee006db3157b833990cce3e66d350c374e9c1381416bd7f",
+    "changedPackageEntries": [
+      "",
+      "node_modules/kmp-network-inspector-compose",
+      "node_modules/kmp-network-inspector-core",
+      "node_modules/kmp-network-inspector-ktor",
+      "packages_imported/kmp-network-inspector-compose/0.1.0-SNAPSHOT",
+      "packages_imported/kmp-network-inspector-core/0.1.0-SNAPSHOT",
+      "packages_imported/kmp-network-inspector-ktor/0.1.0-SNAPSHOT"
+    ],
+    "registryPackageChanges": 0,
+    "scope": "Three declared local composite inspector workspaces only",
+    "reviewCorrection": "Initial review assertion expected root dependencies; generated npm lock uses workspaces. Initial assertion stopped before modifying tracked lock."
+  }
+}

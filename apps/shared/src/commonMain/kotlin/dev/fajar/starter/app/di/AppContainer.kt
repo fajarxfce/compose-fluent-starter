@@ -1,5 +1,6 @@
 package dev.fajar.starter.app.di
 
+import dev.fajar.inspector.NetworkInspection
 import dev.fajar.starter.auth.presentation.di.AuthPresentationModule
 import dev.fajar.starter.availability.data.di.AvailabilityDataModule
 import dev.fajar.starter.availability.presentation.di.AvailabilityPresentationModule
@@ -73,11 +74,18 @@ fun createAppContainer(
     fileOutputs: FileOutputSource = UnavailableFileOutputSource(),
     firebaseOptions: FirebaseClientOptionsSource = UnavailableFirebaseClientOptionsSource(),
     googleCredentials: GoogleCredentialSource = UnavailableGoogleCredentialSource(),
+    networkInspection: NetworkInspection? =
+        if (environment == AppEnvironment.Dev) NetworkInspection() else null,
 ) = koinApplication {
     modules(
         notificationPlatform,
-        applicationNetworkModule(environment),
-        applicationFirebaseModule(firebaseOptions, googleCredentials),
+        applicationNetworkModule(environment, networkInspection),
+        applicationNetworkInspectionModule(networkInspection),
+        applicationFirebaseModule(
+            firebaseOptions,
+            googleCredentials,
+            inspection = networkInspection,
+        ),
         TransferDataModule().module,
         FilesPresentationModule().module,
         SecurityPresentationModule().module,

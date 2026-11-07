@@ -5,6 +5,18 @@ import org.jetbrains.compose.resources.StringResource
 
 /** Explicit pairs keep runtime language changes portable across Android, iOS, desktop and Web. */
 enum class AppString(val english: StringResource, val indonesian: StringResource) {
+    NetworkInspectionTitle(
+        Res.string.network_inspection_title_en,
+        Res.string.network_inspection_title_id,
+    ),
+    NetworkInspectionDescription(
+        Res.string.network_inspection_description_en,
+        Res.string.network_inspection_description_id,
+    ),
+    NetworkInspectionClear(
+        Res.string.network_inspection_clear_en,
+        Res.string.network_inspection_clear_id,
+    ),
     FileSaveFailed(Res.string.file_save_failed_en, Res.string.file_save_failed_id),
     FileAlreadyExists(Res.string.file_already_exists_en, Res.string.file_already_exists_id),
     Files(Res.string.files_en, Res.string.files_id),

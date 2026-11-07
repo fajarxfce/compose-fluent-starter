@@ -1,4 +1,7 @@
 <resources>
+    <string name="network_inspection_title_id">Pemantau jaringan</string>
+    <string name="network_inspection_description_id">Periksa permintaan terbaru di perangkat ini.</string>
+    <string name="network_inspection_clear_id">Bersihkan</string>
     <string name="file_save_failed_id">File tidak dapat disimpan.</string>
     <string name="file_already_exists_id">File dengan nama ini sudah ada. Pilih nama lain.</string>
 

@@ -1,4 +1,7 @@
 <resources>
+    <string name="network_inspection_title_en">Network inspector</string>
+    <string name="network_inspection_description_en">Inspect recent requests on this device.</string>
+    <string name="network_inspection_clear_en">Clear</string>
     <string name="file_save_failed_en">The file could not be saved.</string>
     <string name="file_already_exists_en">A file with this name already exists. Choose another name.</string>
 

@@ -7,6 +7,9 @@ pluginManagement {
     }
 }
 
+// Until publication, the optional inspector candidate lives in a separate authorized checkout.
+providers.gradleProperty("networkInspectorDirectory").orNull?.let { includeBuild(it) }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {

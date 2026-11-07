@@ -3,6 +3,7 @@ package dev.fajar.starter.app.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -13,6 +14,7 @@ import dev.fajar.starter.app.bootstrap.AppEvent
 import dev.fajar.starter.app.bootstrap.AppStage
 import dev.fajar.starter.app.bootstrap.AppViewModel
 import dev.fajar.starter.app.bootstrap.BootstrapPage
+import dev.fajar.starter.app.inspection.*
 import dev.fajar.starter.auth.presentation.navigation.LoginRoute
 import dev.fajar.starter.auth.presentation.navigation.authRoutes
 import dev.fajar.starter.common.config.AppEnvironment
@@ -29,12 +31,15 @@ import dev.fajar.starter.onboarding.presentation.navigation.onboardingRoutes
 import dev.fajar.starter.security.presentation.navigation.AppLockSettings
 import dev.fajar.starter.settings.presentation.navigation.*
 import kotlinx.coroutines.flow.Flow
+import org.koin.compose.getKoin
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun AppNavigation(navigation: ScopedNavigationState, incomingLinks: Flow<String>) {
     val controller = navigation.controller
+    val koin = getKoin()
+    val inspection = remember(koin) { koin.getOrNull<ApplicationNetworkInspection>()?.inspection }
     val viewModel = koinViewModel<AppViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val environment = koinInject<AppEnvironment>()
@@ -101,7 +106,25 @@ fun AppNavigation(navigation: ScopedNavigationState, incomingLinks: Flow<String>
         }
         onboardingRoutes({ viewModel.onEvent(AppEvent.BootstrapRequested) })
         authRoutes()
-        settingsRoutes(securitySettings = { AppLockSettings() }) { controller.popBackStack() }
+        if (inspection != null) {
+            networkInspectionRoutes(inspection) { controller.popBackStack() }
+        }
+        settingsRoutes(
+            securitySettings = {
+                AppLockSettings()
+                if (inspection != null) {
+                    AppListRow(
+                        title = appString(AppString.NetworkInspectionTitle),
+                        supportingText = appString(AppString.NetworkInspectionDescription),
+                        onClick = {
+                            controller.navigate(NetworkInspectionRoute) { launchSingleTop = true }
+                        },
+                    )
+                }
+            }
+        ) {
+            controller.popBackStack()
+        }
         filesRoutes { controller.popBackStack() }
         dashboardRoutes(
             onNotifications = { controller.navigate(NotificationRoute) { launchSingleTop = true } },

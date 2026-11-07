@@ -1,5 +1,39 @@
 # Agent continuation — Compose Fluent Starter
 
+## Inspector port accepted — 7 November 2026, 23:11 UTC
+
+The feat/network-inspector-20261107 candidate fromb11437a passes the complete gate78354:
+61.419s,1,031 unchanged inputs/45 unchanged private-library inputs,10 fresh browser
+cases/4suites, zero failures/errors/skips. Root check, Android dev assembly/lint,
+actual browser tests, production web, iOS source compilation and quality gates pass.
+Lint has zero errors/44 existing warnings. Five generic files from Mobile52df4ee1 are
+identical; adapt the Session fixture and preserve Firebase's final engine-factory
+parameter. No Matrix SDK, HRIS policy or endpoint is present in this port.
+[Contract](network-inspector.md) / [exact evidence](measurements/network-inspector-port-2026-11-07.json).
+
+Check-1/74532 stopped after the Firebase trailing-lambda compile failure, retaining335
+passing fresh cases. Check-2/47979 passed87 fresh cases and all source/Android checks
+but required the three new local npm workspaces in the tracked lock. Both are reaped;
+the audited lock delta changes no registry package. Final check-3/78354 is reaped.
+Private library58877fe/productiona8d7d60 and SDK5 remain unpublished; visibility approval
+is unanswered. Do not promote this branch or copy private source into public CI.
+
+Mobile remains installed57 on the phone/original stopped Bima emulator; actual Ktor and
+Matrix capture and cold offline continuity are accepted. Its new uncommitted
+feat/chat-send-timing-20261107 candidate measures local send phases and adds generic
+typed-result observation. First focus59601 passed17 draft/send and2Firebase cases but
+one new exception test did not account for coroutine stacktrace recovery. Only that
+fixture is corrected; focused-2/8100 is the ONLY heavy local job. Mobile and private
+library source inputs are frozen; no emulator runs. After reaping, complete Mobile
+full checks, atomic commits/pushes, then build/probe/install58 and fix measured latency
+and keyboard handoff. Build58 scripts only exist; no APK58 or runtime acceptance yet.
+
+Continue the original54PRDgroups (none newly complete), Apple inspector bridge and
+overhead. API2e75fe1e/worker10485916/schema116.1 and disabled Group routing are unchanged;
+V117–138 remain undeployed. Push every accepted commit and notify before explicit
+phone install-only. Mobile's current handoff and owned check results supersede older
+process references below. No additional Starter compiler should run while8100 is active.
+
 ## Explicit Android notification retirement accepted — 7 November 2026
 
 One exact generic AndroidActionNotificationDisplaySource.kt from Mobile11e2b36bb6be72089d17418ce68e9edfe03c0e9c
