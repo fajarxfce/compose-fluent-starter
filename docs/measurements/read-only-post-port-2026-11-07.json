@@ -1,0 +1,56 @@
+{
+  "recordedAt": "2026-11-07T03:32:01.379544+00:00",
+  "port": {
+    "existing": {
+      "core/network/src/commonMain/kotlin/dev/fajar/starter/network/SessionAuthentication.kt": "6b4c9c5d565ef9f3d24278a4d571bbea3eb035f9c523d47850974b32f4a764dc"
+    },
+    "new": [
+      "core/network/src/commonTest/kotlin/dev/fajar/starter/network/ReadOnlyPostAuthenticationTest.kt"
+    ],
+    "applied": true,
+    "mobileAcceptanceRequired": true,
+    "mobileCommit": "c1410b31229541844b0d215d81faede385b432d6",
+    "files": {
+      "core/network/src/commonMain/kotlin/dev/fajar/starter/network/SessionAuthentication.kt": "dca92394a9fdeb6549bb8fb22022b8c510c811bc0258fd938fb848e1d1d6d682",
+      "core/network/src/commonTest/kotlin/dev/fajar/starter/network/ReadOnlyPostAuthenticationTest.kt": "47e3a1b7a75e6237f0d0a82a0132dce69a8339589b968975c313580cb23dbc8b"
+    }
+  },
+  "validation": {
+    "startedAt": "2026-11-07T03:26:20.799296+00:00",
+    "wallSeconds": 305.569,
+    "exitCode": 0,
+    "inputsUnchanged": true,
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--dependency-verification",
+      "strict",
+      ":check",
+      ":core:network:wasmJsBrowserTest",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:lintDevDebug",
+      ":apps:shared:wasmJsBrowserDistribution",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--continue",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m"
+    ]
+  },
+  "freshCounts": {
+    "tests": 194,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "freshSuites": 64,
+  "sourceFiles": 1025,
+  "sourceManifestSha256": "be1d59a4394ae42e89094597d5aa80ca9332cabbafe43cc16a1ccca6a5f73059",
+  "lintErrors": 0,
+  "lintWarnings": 44,
+  "detektFindings": 0,
+  "appleAcceptancePending": true,
+  "hrisPolicyPorted": false
+}

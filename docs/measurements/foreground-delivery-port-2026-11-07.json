@@ -63,6 +63,59 @@
   "lintErrors": 0,
   "lintWarnings": 44,
   "detektFindings": 0,
-  "appleAcceptancePending": true,
-  "hrisPolicyPorted": false
+  "appleAcceptancePending": false,
+  "hrisPolicyPorted": false,
+  "firstAppleAcceptance": {
+    "auditAt": "2026-11-07T03:23:19.024149+00:00",
+    "runId": 42331840556,
+    "headSha": "0002d102ba2dab693aef4173ab7b958d39ab7d03",
+    "conclusion": "success",
+    "url": "https://github.com/fajarxfce/compose-fluent-starter/actions/runs/42331840556",
+    "artifactId": 13558119586,
+    "artifactSha256": "6680c3547acadf552f77bb93fe106459efa99f1462ea328a7db41b7ad18798eb",
+    "artifactBytes": 170054,
+    "githubDigestVerified": true,
+    "counts": {
+      "tests": 154,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": 37,
+    "workerReports": {
+      "core/worker/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.starter.worker.CollapsedWorkGateTest.xml": {
+        "sha256": "a7ed16a51571efa1a167089a868a95ef82668e819c5d06fa78dce67f12b67f64",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/worker/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.starter.worker.ForegroundSyncWorkerTest.xml": {
+        "sha256": "eda9ffd74787357eba4a080017031909216958eb735b049f13cf7ea6b8ce8999",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "steps": {
+      "Set up job": "success",
+      "Run actions/checkout@v4": "success",
+      "Select Xcode 26.3": "success",
+      "Run actions/setup-java@v4": "success",
+      "Run gradle/actions/setup-gradle@v4": "success",
+      "Verify distribution configuration and shell entry points": "success",
+      "Prepare public app-link test registrations": "success",
+      "Compile iOS simulator tests": "success",
+      "Run iOS simulator tests": "success",
+      "Build iOS simulator app": "success",
+      "Verify generated Apple associations": "success",
+      "Run actions/upload-artifact@v4": "success",
+      "Post Run gradle/actions/setup-gradle@v4": "success",
+      "Post Run actions/setup-java@v4": "success",
+      "Post Run actions/checkout@v4": "success",
+      "Complete job": "success"
+    },
+    "otherJobs": "verify/windows skipped by explicit apple scope"
+  }
 }

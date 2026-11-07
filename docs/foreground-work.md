@@ -22,5 +22,8 @@ Starter's complete local gate passed in245.086seconds:90 fresh cases in29 suites
 zero failures/errors/skips,1024 stable inputs, zero Detekt findings and zero Android
 lint errors(44 existing warnings). Root checks, worker browser tests, Android
 compilation/lint and the production browser build passed. Apple CI now includes
-actual worker simulator tests; first-run Apple acceptance is pending.
+actual worker simulator tests. First Apple42331840556 on0002d102 passed154cases in37suites
+(including16worker cases), zero failures/errors/skips, simulator app build and Apple
+associations. Artifact13558119586SHA6680c3547acadf552f77bb93fe106459efa99f1462ea328a7db41b7ad18798eb
+was downloaded and matched against the GitHub digest.
 [Evidence](measurements/foreground-delivery-port-2026-11-07.json).

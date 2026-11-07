@@ -1,33 +1,45 @@
 # Agent continuation — Compose Fluent Starter
 
-## Current: foreground worker port accepted locally — 7 November 2026
+## Current: read-only POST auth port accepted locally — 7 November 2026, 03:32UTC
 
-Four exact generic worker source/test files from Mobile08545820 and explicit Apple
-worker CI targets passed local86151/check-1 in245.086s:90 fresh tests/29suites, zero
-failures/errors/skips,1024 stable inputs, zero Detekt and zero Android lint errors
-(44 existing warnings). Root checks, worker browser tests, Android compilation/lint
-and production browser distribution passed. [Contract](foreground-work.md),
-[evidence](measurements/foreground-delivery-port-2026-11-07.json). No HRIS policy or
-application lifecycle configuration was copied. Commit/push this accepted port, then
-dispatch FIRST Apple CI once; exact workflow includes actual core-worker simulator tests.
-No local build or emulator remains from this gate.
+Generic SessionAuthentication and ReadOnlyPostAuthenticationTest match accepted Mobile
+c1410b31229541844b0d215d81faede385b432d6 exactly. Explicit read-only POST permits one
+repeatable-body authentication replay; ordinary unsafe methods/streams, original scope
+and cancellation guards remain. No HRIS policy or endpoint copied. Apple CI adds
+core network simulator compilation/tests. [Contract](read-only-authentication.md).
 
-Mobile release53/source08545820 is installed on the phone after7,436fresh full cases
-and actual WorkManager proof(synthetic wake436ms while OS backoff remained). Original
-Bima data passed four offline/online entries and30s process stability. Phone install-only
-passed126.87s, exact APKhash/sameUID10962/first-install retained; no phone UI or new sends.
-Original pending latency report remains OPEN; optional user feedback is pending. Source
-Mobile CI-only7c1a7293 is pushed on temporaryfeat/chat-recovery-20261107; originprimary
-52ca0720 is docs above runtime085. Preserve first085 control42330502891 pending before
-another primary source push. Native42330503083/protocol42330502995 are running.
+Starter61036/check-1 PASSED305.569s:194fresh cases/64suites,1,025unchanged inputs,
+zero failures/errors/skips/Detekt or Android lint errors;44existing lint warnings.
+Root, network browser, Android compilation/lint and production web build passed.
+[Evidence](measurements/read-only-post-port-2026-11-07.json). Commit/push this accepted
+port and dispatch its FIRST Apple gate once. No Starter build or emulator remains.
 
-Mobile publication transport now has nine applied source/test files and four new cases,
-UNCOMMITTED/UNTESTED. Its focused/full gates are next and must run one at a time.
-Current Mobile handoff and .work/legacy-publication-transport-2026-11-07 carry details.
-Group e45a4313 preflight passed186domain/data and236API/full-worker cases; V117–137
-remain disabled/unshipped. Live API2e75fe1e/worker10485916/schema116.1 stays unchanged.
-SDK4 immutable. Continue owning recovery/adoption and all54communications PRD groups.
-Announce every explicitserial10.77.77.3:5555 install-only update; never drive phone UI.
+Prior worker port0002d102 FIRST Apple42331840556 PASSED and is audited:154cases in
+37suites,including16worker cases,zero failures/errors/skips; simulator app and generated
+Apple associations passed. Artifact13558119586SHA6680c3547acadf552f77bb93fe106459efa99f1462ea328a7db41b7ad18798eb
+matches GitHub REST. Original exact worker port local86151 passed90fresh cases/245.086s.
+Do not rerun either accepted result just to recreate evidence.
+
+Mobile publication transport c1410b31 passed6,096fresh cases/753suites/830.513s and is
+pushed to temporary/primary communications branches. Its initial two failed gates are
+retained. ONLY heavy local job29903 is Mobile runtime-transfer-flow/focused-1; eight
+source/CI files are FROZEN. It tests the owning publication → original private-store
+stop/join/stage → current admission → same-operation freeze → one drain flow, with
+fourteen domain cases and an application DI assertion. No product activation/adoption.
+
+Mobile53/source085 remains installed in place; original Bima data, phone UID and
+keys are preserved. Bima has a confirmed eligible device and matchedHTTP200; captured
+403s belong to another room with zero registered peers. Original phone latency is OPEN,
+optional user feedback pending; no agent phone UI or new sends. New c141 FIRST control
+42333989403 is PENDING and must be preserved before another primary source push;
+prior085 control runs, native446cases EACHABI and protocol14checks eachmode accepted.
+
+Main2af46918/Groupb8d15053 carry current checkpoints. Group e45a4313 preflight remains
+accepted; V117–137 disabled/unshipped. Live API2e75fe1e/worker10485916/schema116.1 stays
+unchanged. SDK4 immutable. Owning adoption, hard-parent recovery and all54groups remain
+unfinished. Continue authorized work, push each commit, announce every install to
+10.77.77.3:5555 with --install-only, never drive phone UI. Read current Mobile handoff
+before starting any heavy job.
 
 
 ## Current: quality-source scope port and first Apple CI accepted — 6 November 2026
