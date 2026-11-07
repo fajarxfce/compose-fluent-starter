@@ -1,5 +1,16 @@
 # Downstream development
 
+## Foreground scheduling — 7 November 2026
+
+Four exact core-worker files from accepted HRIS Mobile08545820 add a host wake
+callback, nonblocking conflated signals and startup wake coalescing, with cancellation,
+backoff interruption and concurrency regressions. Application-specific task selection
+and process lifecycle wiring remain downstream. Starter passed90 fresh local cases,
+root/worker browser/Android/production Web checks, zero lint errors and1024 stable inputs.
+Apple worker test targets are now explicit; Apple execution remains separate acceptance.
+[Contract](foreground-work.md), [evidence](measurements/foreground-delivery-port-2026-11-07.json).
+
+
 ## Private quality-source scope — 6 November 2026
 
 The exact Mobile 5081e629 quality convention excludes private `.work` files from

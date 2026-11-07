@@ -1,0 +1,68 @@
+{
+  "recordedAt": "2026-11-07T02:58:33.242386+00:00",
+  "port": {
+    "mobileCommit": "08545820c0b58f46d784971e71ceb207dd628c0f",
+    "files": [
+      {
+        "path": "core/worker/src/androidMain/kotlin/dev/fajar/starter/worker/AndroidWorkScheduler.kt",
+        "sameBase": true,
+        "candidateSha256": "7d285559b5cbed6ee4c1bc7197bb2d68834141e5d0909e3414665e3a6e876e85"
+      },
+      {
+        "path": "core/worker/src/commonMain/kotlin/dev/fajar/starter/worker/ForegroundWorkScheduler.kt",
+        "sameBase": true,
+        "candidateSha256": "c8f9a4cffdbb247ea6f0a312acc43567d6c793024e23198715e2ebcdf5aab5e7"
+      },
+      {
+        "path": "core/worker/src/commonMain/kotlin/dev/fajar/starter/worker/ForegroundSyncWorker.kt",
+        "sameBase": true,
+        "candidateSha256": "3461b1a47336fa3613ca4ee54f40c9889a2daf9bb18a909f77013e6aa44155d3"
+      },
+      {
+        "path": "core/worker/src/commonTest/kotlin/dev/fajar/starter/worker/ForegroundSyncWorkerTest.kt",
+        "sameBase": true,
+        "candidateSha256": "e096c80c6644f9cc97911a9e974d2c62b15aac203998f05db841ed5d147b5da4"
+      }
+    ],
+    "applied": true,
+    "appleWorkerTestsAdded": true
+  },
+  "validation": {
+    "startedAt": "2026-11-07T02:53:20.433485+00:00",
+    "wallSeconds": 245.086,
+    "exitCode": 0,
+    "inputsUnchanged": true,
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--dependency-verification",
+      "strict",
+      ":check",
+      ":core:worker:wasmJsBrowserTest",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:lintDevDebug",
+      ":apps:shared:wasmJsBrowserDistribution",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--continue",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m"
+    ]
+  },
+  "freshCounts": {
+    "tests": 90,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "freshSuites": 29,
+  "sourceFiles": 1024,
+  "sourceManifestSha256": "31f4393afadbe17dd1eb4d3422f16b3346cc5e76b5b09f43a237875628ffde97",
+  "lintErrors": 0,
+  "lintWarnings": 44,
+  "detektFindings": 0,
+  "appleAcceptancePending": true,
+  "hrisPolicyPorted": false
+}

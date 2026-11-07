@@ -1,5 +1,35 @@
 # Agent continuation — Compose Fluent Starter
 
+## Current: foreground worker port accepted locally — 7 November 2026
+
+Four exact generic worker source/test files from Mobile08545820 and explicit Apple
+worker CI targets passed local86151/check-1 in245.086s:90 fresh tests/29suites, zero
+failures/errors/skips,1024 stable inputs, zero Detekt and zero Android lint errors
+(44 existing warnings). Root checks, worker browser tests, Android compilation/lint
+and production browser distribution passed. [Contract](foreground-work.md),
+[evidence](measurements/foreground-delivery-port-2026-11-07.json). No HRIS policy or
+application lifecycle configuration was copied. Commit/push this accepted port, then
+dispatch FIRST Apple CI once; exact workflow includes actual core-worker simulator tests.
+No local build or emulator remains from this gate.
+
+Mobile release53/source08545820 is installed on the phone after7,436fresh full cases
+and actual WorkManager proof(synthetic wake436ms while OS backoff remained). Original
+Bima data passed four offline/online entries and30s process stability. Phone install-only
+passed126.87s, exact APKhash/sameUID10962/first-install retained; no phone UI or new sends.
+Original pending latency report remains OPEN; optional user feedback is pending. Source
+Mobile CI-only7c1a7293 is pushed on temporaryfeat/chat-recovery-20261107; originprimary
+52ca0720 is docs above runtime085. Preserve first085 control42330502891 pending before
+another primary source push. Native42330503083/protocol42330502995 are running.
+
+Mobile publication transport now has nine applied source/test files and four new cases,
+UNCOMMITTED/UNTESTED. Its focused/full gates are next and must run one at a time.
+Current Mobile handoff and .work/legacy-publication-transport-2026-11-07 carry details.
+Group e45a4313 preflight passed186domain/data and236API/full-worker cases; V117–137
+remain disabled/unshipped. Live API2e75fe1e/worker10485916/schema116.1 stays unchanged.
+SDK4 immutable. Continue owning recovery/adoption and all54communications PRD groups.
+Announce every explicitserial10.77.77.3:5555 install-only update; never drive phone UI.
+
+
 ## Current: quality-source scope port and first Apple CI accepted — 6 November 2026
 
 Starter program5fb4eca355e3d3761c0c976c42b4386a3c7e31aa is committed/pushed. The exact
