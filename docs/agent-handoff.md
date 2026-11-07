@@ -1,45 +1,51 @@
 # Agent continuation — Compose Fluent Starter
 
-## Current: read-only POST auth port accepted locally — 7 November 2026, 03:32UTC
+## Current: explicit failure outcome port accepted locally — 7 November 2026, 04:09UTC
 
-Generic SessionAuthentication and ReadOnlyPostAuthenticationTest match accepted Mobile
-c1410b31229541844b0d215d81faede385b432d6 exactly. Explicit read-only POST permits one
-repeatable-body authentication replay; ordinary unsafe methods/streams, original scope
-and cancellation guards remain. No HRIS policy or endpoint copied. Apple CI adds
-core network simulator compilation/tests. [Contract](read-only-authentication.md).
+Two exact observability files from accepted Mobile780624a42cd0c39c8e0eb2daa8f4d9b47dc90dd0
+(explicit failure fix c50a8983) retain Failed on the exception path and rethrow the
+original exception. The suspended dispatcher-hop regression is included. Apple CI
+now compiles/runs core observability alongside network. No HRIS policy was ported.
 
-Starter61036/check-1 PASSED305.569s:194fresh cases/64suites,1,025unchanged inputs,
-zero failures/errors/skips/Detekt or Android lint errors;44existing lint warnings.
-Root, network browser, Android compilation/lint and production web build passed.
-[Evidence](measurements/read-only-post-port-2026-11-07.json). Commit/push this accepted
-port and dispatch its FIRST Apple gate once. No Starter build or emulator remains.
+Starter94353 PASSED295.556s:293fresh cases/93suites,1,025 stable inputs,zero failures/
+errors/skips/Detekt or lint errors;44existing Android warnings. Root, network and
+observability browser, Android and production Web checks passed. Private actual gate
+is .work/native-failure-outcome-port-2026-11-07/check-check-1. An initial launcher call
+omitted its argument and failed before invoking Gradle; retained separately, no test
+rerun. [Evidence](measurements/native-failure-outcome-port-2026-11-07.json).
 
-Prior worker port0002d102 FIRST Apple42331840556 PASSED and is audited:154cases in
-37suites,including16worker cases,zero failures/errors/skips; simulator app and generated
-Apple associations passed. Artifact13558119586SHA6680c3547acadf552f77bb93fe106459efa99f1462ea328a7db41b7ad18798eb
-matches GitHub REST. Original exact worker port local86151 passed90fresh cases/245.086s.
-Do not rerun either accepted result just to recreate evidence.
+Commit/push this accepted port, then dispatch ONE NEW first Apple CI for the changed
+source. Keep the original first failure:42334504381/sourcefdbff51 failed the unchanged
+HttpDiagnosticsTest.transportFailureAndCancellationBothFinishTheirSamples assertion,
+expected[Failed,Cancelled],actual[null,Cancelled].191cases/48suites,1failure,zero errors/
+skips; all three read-only POST tests passed. Artifact13559650754SHA
+ d7d3ad4c308a9537cc6901c1f35cdf60d4ac563b9ee3203ca68497bf770d9028 matches GitHub REST.
+The later app/associations steps were skipped. Changed-source Apple acceptance remains
+REQUIRED; no precise Native compiler cause or phone latency fix is claimed.
 
-Mobile publication transport c1410b31 passed6,096fresh cases/753suites/830.513s and is
-pushed to temporary/primary communications branches. Its initial two failed gates are
-retained. ONLY heavy local job29903 is Mobile runtime-transfer-flow/focused-1; eight
-source/CI files are FROZEN. It tests the owning publication → original private-store
-stop/join/stage → current admission → same-operation freeze → one drain flow, with
-fourteen domain cases and an application DI assertion. No product activation/adoption.
+Prior worker0002d102 first Apple42331840556 PASSED154cases/37suites including16worker
+cases, simulator app/associations and verified artifact13558119586. Prior authfdbff51
+local61036 passed194cases/305.569s; its Apple failure remains in the auth measurement.
 
-Mobile53/source085 remains installed in place; original Bima data, phone UID and
-keys are preserved. Bima has a confirmed eligible device and matchedHTTP200; captured
-403s belong to another room with zero registered peers. Original phone latency is OPEN,
-optional user feedback pending; no agent phone UI or new sends. New c141 FIRST control
-42333989403 is PENDING and must be preserved before another primary source push;
-prior085 control runs, native446cases EACHABI and protocol14checks eachmode accepted.
+Mobile primary/temp780624a4 now include owning transfer41870, diagnosticc50 and strict
+adoption credential envelope/persistence780624. Combined full86974 passed3,159fresh/
+454suites/466.159s,4,282stable inputs,zero all. No actual native SDK adoption or group
+activation. FIRST780 control42336761340/native42336761242 are PENDING behind IN_PROGRESS
+c141 control42333989403/native42333989369. Do not supersede a first pending source run.
+ONLY heavy local job4465 is Mobile space-runtime-ownership/focused-1; its three applied
+registry/test files are FROZEN. No emulator. It isolates logical Space ownership from
+physical original-store and selected HR-company ownership; actual adoption follows.
 
-Main2af46918/Groupb8d15053 carry current checkpoints. Group e45a4313 preflight remains
-accepted; V117–137 disabled/unshipped. Live API2e75fe1e/worker10485916/schema116.1 stays
-unchanged. SDK4 immutable. Owning adoption, hard-parent recovery and all54groups remain
-unfinished. Continue authorized work, push each commit, announce every install to
-10.77.77.3:5555 with --install-only, never drive phone UI. Read current Mobile handoff
-before starting any heavy job.
+Release53/source085 remains installed, original Bima data/keys and phoneUID10962
+preserved. Bima has a confirmed eligible device and matchedHTTP200; four captured403s
+belong to another room with no registered peer devices. Physical pending latency is
+OPEN and optional feedback is pending; no new phone UI/actions or agent sends. Announce
+each installation; explicit10.77.77.3:5555 and --install-only. SDK4 stays immutable.
+
+Group e45a4313 remains accepted;V117–137 disabled/unshipped. LiveAPI2e75fe1e/worker10485916/
+schema116.1 unchanged. Read the current Mobile handoff before another heavy task.
+Continue owning runtime adoption, root routing, hard-parent recovery and all54groups;
+push every commit. Main/Group checkpoints from03:30 are historical.
 
 
 ## Current: quality-source scope port and first Apple CI accepted — 6 November 2026

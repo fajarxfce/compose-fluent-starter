@@ -1,5 +1,15 @@
 # Downstream development
 
+## Explicit failed performance samples — 7 November 2026
+
+Two exact observability files from Mobile c50a8983 (accepted together with the
+adoption work at 780624a4) record failure on the exception path while preserving the
+exception and cancellation semantics. Starter independently passed 293 fresh cases,
+root/browser/Android/production Web checks and lint with no errors. The first prior
+Apple failure remains recorded; a new first Apple run will verify the changed source
+against the original unchanged network assertion. No HRIS policy was copied.
+[Evidence](measurements/native-failure-outcome-port-2026-11-07.json).
+
 ## Foreground scheduling — 7 November 2026
 
 Four exact core-worker files from accepted HRIS Mobile08545820 add a host wake

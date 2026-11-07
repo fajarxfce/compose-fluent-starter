@@ -1,0 +1,79 @@
+{
+  "recordedAt": "2026-11-07T04:09:11.149781+00:00",
+  "port": {
+    "existing": {
+      "core/observability/src/commonMain/kotlin/dev/fajar/starter/observability/MeasureOperation.kt": "bdedb532e0fa4b12c3a8699af34d04037958097f059001d9e98eafdeb4f3561f",
+      "core/observability/src/commonTest/kotlin/dev/fajar/starter/observability/PerformanceTest.kt": "fca0cd83bc28af890873ff132dcbec6ba72fec7f185f700e8c88388cfc2bb455"
+    },
+    "new": [],
+    "applied": true,
+    "mobileCommit": "780624a42cd0c39c8e0eb2daa8f4d9b47dc90dd0",
+    "files": {
+      "core/observability/src/commonMain/kotlin/dev/fajar/starter/observability/MeasureOperation.kt": "4e6306b38d5c6171bd7ea6ca2ad9ea7343c55f8c2ff66617455d4eda980a8f7b",
+      "core/observability/src/commonTest/kotlin/dev/fajar/starter/observability/PerformanceTest.kt": "602a1b240c71e32253358606b5d5fff88176f5d85d91316273650fc2cb5e5ffe"
+    }
+  },
+  "validation": {
+    "startedAt": "2026-11-07T04:03:58.958313+00:00",
+    "wallSeconds": 295.556,
+    "exitCode": 0,
+    "inputsUnchanged": true,
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--dependency-verification",
+      "strict",
+      ":check",
+      ":core:network:wasmJsBrowserTest",
+      ":core:observability:wasmJsBrowserTest",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:lintDevDebug",
+      ":apps:shared:wasmJsBrowserDistribution",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--continue",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m"
+    ]
+  },
+  "freshCounts": {
+    "tests": 293,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "freshSuites": 93,
+  "sourceFiles": 1025,
+  "sourceManifestSha256": "da35e74f92646a112d624a0e52cd012678a460a713ebb55cbbf25bed50ecdfb6",
+  "lintErrors": 0,
+  "lintWarnings": 44,
+  "detektFindings": 0,
+  "appleAcceptancePending": true,
+  "hrisPolicyPorted": false,
+  "originalAppleFailure": {
+    "recordedAt": "2026-11-07T03:50:01.398923+00:00",
+    "runId": 42334504381,
+    "headSha": "fdbff51fd09605a2dba546ce9020b595f467c26c",
+    "conclusion": "failure",
+    "artifactId": 13559650754,
+    "artifactSha256": "d7d3ad4c308a9537cc6901c1f35cdf60d4ac563b9ee3203ca68497bf770d9028",
+    "githubDigestVerified": true,
+    "counts": {
+      "tests": 191,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": 48
+  },
+  "originalFailedTest": "HttpDiagnosticsTest.transportFailureAndCancellationBothFinishTheirSamples",
+  "originalFailedAssertionUnchanged": true,
+  "launcherAttempts": {
+    "firstInvocation": "check.py without required argument",
+    "outcome": "IndexError before creating a gate directory or invoking Gradle",
+    "actualGateDirectory": "check-check-1",
+    "rerunOfTests": false
+  }
+}

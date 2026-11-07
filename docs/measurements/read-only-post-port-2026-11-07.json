@@ -51,6 +51,26 @@
   "lintErrors": 0,
   "lintWarnings": 44,
   "detektFindings": 0,
-  "appleAcceptancePending": true,
-  "hrisPolicyPorted": false
+  "appleAcceptancePending": false,
+  "hrisPolicyPorted": false,
+  "firstAppleGate": {
+    "recordedAt": "2026-11-07T03:50:01.398923+00:00",
+    "runId": 42334504381,
+    "headSha": "fdbff51fd09605a2dba546ce9020b595f467c26c",
+    "conclusion": "failure",
+    "artifactId": 13559650754,
+    "artifactSha256": "d7d3ad4c308a9537cc6901c1f35cdf60d4ac563b9ee3203ca68497bf770d9028",
+    "githubDigestVerified": true,
+    "counts": {
+      "tests": 191,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": 48,
+    "originalAssertion": "Expected [Failed, Cancelled], actual [null, Cancelled]",
+    "readOnlyPostTestsPassed": 3,
+    "simulatorAppAndAssociationsSkipped": true
+  },
+  "nextCorrectionEvidence": "native-failure-outcome-port-2026-11-07.json"
 }

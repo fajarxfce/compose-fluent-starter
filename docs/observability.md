@@ -1,5 +1,13 @@
 # Observability
 
+`measureOperation` explicitly records `Failed` when a non-cancellation exception
+escapes after suspension and rethrows the original exception. Cancellation remains
+separate. The original Apple network regression exposed a null failure sample; its
+assertion remains unchanged and a dispatcher-hop regression supplements it.
+[Port evidence](measurements/native-failure-outcome-port-2026-11-07.json) retains
+that first failure and the accepted local checks. Apple verification of the changed
+source remains pending; no precise Native compiler cause is claimed.
+
 `core/observability` exposes a process-owned structured diagnostic sink. Platform
 hosts install it before creating the application container. Desktop and Web use
 JSON console output. Android and iOS also integrate Firebase Crashlytics.
