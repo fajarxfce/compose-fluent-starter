@@ -1,5 +1,34 @@
 # Agent continuation — Compose Fluent Starter
 
+## Explicit Android notification retirement accepted — 7 November 2026
+
+One exact generic AndroidActionNotificationDisplaySource.kt from Mobile11e2b36bb6be72089d17418ce68e9edfe03c0e9c
+is applied and accepted. SourceSHA40c075305ed7065dba966a92838dd386cc696a23c4a6a76c0e9f0f276b05f91c.
+The public600ms OS fallback remains; confirmed neutral publication now precedes600ms
+reply grace and explicit cancellation, with the same1s publication/absence bounds and
+inventory retained through cancellation. HRIS fixture/callback policy is not copied.
+[Evidence](measurements/notification-retirement-port-2026-11-07.json).
+
+Starter20692 PASSED64.236s,1,025stable inputs,root/Android dev assembly+lint,0fresh XML
+(reused),zero lint errors/Detekt,44existing lint warnings. No heavy job or emulator.
+Mobile first reproduced old confirmRemoved failure under delayed OS expiry, then
+native27900 passed156.823s:18raw/4runtime,3ordinary process kills,5actions with SystemUI
+Reply. All3screenshots inspected; own card/editor/keyboard gone, unrelated system card
+preserved. Owned fixture and emulator stopped. Common/Apple source/API unchanged;
+previous f25 first Apple acceptance is retained without repeating unrelated execution.
+Commit/push this one-source port and docs explicitly from03ebcde. No phone install.
+
+Mobile11e2b36b is pushed on feat/chat-recovery-20261107; primary05de waits for its FIRST
+pending control42348626104/native42348626124 to start before another primary promotion.
+Protocol42348626066 is accepted/audited14checks each with14pinned source hashes. FIRST1bb
+control/native still run; original ARM raw failure is retained, not rerun for evidence.
+Read Mobile handoff before another heavy job. Next immutable original queue/application
+matching, admission, history/publication, native-parent recovery and all54groups remain.
+Phone53 latency/optional feedback OPEN; Bima has1active device,50initial keys/1fallback,
+no requirement to stay online. No SDK4 rebuild, original Bima reset, phone UI or live
+V117–137 activation. Main3dc28446/Group66d2598d checkpoints are pushed. Older sections below
+are historical. Push each commit and announce every future explicit phone install-only.
+
 ## Current: failure-outcome port and first Apple accepted — 7 November 2026, 04:39UTC
 
 Starter programf25cb3de4d8f18a7cf95ec956dea5a7485f92623 is pushed and accepted. The two

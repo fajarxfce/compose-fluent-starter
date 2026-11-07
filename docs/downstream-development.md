@@ -1,5 +1,15 @@
 # Downstream development
 
+## Explicit Android notification retirement — 7 November 2026
+
+One exact generic adapter from Mobile11e2b36b preserves OS fallback expiry while
+explicitly canceling after confirmed neutral publication and inline-reply grace.
+Downstream native fault/cancellation/SystemUI cases pass before the port; independent
+Starter root and Android build/lint pass64.236s,1,025 stable inputs, reused XML,zero
+errors/44 existing lint warnings. Common/Apple sources are unchanged.
+[Evidence](measurements/notification-retirement-port-2026-11-07.json); HRIS proof and
+callback policy remain downstream.
+
 ## Explicit failed performance samples — 7 November 2026
 
 Two exact observability files from Mobile c50a8983 (accepted together with the

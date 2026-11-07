@@ -1,0 +1,60 @@
+{
+  "recordedAt": "2026-11-07T07:18:10.165177+00:00",
+  "baseCommit": "03ebcde59dbe8a6e09b8178ae6416db57fe65000",
+  "mobileCommit": "11e2b36bb6be72089d17418ce68e9edfe03c0e9c",
+  "sourcePath": "core/notifications/data/src/androidMain/kotlin/dev/fajar/starter/notifications/data/datasources/AndroidActionNotificationDisplaySource.kt",
+  "beforeSha256": "06c65a6d23eaa4035783acaf737a2fe29f60e48e3aff1f00c934f5dab371136b",
+  "sourceSha256": "40c075305ed7065dba966a92838dd386cc696a23c4a6a76c0e9f0f276b05f91c",
+  "mobileEvidenceSha256": "b2307ee40c26c2f1e0fce12cea9b275007b28b2160ccdf2fbd079db5ec3da715",
+  "appleCommonUnchanged": true,
+  "downstreamNativeComplete": true,
+  "check": {
+    "startedAt": "2026-11-07T07:16:13.880357+00:00",
+    "exitCode": 0,
+    "wallSeconds": 64.236,
+    "inputsUnchanged": true,
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--dependency-verification",
+      "strict",
+      ":check",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:lintDevDebug",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--continue",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m"
+    ]
+  },
+  "sourceInputs": 1025,
+  "sourceManifestSha256": "dc081b10a3c1473bc80d8b09deaf81f7b3e12bc103c47f47ff8a36ec44597cf0",
+  "gradleLogSha256": "523dd6dcae6cec00510e824dd19544d43f8cdcf2f257d9f6933d2a20428cf955",
+  "freshSuites": 0,
+  "freshCounts": {
+    "tests": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "hostXmlReused": true,
+  "lintSeverities": {
+    "Warning": 44
+  },
+  "detektFindings": 0,
+  "mobileEvidence": "https://github.com/fajarxfce/hris-mobile/blob/11e2b36bb6be72089d17418ce68e9edfe03c0e9c/docs/measurements/native-notification-retirement-2026-11-07.json",
+  "mobileNativeSeconds": 156.823,
+  "mobileRawCases": 18,
+  "mobileRuntimeCases": 4,
+  "mobileOrdinaryProcessKills": 3,
+  "mobileActionCallbacks": 5,
+  "mobileSystemUiReplyAccepted": true,
+  "mobileScreenshotsInspected": 3,
+  "appleSourcesChanged": false,
+  "appleRunRepeated": false,
+  "hrisPolicyCopied": false,
+  "phoneInstalled": false
+}

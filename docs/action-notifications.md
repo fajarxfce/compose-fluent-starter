@@ -20,7 +20,10 @@ closed while allowing best-effort cleanup of visible owned cards.
 
 Android can retain inline reply history after cancel. Visible owned cards are
 replaced with silent, empty, actionless updates using the public 600 ms OS expiry.
-The adapter confirms publication and native absence before dropping inventory;
+After confirmed neutral publication, the adapter allows600ms of inline-reply grace
+and explicitly cancels the card, then confirms actual absence before dropping inventory.
+The OS expiry remains a process-death fallback; foreground removal no longer depends
+on its timely execution. Cancellation preserves inventory for a separate retry;
 namespace retirement is batched. Mobile's actual API35 SystemUI proof separately
 verifies that the original card, reply history and editor disappear. Other OEMs and
 failure timing remain separate integration checks.
@@ -33,3 +36,12 @@ the generated APK is not installed. [Full hosted Apple](measurements/action-noti
 also passes:112 simulator cases/30 suites, including the ten new common contracts,
 and a complete Xcode application build. All32 source hashes and the downloaded
 artifact digest are verified.
+
+The [explicit retirement port](measurements/notification-retirement-port-2026-11-07.json)
+copies the one Android adapter from accepted Mobile11e2b36b. Mobile first reproduces
+the delayed-expiry failure, then verifies explicit removal/namespace clear with the
+neutral timeout postponed to60seconds, cancellation/recovery, ordinary process deaths
+and actual SystemUI reply/card/editor disappearance. Three screenshots were inspected.
+Starter independently passes root and Android build/lint in64.236s with unchanged
+inputs, reused host XML, zero lint errors and44 existing warnings. Common/Apple sources
+and APIs are unchanged, so no new Apple execution or HRIS callback policy is claimed.
