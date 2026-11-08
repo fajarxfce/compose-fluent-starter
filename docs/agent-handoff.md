@@ -1,5 +1,23 @@
 # Agent continuation — Compose Fluent Starter
 
+## Replica query snapshot port accepted — 8 November 2026, 08:06 UTC
+
+Check-1/session28455 reapedPASS284.356s:236fresh cases/72suites, zero failures/errors/skips,
+1,042 unchanged inputs and49 unchanged library inputs at2b849217. SQLite contract3 and actual
+Chrome replica5 pass, with root checks, Android assembly/lint, production web, iOS source and
+quality checks. Lint has zero errors and45 dependency-version advisories. No native Apple
+execution. [Exact evidence](measurements/replica-query-port-2026-11-08.json).
+
+Two exact generic files from accepted Mobile a2e040a0 raise only the aggregate query budget
+from200 to400; max4 windows and max200 each remain. No HRIS policy or configuration. Commit
+and push this accepted port. The earlier inspector port is already committed/pushed at a21b748.
+No Starter compiler/emulator remains. Mobile's only compiler is composer-input focused-1,
+session31955; its new exact command observer and editing actor are unaccepted work. Do not
+copy those yet. Phone and stopped original Bima image remain accepted65. Continue Mobile UI
+adoption, preserving all originals. Never resend old test messages. Read Mobile handoff and
+private current note before starting another heavy job; one compiler OR emulator.
+
+
 ## Inspector notification and passive identity port accepted — 8 November 2026, 02:39 UTC
 
 Check-2/session6244 is reaped and passes888.607s:440 fresh cases/138 suites, zero
