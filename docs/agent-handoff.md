@@ -1,5 +1,26 @@
 # Agent continuation — Compose Fluent Starter
 
+## Scheduling timing port accepted — 8 November 2026, 10:41 UTC
+
+Three generic files exactly match accepted Mobile b4b25259: the closed operation names,
+existing lazy scheduling measurement and its three behavior tests. No HRIS policy is
+ported. Check-1/session76787 is REAPED PASS447.020s:280 fresh cases/91 suites, zero
+failures/errors/skips,1,046 unchanged app inputs and49 unchanged library inputs.
+Actual Chrome and desktop each run all3 new scheduler cases. Root, Android assembly/
+lint, production web, iOS source and quality pass. Lint0errors/45 existing advisories.
+[Exact port and reports](measurements/scheduling-timing-port-2026-11-08.json).
+
+Mobile67 is now accepted on the retained emulator and installed in place on the phone,
+with exact APK hash/data continuity and no phone UI automation. Mobile10d104ca records
+the evidence. Pending latency is still open: one emulator sample took2663ms before
+the encrypted request,197ms to headers; local scheduling2ms/handoff90ms. The180s counter
+has no403 and one encrypted200. No emulator or Starter compiler remains. Original54
+PRD groups and SDK/library publication remain open.
+
+The sole owned heavy job is Platform direct-transport gate-1/session32674. Its new
+one-transaction native device/room read is UNACCEPTED and not deployed; do not infer
+client adoption or latency gains. Read Platform/Mobile current work before compiling.
+
 ## Exact command observer port accepted — 8 November 2026, 09:35 UTC
 
 Nine core database files are exact copies from accepted Mobile a923d844; all six prior

@@ -1,5 +1,13 @@
 # Observability
 
+`PlatformSyncScheduleRepository.request` measures the existing lazy scheduler acquisition
+and mapped result as `WorkScheduling`. It neither retries nor logs the task key or
+exception message. Cancellation propagates and completes its span once. The generic
+`CommandHandoff` name is also available for application-owned durable handoffs; this
+starter does not gain HRIS composer policy. The exact three-file downstream port passes
+desktop/browser behavior cases and the full build checks in
+[this measurement](measurements/scheduling-timing-port-2026-11-08.json).
+
 `measureOperation` explicitly records `Failed` when a non-cancellation exception
 escapes after suspension and rethrows the original exception. Cancellation remains
 separate. The original Apple network regression exposed a null failure sample; its
