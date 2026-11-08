@@ -1,5 +1,22 @@
 # Agent continuation — Compose Fluent Starter
 
+## Local read timing names accepted — 8 November 2026, 13:43 UTC
+
+One enum file exactly matches Mobilee457e367 accepted on release69 and retained in70.
+WorkspaceRead/LocalAccessRead are closed operation names only; no HRIS workspace
+module, runtime behavior or policy is copied. Check87820 REAPED PASS439.630s:
+285 fresh cases,93 suites, zero failures/errors/skips;1,046app/49library inputs
+unchanged. Root, actual Chrome, Android assembly/lint, production web, iOS source
+and quality checks pass. [Exact evidence](measurements/local-read-timing-port-2026-11-08.json).
+No owned compiler/emulator remains. Commit/push this accepted port.
+
+Mobile70 is installed in place on the phone and original Bima emulator70 is stopped.
+Sourcee8f94854 plus Mobile93cb97f1 document recipient-readiness admission and retained
+store acceptance. No phone UI driving. First-login chat activation, durable waiting
+explanation and readiness wake remain Mobile/backend work; read their latest handoffs.
+Platform1aea3228 is live on116.1. Library2b849217/SDK5 remain unpublished.
+All54PRD groups and native Apple/device checks remain separate open work.
+
 ## Scheduling timing port accepted — 8 November 2026, 10:41 UTC
 
 Three generic files exactly match accepted Mobile b4b25259: the closed operation names,

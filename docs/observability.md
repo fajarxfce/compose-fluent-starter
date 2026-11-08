@@ -54,3 +54,7 @@ crash is triggered by the starter UI or automated application tests.
 
 See [performance](performance.md) for manual Firebase traces, first-party HTTP
 correlation and lifecycle/recomposition boundaries.
+
+The closed `WorkspaceRead` and `LocalAccessRead` operation names follow the accepted
+HRIS Mobile69 instrumentation. This starter port adds no workspace feature, caching
+or runtime policy. [Source and platform checks](measurements/local-read-timing-port-2026-11-08.json).
