@@ -25,24 +25,33 @@ class MainActivity : FragmentActivity() {
         app.googleCredentials.attach(this)
         app.location.attach(this)
         app.fileOutputs.attach(this)
-        if (savedInstanceState == null)
-            (intent.dataString
-                    ?: intent.getStringExtra("destination")?.let {
-                        "${app.environment.linkScheme}://app/$it"
-                    })
-                ?.let(app.links::receive)
+        if (savedInstanceState == null || intent.action == NetworkInspectionShortcut.ACTION)
+            receiveLink(app, intent)
         setContent { StarterApp(container, app.links.links) }
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        val app = application as StarterApplication
+        receiveLink(application as StarterApplication, intent)
+    }
+
+    private fun receiveLink(app: StarterApplication, intent: Intent) {
+        if (intent.action == NetworkInspectionShortcut.ACTION) {
+            app.openNetworkInspector()
+            setIntent(Intent(intent).setAction(null))
+            return
+        }
         (intent.dataString
                 ?: intent.getStringExtra("destination")?.let {
                     "${app.environment.linkScheme}://app/$it"
                 })
             ?.let(app.links::receive)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (application as StarterApplication).refreshNetworkInspectorShortcut()
     }
 
     override fun onDestroy() {

@@ -1,9 +1,12 @@
 package dev.fajar.fluent
 
 import android.app.Application
+import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.lifecycle.coroutineScope
 import androidx.work.Configuration
 import androidx.work.WorkManager
 import dev.fajar.starter.app.di.createAppContainer
+import dev.fajar.starter.app.inspection.ApplicationNetworkInspection
 import dev.fajar.starter.app.navigation.AppLinkChannel
 import dev.fajar.starter.common.config.AppEnvironment
 import dev.fajar.starter.common.config.AppPlatform
@@ -58,6 +61,32 @@ class StarterApplication : Application(), Configuration.Provider {
     val googleCredentials by lazy { AndroidGoogleCredentialSource(this) }
 
     val deviceAuthentication by lazy { AndroidDeviceAuthenticationSource(this) }
+
+    private var networkInspectionShortcut: NetworkInspectionShortcut? = null
+
+    fun openNetworkInspector() {
+        container.koin.getOrNull<ApplicationNetworkInspection>()?.launchRequests?.request()
+    }
+
+    fun refreshNetworkInspectorShortcut() {
+        // Background session restoration must finish before attaching to capture boundaries.
+        if (networkInspectionShortcut == null) {
+            networkInspectionShortcut =
+                container.koin.getOrNull<ApplicationNetworkInspection>()?.inspection?.let {
+                    NetworkInspectionShortcut(
+                        this,
+                        it,
+                        ProcessLifecycleOwner.get().lifecycle.coroutineScope,
+                    )
+                }
+        }
+        networkInspectionShortcut?.refresh()
+    }
+
+    override fun onTerminate() {
+        networkInspectionShortcut?.close()
+        super.onTerminate()
+    }
 
     override fun onCreate() {
         super.onCreate()

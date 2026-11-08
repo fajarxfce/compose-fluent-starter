@@ -1,5 +1,20 @@
 # Downstream development
 
+## Inspector notification and passive identity — 8 November 2026
+
+Eight exact generic Mobile c9dd7f82 files follow build60 actual Android acceptance.
+Session fixtures and Android namespace/host wiring are adapted to Starter. The host
+attaches on Activity resume, and the shared navigation owner retains only the latest
+tap until its normal graph is ready. Identity observation does not acquire credentials
+or activate storage. No Matrix SDK, HRIS delivery policy or endpoint is introduced.
+
+Independent checks pass440 fresh cases/138 suites, root, Android, browser, production
+web, iOS source and quality in888.607 seconds. Lint has zero errors and45 dependency
+version advisories. Initial missing-checksum failure remains recorded; two imported
+hashes match previously verified Mobile/Library Google artifacts. Verification stays
+strict. [Contract](network-inspector.md), [exact evidence](measurements/inspector-notification-port-2026-11-08.json).
+Apple application runtime and dependency publication remain separate work.
+
 ## Application network inspector — 7 November 2026
 
 The generic core/Ktor/Compose integration follows accepted Mobile52df4ee1 and its

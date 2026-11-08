@@ -1,10 +1,11 @@
 # Development network inspector
 
-The Dev application opens a reusable inspector from Account → Settings → Network
-inspector. Its core, Ktor adapter and Compose viewer live in the separate
+The Dev application opens a reusable inspector from its silent Android notification
+after network activity, or from Account → Settings → Network inspector. Its core, Ktor adapter and Compose viewer live in the separate
 [KMP Network Inspector](https://github.com/fajarxfce/kmp-network-inspector) repository.
-This candidate uses a private, unpublished dependency; distribution must be resolved
-before promotion to the primary branch. Do not copy private source into this repository.
+The library source is public with owner approval; its package remains unpublished.
+Distribution must be resolved before promotion to the primary branch. Keep its source
+in the separate library repository.
 
 Application composition owns one optional `NetworkInspection`. Ktor clients for the
 public API, authenticated API, OIDC and Firebase resolve its current recorder for each
@@ -12,7 +13,9 @@ actual attempt. The default Starter backend remains an in-process demo transport
 seeing that request in the inspector does not imply that it crossed a network. The
 Starter contains no Matrix SDK dependency or HRIS transport/account policy.
 
-`ApplicationNetworkInspection` owns the session observation and its supervised job.
+`ApplicationNetworkInspection` owns passive published-identity observation and its
+supervised job. Starting diagnostics cannot acquire credentials or activate storage.
+See [published session identity](published-session-identity.md).
 Changing the stable login/user identity closes and erases the old recorder. Token
 refresh preserves it. Identity observation completion/failure and container disposal
 close capture. A late request completion retains its original recorder, so it cannot
@@ -54,4 +57,22 @@ Earlier runs retain335 and87 fresh passing cases; their fixture compilation and
 lockfile failures are preserved in the [exact evidence](measurements/network-inspector-port-2026-11-07.json).
 Android lint has zero errors and44 pre-existing warnings.
 Apple source compilation is not simulator/device runtime acceptance. Private repository
-CI currently cannot start because of GitHub account billing; visibility is unchanged.
+CI currently cannot start because of GitHub account billing. The separate public library
+passes 213 portable and 69 Apple cases at 6433dc3; this does not establish Starter
+application runtime on Apple.
+
+
+The optional Android adapter has one process-owned lifetime and an explicit immutable
+Activity PendingIntent. Activity resume attaches it after background-only identity
+restoration. Normal navigation gates consume the latest retained tap when the graph
+is ready. Closing its owner prevents later taps from reviving it. Clear, capture
+replacement and disposal remove the OS shortcut. Initial empty capture after process
+restart preserves an existing shortcut without creating a new empty notification.
+
+The Mobile consumer independently passed six actual Android OS scenarios and warm/cold
+notification taps in build 60 before this port. Starter keeps its own namespace and
+Session fixture; no Matrix SDK or HRIS delivery policy is introduced. The independent Starter gate passes 440 fresh cases in 138 suites with no failures,
+errors or skips: root checks, Android assembly/lint, actual browser tests, production
+web output, iOS source compilation and quality checks. It took 888.607 seconds on
+1,042 stable source inputs and 49 stable library inputs. Lint has no errors and 45
+dependency-version advisories. [Exact checks and first failure](measurements/inspector-notification-port-2026-11-08.json).

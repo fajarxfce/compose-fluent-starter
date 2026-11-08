@@ -10,6 +10,8 @@ plugins {
 dependencies {
     implementation(projects.apps.shared)
     implementation(projects.core.identity.data)
+    implementation(libs.inspector.notification.android)
+    implementation(libs.android.lifecycle.process)
     implementation(libs.android.activity)
     implementation(libs.android.appauth)
     implementation(platform(libs.firebase.bom))

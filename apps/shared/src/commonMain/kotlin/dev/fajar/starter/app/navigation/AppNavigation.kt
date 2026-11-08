@@ -39,7 +39,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun AppNavigation(navigation: ScopedNavigationState, incomingLinks: Flow<String>) {
     val controller = navigation.controller
     val koin = getKoin()
-    val inspection = remember(koin) { koin.getOrNull<ApplicationNetworkInspection>()?.inspection }
+    val inspectionOwner = remember(koin) { koin.getOrNull<ApplicationNetworkInspection>() }
+    val inspection = inspectionOwner?.inspection
     val viewModel = koinViewModel<AppViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val environment = koinInject<AppEnvironment>()
@@ -96,6 +97,20 @@ fun AppNavigation(navigation: ScopedNavigationState, incomingLinks: Flow<String>
                             }
                     }
                     viewModel.onEvent(AppEvent.LinkHandled(link))
+                }
+            }
+        }
+    }
+    if (inspectionOwner != null) {
+        val launchState by inspectionOwner.launchRequests.state.collectAsStateWithLifecycle()
+        LaunchedEffect(scope, launchState, lifecycle) {
+            val request =
+                launchState as? NetworkInspectionLaunchState.Requested ?: return@LaunchedEffect
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                controller.awaitAppLinkNavigation(scope)
+                if (inspectionOwner.launchRequests.state.value === request) {
+                    controller.navigate(NetworkInspectionRoute) { launchSingleTop = true }
+                    inspectionOwner.launchRequests.handled(request)
                 }
             }
         }

@@ -28,6 +28,10 @@ class IdentityModule {
 
     @Factory fun observeIdentity(sessions: SessionRepository) = ObserveSessionIdentity(sessions)
 
+    @Factory
+    fun observePublishedIdentity(identity: SessionIdentityRepository) =
+        ObservePublishedSessionIdentity(identity)
+
     @Factory fun restore(sessions: SessionRepository) = RestoreSession(sessions)
 
     @Single

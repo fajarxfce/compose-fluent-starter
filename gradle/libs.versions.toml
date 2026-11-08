@@ -11,6 +11,7 @@ okio = "3.17.0"
 serialization = "1.10.0"
 ktor = "3.3.3"
 lifecycle = "2.9.5"
+android-lifecycle = "2.9.4"
 navigation = "2.9.1"
 fluent = "v0.1.0"
 activity = "1.11.0"
@@ -40,6 +41,7 @@ junit = "4.13.2"
 network-inspector = "0.1.0-SNAPSHOT"
 
 [libraries]
+inspector-notification-android = { module = "dev.fajar.inspector:android-notification", version.ref = "network-inspector" }
 inspector-core = { module = "dev.fajar.inspector:core", version.ref = "network-inspector" }
 inspector-ktor = { module = "dev.fajar.inspector:ktor", version.ref = "network-inspector" }
 inspector-compose = { module = "dev.fajar.inspector:compose", version.ref = "network-inspector" }
@@ -108,6 +110,7 @@ ktor-content = { module = "io.ktor:ktor-client-content-negotiation", version.ref
 ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 fluent = { module = "io.github.compose-fluent:fluent", version.ref = "fluent" }
+android-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "android-lifecycle" }
 lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle" }
 lifecycle-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation" }

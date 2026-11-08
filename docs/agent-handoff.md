@@ -1,5 +1,28 @@
 # Agent continuation — Compose Fluent Starter
 
+## Inspector notification and passive identity port accepted — 8 November 2026, 02:39 UTC
+
+Check-2/session6244 is reaped and passes888.607s:440 fresh cases/138 suites, zero
+failures/errors/skips,1,042 stable inputs and49 stable library inputs. Root checks,
+Android assembly/lint, actual browser tests, production web, iOS source and quality
+checks pass. Lint reports no errors and45 dependency-version advisories (previous44).
+[Exact evidence and initial failure](measurements/inspector-notification-port-2026-11-08.json).
+
+Eight exact generic files follow Mobile c9dd7f82/build60 actual6OS-case, warm/cold
+notification and phone-installation acceptance. Fixtures use Starter Session; Android
+uses its own namespace and container. No Matrix SDK/HRIS policy. First46377 failed
+before tests on missing savedstate1.3.1 metadata; two already-verified hashes were
+imported from accepted Mobile/Library and matched cached bytes. Strict verification
+is unchanged. This port is ready to commit/push; no repeated device run is claimed.
+
+Public library2b84921 records exact6433dc3 CI42436844884 (213portable/69Apple, verified
+artifact digests) and six local OS cases. Library/SDK5 remain unpublished; do not
+promote an unresolved distribution dependency to primary. No local emulator runs.
+The sole compiler is now Mobile composer-outbox focused-1/session33475. Mobile has
+an unaccepted immutable-outbox/next-editor transaction foundation, not UI adoption.
+Phone remains60, original Bima data retained. Pending latency/composer and all54 PRD
+groups remain active; none newly complete. Read Mobile current handoff before builds.
+
 ## Typed-result measurement port accepted — 7 November 2026, 23:51 UTC
 
 Full87993 is reaped and passes442.54s:268 fresh cases/86 suites, zero failures/errors/
