@@ -1,5 +1,26 @@
 # Agent continuation — Compose Fluent Starter
 
+## Exact command observer port accepted — 8 November 2026, 09:35 UTC
+
+Nine core database files are exact copies from accepted Mobile a923d844; all six prior
+bases and three absent additions were checked before porting. The observer reads account,
+active command and completion archive atomically, including preexisting archives and
+logout/re-login, without an intermediate missing record or polling. No HRIS policy is here.
+
+Check-1/session24397 is REAPED PASS426.373s:250 fresh cases/72 suites, zero failures/errors/
+skips, 1,045 unchanged inputs and49 unchanged library inputs. Actual SQLite16/Chrome16,
+root checks, Android assembly/lint, production web, iOS source and quality checks pass.
+Lint0errors/45 existing dependency advisories. No native Apple execution.
+[Exact evidence](measurements/command-lookup-port-2026-11-08.json).
+
+Mobile release66 from a923d844 is accepted on the original emulator for consecutive input,
+three unique acknowledged sends, offline cold history/preview/draft and no403 over180s.
+Its pre-send latency remains6.5–8.8s in that emulator sample; do not claim latency resolved.
+The emulator/compiler are stopped/reaped. Phone remains65 because its ADB preflight timed
+out; an availability question is pending. Follow Mobile's latest handoff for install-only
+and continued latency work. Preserve original messages/keys and its UNSENT synthetic next
+draft. Original54PRD groups remain active. Library/SDK5 remain unpublished.
+
 ## Replica query snapshot port accepted — 8 November 2026, 08:06 UTC
 
 Check-1/session28455 reapedPASS284.356s:236fresh cases/72suites, zero failures/errors/skips,

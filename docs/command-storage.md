@@ -114,3 +114,21 @@ unchanged inputs:280 fresh cases/74 suites, zero failures/errors/skips. Android 
 has zero errors and44 existing warnings. Apple simulator acceptance remains pending.
 [Evidence](measurements/command-handoff-port-2026-11-06.json). HRIS setup policy,
 protocol, encrypted formats and owning use cases remain in Mobile; no schema changes.
+
+## Exact command progress
+
+`observeRecord(scope, partition, id)` reads active and archived forms together with the
+current account binding. Moving a command to its immutable archive therefore emits one
+consistent lookup, including when completion predates subscription. It does not emit an
+artificial absence between the active and archived forms. Logout invalidates the lookup;
+re-login by the same owner restores access. Other owners cannot observe it.
+
+Room uses a transaction after account/command/archive invalidation. IndexedDB uses one
+readonly transaction across those three stores. Distinct results avoid repeated equal
+snapshots; collection cancellation releases observation. The adapter does not decrypt,
+classify delivery, schedule work, or scan archives. The exact-ID contract follows Mobile
+[a923d844](https://github.com/fajarxfce/hris-mobile/commit/a923d844ea708fd283c88838e94586c0fae88275).
+
+The [port checks](measurements/command-lookup-port-2026-11-08.json) include actual SQLite
+and Chrome IndexedDB, each with 16 command cases, root checks, Android, web and iOS source
+compilation. Native Apple execution is not claimed.
