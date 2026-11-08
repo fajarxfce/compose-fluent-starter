@@ -1,5 +1,19 @@
 # Downstream development
 
+## Request-driven work — 8 November 2026
+
+Three exact Mobile60d1de23 files add a foreground runner for explicit host requests.
+It shares the scheduler's conflated lanes, serializes each task, and releases them
+on cancellation. Task outcomes do not introduce retry timers; durable scheduling
+still owns retries. Application task selection and lifecycle binding stay downstream.
+
+Mobile source/browser tests, first-account76 cold continuity and actual same-original
+recovery after late FCM provide consumer evidence. The unresolved Bima76 fixture is
+not reported as passed, and Google delivery latency remains a separate failed goal.
+Independent Starter root/Chrome/Android/lint/production-web/iOS-source/quality checks
+passed120 fresh cases in218.922s. [Evidence](measurements/requested-worker-port-2026-11-08.json).
+
+
 ## Inspector notification and passive identity — 8 November 2026
 
 Eight exact generic Mobile c9dd7f82 files follow build60 actual Android acceptance.

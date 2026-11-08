@@ -1,5 +1,29 @@
 # Agent continuation — Compose Fluent Starter
 
+## Request-driven worker port accepted — 8 November 2026, 21:35 UTC
+
+Three files exactly match Mobile60d1de23: RequestedSyncWorker, its four common
+regressions and core/worker README. No task opt-in or HRIS policy is copied.
+Session3939 REAPED PASS218.922s:120 fresh cases/39 suites, zero failures/errors/skips;
+1,049 app and49 library inputs unchanged. Desktop and actual Chrome each run all
+four new runner cases. Root, Android assembly/lint, production web, iOS source and
+quality pass. [Evidence](measurements/requested-worker-port-2026-11-08.json).
+
+The native prerequisite was reviewed explicitly: accepted original first-account
+75→76 cold continuity plus the same original resumed once by actual late FCM in an
+unchanged product process. The private runner's earlier Bima76 requirement could
+not prove this because its encrypted metadata is unresolved; it was replaced with
+these concrete proofs, not fabricated as passed. FCM timeliness remains FAILED in
+Mobile04c35cc0. That external delivery latency is outside this generic explicit-request
+runner. Full Mobile source and actual browser gates remain verified before the port.
+
+No compiler/emulator remains. Commit/push this exact port. Mobile's next work is a
+Matrix-native readiness control signal after HRIS publication, plus missing-hint and
+interrupted setup recovery. Existing SDK5 exposes custom to-device listeners; avoid
+inspector-driven policy or FCM-only foreground readiness. All54 PRD groups remain.
+Phone70 untouched; original Bima recovery unresolved. No native Apple runtime claim.
+
+
 ## Local read timing names accepted — 8 November 2026, 13:43 UTC
 
 One enum file exactly matches Mobilee457e367 accepted on release69 and retained in70.

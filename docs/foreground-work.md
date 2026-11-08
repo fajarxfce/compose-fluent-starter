@@ -27,3 +27,17 @@ actual worker simulator tests. First Apple42331840556 on0002d102 passed154cases 
 associations. Artifact13558119586SHA6680c3547acadf552f77bb93fe106459efa99f1462ea328a7db41b7ad18798eb
 was downloaded and matched against the GitHub digest.
 [Evidence](measurements/foreground-delivery-port-2026-11-07.json).
+
+
+## Explicit requests without a foreground retry timer
+
+`RequestedSyncWorker` consumes the existing scheduler's conflated task lanes while
+its caller-owned scope is alive. It waits for the first explicit request, serializes
+each task independently and leaves durable scheduling responsible for failed or
+unfinished passes. A result of Retry does not create another timer. The application
+must persist its feature intent before notifying the scheduler, own the returned
+job and prevent competing consumers of the same lane.
+
+This optional runner is available to generated applications; the starter demo does
+not opt any new task into it. Its [downstream port evidence](measurements/requested-worker-port-2026-11-08.json)
+includes four lifecycle/coalescing regressions on desktop and actual Chrome.

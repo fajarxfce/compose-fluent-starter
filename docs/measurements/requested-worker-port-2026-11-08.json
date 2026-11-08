@@ -1,0 +1,84 @@
+{
+  "recordedAt": "2026-11-08T21:36:03.667619+00:00",
+  "port": {
+    "at": "2026-11-08T21:31:19.340516+00:00",
+    "mobileSourceCommit": "60d1de23",
+    "nativeAcceptanceVersionCode": 76,
+    "firstKeyCreationVersionCode": 75,
+    "nativeAcceptanceSha256": "367145f497c979c0b5209b93fd408329c35c5a9a2c8cefd90d92e26a4b496678",
+    "retainedAcceptanceSha256": "661ce8b2f9cfec858fef83b6f00de944c303c591b1734286a1b8fe7370808d52",
+    "browserGateSha256": "f7181c33ee30881dd2d421fe1e3466ee363bcac54c3cca1b2f97a7f313f606b5",
+    "nativeGateScope": "Original first-account75\u219276 cold restore plus same-process original resumption on real late FCM. The earlier Bima76 gate remains missing; it is not fabricated or treated as passed. FCM timeliness is outside this generic request runner port.",
+    "files": {
+      "core/worker/README.md": "5bf991e920c1d5dbdcab6576ec00b1172b2cd3f8dc5e647ae1bc53dbed7f441e",
+      "core/worker/src/commonMain/kotlin/dev/fajar/starter/worker/RequestedSyncWorker.kt": "1e39f6618b8d1313a3e76c75fadc6d3b8e157e0134fcc3230f9cea8be83d5969",
+      "core/worker/src/commonTest/kotlin/dev/fajar/starter/worker/RequestedSyncWorkerTest.kt": "27a1b8a75746ced265f4c9e93a60e46fb0fdfef4d1927198838dbf151dcf0dde"
+    }
+  },
+  "validation": {
+    "wallSeconds": 218.922,
+    "inputCount": 1049,
+    "inputsUnchanged": true,
+    "libraryInputCount": 49,
+    "libraryInputsUnchanged": true,
+    "freshSuites": 39,
+    "freshCounts": {
+      "tests": 120,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "requestedRunnerReports": {
+      "core/worker/build/test-results/desktopTest/TEST-dev.fajar.starter.worker.RequestedSyncWorkerTest.xml": {
+        "sha256": "7c9b74faf681407b1f25867fc4f3d114c3c2551a3baaeaede60951bc5ec1fb15",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/worker/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.worker.RequestedSyncWorkerTest.xml": {
+        "sha256": "f4622a768a7758a108c82e78a592e861b8c4d07b70b0f9bfea6476622fb0c3dd",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "androidLint": {
+      "Fatal": 0,
+      "Error": 0,
+      "Warning": 45,
+      "Information": 0
+    },
+    "tasks": [
+      ":check",
+      ":core:worker:wasmJsBrowserTest",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:lintDevDebug",
+      ":apps:shared:wasmJsBrowserTest",
+      ":apps:shared:wasmJsBrowserDistribution",
+      ":apps:shared:compileKotlinIosArm64",
+      ":formatCheck",
+      ":architectureCheck",
+      ":detekt",
+      "-PnetworkInspectorDirectory=/home/fajar/hris/kmp-network-inspector"
+    ]
+  },
+  "gateScopeReview": {
+    "at": "2026-11-08T21:31:19.248371+00:00",
+    "scope": "Three exact generic runner/readme/regression files from Mobile60d1de23. No native keys, HRIS policy or FCM transport code.",
+    "evidenceChange": "Replace private harness dependence on the unrecoverable Bima76 fixture with actual first-account76 cold continuity plus an original resumed once by real FCM in the unchanged product process. Source-full and actual Chrome gates still required.",
+    "notClaimed": [
+      "Bima76 restored",
+      "Timely FCM acceptance",
+      "Native Apple execution"
+    ]
+  },
+  "resultSha256": "62660262dc420865ee67f2d0c2dbfed2e3cb93ceebda71fadacef018a106e67d",
+  "limits": [
+    "No HRIS task opt-in, recipient/key policy or Matrix SDK is copied.",
+    "Native Apple runtime execution not performed by this gate; iOS source/metadata compile is included.",
+    "Mobile140-second FCM timing gate remains failed; eventual same-original recovery is separate evidence.",
+    "Starter APK was built, not installed."
+  ]
+}
