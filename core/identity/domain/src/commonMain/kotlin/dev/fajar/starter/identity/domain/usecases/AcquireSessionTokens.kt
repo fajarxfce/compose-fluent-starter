@@ -7,8 +7,11 @@ import dev.fajar.starter.identity.domain.entities.SessionTokens
 import dev.fajar.starter.identity.domain.repositories.*
 import kotlin.time.Clock
 import kotlin.uuid.Uuid
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -19,6 +22,56 @@ class AcquireSessionTokens(
     private val clock: Clock = Clock.System,
 ) {
     private val refresh = Mutex()
+
+    /**
+     * A live transport owner keeps its parent access current without making probe requests. Each
+     * advancing credential deadline schedules one attempt. Failed attempts retain the durable
+     * refresh operation; observation alone never retries the same revision. Refresh stays in the
+     * collector so persisting its own operation cannot cancel the in-flight exchange.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun maintain(sessionId: String): Flow<AppResult<SessionTokens?>> = flow {
+        var attemptedThrough = Long.MIN_VALUE
+        sessions
+            .observe()
+            .map { observed ->
+                when (observed) {
+                    is AppResult.Failed -> observed
+                    is AppResult.Success ->
+                        AppResult.Success(observed.value?.takeIf { it.id == sessionId }?.tokens)
+                }
+            }
+            .distinctUntilChanged()
+            .transformLatest { observed ->
+                when (observed) {
+                    is AppResult.Failed -> emit(observed)
+                    is AppResult.Success -> {
+                        val current = observed.value ?: return@transformLatest
+                        val due = current.expiresAtEpochMillis - REFRESH_MARGIN_MILLIS
+                        delay((due - clock.now().toEpochMilliseconds()).coerceAtLeast(0))
+                        emit(AppResult.Success(current.expiresAtEpochMillis))
+                    }
+                }
+            }
+            .collect { due ->
+                when (due) {
+                    is AppResult.Failed -> emit(due)
+                    is AppResult.Success -> {
+                        if (due.value <= attemptedThrough) return@collect
+                        val result = invoke(sessionId)
+                        // Keep returned credentials, including a short-lived or clock-skewed
+                        // response, without turning its publication into another immediate retry.
+                        attemptedThrough =
+                            maxOf(
+                                attemptedThrough,
+                                due.value,
+                                clock.now().toEpochMilliseconds() + REFRESH_MARGIN_MILLIS,
+                            )
+                        emit(result)
+                    }
+                }
+            }
+    }
 
     suspend operator fun invoke(
         sessionId: String,
@@ -32,7 +85,8 @@ class AcquireSessionTokens(
                 }
             if (session == null || session.id != sessionId) return@withLock AppResult.Success(null)
             val expired =
-                session.tokens.expiresAtEpochMillis <= clock.now().toEpochMilliseconds() + 30_000
+                session.tokens.expiresAtEpochMillis <=
+                    clock.now().toEpochMilliseconds() + REFRESH_MARGIN_MILLIS
             if (
                 session.pendingRefreshOperationId == null &&
                     !expired &&
@@ -93,4 +147,8 @@ class AcquireSessionTokens(
                     AppResult.Success(if (committed.value) updated.tokens else null)
             }
         }
+
+    private companion object {
+        const val REFRESH_MARGIN_MILLIS = 30_000L
+    }
 }

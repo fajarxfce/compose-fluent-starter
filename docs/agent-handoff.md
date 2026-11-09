@@ -1,5 +1,31 @@
 # Agent continuation — Compose Fluent Starter
 
+## Session maintenance and worker triggers accepted — 9 November 2026, 07:43 UTC
+
+The eight generic worker files exactly match Mobile a1f2cfe9. Hosts distinguish
+scheduled discovery from delivery of an existing request. The optional identity
+maintenance flow follows Mobile c0b645d0, adapted to Starter's existing session and
+email/password contract: one attempt per advancing deadline, serialized durable
+refresh, no retry loop on a failed or already-due response. Its collector owns the
+lifetime; no demo application activation or HRIS binding policy is introduced.
+
+Full-2 passes root checks, Android assembly/lint, production Web, iOS source and
+quality checks in 75.282s: 62 fresh cases in 15 suites, no failures/errors/skips;
+1,052 application and 49 library inputs unchanged. Cached passing results remain
+separate. The initial full-1 fixture compilation failure is retained. Its 247
+passing cases alone were not acceptance. The full-2 exact browser filter selected
+no identity cases; corrected browser-1 passes all nine maintenance cases in actual
+Chrome in 24.332s. Worker trigger cases pass on desktop and actual Chrome.
+[Exact evidence](measurements/session-maintenance-trigger-port-2026-11-09.json).
+
+The Mobile prerequisite is reviewed progress83: parent renewal before expiry,
+retained encrypted originals, no bootstrap/403/429 and independently attributed
+periodic work. Its original strict quietness failure is preserved. Phone83 is
+installed after the stock reset, install-only; SDK6 is publicly published. No
+native Apple execution or final chat latency acceptance is claimed. Mobile now
+reduces repeated history metadata admission. All54 PRD groups remain open.
+
+
 ## Request-driven worker port accepted — 8 November 2026, 21:35 UTC
 
 Three files exactly match Mobile60d1de23: RequestedSyncWorker, its four common

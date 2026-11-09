@@ -1,5 +1,17 @@
 # Downstream development
 
+
+## Session maintenance and scheduled discovery
+
+The generic worker trigger contract from Mobile a1f2cfe9 and optional session
+maintenance from c0b645d0 are ported after reviewed Mobile83 acceptance. The
+application owns maintenance collection; deadlines reuse durable acquisition and
+cannot turn short-lived responses into automatic retry loops. Requested retries
+remain distinct from scheduled discovery. Starter independently passes root,
+Android, Web, actual browser and iOS source checks. HRIS ownership and native
+transport behavior remain downstream.
+[Validation and retained failures](measurements/session-maintenance-trigger-port-2026-11-09.json).
+
 ## Request-driven work — 8 November 2026
 
 Three exact Mobile60d1de23 files add a foreground runner for explicit host requests.

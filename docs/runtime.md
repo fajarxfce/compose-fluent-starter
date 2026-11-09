@@ -103,3 +103,15 @@ while reading a response stream. The network boundary recognizes these transport
 and maps them to a network failure, retaining the original cause for internal diagnostics.
 Unrelated programming/runtime errors still propagate. A real Fetch rejection test complements
 the MockEngine contracts; cancellation remains controlled by the originating coroutine.
+
+
+## Owned access maintenance
+
+Long-lived authenticated transports may collect `AcquireSessionTokens.maintain`
+for their captured session. The owner cancels collection on disposal or session
+replacement. Each advancing deadline schedules one acquisition 30 seconds before
+expiry; pending refresh writes do not cancel their own exchange. The same durable,
+serialized acquisition handles foreground requests and maintenance. Failure keeps
+the original operation for a later external trigger. Short or already-expired
+responses remain stored without immediately scheduling another attempt. This API
+is optional; the starter demo does not create a maintenance collector.
