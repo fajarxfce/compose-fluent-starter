@@ -1,0 +1,329 @@
+{
+  "accepted": true,
+  "at": "2026-11-09T12:31:38.380513+00:00",
+  "port": {
+    "at": "2026-11-09T12:15:44.627915+00:00",
+    "applied": true,
+    "awaitingMobileVerify": 42611795210,
+    "pin": "742a2d1c2285c720cef80ea3913195f3ece388cc",
+    "checkedJobs": 5,
+    "newVerifiedArtifacts": [
+      {
+        "group": "androidx.compose.material",
+        "component": "material-ripple",
+        "version": "1.9.3",
+        "artifact": "material-ripple-1.9.3.pom",
+        "sha256": "8f35e20566f01bd4cbdc44cccdae54f6a59388fb23e0d0e23dae3f6640768f50"
+      },
+      {
+        "group": "androidx.compose.material",
+        "component": "material-ripple-android",
+        "version": "1.9.3",
+        "artifact": "material-ripple-android-1.9.3.pom",
+        "sha256": "bdecf5e6e99f8d48238ff4d9287fbe66a8714df3db115b7dd8e136818e3ddd53"
+      },
+      {
+        "group": "androidx.compose.material3",
+        "component": "material3",
+        "version": "1.4.0",
+        "artifact": "material3-1.4.0.pom",
+        "sha256": "672b431f59c8e0a8522690b2f46f1b7966710638893c60c31c5f19f8472d62cc"
+      },
+      {
+        "group": "androidx.compose.material3",
+        "component": "material3-android",
+        "version": "1.4.0",
+        "artifact": "material3-android-1.4.0.pom",
+        "sha256": "cc0362653240708a010de50fee8caf884a610fbb10b6013e86694d77c43febc7"
+      },
+      {
+        "group": "androidx.lifecycle",
+        "component": "lifecycle-common-java8",
+        "version": "2.9.4",
+        "artifact": "lifecycle-common-java8-2.9.4.pom",
+        "sha256": "f7a0077f2b20312c30ea74c9fe77626fbe2ad09bb48922851cde20bcd1a33266"
+      },
+      {
+        "group": "org.jetbrains.compose.material",
+        "component": "material-ripple",
+        "version": "1.9.1",
+        "artifact": "material-ripple-1.9.1.pom",
+        "sha256": "f52f382ae8b918be5236761410ba7d8dd12e0b6ac99230797c53b240ba1a31e8"
+      },
+      {
+        "group": "org.jetbrains.compose.material3",
+        "component": "material3",
+        "version": "1.9.0",
+        "artifact": "material3-1.9.0.pom",
+        "sha256": "9728f08703824e04fac8f84e66e1e7f286ee430890f327ff8b1e75431ddf1ada"
+      },
+      {
+        "group": "org.jetbrains.kotlinx",
+        "component": "kotlinx-coroutines-test",
+        "version": "1.8.0",
+        "artifact": "kotlinx-coroutines-test-metadata-1.8.0.jar",
+        "sha256": "337f24af1c61fc47d278a9be26fd1754b9933b0681f185eb9be0aa9e09067219"
+      },
+      {
+        "group": "org.jetbrains.kotlinx",
+        "component": "atomicfu",
+        "version": "0.21.0",
+        "artifact": "atomicfu-0.21.0.module",
+        "sha256": "c4aba64788420b0b54c877900f27ba385c3d170e878ca2faf378ec315cfcb076"
+      }
+    ],
+    "alreadyVerifiedArtifacts": [],
+    "files": {
+      ".github/workflows/ci.yml": {
+        "beforeSha256": "0c281a7c32fd51459342119b04a3e3c9f4af2c7081f5b75dd689b0bb6c038abb",
+        "candidateSha256": "e3d09be1ca41a3e6543cfcea382b0b618429d91fdb1952ec3d456d96caf85ea6"
+      },
+      ".github/workflows/distribute-android.yml": {
+        "beforeSha256": "5073ced4da997350f048b6cdcd162be76454f17424073d7cfc77aefb6ac082fc",
+        "candidateSha256": "267e7c24235e0ccc93d5910f79d40b460dac7601a0c3205a18958037d653004b"
+      },
+      ".github/workflows/distribute-ios.yml": {
+        "beforeSha256": "d0e9bf5ab4d0398a00b8544815b650b1c41adc53a5b81cd5fe28750e42908bd2",
+        "candidateSha256": "3b180df226de041b7cf22299e71abe070ed3a9e9a841e366b7ec25728a562de9"
+      },
+      "gradle/verification-metadata.xml": {
+        "beforeSha256": "922eab185f19d8e94d5970c64f0eb40e03c49fb62ca30c06ffc4c2b4fee28486",
+        "candidateSha256": "9083e4681155a2017503799d7edc84c29fc94d31fa317f302cb090947be1a7f7"
+      }
+    },
+    "scope": "Five dependency checkouts and required shared SBOM checksums. No HRIS modules, test fixtures, rollout or workflow dispatch.",
+    "appliedAt": "2026-11-09T12:24:51.606825+00:00",
+    "mobileSource": "21101489c2d371bf04dd00bd3648f8acec0e96d2",
+    "mobileArtifact": 13672363171,
+    "mobileArtifactSha256": "2223b17a73684b9a151cbb6117ac80d6da3ab1d8d61391c264bc2b5e40c4335b",
+    "staticCheckedJobs": [
+      ".github/workflows/ci.yml:verify",
+      ".github/workflows/ci.yml:apple",
+      ".github/workflows/ci.yml:windows",
+      ".github/workflows/distribute-android.yml:distribute",
+      ".github/workflows/distribute-ios.yml:distribute"
+    ],
+    "validation": "full gate pending; no workflow dispatch",
+    "localLibraryWorktree": "/home/fajar/hris/.worktrees/inspector-pinned-consumer-2026-11-09",
+    "localLibraryRevision": "742a2d1c2285c720cef80ea3913195f3ece388cc",
+    "localLibraryBytesExactlyMatchCommit": true,
+    "localLibraryFiles": 85,
+    "localLibraryGitStatusNote": "Fresh checkout reports gradlew.bat modified because of the tracked CRLF/eol normalizer; its bytes match the committed blob exactly. No files or attributes were changed. The first clean-status preflight stopped before the build."
+  },
+  "gate": {
+    "startedAt": "2026-11-09T12:26:51.169240+00:00",
+    "exitCode": 0,
+    "wallSeconds": 188.59,
+    "inputsUnchanged": true,
+    "inputCount": 1052,
+    "libraryInputsUnchanged": true,
+    "libraryInputCount": 49,
+    "libraryRevision": "742a2d1c2285c720cef80ea3913195f3ece388cc",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--init-script",
+      "/home/fajar/hris/compose-fluent-starter/.work/pinned-inspector-ci-2026-11-09/fresh-browser.gradle",
+      "--dependency-verification",
+      "strict",
+      ":check",
+      ":core:worker:wasmJsBrowserTest",
+      ":core:identity:domain:wasmJsBrowserTest",
+      ":apps:shared:wasmJsBrowserTest",
+      ":apps:android:assembleDevDebug",
+      ":apps:android:assembleStagingDebug",
+      ":apps:android:assembleProdRelease",
+      ":apps:android:lintDevDebug",
+      ":apps:shared:wasmJsBrowserDistribution",
+      ":apps:shared:compileKotlinIosArm64",
+      ":apps:android:cyclonedxDirectBom",
+      "-PsbomConfiguration=prodReleaseRuntimeClasspath",
+      ":formatCheck",
+      ":architectureCheck",
+      ":detekt",
+      "-PnetworkInspectorDirectory=/home/fajar/hris/.worktrees/inspector-pinned-consumer-2026-11-09",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--continue",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx2048m"
+    ],
+    "reports": {
+      "core/worker/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.worker.ForegroundSyncWorkerTest.xml": {
+        "sha256": "24fd9a662e36564dd235b464ea2851452fa6e6c8c3857112af8b84597073ec5c",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/worker/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.worker.RequestedSyncWorkerTest.xml": {
+        "sha256": "08017a574b8017d28a1b6374ed980ab3b0af8c266c3187cd545923548f378bc1",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/worker/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.worker.SyncTriggerTest.xml": {
+        "sha256": "8f16f8a18e1070600a8cc6758701e6a1280923b8e9995a7e08b41001416b5d8d",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/worker/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.worker.CollapsedWorkGateTest.xml": {
+        "sha256": "ff94d9a83971e40d3db07e483426ee22b81f50e05be01bd1c5b0995f15eb0c6e",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/identity/domain/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.identity.domain.RefreshRecoveryTest.xml": {
+        "sha256": "0d23c91f6e9652aa362b08e901b61095c83fefbba354a27eff53903359808a7f",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/identity/domain/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.identity.domain.SessionPolicyTest.xml": {
+        "sha256": "38f7cb7f8a61f7438b093bbe56b1101733a7ff71a6f694a372dbbabe1b7a37c5",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/identity/domain/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.identity.domain.SessionTokenMaintenanceTest.xml": {
+        "sha256": "e3f505e62fe939972af24783099cfe00556b6dd2d803e872ce3fbc1190734b11",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/identity/domain/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.identity.domain.SignInTest.xml": {
+        "sha256": "68c0ff5d9b75522b9078b8e0d2822831cf61b854adb0ddc4e884bfef92aee9bb",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/identity/domain/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.identity.domain.sso.SignInWithSsoTest.xml": {
+        "sha256": "c3cd84ebd15cdcfeb408c5399142dcc7f4e58b6d74804f41a77bb824875117e8",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/identity/domain/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.identity.domain.ObserveSessionIdentityTest.xml": {
+        "sha256": "9c3b49e4b3a14790e242614216aec23b05f2405aae379a53d48a2eb23a44da97",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.NetworkInspectionRequestsTest.xml": {
+        "sha256": "8793e4a1a27d733ee9dd17fdd7e3d6f221b7c365f2fa6149f06af07638c76e1a",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.app.bootstrap.AppViewModelTest.xml": {
+        "sha256": "832335a69664ef75c80ed777cbde849fd9ace34efbc7b894cb3ca04d282b4be9",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.app.navigation.PendingAppLinkTest.xml": {
+        "sha256": "be723ab92e9168be1b165cf4d28de34a1cf903b51cfe86dc4ce86ebeef4b6831",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.app.navigation.ResolveAppLinkTest.xml": {
+        "sha256": "6d6f0a7b78e1221707747767ca530512fcab0ecfedb091df8e892904c5641d86",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.starter.ApplicationNetworkInspectionTest.xml": {
+        "sha256": "2ba6aca425fb7b072ea9ca7536f4d9669e55c2ff46a002b6e7e11127a5326088",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "freshCounts": {
+    "tests": 62,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "session": 88319,
+  "sessionReaped": true,
+  "artifacts": [
+    {
+      "path": "apps/android/build/outputs/apk/dev/debug/android-dev-debug.apk",
+      "bytes": 26743819,
+      "sha256": "3492ab9fbedac6431c260ae13052eb1551e52e835aee2a1276071ab00b47f5b4"
+    },
+    {
+      "path": "apps/android/build/outputs/apk/staging/debug/android-staging-debug.apk",
+      "bytes": 26575456,
+      "sha256": "eb5e7bd3b93e1b1c092edad185426ee7c7dd49a309e9432316c9fb81a36d9efe"
+    },
+    {
+      "path": "apps/android/build/outputs/apk/prod/release/android-prod-release-unsigned.apk",
+      "bytes": 20339296,
+      "sha256": "e967030beb7a89bf518596bd3a3cedbdb539f13ecc1a75b7e95801b6fced0a24"
+    }
+  ],
+  "lint": {
+    "sha256": "08e64b7b5ba9d7bc28ff6f36f7c57c5d26449a8a0df65e26d2e70136667a48a2",
+    "errors": 0,
+    "existingWarnings": 45
+  },
+  "sbom": {
+    "sha256": "d65573cec836ac32752826b4ab4631b66773c20412e82a91280a69172b42c42e",
+    "components": 366
+  },
+  "webInventory": {
+    "147.js": "98e6df1b4d2b2eeecdd21824ce882a42ffac80f20922abaed1f6cb961f80af5b",
+    "147.js.LICENSE.txt": "5b62dee37efe57cbfb72bc30ab1b45e4d7de889327761e27a0cc43677d538cae",
+    "147.js.map": "f3d06db810c1a178ea9eeb0112ea4bce06cd2a84ac6245f2e5340e51ab9ab9a7",
+    "195.js": "06aaf98fa75ba09d91410ccbae7b3ff1f8dbf6b633a0a774cedfd4ebca3eeb74",
+    "195.js.LICENSE.txt": "86d113142083077618016006654d9ef8e2e88126adc04ba439ac9454b332697c",
+    "195.js.map": "96c46ddc5c959fbe390c648234d15a97c31821324dab31434f80d3b2a87ce5c0",
+    "479.js": "bbaef68b381df825dee336705e46ed43bbf6d831c6f2550a675ec3a595ceba6b",
+    "479.js.LICENSE.txt": "7366a8d3cf6a902bd97256bd98606f47bf1af0545380a759343db8c1cfa3c1ae",
+    "479.js.map": "15bac46b7cb200e2a63a3d8db5ce71089edbb3af0f4de5540fed70110ba2a4e6",
+    "7f0aab18ab3f836f67c5.wasm": "7e460ad097bd40cb2438c19f287d5cb6ce78395f4e4028fce3294fa9fec5d7be",
+    "871.js": "20793916f3f0ca7d6f5d9326b77cee615310338f85863d46654f7e61ebaf1f65",
+    "871.js.LICENSE.txt": "ad0ad6932c8c3be5f38fbcf3f2209b72ed28285c3a06196567e88598c0542815",
+    "871.js.map": "f6af6f97ccaf5ae0a8911b3169c58b4f62cac0f28a1573feeb1b1be64dd611db",
+    "925.js": "ac83c49003e144c209286057e9c7f43025c804177bc6438ac9e3fb5f26e32e5c",
+    "925.js.LICENSE.txt": "a13db7be678f5507be84a74810f08ec22313dfea14fef1a0250c20cf455756bf",
+    "925.js.map": "7a953000add01f4467d4e8547fffe044ba675fe3fa6c8ea2235ec261567b99f6",
+    "bccfa839aa4b38489c76.wasm": "09ee5d3dcae24a6c90a811999dcc1287e8a669e2deed14e23c7ebd2068e8f73d",
+    "composeResources/dev.fajar.starter.localization.resources/values/strings_en.commonMain.cvr": "1e1eecf2141fe38257e2b2f69662f425460852a007486109a8b81e48374f6302",
+    "composeResources/dev.fajar.starter.localization.resources/values/strings_id.commonMain.cvr": "78722a8b3986b14126f2f452bb41dd9899629312932cf3ddad74d23879f14de1",
+    "firebase-config.js": "9ca05d3350924dc2de5e9b9b920dcd616f3bd911f1ea9cdfaa42a69d274251d6",
+    "firebase-messaging-sw.js": "e8aa5ab2502c8cf1c6845a394f514a03a2f712eaf1e7f59ab86f771530da91f7",
+    "firebase-version.js": "3a8991ecf6fcd263cefa01d4e424101c146371b1d70a33ad3b920cdac8277a39",
+    "fluent-starter.js": "416e1fca47487d7e81d3158782e9557ff16a1fea4aa280b7294a3ec35bd1f69b",
+    "fluent-starter.js.LICENSE.txt": "85a703daf937b69e6a45c75947dcea43f4026a835b84a7ea4300843217311baf",
+    "fluent-starter.js.map": "ccdf9c8870d76ed9777f0152ad94a7dbb7ce0f1f06ab102f075b48ab267e9995",
+    "index.html": "5d42754baa01a5ef5aea0334ba1e558c13c70f5be0a43730f5e5993a35efecc6"
+  },
+  "limits": [
+    "The62 fresh cases are actual browser tests; cached desktop results are not recounted",
+    "No Starter GitHub CI or distribution workflow was dispatched",
+    "iOS source compiled; no new Apple runtime test or package publication",
+    "No user-device update, HRIS policy or native Matrix binding is included"
+  ]
+}

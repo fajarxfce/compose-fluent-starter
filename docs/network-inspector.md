@@ -76,3 +76,14 @@ errors or skips: root checks, Android assembly/lint, actual browser tests, produ
 web output, iOS source compilation and quality checks. It took 888.607 seconds on
 1,042 stable source inputs and 49 stable library inputs. Lint has no errors and 45
 dependency-version advisories. [Exact checks and first failure](measurements/inspector-notification-port-2026-11-08.json).
+
+## Reproducible consumer workflows
+
+CI and Android/iOS distribution jobs check out inspector source
+`742a2d1c2285c720cef80ea3913195f3ece388cc` and set `networkInspectorDirectory` to
+that checkout. The dependency checkout persists no Git credentials. Nine shared
+SBOM artifacts use the exact checksums verified in Mobile's public consumer CI.
+[Port evidence](measurements/pinned-inspector-ci-port-2026-11-09.json) records the
+Mobile prerequisite and Starter's independent root/Android/browser/web/iOS-source
+validation. The393-component Mobile and366-component Starter inventories are
+separate application graphs. No distribution workflow was dispatched.

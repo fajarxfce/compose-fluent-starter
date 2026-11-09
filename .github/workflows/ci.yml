@@ -12,6 +12,9 @@ on:
         options: [all, apple, verify]
         default: all
 
+env:
+  ORG_GRADLE_PROJECT_networkInspectorDirectory: ${{ github.workspace }}/.work/network-inspector
+
 permissions:
   contents: read
 
@@ -25,6 +28,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Check out verified network inspector
+        uses: actions/checkout@v4
+        with:
+          repository: fajarxfce/kmp-network-inspector
+          ref: 742a2d1c2285c720cef80ea3913195f3ece388cc
+          path: .work/network-inspector
+          persist-credentials: false
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -59,6 +69,13 @@ jobs:
       ORG_GRADLE_PROJECT_appLinksConfigDirectory: .work/app-links-check
     steps:
       - uses: actions/checkout@v4
+      - name: Check out verified network inspector
+        uses: actions/checkout@v4
+        with:
+          repository: fajarxfce/kmp-network-inspector
+          ref: 742a2d1c2285c720cef80ea3913195f3ece388cc
+          path: .work/network-inspector
+          persist-credentials: false
       - name: Select Xcode 26.3
         run: sudo xcode-select -s /Applications/Xcode_26.3.app/Contents/Developer
       - uses: actions/setup-java@v4
@@ -117,6 +134,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Check out verified network inspector
+        uses: actions/checkout@v4
+        with:
+          repository: fajarxfce/kmp-network-inspector
+          ref: 742a2d1c2285c720cef80ea3913195f3ece388cc
+          path: .work/network-inspector
+          persist-credentials: false
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
