@@ -1,47 +1,44 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 10 November 2026, 09:05 UTC. This is the current checkpoint. Earlier detail
+Updated 10 November 2026, 09:11 UTC. This is the current checkpoint. Earlier detail
 remains in [Git at6157db1](https://github.com/fajarxfce/compose-fluent-starter/blob/6157db1/docs/agent-handoff.md).
 
-## Mobile checkpoint — 10 November, 09:05 UTC
+## Mobile checkpoint — 10 November, 09:11 UTC
 
-Mobile [3f5716b6](https://github.com/fajarxfce/hris-mobile/commit/3f5716b61bdcca043a3978e8643591511c117ad1)
-is committed/pushed. Existing delivery owner now handles separate Company/Space ledgers,
-validates the complete physical queue and both projections before writes, retains scoped
-late receipts and repairs missing TEXT receipts from one bounded original history window.
-New SPACE rooms do no company I/O. Physical staging exclusion spans bootstrap aliases.
-[Contract](https://github.com/fajarxfce/hris-mobile/blob/3f5716b6/docs/collaboration-mixed-original-delivery.md).
-Focused236/full9832=7813fresh+2019exact reused PASS; required build/platform/quality gates,
-source/library bytes and all predecessor identities verified. Control42785697360 running,
-expected7830portable+2978Apple+16Swift/unsigned host; do not redispatch.
+Product source [3f5716b6](https://github.com/fajarxfce/hris-mobile/commit/3f5716b61bdcca043a3978e8643591511c117ad1)
+is committed/pushed,9832accepted product tests. Existing delivery owns both Company/Space
+ledgers on one physical queue, with exact receipt/CAS/history recovery and namespace isolation.
+Four Mobile proof/five Group fixture sources are now accepted, pending atomic commit/push.
+Proof3/35974 REAPED PASS20/100.254s; Group source1 PASS3/155.768s plus18Python cases.
+Native2/73904 REAPED PASS233.312s,three cases: one new Space +two Company originals, original-only,
+and existing group-worker control. All exact transactions/device/keys/content preserved;
+SDK dequeue with only1Company/0Space receipts, process death, all3Sent/exactly3provider events,
+recipient offline and offline restart pass. Group25native/17Matrix/1pusher/0extra idle transport;
+no rejected/server-error Matrix responses. Source/APK/library fixed; no compiler during the
+2560MiB/two-core emulator, now stopped. No local heavy process remains.
+[Mobile native contract](https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/collaboration-mixed-space-native.md).
 
-Four Mobile proof and five Group fixture sources are applied/uncommitted/frozen. Mobile
-proof2/37351 PASS20/106.783s; Group source1 PASS3/155.768s and Python18 pass. Native1/92077 is REAPED FAILED155.675s. The test-only SQLite reader required exactly two
-IDs/placeholders and threw on the third original before waiting. Failed data is retained;
-subsequent cases could not start over the retained package. No product defect shown.
-Only the fixture reader now permits exactly2..3 unique validated IDs with matching bound
-placeholders. Mobile proof3/35974 is the ONLY compiler; no emulator. Reaudit proof-3, then
-fresh native-2 against unchanged precompiled Group source1. Preserve failed native-1 data.
-Expect three cases/two XML reports/three fixtures. One new Space original joins two Company
-originals; force death after SDK dequeue with only one Company/zero Space receipts. Recovery
-must preserve transactions, namespaces, device/keys and exactly three encrypted events.
-Old original-only and group-worker controls stay. No native acceptance yet. Canonical tracked
-sources and .work/mixed-space-native-2026-11-10 in both Mobile/Group retain continuation.
+Native1 failed on the test-only SQLite reader requiring exactly2IDs/placeholders; only its
+bounded2..3 support changed, no product/SDK/timeout assertion removal. Failed userdata/source
+retained. Exact evidence lives in both .work/mixed-space-native-2026-11-10 and tracked native
+measurement. Do not repeat accepted native2 without new relevant changes.
+
+Mixed control42785697360 running, expected7830portable+2978Apple+16Swift/host. Staging42781554618
+portable7742 audited7101/reaped; Apple host building. New-room42777934754 COMPLETE10574,
+capability42775719615 COMPLETE10535,projection42772661276 COMPLETE10513,matching42769825037
+COMPLETE10402, each plus16Swift/host; all artifacts/predecessor identities audited. No reruns.
+
+NEXT: complete Space pending inventory independent of room bindings, both-ledger idle demand,
+new-room acceptance, durable fair worker command claims/staging, then incoming/routing.
+SpaceMessageRepository.observe(access,null) already reads complete bounded128commands;
+current worker only scans binding inventory and rejects new-room original==null. Existing
+progress codec schema1 must remain compatible. No usecase-to-usecase orchestration.
+Media, backups, calls/meetings, actual Apple Matrix runtime and all54 PRD groups remain open.
 [Current Mobile handoff](https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/agent-handoff.md)
-owns latest evidence. Do not run another compiler/emulator or modify frozen inputs.
-
-Staging507224a3 local9744;42781554618 portable7742 audited7101/reaped, Apple pending.
-New-room42777934754 COMPLETE10574; capability42775719615 COMPLETE10535; projection42772661276
-COMPLETE10513; matching42769825037 COMPLETE10402, each plus16Swift/unsigned host, all artifacts
-and predecessor identities audited. Accepted controls must not be rerun. Actual Apple Matrix
-runtime is still unavailable; shared-code tests and unsigned host do not implement it.
-
-Space pending inventory (including no binding), worker demand, incoming history/dedup/edits,
-product routing, media, backup, calls/meetings and all54 PRD groups remain open. Starter source
-a7ff417c remains accepted/pushed with358fresh/all required gates; HRIS policy is not ported.
-Phone87 unchanged,88uninstalled; last ADB7150 timed out15s08:22, availability question pending.
-Announce install-only updates, never drive/clear phone UI. Live e558a686/schema116.4/readinessON/
-groupOFF unchanged; preserve live JVMs and original keys/stores/SDK6.
+owns detailed continuation. Startera7ff417c accepted358fresh, no domain port/source WIP.
+Phone87 unchanged,88uninstalled;ADB68089 timed out15s09:07/reaped, question pending. Install-only,
+announce updates, never drive/clear phone UI. Live e558a686/schema116.4/readinessON/groupOFF
+unchanged. Preserve live JVMs, original keys/stores and immutable SDK6.
 ## Authorization and scope
 
 The user authorized long-running HRIS delivery, atomic commits/pushes and validated
