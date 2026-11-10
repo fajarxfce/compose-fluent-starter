@@ -1,5 +1,14 @@
 # Replication storage
 
+`replace` and `commit` accept an optional `ReplicaWakeRequest` when retaining new
+facts must also leave durable recovery work. The owning SQLite or IndexedDB
+transaction writes both the replica mutation and the fresh wake generation.
+Ownership, revision, capacity, or generation conflicts leave both unchanged.
+A consumer acknowledging an older generation cannot clear newly committed work.
+Callers supply a fresh generation and keep business admission, no-op replay checks,
+and operating-system scheduling in the consuming use case/repository contracts.
+The raw database does not schedule workers or infer whether content needs work.
+
 Single-record observers return the active checkpoint and the requested document
 from one read transaction. A replacement generation remains invisible until
 publication. This lets a repository decrypt a detail record against the same

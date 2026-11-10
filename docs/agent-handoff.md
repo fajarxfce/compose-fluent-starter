@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 10 November 2026, 05:06 UTC. This is the current checkpoint. Earlier detail
+Updated 10 November 2026, 05:12 UTC. This is the current checkpoint. Earlier detail
 remains in [Git at6157db1](https://github.com/fajarxfce/compose-fluent-starter/blob/6157db1/docs/agent-handoff.md).
 
 ## Authorization and scope
@@ -59,19 +59,24 @@ The exact nine generic core files from that Mobile commit are applied here after
 its acceptance. All bytes match Mobile Git; no HRIS policy/configuration was copied.
 This version uses ReplicaWakeRequest. The newer command WorkWakeRequest API is
 separate and must await its own platform acceptance before a later port.
-Private .work/replica-commit-wake-port-2026-11-10 retains patch,per-file hashes and
-check.py full-1/session61949 RUNNING. Source is frozen until it finishes. Checks
-include root,actual database/worker/identity/app browser tests,all three Android
-builds,lint,production web,iOS source,strict SBOM and quality. Inspector remains
-pinned to742a2d1 in the preserved isolated checkout above. One heavy compiler;
-no emulator. Initial private preflight referenced absent metadata field applied;
-it stopped before any build and was corrected to appliedAt. No source workaround.
-No new accepted Starter gate or source commit yet. Reap61949,inspect reports and
-source stability,then document/commit/push the port. Do not duplicate accepted runs.
+Private .work/replica-commit-wake-port-2026-11-10 retains patch,per-file hashes,
+runner and accepted.json. Full61949 REAPED PASS588.178s,332 fresh tests/85 suites,
+zero failures/errors/skips. The new eleven SQLite and eleven actual Chromium cases
+are included. Root,all three Android builds,lint,production web,iOS source,strict
+SBOM and quality pass. Inputs1,057/library49 remained identical. Lint has0errors and
+45 existing dependency advisories; exact APK/web/SBOM hashes are recorded in
+[accepted evidence](measurements/replica-work-wake-port-2026-11-10.json).
+The nine core files still match accepted Mobile Git bytes. Earlier metadata-key
+preflight stopped before compilation and required only private runner correction.
+No Starter compiler remains. No phone install,live change or distribution dispatch.
 
-Mobile storage focused54152 passed43 before new queue/observation usecases and22
-new cases were added. Those additions await their own focused/full gates after
-this Starter compiler ends. Mobile producer42753380451 and command42758828055
-hosted jobs both run at immutable source; do not cancel/redispatch. Phone87 unchanged,
-release88 uninstalled,availability question already pending. Live remains
- e558a686/schema116.4/readinessON/groupOFF. Continue all54 open PRD acceptance groups.
+Mobile focused-3/session17154 is now the only local heavy compiler. Nineteen Mobile
+Kotlin files remain uncommitted: SPACE encrypted messages,local queue/observation,
+22 new domain cases and the seventeen shared storage cases. The extra storage case
+checks full timestamp ordering when two messages share one millisecond. Expected67
+fresh cases plusApple source/quality; no new result claimed yet. Then Mobile full
+gates and mixed-ledger integration remain. Producer42753380451 and command42758828055
+hosted jobs both run at immutable source; do not redispatch/cancel. The newer generic
+command API is a separate future port after its own Mobile platform proof.
+Phone87 unchanged,release88 uninstalled,availability question already pending. Live
+remains e558a686/schema116.4/readinessON/groupOFF. Continue all54 open PRD groups.

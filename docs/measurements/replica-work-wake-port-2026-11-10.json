@@ -1,0 +1,70 @@
+{
+  "acceptedAt": "2026-11-10T05:11:29.933445+00:00",
+  "sourceCommit": "7a6fe534fc2e86064be9f60509f7befcc6afbf31",
+  "mobileHostedRun": 42749839268,
+  "mobileHostedTests": 9985,
+  "changedSourceHashes": {
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/ReplicaStore.kt": "c4a100c7770728a20001d413287bad922159a1c4f2635f3398a25a32c8e88f91",
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/ReplicaWakeRequest.kt": "805bc73b82a0f806d44261b56f85890addfb1209131f6ea47057dd999f2286fd",
+    "core/database/src/commonTest/kotlin/dev/fajar/starter/database/ReplicaWakeContract.kt": "f60785a7d5736160a6b0f478a62fe8d67365ccfae2b380cc31c12b30352c6c26",
+    "core/database/src/desktopTest/kotlin/dev/fajar/starter/database/ReplicaWakeTest.kt": "15af5c5e235d69c1fff6c84a508237d4507ef92e5930801192f94458fc0b45dd",
+    "core/database/src/iosTest/kotlin/dev/fajar/starter/database/AppleReplicaWakeTest.kt": "64a7423bb5a6c0c2689960b08f81d1c837746095e8f64996bc1faba1b5e32027",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/RoomReplicaStore.kt": "eb09c42777a1f00e25d46c124cf41f4316d111bcbb85fda2b6a6c8cc46d48642",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/dao/ReplicaDao.kt": "e27eaf0422054e7e44e313d3826b317d2f60434a2693e830911f2606448a1399",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/IndexedDbReplicaStore.kt": "50e2c9b71c530955a487f23c548226ca34ba1253a00f3855a544fabc8c8a44f8",
+    "core/database/src/wasmJsTest/kotlin/dev/fajar/starter/database/BrowserReplicaWakeTest.kt": "4795aa3bc3b1327f0225b430b56bcfb8c8531af55f9e159167fb6db80cf708ed"
+  },
+  "gate": {
+    "startedAt": "2026-11-10T05:00:58.454867+00:00",
+    "exitCode": 0,
+    "wallSeconds": 588.178,
+    "inputsUnchanged": true,
+    "inputCount": 1057,
+    "libraryInputsUnchanged": true,
+    "libraryInputCount": 49,
+    "libraryRevision": "742a2d1c2285c720cef80ea3913195f3ece388cc"
+  },
+  "sourceManifestSha256": "a97bb42981bb1245e502c3d6744dfab2ab38f9002eda406c2eade8d3d972e6c2",
+  "freshCounts": {
+    "tests": 332,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newCases": {
+    "ReplicaWakeTest": 11,
+    "BrowserReplicaWakeTest": 11
+  },
+  "reportManifestSha256": "73251757ba6368c25659c7d16203e176869329d7f6e54fbd333e189ce8dea9b5",
+  "lintErrors": 0,
+  "lintAdvisories": 45,
+  "apks": {
+    "apps/android/build/outputs/apk/dev/debug/android-dev-debug.apk": {
+      "bytes": 26745790,
+      "sha256": "dd25d51ab41c924b55172c211b92b5ca726b79613a85cd94b91218cbe6f083b7"
+    },
+    "apps/android/build/outputs/apk/staging/debug/android-staging-debug.apk": {
+      "bytes": 26762182,
+      "sha256": "4ca2f5e0166baf4acd257a667a995174d3e33167121557c59bfca7f20df9f612"
+    },
+    "apps/android/build/outputs/apk/prod/release/android-prod-release-unsigned.apk": {
+      "bytes": 20339296,
+      "sha256": "2cbfd086391f5e34321fda9faf6cd23bcc82cc5e14fa4e6e75d4de3a43932e23"
+    }
+  },
+  "phoneInstalled": false,
+  "liveChanged": false,
+  "remaining": [
+    "Independent future port of command-plus-wake API after its Mobile platform acceptance"
+  ],
+  "sbom": {
+    "path": "apps/android/build/reports/cyclonedx-direct/bom.xml",
+    "sha256": "c05a88a4c8ef4604b86960b609559dbb58cab696d7d4e983c60b55f2e309c67f",
+    "components": 366,
+    "taskOutcome": "UP-TO-DATE; exact unchanged dependency graph validated with strict verification"
+  },
+  "web": {
+    "files": 26,
+    "manifestSha256": "26a57b7e022b967f35bc12396b171c86947e7cc0cb3f11e8c69be953e1944422"
+  }
+}
