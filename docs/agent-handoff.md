@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 10 November 2026, 05:12 UTC. This is the current checkpoint. Earlier detail
+Updated 10 November 2026, 05:26 UTC. This is the current checkpoint. Earlier detail
 remains in [Git at6157db1](https://github.com/fajarxfce/compose-fluent-starter/blob/6157db1/docs/agent-handoff.md).
 
 ## Authorization and scope
@@ -70,13 +70,23 @@ The nine core files still match accepted Mobile Git bytes. Earlier metadata-key
 preflight stopped before compilation and required only private runner correction.
 No Starter compiler remains. No phone install,live change or distribution dispatch.
 
-Mobile focused-3/session17154 is now the only local heavy compiler. Nineteen Mobile
-Kotlin files remain uncommitted: SPACE encrypted messages,local queue/observation,
-22 new domain cases and the seventeen shared storage cases. The extra storage case
-checks full timestamp ordering when two messages share one millisecond. Expected67
-fresh cases plusApple source/quality; no new result claimed yet. Then Mobile full
-gates and mixed-ledger integration remain. Producer42753380451 and command42758828055
-hosted jobs both run at immutable source; do not redispatch/cancel. The newer generic
-command API is a separate future port after its own Mobile platform proof.
-Phone87 unchanged,release88 uninstalled,availability question already pending. Live
-remains e558a686/schema116.4/readinessON/groupOFF. Continue all54 open PRD groups.
+Mobile focused6481 is REAPED PASS68/382.076s (32 domain,17 SQLite,17 browser,2 DI),
+zero failures/errors/skips,Apple source/quality. New full-1/session16809 is the only
+heavy compiler; Mobile source remains frozen/uncommitted until full acceptance.
+Initial production/test generic inference failures17154/96716 are reaped; explicit
+types corrected,assertions retained. Full timestamp ordering and retained access
+denial across transient session-read failures are covered by the passing cases.
+
+The next generic command database patch (15 file changes) fromMobileb1adfd82 passes
+`git apply --check` against30c4d72. It is NOT applied. Private folder
+.work/command-work-wake-port-2026-11-10 contains prepared.json and database.patch,
+SHA72622f3e6ef58712089ab81d223d538102bf2cdd9840e08574dddda33995f164.
+Initial core-wide dry apply stopped on two absent HRIS document fixtures without
+mutation; only generic database changes belong here. Wait for complete Mobile
+command platform proof before applying/building. Producer42753380451 portable7,292
+and command42758828055 portable7,318 are audited; both Apple jobs remain running.
+Do not supersede either. Command expected2,730Apple+16Swift/unsignedhost.
+
+Phone87 unchanged,release88 uninstalled; latest ADB62446 timed out15s around05:21,
+question already pending. Live remains e558a686/schema116.4/readinessON/groupOFF.
+Continue all54 open PRD acceptance groups after this checkpoint.
