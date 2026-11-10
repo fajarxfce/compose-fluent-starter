@@ -1,5 +1,9 @@
 # Architecture
 
+[Durable commands](command-storage.md) can atomically retain a fresh recovery wake
+with a new batch. Command and replica mutations share the raw `WorkWakeRequest`;
+retained command replay does not create new work. Use cases own scheduling and retry.
+
 Replica producers can retain a fresh recovery generation in the same database
 transaction as their facts. The optional wake request is a raw storage capability;
 consuming features own replay admission and scheduling. See [replication storage](replica-storage.md).

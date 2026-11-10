@@ -1,5 +1,19 @@
 # Durable command storage
 
+`insertBatchAndWake` retains newly inserted commands and a fresh recovery generation
+in one database transaction. It uses the same `WorkWakeRequest` as replica writes.
+An exact batch consisting only of retained active or archived commands leaves the
+wake unchanged. Ownership, capacity or generation conflicts change neither store;
+callers interpret a null result and reread before retrying. Existing `insertBatch`
+behavior is unchanged. The raw store never schedules an OS worker. Consuming use
+cases own admission, exact readback after response loss and scheduling after retention.
+
+The generic implementation and thirteen shared transaction cases per platform were
+ported from Mobile b1adfd82 after its 10,048 hosted tests, Apple simulator execution,
+Swift checks and unsigned iOS host passed. Independent Starter validation passes
+358 fresh tests and all configured Android/web/iOS-source/SBOM/quality gates.
+[Port evidence](measurements/command-work-wake-port-2026-11-10.json).
+
 Content-key creation can use the [atomic credential port](protected-credentials.md).
 The raw database does not create or recover cryptographic keys itself. The adapter
 and its regressions are shared with [HRIS Mobile](https://github.com/fajarxfce/hris-mobile/commit/291a64c).

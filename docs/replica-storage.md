@@ -1,6 +1,6 @@
 # Replication storage
 
-`replace` and `commit` accept an optional `ReplicaWakeRequest` when retaining new
+`replace` and `commit` accept an optional `WorkWakeRequest` when retaining new
 facts must also leave durable recovery work. The owning SQLite or IndexedDB
 transaction writes both the replica mutation and the fresh wake generation.
 Ownership, revision, capacity, or generation conflicts leave both unchanged.

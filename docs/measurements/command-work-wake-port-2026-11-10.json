@@ -1,0 +1,93 @@
+{
+  "acceptedAt": "2026-11-10T06:17:33.930514+00:00",
+  "sourceCommit": "b1adfd820e5e560bf3d689a6bee09a88d1f67a9a",
+  "mobileHostedRun": 42758828055,
+  "mobileHostedTests": 10048,
+  "changedSourceHashes": {
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/CommandStore.kt": "5e81da03bc7243f433ecd4e1aac02424e90286a030f274f3cc4d09e43777cece",
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/ReplicaStore.kt": "4dd06bbf9b9f4ab70f2bd806388e64add7e89c7394eb5558666848ce148d65bb",
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/WorkWakeRequest.kt": "b7c68aa4ca59c7980faff0ea7ad84cbf9e1cf6bede6916318449653fbf302477",
+    "core/database/src/commonTest/kotlin/dev/fajar/starter/database/CommandWakeContract.kt": "626bf5283f3e1709a97e9fca6241808fadc38400c426c806ae88514209a4cc8b",
+    "core/database/src/commonTest/kotlin/dev/fajar/starter/database/ReplicaWakeContract.kt": "0888c94db668dd98fcd15563ae23cfdb42be8ea3a605a3297b4ed63ba2ca3416",
+    "core/database/src/desktopTest/kotlin/dev/fajar/starter/database/CommandWakeTest.kt": "096e1b2021338672355aa083a859a337f8dac5e50aee0adeb4edf6d5b3b2b187",
+    "core/database/src/iosTest/kotlin/dev/fajar/starter/database/AppleCommandWakeTest.kt": "3500c2afbf274bcfc548fd8bdf87541c9a87a5b39e73699e4e5ef042dc3c1b10",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/RoomCommandStore.kt": "a0cf2fa3c6eb040062ebaa6467f8b878822fb98129028cb6ca2b954bdc775b51",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/RoomReplicaStore.kt": "0f58a86bbb16bbb3f1bda2807d8cd6fd95a7159be56f2b5070fc571d7339fff4",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/dao/CommandDao.kt": "d3d5ace2375a63e9fec7ddb12aa1ec55e0260d93a16631403fb694bc7a16242e",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/dao/ReplicaDao.kt": "83f0cabb0ad1bb8b1fa12dda5a6e45dfd5cf6728f7d2c32d008c16c56edcb72b",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/IndexedDbCommandBatch.kt": "251ade99ae7ddbc9519eaee5760f1f108f987cd531c3c8afcd2b9e75e03df3e2",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/IndexedDbCommandStore.kt": "a01d77f1a7df917542160cf63870cf375c715bf5ad623a756db9880bf4ea99b6",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/IndexedDbReplicaStore.kt": "818216f4da869691082eeff09128556ba6744dfb9d21570c0a503ccf6cd10fe6",
+    "core/database/src/wasmJsTest/kotlin/dev/fajar/starter/database/BrowserCommandWakeTest.kt": "38f7b78552cf46510d9a34d5b2bbdbb30025881960842b8fa14f69bb1fb2ff70"
+  },
+  "deletedSources": [
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/ReplicaWakeRequest.kt"
+  ],
+  "gate": {
+    "startedAt": "2026-11-10T06:07:50.562724+00:00",
+    "exitCode": 0,
+    "wallSeconds": 518.812,
+    "inputsUnchanged": true,
+    "inputCount": 1061,
+    "libraryInputsUnchanged": true,
+    "libraryInputCount": 49,
+    "libraryRevision": "742a2d1c2285c720cef80ea3913195f3ece388cc"
+  },
+  "sourceManifestSha256": "ad90ba02474fa5a34be79ca5268e6aa7b289a9e00b55cb8ac5d5414c5776690d",
+  "freshCounts": {
+    "tests": 358,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newCases": {
+    "CommandWakeTest": 13,
+    "ReplicaWakeTest": 11,
+    "BrowserCommandWakeTest": 13,
+    "BrowserReplicaWakeTest": 11
+  },
+  "reportManifestSha256": "d7630e3373636dd2318a0c3a095fe9cd2d91248810a677d7fc50b6fc0a525c32",
+  "lintErrors": 0,
+  "lintAdvisories": 45,
+  "apks": {
+    "apps/android/build/outputs/apk/dev/debug/android-dev-debug.apk": {
+      "bytes": 26746426,
+      "sha256": "673fd089671a6372c9848d9ee53a98c460e0ccd1abf8bc4a1c351c8ae31ebadb"
+    },
+    "apps/android/build/outputs/apk/staging/debug/android-staging-debug.apk": {
+      "bytes": 26762818,
+      "sha256": "6e861db65416c3c74dc944a63392faf75b21486dbd180650a57f9569a17d47f9"
+    },
+    "apps/android/build/outputs/apk/prod/release/android-prod-release-unsigned.apk": {
+      "bytes": 20339296,
+      "sha256": "15034c8b56293065f297435f0d0537955a255628136985581eeaed7e6ff5b3cb"
+    }
+  },
+  "phoneInstalled": false,
+  "liveChanged": false,
+  "remaining": [
+    "Further generic ports follow separately accepted Mobile capabilities; no HRIS policy copied"
+  ],
+  "sbom": {
+    "path": "apps/android/build/reports/cyclonedx-direct/bom.xml",
+    "sha256": "c05a88a4c8ef4604b86960b609559dbb58cab696d7d4e983c60b55f2e309c67f",
+    "components": 366,
+    "taskOutcome": "UP-TO-DATE; exact unchanged dependency graph checked with strict verification"
+  },
+  "web": {
+    "files": 26,
+    "manifestSha256": "d185bbaf202273e4a85af0c27ce4a4ca5fd034f05218f987918ffa232277ce08"
+  },
+  "checks": [
+    "root check",
+    "real SQLite and Chromium database contracts",
+    "three configured Android builds",
+    "Android lint",
+    "production web distribution",
+    "iOS source",
+    "strict dependency verification and SBOM",
+    "format",
+    "architecture",
+    "detekt"
+  ]
+}

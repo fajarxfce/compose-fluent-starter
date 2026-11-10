@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 10 November 2026, 05:57 UTC. This is the current checkpoint. Earlier detail
+Updated 10 November 2026, 06:20 UTC. This is the current checkpoint. Earlier detail
 remains in [Git at6157db1](https://github.com/fajarxfce/compose-fluent-starter/blob/6157db1/docs/agent-handoff.md).
 
 ## Authorization and scope
@@ -83,7 +83,7 @@ fbbf96a2 publishes complete command proof. Do not redispatch the remaining messa
 
 After that full Mobile command proof,the exact15-file generic database patch from
 b1adfd820e5e560bf3d689a6bee09a88d1f67a9a is APPLIED here at05:57:19 UTC but remains
-UNCOMMITTED/UNTESTED in Starter. WorkWakeRequest replaces ReplicaWakeRequest;
+locally ACCEPTED for the source/docs commit. WorkWakeRequest replaces ReplicaWakeRequest;
 CommandStore.insertBatchAndWake atomically retains new commands and work,while replay
 of retained active/archive IDs creates no wake. Thirteen new shared database cases
 have Desktop/Chromium/Apple wrappers. No HRIS policy,configuration or document fixture
@@ -91,18 +91,30 @@ was copied. Private .work/command-work-wake-port-2026-11-10/port.json and apply.
 verify both Mobile hosted audits,all pre/post Git bytes and the removed rename source.
 Patch SHA72622f3e6ef58712089ab81d223d538102bf2cdd9840e08574dddda33995f164.
 
-Next run this independent Starter gate only after the active Mobile compiler is reaped:
-python3 .work/command-work-wake-port-2026-11-10/check.py full-1
-Then accept.py verifies sources,real database cases,required builds and reports before
-an atomic source/docs commit and push. No Starter compiler has run for this patch yet.
-Do not reapply it. Keep the pinned inspector checkout and its CRLF-normalizer delta.
+Independent full-1/session32816 is REAPED PASS518.812s:358 fresh tests/87 suites,
+zero failures/errors/skips. New13 SQLite/13 Chromium command cases and retained11+11
+replica cases pass. Root,all three Android builds,lint,production web,iOS source,
+strict SBOM and quality pass. Inputs1,061/library49 are unchanged; source manifest
+ad90ba02474fa5a34be79ca5268e6aa7b289a9e00b55cb8ac5d5414c5776690d;
+report manifestd7630e3373636dd2318a0c3a095fe9cd2d91248810a677d7fc50b6fc0a525c32.
+Strict accept.py verifies all exact source and XML bytes. Lint0errors/45 existing
+advisories; SBOM366 components,three APKs and26 web files are hashed. Its fifteen
+source files match Mobileb1adfd82; the old rename source is absent.
+[Accepted port evidence](measurements/command-work-wake-port-2026-11-10.json).
+No Starter compiler remains. Commit/push this accepted port with its evidence.
 
-Mobile's new receipt journal is under full validation. Focused37385 passed60 cases but
-stopped at a missing explicit type in the app DI test; corrected without production or
-assertion changes. Focused46078 REAPED PASS62/121.152s,zero failures/errors/skips,Apple
-source and quality; source4,689 SHA04d47a938a3e3529dc4fb654f857f8937f577c3f603be2e079709f1b64a86bc4.
-Full-1/session39948 is the only heavy local compiler. Do not edit Mobile source or
-launch Starter until it is reaped. Mobile docs/agent-handoff.md owns current jobs.
+Mobile receipt sourcedb4fc4f0 is accepted/pushed:focused62,full9,488 (7,469 fresh+
+2,019 exact reused),zero failures/errors/skips; source4,689 unchanged. Control
+42766554589 is running at that immutable source,expecting7,486 portable+2,814 Apple,
+16Swift/unsignedhost. Message42763070460 portable7,416 is accepted; Apple is building
+the unsigned host. Producer42753380451 and command42758828055 are fully accepted.
+
+Mobile now has uncommitted typed mixed queue policy/reader,owning-module DI and34
+domain cases. Focused-1/session19427 is RUNNING as the only heavy local compiler.
+Freeze Mobile source; no emulator/second compiler. Reader checks both ledgers and
+parent/admission at each I/O boundary,then verifies final binding/native inventory.
+No native resume,settlement,enqueue,worker or UI routing is enabled by this reader.
+Mobile docs/agent-handoff.md owns current jobs and next steps.
 
 Phone87 unchanged,release88 uninstalled; latest ADB8250 timed out15s around05:56,
 question already pending. Live remains e558a686/schema116.4/readinessON/groupOFF.
