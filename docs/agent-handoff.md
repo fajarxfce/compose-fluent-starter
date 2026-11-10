@@ -1,104 +1,85 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 10 November 2026, 13:06 UTC. Follow AGENTS.md. Prior details are retained in
-[db40656](https://github.com/fajarxfce/compose-fluent-starter/blob/db40656/docs/agent-handoff.md).
+Updated 10 November 2026, 15:04 UTC. Follow AGENTS.md. This file describes current work.
+The complete earlier ledger remains in [previous handoff](https://github.com/fajarxfce/compose-fluent-starter/blob/3657ead8b603aee79307f9038f3819a9f2d68964/docs/agent-handoff.md)
+and checked-in measurements. Do not restart passed gates from historical running checkpoints.
 
-The user authorized the full communications PRD, sustained implementation, atomic commits
+The user authorized the complete communications PRD, sustained implementation, atomic commits
 with pushes and validated phone updates. All54 acceptance groups remain open. No subagents.
-Mobile proves reusable foundations before Starter. Follow AGENTS.md ownership: usecases
-coordinate repositories/policy, repositories their own datasources, ViewModels screen state.
+Prove reusable changes in Mobile before porting them here. Datasources own raw I/O, repositories
+their own datasource mappings, usecases repository orchestration/policy, ViewModels screen state.
 
-Latest accepted Mobile5c276a2fcc472260245ea56ba6db7b50c537bd59 is committed/pushed39983
-(REAPED). Typed event classification preserves original/edit/redaction/unresolved identity and
-actual SDK decryption. Focused49881 PASS105/302.286s; full34957 PASS10172=8153fresh+2019exact
-accepted reused/695.005s, all reaped/strictly audited.4755source inputs fixed,
-manifestf56484e626ceb0d012e9cca86f628150b7863dca87a3dc20ab6ed4ea7e69ff3c.
-Current proofAPK150605511B SHA24e8cef1c2319a00c2378495f9552f8a4c0f127cecdb86ff24edd64745ca685e.
-Hosted42819170095 RUNNING exact5c,11295expected+16Swift/unsignedhost. Ref67054/dispatch33180
-REAPED. No native equivalence, incoming activation, phone or live claim.
+## Starter remains accepted
 
-Current Mobile UNCOMMITTED14-file native integration owns finite raw reads under the existing
-parent/client and exact registry checks before/after I/O. Physical owner and logical Space wrapper
-stay distinct; no implicit SDK creation/sync/send. Adds15child-lifetime +4parent-integration host
-cases and4portable availability cases; existing DI/absent-runtime tests cover same instance/no I/O.
-Focused1/7075 RUNNING, source frozen,77expected; next full10203,4762source inputs. Not accepted.
-Private Mobile runtime-event-reads-2026-11-10 has exact list/runners/auditors. Mobile handoff
-fef96ccd is pushed36912(REAPED); it owns current work and gate outcomes.
+Generic source a7ff417c33cbbffb9b44a84e489a2fbce7be5bb2 is unchanged. Full32816 REAPED
+PASS358fresh/87suites/518.812s, three Android builds, production web, iOS shared source,
+SBOM and quality checks.1,061inputs,
+manifestad90ba02474fa5a34be79ca5268e6aa7b289a9e00b55cb8ac5d5414c5776690d.
+Its15generic command-wake files match Mobileb1adfd82 after hosted Apple acceptance; the prior
+replica port is30c4d72. Current Matrix/HRIS event/history policy is not a generic Starter delta.
+Do not rerun Starter checks without a source change or a concrete unresolved concern.
 
-Predecessor hosted controls are COMPLETE and strictly audited: history42808577683=11145,
-edits42811675228=11196, raw source42815332867=11211; each also16Swift/unsignedhost.
-Raw audits85411/96085 REAPED; complete measurement publishedfef96ccd. Previous complete
-history/edit measurements are retained in Git. Native Apple Matrix runtime remains missing.
-Do not rerun accepted gates or reapply the historical November6 SDK consumer patch.
+## Current Mobile and backend work
 
-Next prove actual encrypted original/edit-at-head/redacted-target/missing-key behavior through
-public repository capabilities. The existing Company/Space ACK reader must also handle an edit
-head absent from its presentation timeline, using explicit acquired provenance; never weaken
-checks or relabel edit IDs as originals. Then own bounded incoming retention/progress. Preserve
-current immutable SDK6, dirty SDK source tree, Company namespace and offline local facts.
-No generic Starter delta and no live server/schema change.
+Mobile6334c0c4 accepts the edit-head history repair. Matrix presentation folds edits into
+originals; exact acquired anchor evidence is now separate from original ACKs. Full64837
+REAPED PASS10224=8205fresh+2019verified reused/686.844s; focused71222 PASS176/203.280s.
+Group82f2c817 validates redacted encrypted events and retains matched redaction metadata.
+Its42protocol cases pass137.027s. Actual SDK native-fixed3/5268 REAPED PASS3/214.303s:
+Company and adopted Space windows succeed with independent original/edit hashes, no5xx,
+and existing original/mixed process-loss/offline recovery retains exactly2/3 provider events.
+No phone latency claim. Emulator stopped and no compiler overlap.
 
-Current Mobile native proof [2828b88b](https://github.com/fajarxfce/hris-mobile/commit/2828b88b4de8fd70c596375b8349e075ba173091)
-is committed/pushed78025 (REAPED). Four actual SDK6 cases pass269.304s in native1/45886,
-reaped,zero failures/errors/skips. New unbound Space command is discovered, durably claimed,
-staged and sent by the registered worker beside two unchanged Company originals. Process
-loss retains the original claim and transactions; restart confirms exactly3 provider events,
-and another offline restart reads3 Sent. Recipient stays offline. Original-only, direct-mixed
-callback-loss and prior group-worker cases remain verified. No source/APK/library changes
-during the run; no concurrent compilation;2560MiB/two-core emulator stopped.
+Original90163c32 ports the exact mapper/test. Full49822 REAPED PASS23/158.561s plus quality
+and both bootJARs. Original has23 applicable cases; the earlier24 prediction included Group's
+unported namespace case. All applicable original case identities are preserved.
+Live API/worker90163c32 activation96306 REAPED PASS25.060s: schema116.4,11confirmedkey
+publications, environments/mounts/staticIPs/publishedports/other services preserved. Localhost
+and WireGuard health pass. Worker readiness AND readiness-control ON; Group features OFF.
+First78190 attempt restored old images on an overly strict dynamic-IP equality guard;
+final checks verify configured staticIPs and actual published endpoints. No application
+failure, migration or employee-message send. Old images/overlay remain available for rollback.
 
-Pending case26native/19Matrix/3transport/1pusher,zero extra idle transport and zero rejected/
-server-error responses. Prior group25native/17Matrix/2transport/1pusher. Direct original/mixed
-recovery728/1135ms is fictional fixture timing, not phone latency. The Mobile proof changes
-only3 Kotlin test-host files; product8c76f92c/full10010 stays fixed. Proof2/34855 REAPED PASS
-20/107.923s,4732inputs,manifest5dc57501601ab9c083ab61d822c600b12d7b583fad0edffe5a7cf5037caffcc6.
-APK150599939bytes SHA61ae98f267ce3b53cf95d4667b66ae1d78fc0427839161383264e954fbd0f3cb,
-immutable SDK26.10.23-hris.6 verified. Group source1/72318 REAPED PASS3/83.808s,8735inputs,
-manifestd37166610c7b8300220d33d98514f950d01c9e38f51e813f1811711d54a4819d,28 Python cases
-preserving18 original+4 prior recovery+6 new. All strict auditors/publisher pass. Private
-space-pending-native-2026-11-10 in Mobile/Group holds exact sources/results; do not rerun.
+Mobile8c445feb docs push30319 REAPED checkpoints current3UNCOMMITTED/frozen incoming-policy
+files. Focused30508 REAPED PASS144/373.676s:44new Desktop/Chromium cases+100controls, iOS
+shared compilation and quality. Full12044 RUNNING expected10268 on4,769fixed inputs,
+manifest0410ae91d868f678fafe7bcf6d3adab655961b827c1fe67db3af5158158c854d.
+One3GiB compiler,no emulator. No source edits until the gate is reaped. The pure plan starts
+no I/O or cursor work; next implement admitted1..16-event acquisition and durable incoming
+progress, at most one target per item and one transport observation per batch.
 
-Core8c76f92c has22 Kotlin inputs for compatible schema2 message claims and fair recovery.
-Original binding claims resume first, failures advance before backoff,max4attempts/turn;
-unready recipients are Unavailable, cancellation skips delivery, dedicated Finish reads the
-complete pending partition. Focused251 passes; full1/19057 REAPED PASS581.55s,10010 verified
-=7991fresh+2019exact reused,zero failures/errors/skips,all required platform/quality checks.
-Source4732manifestfad9f11cebc53e7e60444da4341dc9b18fca16d688872ecf2aceef1d0f21d920.
+[Mobile current handoff](https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/agent-handoff.md)
+owns exact active sessions and subsequent work. [Incoming contract](https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/collaboration-incoming-history-planning.md).
+Original37a74bb9 and Groupf88abd24 handoffs retain deployment/native evidence.
 
-[Current Mobile handoff](https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/agent-handoff.md)
-and [incoming/history plan](https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/collaboration-space-incoming-plan.md)
-own continuation. Accepted local original/edit storage and raw I/O remain distinct from
-remaining native incoming collection and product routing.
-Never reinterpret Space IDs as Company IDs or relabel old encrypted history. Fresh SPACE-origin
-native rooms and actual Apple Matrix runtime remain separate. Continue history/dedup/edits,
-notifications/replies,media/stickers/voice,Drive/iCloud backup,MatrixRTC calls,LiveKit meetings.
+## Hosted and physical-device boundaries
 
-Hosted worker42801929551 COMPLETE11070=8008portable+3062Apple,16Swift/host on exact8c76f92c.
-Audits74895/10663 REAPED; Appleartifact13761991889,
-SHA94bd39afe5319bd67ecef746e202857848f40f2e86920af33acaeccbec25b8af,
-manifest92a73e3175da70c9afcb22751dac57e069a19d37851e5a5e57a5d1ca1ab36f53. Complete Mobile
-measurement accompanies this checkpoint. Actual Apple Matrix runtime remains missing.
+Runtime42824039795 COMPLETE/audited11330=8201portable+3129Apple, plus16Swift/unsignedhost.
+Apple45856 REAPED. Classifier42819170095 complete11295+16; earlier source/history/edit
+controls remain accepted. Current history6334c0c4 hosted42835309631: portable25969 REAPED/
+audited8222, Apple RUNNING (expected3137); no duplicate dispatch. Native Apple Matrix is
+still unimplemented. The physical iPhone-test waiver does not complete platform capabilities.
 
-Mixed-demand42796816133 COMPLETE10958=7930portable+3028Apple,16Swift/host on exact1d18e232.
-Portable90228/Apple91937 REAPED and strictly audited; complete Mobile measurement is published
-with this checkpoint. GitHub digest/CRC and all previous case identities verified.
-Pending-inventory42792315555 COMPLETE10862+16Swift/host,Apple87521/reaped2996; complete evidence
-published65850051. Mixed-core10808,staging10676,new-room10574,capability10535,projection10513
-and earlier accepted controls remain in tracked measurements. Do not redispatch accepted runs.
+Release89 sourcef837897fc17b3264d1d46fc47e4deff25e20250f is ACCEPTED, NOT INSTALLED.
+Build44473 PASS665.727s, artifact97497 and SDK38740 all REAPED. ARM64 devRelease1.0.0(89),
+123809167B SHA4c790d2314f53c37bfdc3108ac4b801ab33aa9fc177904001fd16793fd0ef52d.
+Existing signer, nondebuggable,0lint, exact SDK6, Firebase/private endpoint/backup exclusions
+verified. Dedicated native proof is x86_64, not a phone runtime claim. Mobile's private
+release-phone-2026-11-10-build89 contains the verified APK and INSTALL-ONLY runner.
+Phone10.77.77.3:5555 lastADB30354 timed out15s(REAPED). Phone87 last known;88/89uninstalled.
+Keep the existing availability question pending. Announce each actual installation; never
+launch, drive, uninstall or clear the employee's phone. Availability does not block other work.
 
-Mobile runtime event focused7075 is RUNNING; older gates are reaped and emulator stopped. Never kill live API/worker JVMs. Phone10.77.77.3:5555 is INSTALL-ONLY:
-announce each install,never launch/drive/uninstall/clear UI/data. LastADB82255 timed out15s near
-12:14 and is reaped; existing availability question remains pending. Phone87 last known;
-88uninstalled,latest89 not built. Preserve original keys/stores/messages and immutable SDK6;
-never resend retained originals or Draft66. Physical iPhone testing waiver does not waive
-Apple source/native runtime/push/call acceptance. Crashlytics IAM verified,do not ask again.
-Livee558a686/schema116.4/readinessON/groupOFF unchanged. GroupV117–140 is not deployed;
-never blindly increase Original verifier maximum116.4. Inspector/dirtySDK worktrees preserved.
+Never resend retained originals Control77 235408, Warm77 235728, Recovery78 005634,
+Registry82 055959, Parent83 071123, History84 083059, Selected86 102110, Joined87 115837.
+Draft66 092041 must NEVER SEND. Preserve retained employee-sender/Bima74 stores and keys.
+Crashlytics IAM is verified; do not request it again. Keep credentials out of Git/output.
 
-No generic source delta in the new HRIS worker/native increment. Startera7ff417c remains
-accepted358 fresh cases/87suites,three Android builds,production web,iOS source,strictSBOM/
-quality.15 generic command-wake files match Mobileb1adfd82 after actual hosted Apple acceptance;
-replica port30c4d72 is included. Pinned inspector workflows/checksums previously validated.
-Preserve standalone Inspector gradlew.bat normalization delta. Keep HRIS policy/configuration
-in Mobile; port only future reusable foundations after downstream proof. No new Starter CI,
-release or phone installation. Historical details and all exact hashes remain in prior Git.
+Preserve immutable SDK26.10.23-hris.6, the dirty SDK8de215a worktree and Inspector gradlew.bat
+normalization. Never reapply the retired November6 SDK consumer patch. Group schemas117–140
+remain undeployed; Original recovery verifier stops at116.4. One owned compiler OR emulator
+at a time; emulator limit2,560MiB/two cores. Preserve live API/worker JVMs. Reap every session.
+
+Continue the full PRD: admitted incoming retention/progress and product Space routing,
+notifications/replies,media/stickers/voice,encrypted Drive/iCloud backup,MatrixRTC calls,
+LiveKit meetings and native Apple runtime. Do not mark the long run complete after one gate.
