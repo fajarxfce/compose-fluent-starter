@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 9 November 2026, 12:33 UTC. This is the current checkpoint. Earlier detail
+Updated 10 November 2026, 05:06 UTC. This is the current checkpoint. Earlier detail
 remains in [Git at6157db1](https://github.com/fajarxfce/compose-fluent-starter/blob/6157db1/docs/agent-handoff.md).
 
 ## Authorization and scope
@@ -47,16 +47,31 @@ Atomic command observations, bounded replica queries and local timing labels are
 already ported. Their exact evidence remains under docs/measurements; do not
 reapply old patches or follow historical notes about already-reaped jobs.
 
-## Active work and next steps
+## Active: generic replica and recovery wake transaction
 
-No Starter compiler/emulator remains. Root Mobile's binding formatter40488 is the
-only current local job. Mobile native/phone87 are accepted and installed; preserve
-all eight original messages, the stopped87 sender store and the unsent Draft66.
-Root Mobile is implementing immutable encrypted published-room bindings with
-exact LEGACY coordinates. Current backend remains e558a686 on schema116.4 with
-readiness control ON. Organization routing/migrations117–138 are not deployed.
-Use Mobile's latest handoff for current job IDs before starting another compiler.
+Mobile7a6fe534fc2e86064be9f60509f7befcc6afbf31 is accepted across its required gates.
+Hosted42749839268 passed9,985 tests (7,276 portable,2,709 Apple),16 Swift checks and
+unsigned iOS host. Audits20231/77499 are reaped; exact artifacts/source/predecessor
+case identities verified. Local evidence and stale generated-delegate diagnosis
+remain in Mobile docs/measurements/replica-work-wakes-2026-11-10.json.
 
-Continue Mobile communication implementation. Port future reusable changes only
-after their Mobile evidence is accepted. Do not merge the old draft foundations
-PR blindly: its base is feat/platform-foundations, not main.
+The exact nine generic core files from that Mobile commit are applied here after
+its acceptance. All bytes match Mobile Git; no HRIS policy/configuration was copied.
+This version uses ReplicaWakeRequest. The newer command WorkWakeRequest API is
+separate and must await its own platform acceptance before a later port.
+Private .work/replica-commit-wake-port-2026-11-10 retains patch,per-file hashes and
+check.py full-1/session61949 RUNNING. Source is frozen until it finishes. Checks
+include root,actual database/worker/identity/app browser tests,all three Android
+builds,lint,production web,iOS source,strict SBOM and quality. Inspector remains
+pinned to742a2d1 in the preserved isolated checkout above. One heavy compiler;
+no emulator. Initial private preflight referenced absent metadata field applied;
+it stopped before any build and was corrected to appliedAt. No source workaround.
+No new accepted Starter gate or source commit yet. Reap61949,inspect reports and
+source stability,then document/commit/push the port. Do not duplicate accepted runs.
+
+Mobile storage focused54152 passed43 before new queue/observation usecases and22
+new cases were added. Those additions await their own focused/full gates after
+this Starter compiler ends. Mobile producer42753380451 and command42758828055
+hosted jobs both run at immutable source; do not cancel/redispatch. Phone87 unchanged,
+release88 uninstalled,availability question already pending. Live remains
+ e558a686/schema116.4/readinessON/groupOFF. Continue all54 open PRD acceptance groups.
