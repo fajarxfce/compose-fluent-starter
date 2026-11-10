@@ -1,7 +1,41 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 10 November 2026, 06:20 UTC. This is the current checkpoint. Earlier detail
+Updated 10 November 2026, 06:46 UTC. This is the current checkpoint. Earlier detail
 remains in [Git at6157db1](https://github.com/fajarxfce/compose-fluent-starter/blob/6157db1/docs/agent-handoff.md).
+
+## Mobile checkpoint — 10 November, 06:46 UTC
+
+Mobile18e0d371b68e3e36c3be5bfdb1b91eb3e439de99 is committed/pushed72891,reaped.
+Typed whole native queue matching keeps Company/Space ledgers separate and validates
+all originals before publishing a bounded local snapshot. Focused19427 passes70;
+full91322 REAPED PASS662.207s:9,556 verified=7,537 fresh+2,019 exact accepted reused,
+zero failures/errors/skips. Strict current/archive/source/library audits pass4,695
+fixed inputs. No native, worker or product routing activation.
+Control42769825037 pins18e0d371 on validation/mixed-original-queue-20261110;
+ref94349/dispatch1269 reaped. Expected7,554 portable+2,848 Apple,16Swift,unsigned host.
+
+The next Mobile increment has eight UNCOMMITTED Kotlin inputs: exact Space completion
+and receipt projection policy, local CAS/readback reconciliation,37 domain cases and
+owning singleton DI. No sender, archive or journal retirement is activated. Focused-1
+session43366 is the ONLY heavy local job, source FROZEN. Desktop production compilation
+passes; three new test assertions need explicit Kotlin generic types. The continuing
+check must finish/reap before fixing those declarations; do not edit frozen inputs.
+Mobile .work/space-receipt-projection-2026-11-10 owns runner and failure logs.
+
+Messages42763070460 COMPLETE10,195 (2,779 Apple)+16Swift,unsignedhost; all artifacts
+and predecessor case identities audited. Receipt42766554589 portable7,486 audited,
+Apple still running(expected2,814). Preserve receipt and mixed controls; do not redispatch.
+Producer42753380451 COMPLETE10,009 and command42758828055 COMPLETE10,048 accepted.
+
+Starter a7ff417c33cbbffb9b44a84e489a2fbce7be5bb2 committed/pushed:exact15 generic files
+match Mobileb1adfd82. Full32816 passes358 fresh/87suites,all Android/web/iOS-source/SBOM/
+quality,source1,061/library49 unchanged. No Starter WIP or compiler. Application-specific
+Space projection stays in Mobile. Continue mixed native delivery,explicit new-message
+capability,complete command inventory,incoming routing/media/backup/calls/meetings.
+
+Phone87 unchanged,release88 uninstalled. ADB44597 timed out15s around06:45,reaped;
+availability question is already pending. Live e558a686/schema116.4/readinessON/groupOFF
+unchanged. All54 PRD acceptance groups remain open. Continue after checkpoints.
 
 ## Authorization and scope
 
