@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 10 November 2026, 05:26 UTC. This is the current checkpoint. Earlier detail
+Updated 10 November 2026, 05:57 UTC. This is the current checkpoint. Earlier detail
 remains in [Git at6157db1](https://github.com/fajarxfce/compose-fluent-starter/blob/6157db1/docs/agent-handoff.md).
 
 ## Authorization and scope
@@ -70,23 +70,40 @@ The nine core files still match accepted Mobile Git bytes. Earlier metadata-key
 preflight stopped before compilation and required only private runner correction.
 No Starter compiler remains. No phone install,live change or distribution dispatch.
 
-Mobile focused6481 is REAPED PASS68/382.076s (32 domain,17 SQLite,17 browser,2 DI),
-zero failures/errors/skips,Apple source/quality. New full-1/session16809 is the only
-heavy compiler; Mobile source remains frozen/uncommitted until full acceptance.
-Initial production/test generic inference failures17154/96716 are reaped; explicit
-types corrected,assertions retained. Full timestamp ordering and retained access
-denial across transient session-read failures are covered by the passing cases.
+Mobile sourceb9db0bd9 is accepted/pushed:focused68,full9,418 (7,399 fresh+2,019 exact
+reused),zero failures/errors/skips. Source4,677/library and all report identities were
+verified;90 AppFlow cases passed unchanged. Its immutable control42763070460 remains
+running,expecting7,416 portable+2,779 Apple and16Swift/unsignedhost.
 
-The next generic command database patch (15 file changes) fromMobileb1adfd82 passes
-`git apply --check` against30c4d72. It is NOT applied. Private folder
-.work/command-work-wake-port-2026-11-10 contains prepared.json and database.patch,
-SHA72622f3e6ef58712089ab81d223d538102bf2cdd9840e08574dddda33995f164.
-Initial core-wide dry apply stopped on two absent HRIS document fixtures without
-mutation; only generic database changes belong here. Wait for complete Mobile
-command platform proof before applying/building. Producer42753380451 portable7,292
-and command42758828055 portable7,318 are audited; both Apple jobs remain running.
-Do not supersede either. Command expected2,730Apple+16Swift/unsignedhost.
+Producer42753380451 is now fully accepted:10,009 tests including2,717 Apple,16Swift
+and unsignedhost; audits29517/71981 are reaped. Command42758828055 is also fully
+accepted:10,048 tests including2,730 Apple,16Swift/unsignedhost; audits93083/9004 are
+reaped. Exact source,digests,ZIP CRC and predecessor case identities passed. Mobile
+fbbf96a2 publishes complete command proof. Do not redispatch the remaining message job.
 
-Phone87 unchanged,release88 uninstalled; latest ADB62446 timed out15s around05:21,
+After that full Mobile command proof,the exact15-file generic database patch from
+b1adfd820e5e560bf3d689a6bee09a88d1f67a9a is APPLIED here at05:57:19 UTC but remains
+UNCOMMITTED/UNTESTED in Starter. WorkWakeRequest replaces ReplicaWakeRequest;
+CommandStore.insertBatchAndWake atomically retains new commands and work,while replay
+of retained active/archive IDs creates no wake. Thirteen new shared database cases
+have Desktop/Chromium/Apple wrappers. No HRIS policy,configuration or document fixture
+was copied. Private .work/command-work-wake-port-2026-11-10/port.json and apply.py
+verify both Mobile hosted audits,all pre/post Git bytes and the removed rename source.
+Patch SHA72622f3e6ef58712089ab81d223d538102bf2cdd9840e08574dddda33995f164.
+
+Next run this independent Starter gate only after the active Mobile compiler is reaped:
+python3 .work/command-work-wake-port-2026-11-10/check.py full-1
+Then accept.py verifies sources,real database cases,required builds and reports before
+an atomic source/docs commit and push. No Starter compiler has run for this patch yet.
+Do not reapply it. Keep the pinned inspector checkout and its CRLF-normalizer delta.
+
+Mobile's new receipt journal is under full validation. Focused37385 passed60 cases but
+stopped at a missing explicit type in the app DI test; corrected without production or
+assertion changes. Focused46078 REAPED PASS62/121.152s,zero failures/errors/skips,Apple
+source and quality; source4,689 SHA04d47a938a3e3529dc4fb654f857f8937f577c3f603be2e079709f1b64a86bc4.
+Full-1/session39948 is the only heavy local compiler. Do not edit Mobile source or
+launch Starter until it is reaped. Mobile docs/agent-handoff.md owns current jobs.
+
+Phone87 unchanged,release88 uninstalled; latest ADB8250 timed out15s around05:56,
 question already pending. Live remains e558a686/schema116.4/readinessON/groupOFF.
 Continue all54 open PRD acceptance groups after this checkpoint.
