@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 10 November 2026, 15:04 UTC. Follow AGENTS.md. This file describes current work.
+Updated 10 November 2026, 15:38 UTC. Follow AGENTS.md. This file describes current work.
 The complete earlier ledger remains in [previous handoff](https://github.com/fajarxfce/compose-fluent-starter/blob/3657ead8b603aee79307f9038f3819a9f2d68964/docs/agent-handoff.md)
 and checked-in measurements. Do not restart passed gates from historical running checkpoints.
 
@@ -40,13 +40,13 @@ First78190 attempt restored old images on an overly strict dynamic-IP equality g
 final checks verify configured staticIPs and actual published endpoints. No application
 failure, migration or employee-message send. Old images/overlay remain available for rollback.
 
-Mobile8c445feb docs push30319 REAPED checkpoints current3UNCOMMITTED/frozen incoming-policy
-files. Focused30508 REAPED PASS144/373.676s:44new Desktop/Chromium cases+100controls, iOS
-shared compilation and quality. Full12044 RUNNING expected10268 on4,769fixed inputs,
-manifest0410ae91d868f678fafe7bcf6d3adab655961b827c1fe67db3af5158158c854d.
-One3GiB compiler,no emulator. No source edits until the gate is reaped. The pure plan starts
-no I/O or cursor work; next implement admitted1..16-event acquisition and durable incoming
-progress, at most one target per item and one transport observation per batch.
+Mobile pure incoming policy0dd21612 is accepted/pushed: full12044 REAPED PASS10268,
+focused30508 PASS144. The admitted1..16-event acquisition is now implemented locally;
+focused9279 REAPED PASS194/352.684s (50new Desktop/Chromium cases+144controls),iOSsource
+and quality. Mobile full76109 is RUNNING on7frozen Kotlin changes,expected10318. Its current
+handoff owns that gate and subsequent source commit. No new sync/join/send or ViewModel I/O;
+actual SDK batch retention and durable incoming progress/consumer integration remain pending.
+This is HRIS policy and requires no Starter port or repeated Starter build.
 
 [Mobile current handoff](https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/agent-handoff.md)
 owns exact active sessions and subsequent work. [Incoming contract](https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/collaboration-incoming-history-planning.md).
@@ -56,8 +56,9 @@ Original37a74bb9 and Groupf88abd24 handoffs retain deployment/native evidence.
 
 Runtime42824039795 COMPLETE/audited11330=8201portable+3129Apple, plus16Swift/unsignedhost.
 Apple45856 REAPED. Classifier42819170095 complete11295+16; earlier source/history/edit
-controls remain accepted. Current history6334c0c4 hosted42835309631: portable25969 REAPED/
-audited8222, Apple RUNNING (expected3137); no duplicate dispatch. Native Apple Matrix is
+controls remain accepted. History6334c0c4 hosted42835309631 is COMPLETE/audited11359=8222portable+3137Apple,
+plus16Swift/unsignediOShost. Portable25969 and Apple60813 REAPED; measurement committed
+in Mobile80ce00fd. No hosted Apple execution of the newer incoming source is claimed. Native Apple Matrix is
 still unimplemented. The physical iPhone-test waiver does not complete platform capabilities.
 
 Release89 sourcef837897fc17b3264d1d46fc47e4deff25e20250f is ACCEPTED, NOT INSTALLED.
