@@ -1,5 +1,22 @@
 # Downstream development
 
+## Kotlin browser reporter framing — 12 November 2026
+
+Four exact files follow [Mobilee4650f88](https://github.com/fajarxfce/hris-mobile/commit/e4650f882e71708100feebaf900834353bb5a128).
+Kotlin's upstream Karma reporter writes TeamCity messages without line separators. Mobile's
+3,252-case domain suite exceeded Gradle's1MiB line buffer, which failed before identifying an
+active test. The shared KMP convention now merges module fragments and a shared reporter that frames each upstream write.
+Module settings, formatting, failure propagation, custom reporters and plugins remain. No cache patch, skipped
+case or relaxed buffer limit is used. The original Mobile failure and upstream investigation remain
+recorded with its accepted source.
+
+Eight Node regressions cover constructor behavior, escaping, failures and6,000 messages over1MiB.
+The existing root Python checks run them. Independent Starter validation passes
+906 fresh XML cases across root and all KMP browser targets, with all358 prior
+case identities preserved; Android builds/lint, production Web, iOS metadata and quality also pass.
+This changes browser build tooling only. No HRIS policy, endpoint or SDK is copied; GitHub template
+generation includes the tracked configuration directory and regression files.
+[Exact port evidence](measurements/karma-line-reporter-port-2026-11-11.json).
 
 ## Session maintenance and scheduled discovery
 

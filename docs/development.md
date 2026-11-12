@@ -1,5 +1,11 @@
 # Development
 
+Browser tests merge module `karma.config.d` fragments with the shared root directory through a
+Sync task from `starter.kmp`. Module settings are retained and the shared reporter runs last. Its Kotlin reporter
+adapter adds the line separators expected by Gradle while preserving upstream TeamCity formatting
+and failures. Keep this directory when generating a project. The root Python tool checks run the
+Node reporter regressions; no registry package or Gradle cache edit is required.
+
 ## Convention plugins
 
 - `starter.kmp`: common Kotlin targets and test dependencies.

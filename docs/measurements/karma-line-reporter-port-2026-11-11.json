@@ -1,0 +1,63 @@
+{
+  "acceptedAt": "2026-11-12T00:50:28.741262+00:00",
+  "mobileCommit": "e4650f882e71708100feebaf900834353bb5a128",
+  "mobileLocalCases": 13358,
+  "mobileSourceManifestSha256": "cf23e510352c001c8d6c008550576f2e7a00fc0920ba22b50d0648f30084cc8a",
+  "mobilePreparedManifestSha256": "690773f7f9678db804834d3eca55939d05cf61e7ffc7d918fa71dbfd9fc11b4b",
+  "starterBase": "70cf5ef8b35c92381cf7bfc9cd111987d3a7bcd0",
+  "genericFiles": {
+    "build-logic/src/main/kotlin/starter.kmp.gradle.kts": "694cf2884fb55dad2069f455804cd74c9694391949ea709a8f2e2b70061d90fb",
+    "karma.config.d/kotlin-line-reporter.js": "0837b085e970d0b5cfb9a7255a0cbb4ca5a90d98d096f51eb89ae8375cda35b0",
+    "tool/test_karma_reporter.cjs": "d48b0ea85a63ea7158f3c3cd5d81e801e31e9f2a33ead88e72bcb233b6cb0bb6",
+    "tool/test_karma_reporter.py": "d3fa12b8a2b704ceefbb0983054578875e2028a167c74822a1e7d877f0c71fe0"
+  },
+  "gate": {
+    "startedAt": "2026-11-12T00:20:33.952272+00:00",
+    "exitCode": 0,
+    "wallSeconds": 1689.783,
+    "inputsUnchanged": true,
+    "inputCount": 1064,
+    "libraryInputsUnchanged": true,
+    "libraryInputCount": 49,
+    "libraryRevision": "742a2d1c2285c720cef80ea3913195f3ece388cc"
+  },
+  "freshCounts": {
+    "tests": 906,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "targetCounts": {
+    "desktopTest": 475,
+    "wasmJsBrowserTest": 425,
+    "test": 6
+  },
+  "sourceManifestSha256": "2fa04acd2476407455a24f69a56aa98b51c2e154cd7e753fd524e8cbb95992e3",
+  "reportManifestSha256": "4d465c18be432e068b2ed9367b3b58a56a6de352d4faddf407e79470a20eb3b0",
+  "prior358CaseIdsPreserved": true,
+  "lineFramingRegressionCases": 8,
+  "rootPythonRunsNodeRegression": true,
+  "allKmpBrowserModulesSelected": true,
+  "selectedBrowserModules": 44,
+  "moduleConfigAndTaskOrderingVerified": true,
+  "lintErrors": 0,
+  "lintAdvisories": 46,
+  "apks": {
+    "apps/android/build/outputs/apk/dev/debug/android-dev-debug.apk": {
+      "bytes": 26591832,
+      "sha256": "f030fd51cc2ddc9b6a5cc353a3b395b64bb7438019edbd207c842f42fad1dc62"
+    },
+    "apps/android/build/outputs/apk/staging/debug/android-staging-debug.apk": {
+      "bytes": 26591840,
+      "sha256": "1f416229a94429db3d0919eb74605c40622f75552b0f556f6df26ddf837d269d"
+    },
+    "apps/android/build/outputs/apk/prod/release/android-prod-release-unsigned.apk": {
+      "bytes": 20339296,
+      "sha256": "7f16b8920aceb15f75c8d6c41148b50bea4b2a5052b021ae713b6f4806c6c7c6"
+    }
+  },
+  "phoneInstalled": false,
+  "liveChanged": false,
+  "hostedAppleRequired": false,
+  "reasonNoAppleDispatch": "Only Karma browser reporting and its Node regression change; shared iOS metadata compilation remains in the local gate."
+}
