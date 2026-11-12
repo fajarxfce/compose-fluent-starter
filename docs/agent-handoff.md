@@ -1,5 +1,27 @@
 # Agent continuation — Compose Fluent Starter
 
+Current checkpoint — 12 November 2026, 00:23 UTC.
+
+The four-file Karma reporter port is APPLIED, UNCOMMITTED and UNDER VALIDATION. Source baseline
+is70cf5ef8b35c92381cf7bfc9cd111987d3a7bcd0; Mobile sourcee4650f882e71708100feebaf900834353bb5a128
+passed13,358 fresh cases with all prior IDs preserved. This port keeps original per-module config
+and adds correct TeamCity line framing. Node8 regressions run through existing root Python checks.
+No HRIS policy or document UI test is copied.
+
+Workspace .work/karma-line-reporter-port-2026-11-11. apply.py HAS EXECUTED; do not repeat it.
+check-full1/68417 is RUNNING from00:20:33UTC, detached,2GiB/one worker. Read result.json before
+restarting. It selects root, all44 KMP browser targets, three Android builds/lint, production Web,
+iOS shared metadata and quality. Prepared accept.py checks old358 case IDs and actual generated
+config/task order. publish.py is PREPARED NOT EXECUTED. The four source files still match Mobile.
+Prepared manifest690773f7 and final Mobile accepted manifestcf23e510 are labelled separately.
+
+After success, reap68417, run accept.py and publish.py, commit/push the four generic source files
+and evidence, then record the Starter commit in Mobile's template-updates/handoff. Only then start
+the next Mobile compiler. Mobile hosted43126523314 is in progress; exact session/source evidence
+is in its current handoff. All54 PRD groups remain OPEN. No new phone build for this tooling port.
+
+The following is the previous checkpoint; its running/pending entries are historical.
+
 Updated 10 November 2026, 15:38 UTC. Follow AGENTS.md. This file describes current work.
 The complete earlier ledger remains in [previous handoff](https://github.com/fajarxfce/compose-fluent-starter/blob/3657ead8b603aee79307f9038f3819a9f2d68964/docs/agent-handoff.md)
 and checked-in measurements. Do not restart passed gates from historical running checkpoints.
