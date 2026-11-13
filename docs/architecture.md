@@ -1,5 +1,7 @@
 # Architecture
 
+[Atomic archival and replica publication](command-archive-replica.md) retain command evidence and prepared replica changes in one replay-safe transaction.
+
 [Atomic replica mutations](replica-atomic-mutations.md) publish two owned partitions and an optional wake as one conditional transaction.
 
 [Durable commands](command-storage.md) can atomically retain a fresh recovery wake

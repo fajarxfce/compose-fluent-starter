@@ -845,3 +845,10 @@ build. The artifact digest and local acceptance remain in the
 The result-timing core from Mobile09e7eaf7 is accepted after Mobile58 device checks.
 Three exact files and the common result dependency pass the Starter gate; no chat policy
 is included. See [measurement](measurements/result-timing-port-2026-11-07.json).
+
+## Command archival with replica publication
+
+Ten exact generic source/test files from Mobile 42fd5d12c5353779d4a61cc50b8c53ae8c6c0bc6 now pass the independent
+964-case gate, retaining all 934 preceding identities. The 15 new platform contracts cover atomic
+archival, replay, rollback, cancellation and observation. HRIS repair policy stays downstream.
+See [the contract](command-archive-replica.md) and [evidence](measurements/command-archive-replica-port-2026-11-13.json).

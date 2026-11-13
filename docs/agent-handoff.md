@@ -1,6 +1,23 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 13 November 2026, 10:49 UTC. This opening owns the current generic delta.
+Updated 13 November 2026, 12:54 UTC. This opening owns the current generic delta.
+
+## Command archival and replica port accepted
+
+Ten exact generic files from Mobile 42fd5d12c5353779d4a61cc50b8c53ae8c6c0bc6 are accepted here.
+Workspace .work/command-archive-replica-port-2026-11-13; full 964 = 486 fresh + 478 exact unchanged.
+All 934 prior IDs remain plus 30 JVM/browser executions of 15 platform methods.
+Source 1074/620fe910ef50fcf69474ae17f7338c71e5bb011c6a9930250d90c1f468be15e8.
+Report 901d5ef80a1cc9fc12e6aa7141b08e99c85b73524198a98f852f2d1b2864f96b.
+Android three variants, lint with zero errors, production Web, Apple source/test compilation and
+quality checks pass. Actual Apple execution is separate. Inspector 742a2d1c is unchanged.
+The raw transaction retains command proof and prepared replicas together; exact archive replay
+never rewrites later replica progress. Forced final-delete failure proves whole-transaction rollback.
+
+Push this commit, record its source in Mobile's template updates/current handoff, then continue
+the HRIS terminal publication and finite worker integration. The prepared Mobile terminal draft
+has 13 unapplied paths and 15 new shared cases. Do not repeat this accepted gate or reapply its
+historical port script. Keep one local compiler OR emulator and preserve the installed phone release 92.
 
 ## Shared storage Apple proof linked
 
