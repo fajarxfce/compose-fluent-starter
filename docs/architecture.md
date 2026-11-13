@@ -1,5 +1,7 @@
 # Architecture
 
+[Exact source checks](replica-source-checks.md) condition replica publication without changing source revision or ciphertext.
+
 [Atomic archival and replica publication](command-archive-replica.md) retain command evidence and prepared replica changes in one replay-safe transaction.
 
 [Atomic replica mutations](replica-atomic-mutations.md) publish two owned partitions and an optional wake as one conditional transaction.

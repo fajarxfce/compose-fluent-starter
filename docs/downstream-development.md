@@ -852,3 +852,9 @@ Ten exact generic source/test files from Mobile 42fd5d12c5353779d4a61cc50b8c53ae
 964-case gate, retaining all 934 preceding identities. The 15 new platform contracts cover atomic
 archival, replay, rollback, cancellation and observation. HRIS repair policy stays downstream.
 See [the contract](command-archive-replica.md) and [evidence](measurements/command-archive-replica-port-2026-11-13.json).
+
+## Exact source guard — 13 November 2026
+
+Eight generic Mobile files and 13 new shared storage methods pass independent Starter full 990.
+Source predicates and a projection write share a transaction; source bytes/revision remain intact.
+See [contract and evidence](replica-source-checks.md). HRIS admission and history policy stay downstream.
