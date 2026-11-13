@@ -862,3 +862,10 @@ See [contract and evidence](replica-source-checks.md). HRIS admission and histor
 ## Atomic command and checked projection — 13 November 2026
 
 Nine exact Mobile files, fifteen shared storage methods and two SQLite fault injections pass independent Starter full1022. Command, projection and wake are retained together. See [contract and evidence](command-insert-projection.md). HRIS edit admission and provenance remain downstream.
+
+## Incremental local changes — 13 November 2026
+
+Twenty-one exact Mobile code/schema/test files pass independent Starter1049. Twelve shared storage
+methods plus SQLite13/browser12/7 migrations preserve owned local history and finite change
+positions. See [contract and evidence](replica-change-pages.md). HRIS authenticated history
+mapping, domain completion policy and app ownership remain downstream.

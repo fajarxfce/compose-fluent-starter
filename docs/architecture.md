@@ -1,5 +1,7 @@
 # Architecture
 
+[Incremental local replica pages](replica-change-pages.md) read bounded published changes independently of caller versions.
+
 [Atomic command insertion](command-insert-projection.md) retains a checked projection and recovery wake in the same local transaction.
 
 [Exact source checks](replica-source-checks.md) condition replica publication without changing source revision or ciphertext.

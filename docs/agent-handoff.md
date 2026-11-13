@@ -1,6 +1,21 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 13 November 2026, 21:22 UTC. This opening owns the current generic delta.
+Updated 13 November 2026, 23:56 UTC. This opening owns the current generic delta.
+
+## Incremental local replica port independently accepted
+
+Twenty-one exact files from Mobile de4d59d1a8f60e309dd2715e4c52e0098ed91b32 are accepted here. Workspace
+.work/replica-local-change-pages-port-2026-11-13 passes1049: 571 fresh plus
+478 unchanged. All1022 prior IDs remain plus13 desktop/14 browser cases.
+Source3a07cd3fada6b4a970d44b053410e80c4648d4ae1dbb51dbf3ce1c18de6f263a; reportsfc5b76af3b71a33ecb5b9fd2d16e257c3a12ced675458a632c9b3c4a6be18b19.
+Bounded local change pages include tombstones, retain stable captured intervals and preserve
+caller versions separately from local commit positions. SQLite13/browser12/7 migration tests
+retain old facts and the next effective change. Android variants, lint, Web and Apple compilation
+pass; actual new Apple execution remains outstanding. Inspector742a2d1c is unchanged.
+
+Push this accepted port and link it in Mobile/Group Git, then continue the HRIS history reader and
+existing incoming/repair ownership downstream. No HRIS access, content mapping, native SDK or
+product UI belongs in this port. Do not repeat1049. No phone/live change. Keep Git handoffs current.
 
 ## Atomic command and projection port independently accepted
 
