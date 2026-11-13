@@ -1,6 +1,16 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 13 November 2026, 12:54 UTC. This opening owns the current generic delta.
+Updated 13 November 2026, 13:45 UTC. This opening owns the current generic delta.
+
+## Atomic archival shared Apple proof linked
+
+Mobile control 43427620202 at 42fd5d12c5353779d4a61cc50b8c53ae8c6c0bc6 passes 5,692 actual Apple tests,
+including all 15 new atomic archival/replica cases. Ten generic source/test files remain byte
+identical to this Starter port. The exact XML and successful job log are verified against the
+downloaded artifact. This is Mobile execution of shared storage, not a separate Starter Apple
+application run. See [evidence](measurements/command-archive-replica-shared-apple-2026-11-13.json).
+The independent local 964-case Starter gate remains accepted. No new code or phone/live change.
+Continue Mobile terminal publication and its finite local repair owner; do not rerun these gates.
 
 ## Command archival and replica port accepted
 
