@@ -1,6 +1,18 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 12 November 2026, 00:50 UTC. This opening owns the current generic delta.
+Updated 13 November 2026, 06:59 UTC. This opening owns the current generic delta.
+
+## Active starter port
+
+Mobile transaction source0734dd82f6a017345e350c6d4de6d330b7539067 is committed/pushed;
+Group evidence914cdc1a is pushed. Mobile full64015 and pushes57072/66511 are REAPED.
+The10 exact generic paths are APPLIED to Starter basebadfc0dddc4ef382f1dde473f7b200eddfc09e76,
+branchfeat/network-inspector-20261107. Starter.work/replica-atomic-mutations-port-2026-11-13
+full-1/session1090 is RUNNING. Expected934 =906 retained +28 new JVM/browser executions;
+no Starter acceptance yet. Its apply/check/accept/publish scripts are prepared. Do not reapply
+or run another local compiler/emulator until1090 is reaped. Keep pinned Inspector742a2d1c intact.
+After success, audit the exact source/reports, publish evidence, commit/push the Starter port,
+then record its final commit in Mobile template-updates and continue inbox implementation.
 
 ## Shared browser reporter correction accepted
 
