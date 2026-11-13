@@ -1,5 +1,11 @@
 # Downstream development
 
+## Atomic replica publication — 13 November 2026
+
+Ten exact files follow Mobile0734dd82f6a017345e350c6d4de6d330b7539067. Independent Starter validation
+passes934 cases with all906 prior identities retained, plus Android, Web and Apple compilation.
+No application policy or HRIS source is copied. See [contract and evidence](replica-atomic-mutations.md).
+
 ## Kotlin browser reporter framing — 12 November 2026
 
 Four exact files follow [Mobilee4650f88](https://github.com/fajarxfce/hris-mobile/commit/e4650f882e71708100feebaf900834353bb5a128).

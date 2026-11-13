@@ -1,5 +1,7 @@
 # Architecture
 
+[Atomic replica mutations](replica-atomic-mutations.md) publish two owned partitions and an optional wake as one conditional transaction.
+
 [Durable commands](command-storage.md) can atomically retain a fresh recovery wake
 with a new batch. Command and replica mutations share the raw `WorkWakeRequest`;
 retained command replay does not create new work. Use cases own scheduling and retry.

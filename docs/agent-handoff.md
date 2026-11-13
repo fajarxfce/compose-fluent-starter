@@ -1,18 +1,22 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 13 November 2026, 06:59 UTC. This opening owns the current generic delta.
+Updated 13 November 2026, 07:08 UTC. This opening owns the current generic delta.
 
-## Active starter port
+## Atomic replica storage port accepted
 
-Mobile transaction source0734dd82f6a017345e350c6d4de6d330b7539067 is committed/pushed;
-Group evidence914cdc1a is pushed. Mobile full64015 and pushes57072/66511 are REAPED.
-The10 exact generic paths are APPLIED to Starter basebadfc0dddc4ef382f1dde473f7b200eddfc09e76,
-branchfeat/network-inspector-20261107. Starter.work/replica-atomic-mutations-port-2026-11-13
-full-1/session1090 is RUNNING. Expected934 =906 retained +28 new JVM/browser executions;
-no Starter acceptance yet. Its apply/check/accept/publish scripts are prepared. Do not reapply
-or run another local compiler/emulator until1090 is reaped. Keep pinned Inspector742a2d1c intact.
-After success, audit the exact source/reports, publish evidence, commit/push the Starter port,
-then record its final commit in Mobile template-updates and continue inbox implementation.
+Ten exact generic Mobile0734dd82f6a017345e350c6d4de6d330b7539067 files are independently accepted here.
+Workspace .work/replica-atomic-mutations-port-2026-11-13; Starter basebadfc0dddc4ef382f1dde473f7b200eddfc09e76.
+Full934 = 456 fresh plus478 exact unchanged;
+all906 prior IDs remain plus28 desktop/browser executions of14 new storage methods.
+Source1070/73fa7c11f6b631a52e3752de097cee8f6cf916306ce791ea63f0184e703ee927.
+Reportd2baccb0d39af09aae97b5b0e8f1659654976183d75195162b05cd0ef887a45d. Android three variants, lint0errors, production web,
+iOS source/test compilation and quality checks pass. No new native Apple execution or phone
+installation is claimed. Inspector742a2d1c remains pinned and unchanged.
+
+This commit carries the accepted generic port. Push it, then record its actual commit and
+measurement in Mobile's template-updates and handoff. Continue Mobile's inbox index/source
+publication integration. This storage API alone does not activate the Group product graph.
+Do not rerun completed gates or the historical apply script. Preserve one compiler OR emulator.
 
 ## Shared browser reporter correction accepted
 
