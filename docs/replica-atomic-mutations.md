@@ -20,3 +20,12 @@ totaling934. Android Dev/Staging/Prod builds, lint, production Web and iOS sourc
 pass. No new actual Apple execution, phone install or HRIS business logic is included.
 
 Evidence: `docs/measurements/replica-atomic-mutations-port-2026-11-13.json`.
+
+## Apple coverage of the identical shared source
+
+Mobile control 43403331941 at `8a48212f21c0e1c18802997fe46aabd4c567fba7` executes all 14
+`AppleReplicaMutationsTest` cases successfully. The ten ported files, including the Apple test
+adapter, match Starter `36fa855c58772d4863d27ba6c4e28123dea9a441` byte for byte. Artifact and report digests
+are verified. This is actual Apple coverage in Mobile for the shared source; it is not a separate
+Starter application execution. The independent Starter local gate remains 934 cases.
+Evidence: `docs/measurements/replica-atomic-mutations-apple-mobile-2026-11-13.json`.

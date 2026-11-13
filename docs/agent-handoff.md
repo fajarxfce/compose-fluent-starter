@@ -1,6 +1,14 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 13 November 2026, 07:08 UTC. This opening owns the current generic delta.
+Updated 13 November 2026, 10:49 UTC. This opening owns the current generic delta.
+
+## Shared storage Apple proof linked
+
+Mobile control 43403331941 at 8a48212f21c0e1c18802997fe46aabd4c567fba7 now proves14 actual
+Apple storage cases for the ten exact generic files ported in Starter36fa855c. Source bytes,
+artifact digest and exact report are verified; see the new Apple measurement. This is execution
+in Mobile, not a separate Starter application run. The independent Starter934 gate is unchanged.
+No new source, build, phone install or Inspector change was needed. Continue Mobile's long run.
 
 ## Atomic replica storage port accepted
 
@@ -13,9 +21,8 @@ Reportd2baccb0d39af09aae97b5b0e8f1659654976183d75195162b05cd0ef887a45d. Android 
 iOS source/test compilation and quality checks pass. No new native Apple execution or phone
 installation is claimed. Inspector742a2d1c remains pinned and unchanged.
 
-This commit carries the accepted generic port. Push it, then record its actual commit and
-measurement in Mobile's template-updates and handoff. Continue Mobile's inbox index/source
-publication integration. This storage API alone does not activate the Group product graph.
+The accepted generic source36fa855c is already pushed and recorded in Mobile's template updates
+and handoff. Continue Mobile's inbox source publication and repair integration. This storage API alone does not activate the Group product graph.
 Do not rerun completed gates or the historical apply script. Preserve one compiler OR emulator.
 
 ## Shared browser reporter correction accepted
