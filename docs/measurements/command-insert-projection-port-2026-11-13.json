@@ -1,0 +1,59 @@
+{
+  "accepted": true,
+  "acceptedAt": "2026-11-13T20:16:15.199791+00:00",
+  "mobileCommit": "b4a3a89d105f4f79032ced3c912c1d1f6a4a15d7",
+  "starterBase": "77b0788f70b78077968000ee743ab4d757ab0fc6",
+  "genericFiles": {
+    "core/database/src/commonMain/kotlin/dev/fajar/starter/database/CommandStore.kt": "703dd1be6fc840ff944020124bbed10ebb471144d97eb2d3b9713ca347f901ce",
+    "core/database/src/commonTest/kotlin/dev/fajar/starter/database/CommandInsertMutationContract.kt": "f9d2bd671a2551a9c4af78b103afa355a176c8ec58b1c613eaada7332703930a",
+    "core/database/src/desktopTest/kotlin/dev/fajar/starter/database/CommandInsertMutationsTest.kt": "011b871073e79c6263a7cdd3ae239a502ad06bfe8f0550e062fc6589a72e79aa",
+    "core/database/src/iosTest/kotlin/dev/fajar/starter/database/AppleCommandInsertMutationsTest.kt": "3b7082e83540c8108207ce620ee7f2c5962e8b1d7554e8730fa1f5636a2f29ce",
+    "core/database/src/sqliteMain/kotlin/dev/fajar/starter/database/RoomCommandStore.kt": "548346fee0bf8d0aca1d209f30b04eb8630bd0ec02e7906fd71a87d1a707f42d",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/IndexedDbCommandStore.kt": "8d662d1917948035cecec2355fcf4c605f1467a42b1b4dd15e56bef4c54887fe",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/IndexedDbReplicaMutations.kt": "a04dba29564eba27c4f0c3caefd1634b80a591b8fc4f206fae1380d060773d8c",
+    "core/database/src/wasmJsMain/kotlin/dev/fajar/starter/database/IndexedDbReplicaStore.kt": "415db6735f7f196b980f0bbee0857829b23d983e46e80e59a9c997c35ac3042d",
+    "core/database/src/wasmJsTest/kotlin/dev/fajar/starter/database/BrowserCommandInsertMutationsTest.kt": "da46b1e6ae0cee3f1df882baf4c1e6526b27fa2fed1270ea303bd5f1a8b00844"
+  },
+  "gate": {
+    "startedAt": "2026-11-13T20:07:47.008220+00:00",
+    "exitCode": 0,
+    "wallSeconds": 441.531,
+    "inputsUnchanged": true,
+    "inputCount": 1082,
+    "libraryInputsUnchanged": true,
+    "libraryInputCount": 49,
+    "libraryRevision": "742a2d1c2285c720cef80ea3913195f3ece388cc"
+  },
+  "validatedTests": 1022,
+  "freshTests": 544,
+  "reusedUnaffectedTests": 478,
+  "targetCounts": {
+    "desktopTest": 534,
+    "wasmJsBrowserTest": 482,
+    "test": 6
+  },
+  "sourceManifestSha256": "2da12deeb63ab6fd4514539674ad694f7324a536a601c31dd7183c57466562a5",
+  "prior990CaseIdsPreserved": true,
+  "newStorageMethods": 15,
+  "desktopOnlyMethods": 2,
+  "reportManifestSha256": "7b2474fb7f7800ed6393874e00cf5399dec2fafc19ce8a9f8a3f17a7e5a32645",
+  "lintErrors": 0,
+  "lintAdvisories": 46,
+  "apks": {
+    "apps/android/build/outputs/apk/dev/debug/android-dev-debug.apk": {
+      "bytes": 26790359,
+      "sha256": "c09a3b9192486bba6ae81fb7093ba0ff290ac229bd8388a150464f3ff35ede9b"
+    },
+    "apps/android/build/outputs/apk/staging/debug/android-staging-debug.apk": {
+      "bytes": 26790367,
+      "sha256": "bcf0e83aab27a4f6c46c39feda36e49d6d98ed91171467e4797e9bbe5718ea48"
+    },
+    "apps/android/build/outputs/apk/prod/release/android-prod-release-unsigned.apk": {
+      "bytes": 20355680,
+      "sha256": "71b4c8e95f59c65400333147b247e7dfa0fa621d742eabf0f4a02daa65997e1d"
+    }
+  },
+  "actualNewAppleTests": 0,
+  "phoneInstalled": false,
+  "liveChanged": false
+}

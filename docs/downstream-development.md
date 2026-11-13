@@ -858,3 +858,7 @@ See [the contract](command-archive-replica.md) and [evidence](measurements/comma
 Eight generic Mobile files and 13 new shared storage methods pass independent Starter full 990.
 Source predicates and a projection write share a transaction; source bytes/revision remain intact.
 See [contract and evidence](replica-source-checks.md). HRIS admission and history policy stay downstream.
+
+## Atomic command and checked projection — 13 November 2026
+
+Nine exact Mobile files, fifteen shared storage methods and two SQLite fault injections pass independent Starter full1022. Command, projection and wake are retained together. See [contract and evidence](command-insert-projection.md). HRIS edit admission and provenance remain downstream.

@@ -1,6 +1,22 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 13 November 2026, 18:02 UTC. This opening owns the current generic delta.
+Updated 13 November 2026, 20:16 UTC. This opening owns the current generic delta.
+
+## Atomic command and projection port independently accepted
+
+Nine exact files from Mobile b4a3a89d105f4f79032ced3c912c1d1f6a4a15d7 are accepted here. Workspace
+.work/command-insert-projection-port-2026-11-13 passes full1022: 544 fresh plus
+478 unchanged. All990 prior identities remain plus17 desktop/15 browser.
+Source 2da12deeb63ab6fd4514539674ad694f7324a536a601c31dd7183c57466562a5; reports 7b2474fb7f7800ed6393874e00cf5399dec2fafc19ce8a9f8a3f17a7e5a32645.
+Command insertion, prepared checked projection and fresh wake commit or roll back together.
+Exact active/archive replay preserves later projection and never renews completed work.
+Android variants, lint, Web and Apple compilation pass. Keep Inspector742a2d1c unchanged.
+
+Push this accepted port, link it in Mobile/Group Git, and continue actual HRIS edit admission and
+outcome publication. HRIS marker/policy/authoring code is not part of Starter. Link the15 shared
+Apple methods only after Mobile control43498640097 at exactb4a3a89d has completed and its artifacts
+are audited; it is not independent Starter application execution. Do not repeat local1022.
+No phone/live changes. Scripts are already used. Push every commit and keep current handoffs.
 
 ## Exact source guard port independently accepted
 
