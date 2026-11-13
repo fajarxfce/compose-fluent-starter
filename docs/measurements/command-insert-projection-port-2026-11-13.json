@@ -55,5 +55,8 @@
   },
   "actualNewAppleTests": 0,
   "phoneInstalled": false,
-  "liveChanged": false
+  "liveChanged": false,
+  "sharedMobileAppleMethods": 15,
+  "sharedAppleEvidence": "docs/measurements/command-insert-projection-shared-apple-2026-11-13.json",
+  "independentStarterAppleRun": false
 }

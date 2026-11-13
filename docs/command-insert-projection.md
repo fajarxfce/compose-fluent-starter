@@ -17,3 +17,8 @@ Actual Apple runtime evidence remains separate. Inspector 742a2d1c stays pinned.
 No schema migration, HRIS content policy, scheduler or native transport is introduced. Application
 use cases own admission, bounded reconciliation and semantic projection; storage owns atomic I/O.
 See docs/measurements/command-insert-projection-port-2026-11-13.json for exact-source evidence.
+
+Actual shared Apple storage execution is accepted in Mobile control 43498640097, exact source
+`b4a3a89d105f4f79032ced3c912c1d1f6a4a15d7`. All 15 atomic command/projection methods pass; the nine ported files are
+byte-identical in that source and Starter. This does not claim an independent Starter Apple
+application run. Evidence: `docs/measurements/command-insert-projection-shared-apple-2026-11-13.json`. The accepted independent local 1022-case gate is unchanged.
