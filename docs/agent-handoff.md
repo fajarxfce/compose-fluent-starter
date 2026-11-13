@@ -1,6 +1,6 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 13 November 2026, 16:47 UTC. This opening owns the current generic delta.
+Updated 13 November 2026, 18:02 UTC. This opening owns the current generic delta.
 
 ## Exact source guard port independently accepted
 
@@ -10,11 +10,14 @@ Eight generic paths from Mobile 020b52d48fc016ab804f1b418e3800fa396627d6 are acc
 JVM/browser executions. Source e019e174d000bc84a598f98b4f09588925a8f3e8c5125227dce493d190a5d68f; reports 047639456ea09628bf3d7591a174f604a9d827ee1af2b77ed9cad43a1835037b.
 The 13 shared actual-storage methods preserve checked source bytes/revision while conditioning
 another partition and its wake. All old mutation/archive methods remain. Android variants,
-lint, Web and Apple compilation pass; actual Apple runtime evidence remains separate.
+lint, Web and Apple compilation pass. The 13 byte-identical shared storage methods now also
+pass actual Apple execution in Mobile control 43467846733; the artifact/XML/source were audited.
+This is not an independent Starter Apple application run. See
+[shared Apple evidence](measurements/replica-source-checks-shared-apple-2026-11-13.json).
 
 Continue Mobile's admitted incoming-history snapshot/publication and original provenance work.
-Do not copy its Group admission, policy or product owners into Starter. Link later exact-source
-Mobile Apple evidence for these 13 shared storage methods only after auditing its artifacts.
+Do not copy its Group admission, policy or product owners into Starter. The shared Apple
+evidence is linked; do not rerun the accepted 990 gate or the Mobile control.
 Keep pinned inspector 742a2d1c and platform settings; no phone or live change. Historical scripts
 are already used. Push every commit and preserve continuation in Git.
 

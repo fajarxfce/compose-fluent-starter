@@ -53,5 +53,8 @@
   },
   "actualNewAppleTests": 0,
   "phoneInstalled": false,
-  "liveChanged": false
+  "liveChanged": false,
+  "sharedMobileAppleMethods": 13,
+  "sharedAppleEvidence": "docs/measurements/replica-source-checks-shared-apple-2026-11-13.json",
+  "independentStarterAppleRun": false
 }

@@ -17,3 +17,8 @@ separate; no independent Starter Apple application runtime is claimed.
 Use cases and repositories own admission, encryption, content projection and recovery policy.
 There is no new polling queue, HRIS feature, native transport activation or database schema.
 See docs/measurements/replica-source-checks-port-2026-11-13.json for exact-source evidence.
+
+Actual shared Apple storage execution is accepted in Mobile control 43467846733, exact source
+`951c308dce2dd350a901c67cf449d6913b97cacf`. All 13 source-guard methods pass; the eight ported files are
+byte-identical in that source and Starter. This does not claim an independent Starter Apple
+application run. Evidence: `docs/measurements/replica-source-checks-shared-apple-2026-11-13.json`. The accepted independent local 990-case gate is unchanged.
