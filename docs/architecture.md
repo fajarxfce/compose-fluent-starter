@@ -1,5 +1,11 @@
 # Architecture
 
+
+[Independent retained navigation stacks](navigation-stack-identity.md)
+
+Concurrent controllers use distinct stable owner keys under their window.
+
+
 [Compose platform alignment](compose-platform-alignment.md) preserves explicit host ownership with current Compose/Lifecycle versions.
 
 [Incremental local replica pages](replica-change-pages.md) read bounded published changes independently of caller versions.

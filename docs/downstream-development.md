@@ -1,5 +1,11 @@
 # Downstream development
 
+
+## Independent navigation stacks — 14 November 2026
+
+Two generic paths follow accepted Mobile; independent Starter1052 preserves prior identities and format1. See [contract and evidence](navigation-stack-identity.md).
+
+
 ## Atomic replica publication — 13 November 2026
 
 Ten exact files follow Mobile0734dd82f6a017345e350c6d4de6d330b7539067. Independent Starter validation

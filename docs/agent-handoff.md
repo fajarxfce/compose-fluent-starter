@@ -1,6 +1,25 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 14 November 2026, 11:40 UTC. This opening owns the current generic delta.
+Updated 14 November 2026, 13:53 UTC. This opening owns the current generic delta.
+
+## Independent navigation stacks accepted
+
+Two generic paths from Mobile 21435d2dccac25528c3d28b30f2605973cd4ff6e pass independent Starter acceptance:
+1052 validated cases (83 fresh / 969 exact
+unchanged), preserving all1049 prior identities plus3 desktop cases. Full1/session34131
+reaped0. Source e4e702e9c32a43fd1f4b4605962cfa9b7b3af8a3a6648e35240157ddbad21bef; reports a6fec78036cf99f00bec6b72cd7a96b8fd7d95072200c32c3ebc14baeb911d46.
+
+Stable owner keys keep concurrent navigation stores independent. The default caller behavior and
+Starter saved-state format1 remain. The three fixture tests copy saved values before simulated
+window destruction and preserve all restoration/disposal assertions. See navigation-stack-identity.md.
+Android variants, production Web, app browser and Apple source/test compilation are accepted;
+no new Apple runtime, phone installation or live change. Pinned Inspector742a2d1c is unchanged,
+including its pre-existing gradlew.bat line-ending difference.
+
+Push this commit, link the exact port from Mobile/Group handoffs, and continue Group product
+integration downstream. The port adds no HRIS/Matrix policy. Do not repeat accepted checks without
+new changes/failures. Preserve blocked SQLite fixture and unsuccessful hosted Apple evidence.
+
 
 ## Compose platform alignment independently accepted
 

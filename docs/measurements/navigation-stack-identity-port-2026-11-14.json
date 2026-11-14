@@ -1,0 +1,47 @@
+{
+  "accepted": true,
+  "validatedTests": 1052,
+  "newCases": 3,
+  "freshTests": 83,
+  "reusedUnchangedTests": 969,
+  "priorCaseIdsPreserved": true,
+  "sourceManifestSha256": "e4e702e9c32a43fd1f4b4605962cfa9b7b3af8a3a6648e35240157ddbad21bef",
+  "reportManifestSha256": "a6fec78036cf99f00bec6b72cd7a96b8fd7d95072200c32c3ebc14baeb911d46",
+  "full": {
+    "startedAt": "2026-11-14T13:46:27.846435+00:00",
+    "elapsedSeconds": 380.394,
+    "exitCode": 0,
+    "sourceFiles": 1095,
+    "sourcesUnchanged": true,
+    "librarySourcesUnchanged": true
+  },
+  "productActivated": false,
+  "phoneInstalled": false,
+  "liveChanged": false,
+  "lintErrors": 0,
+  "lintAdvisories": 48,
+  "apks": {
+    "apps/android/build/outputs/apk/dev/debug/android-dev-debug.apk": {
+      "bytes": 27159858,
+      "sha256": "ebbd9249697e453e31827875761ef941717fb90a56018fe4ded612f5cad759a0"
+    },
+    "apps/android/build/outputs/apk/staging/debug/android-staging-debug.apk": {
+      "bytes": 27159866,
+      "sha256": "7430178cd49e62d2c94d3d2f47a828f73bc9f09b1893e2f34f309c3eb15f90d0"
+    },
+    "apps/android/build/outputs/apk/prod/release/android-prod-release-unsigned.apk": {
+      "bytes": 20700051,
+      "sha256": "b334b075269b5335ca75048abec030f28c249da379c918481020a5f2483d4eab"
+    }
+  },
+  "mobileCommit": "21435d2dccac25528c3d28b30f2605973cd4ff6e",
+  "starterBase": "712ca99a42d4cb48aee25b3a2a51724ed2fa8530",
+  "sourcePaths": [
+    "apps/shared/src/commonMain/kotlin/dev/fajar/starter/app/navigation/ScopedNavigationState.kt",
+    "apps/shared/src/desktopTest/kotlin/dev/fajar/starter/IndependentNavigationStacksTest.kt"
+  ],
+  "fullSession": 34131,
+  "libraryRevision": "742a2d1c2285c720cef80ea3913195f3ece388cc",
+  "libraryPreexistingChange": "Preserved gradlew.bat line-ending difference; exact prior fingerprint retained.",
+  "savedStateFormat": 1
+}
