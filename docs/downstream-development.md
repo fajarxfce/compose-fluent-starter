@@ -869,3 +869,9 @@ Twenty-one exact Mobile code/schema/test files pass independent Starter1049. Twe
 methods plus SQLite13/browser12/7 migrations preserve owned local history and finite change
 positions. See [contract and evidence](replica-change-pages.md). HRIS authenticated history
 mapping, domain completion policy and app ownership remain downstream.
+
+## Compose platform alignment — 14 November 2026
+
+Eight generic version/dependency/test files follow validated Mobile. Independent 1049 fresh
+cases, Android variants, Web and Apple compilation preserve prior behavior and host disposal.
+See [contract and evidence](compose-platform-alignment.md). HRIS Paging/UI and policy stay downstream.

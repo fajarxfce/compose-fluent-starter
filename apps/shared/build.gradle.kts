@@ -77,7 +77,8 @@ kotlin {
         implementation(libs.coroutines.swing)
     }
     sourceSets.getByName("desktopTest").dependencies {
-        implementation(compose.desktop.uiTestJUnit4)
+        implementation(libs.navigation.event)
+        implementation(libs.compose.ui.test.junit4)
         implementation(libs.ktor.mock)
         implementation(projects.features.dashboard.domain)
         implementation(projects.core.transfers.domain)

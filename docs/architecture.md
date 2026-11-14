@@ -1,5 +1,7 @@
 # Architecture
 
+[Compose platform alignment](compose-platform-alignment.md) preserves explicit host ownership with current Compose/Lifecycle versions.
+
 [Incremental local replica pages](replica-change-pages.md) read bounded published changes independently of caller versions.
 
 [Atomic command insertion](command-insert-projection.md) retains a checked projection and recovery wake in the same local transaction.

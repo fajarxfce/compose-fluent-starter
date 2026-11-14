@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.3.21"
-compose = "1.9.3"
+compose = "1.10.3"
 agp = "9.1.0"
 desugar-jdk = "2.1.5"
 ksp = "2.3.12"
@@ -10,9 +10,10 @@ coroutines = "1.10.2"
 okio = "3.17.0"
 serialization = "1.10.0"
 ktor = "3.3.3"
-lifecycle = "2.9.5"
-android-lifecycle = "2.9.4"
+lifecycle = "2.10.0"
+android-lifecycle = "2.10.0"
 navigation = "2.9.1"
+navigation-event = "1.0.2"
 fluent = "v0.1.0"
 activity = "1.11.0"
 biometric = "1.1.0"
@@ -114,5 +115,7 @@ android-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", v
 lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle" }
 lifecycle-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation" }
+navigation-event = { module = "androidx.navigationevent:navigationevent", version.ref = "navigation-event" }
+compose-ui-test-junit4 = { module = "org.jetbrains.compose.ui:ui-test-junit4", version.ref = "compose" }
 navigation-common = { module = "org.jetbrains.androidx.navigation:navigation-common", version.ref = "navigation" }
 android-activity = { module = "androidx.activity:activity-compose", version.ref = "activity" }

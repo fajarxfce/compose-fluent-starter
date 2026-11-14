@@ -1,6 +1,20 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 13 November 2026, 23:56 UTC. This opening owns the current generic delta.
+Updated 14 November 2026, 11:40 UTC. This opening owns the current generic delta.
+
+## Compose platform alignment independently accepted
+
+Eight generic files follow Mobile caa59e487a1caa59a4b8b8ee46c0fd8e48dc25ad. The local workspace
+.work/compose-paging-compatibility-port-2026-11-14 independently passes all 1049 prior cases
+freshly, preserving every identity and all assertions. Compose 1.10.3/Lifecycle 2.10.0,
+explicit Back test input/owner and test-host disposal are validated. Dependencies were fetched
+and verified independently. Sourcee893dbc05f23a71a82e8a4ecd5fe1ebf08beaa3976717a592b7c502654db2ed6; reports31da699662500c0a914d62ed408b956686dd4477ccdfd4b9385c14111674282c.
+All 3 Android variants, lint, production Web and Apple source/test-source compilation pass.
+PinnedInspector 742a2d1c is unchanged. No new Apple execution, phone install or live change.
+
+Push this commit, link the exact port in Mobile/Group handoffs, and continue Group contacts/root
+integration downstream. No HRIS policy, UI or Matrix files belong in this port. Do not repeat
+passed checks without a new change/failure. Preserve blocked SQLite fixture and Apple evidence.
 
 ## Incremental local replica port independently accepted
 

@@ -1,4 +1,7 @@
-@file:OptIn(androidx.compose.ui.ExperimentalComposeUiApi::class)
+@file:OptIn(
+    androidx.compose.ui.ExperimentalComposeUiApi::class,
+    androidx.compose.ui.InternalComposeUiApi::class,
+)
 
 package dev.fajar.starter
 
@@ -10,7 +13,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.LocalBackGestureDispatcher
+import androidx.compose.ui.backhandler.LocalCompatNavigationEventDispatcherOwner
 import androidx.compose.ui.graphics.asSkiaBitmap
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -19,7 +22,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import dev.fajar.starter.app.StarterApp
 import dev.fajar.starter.app.di.createAppContainer
 import dev.fajar.starter.dashboard.domain.config.DashboardFlags
@@ -78,23 +83,33 @@ class AppFlowTest {
             )
         dev.fajar.starter.app.work.startForegroundSync(container, workScope)
         val generation = mutableStateOf(0)
+        val visible = mutableStateOf(true)
         try {
             compose.setContent {
-                val lifecycleOwner = remember {
-                    object : LifecycleOwner {
-                        override val lifecycle =
-                            LifecycleRegistry(this).apply { currentState = Lifecycle.State.RESUMED }
+                if (visible.value) {
+                    val lifecycleOwner = remember {
+                        object : LifecycleOwner, ViewModelStoreOwner {
+                            override val viewModelStore = ViewModelStore()
+                            override val lifecycle =
+                                LifecycleRegistry(this).apply {
+                                    currentState = Lifecycle.State.RESUMED
+                                }
+                        }
                     }
-                }
-                DisposableEffect(lifecycleOwner) {
-                    onDispose { lifecycleOwner.lifecycle.currentState = Lifecycle.State.DESTROYED }
-                }
-                CompositionLocalProvider(
-                    LocalLifecycleOwner provides lifecycleOwner,
-                    LocalBackGestureDispatcher provides backDispatcher,
-                ) {
-                    key(generation.value) {
-                        Box(Modifier.size(420.dp, 760.dp)) { StarterApp(container) }
+                    DisposableEffect(lifecycleOwner) {
+                        onDispose {
+                            lifecycleOwner.lifecycle.currentState = Lifecycle.State.DESTROYED
+                            lifecycleOwner.viewModelStore.clear()
+                        }
+                    }
+                    CompositionLocalProvider(
+                        LocalLifecycleOwner provides lifecycleOwner,
+                        LocalViewModelStoreOwner provides lifecycleOwner,
+                        LocalCompatNavigationEventDispatcherOwner provides backDispatcher,
+                    ) {
+                        key(generation.value) {
+                            Box(Modifier.size(420.dp, 760.dp)) { StarterApp(container) }
+                        }
                     }
                 }
             }
@@ -285,12 +300,15 @@ class AppFlowTest {
                 compose.onAllNodesWithText("Projects").fetchSemanticsNodes().isNotEmpty()
             }
         } finally {
+            compose.runOnIdle { visible.value = false }
+            compose.waitForIdle()
             runBlocking {
                 workScope.coroutineContext[kotlinx.coroutines.Job]?.let { job ->
                     job.cancel()
                     job.join()
                 }
             }
+            compose.runOnIdle { backDispatcher.close() }
             container.close()
             directory.deleteRecursively()
         }
