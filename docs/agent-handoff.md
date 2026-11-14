@@ -1,6 +1,24 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 14 November 2026, 13:53 UTC. This opening owns the current generic delta.
+Updated 14 November 2026, 17:06 UTC. This opening owns the current generic delta.
+
+## Android Compose resource packaging accepted
+
+One exact generic convention line from Mobile 2eb833f460cf46fa2f1170bbb1656b5cd9144f27 is independently accepted:
+1,052 preserved cases (568 fresh / 484 exact unchanged),
+full session66562 and actual production startup session36477 reaped0.
+Source 47a1b986dc011fcb3537dbbfd9a975ee111bff963a61e80a5a337ce2d222161b; reports 16db517eb2e8b47e9af6dd87a832fcb1cfe4224b9b4de041cc77e483b99aab13.
+Both generated languages are checked inside dev/staging/prod APKs. Production startup and
+process reopening pass with two inspected screenshots and stopped emulator. Read
+[resource packaging](android-compose-resources.md) and its measurement. No new test cases or
+Apple runtime claim. Pinned Inspector and its existing gradlew.bat difference are preserved.
+
+Push this commit, link its exact evidence in Mobile/Group, and continue recipient destination
+proof and canonical transfer downstream. Mobile phone93 is already installed; the current
+recipient provenance/readback source is being validated separately and is not in that APK.
+No HRIS policy belongs in this port. Do not repeat accepted checks without a new change/failure.
+Preserve the blocked SQLite fixture payload and unsuccessful hosted Apple evidence.
+
 
 ## Independent navigation stacks accepted
 

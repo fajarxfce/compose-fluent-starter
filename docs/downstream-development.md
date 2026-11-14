@@ -1,6 +1,12 @@
 # Downstream development
 
 
+## Android resource packaging — 14 November 2026
+
+The Mobile resource convention fix is independently accepted with 1,052 cases, packaged locale checks and actual production startup. See [evidence](android-compose-resources.md).
+
+
+
 ## Independent navigation stacks — 14 November 2026
 
 Two generic paths follow accepted Mobile; independent Starter1052 preserves prior identities and format1. See [contract and evidence](navigation-stack-identity.md).

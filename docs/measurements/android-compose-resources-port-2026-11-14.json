@@ -1,0 +1,171 @@
+{
+  "accepted": true,
+  "validatedTests": 1052,
+  "newCases": 0,
+  "freshTests": 568,
+  "reusedUnchangedTests": 484,
+  "priorCaseIdsPreserved": true,
+  "sourceManifestSha256": "47a1b986dc011fcb3537dbbfd9a975ee111bff963a61e80a5a337ce2d222161b",
+  "reportManifestSha256": "16db517eb2e8b47e9af6dd87a832fcb1cfe4224b9b4de041cc77e483b99aab13",
+  "full": {
+    "startedAt": "2026-11-14T16:45:45.050941+00:00",
+    "elapsedSeconds": 1045.702,
+    "exitCode": 0,
+    "sourceFiles": 1095,
+    "sourcesUnchanged": true,
+    "librarySourcesUnchanged": true
+  },
+  "productActivated": false,
+  "phoneInstalled": false,
+  "liveChanged": false,
+  "mobileCommit": "2eb833f460cf46fa2f1170bbb1656b5cd9144f27",
+  "starterBase": "bd13df78622b42a237ff5d847ba4a7034dc3dcfe",
+  "sourcePaths": [
+    "build-logic/src/main/kotlin/starter.compose.gradle.kts"
+  ],
+  "fullSession": 66562,
+  "startupSession": 36477,
+  "artifacts": {
+    "variants": [
+      {
+        "sourceArtifact": "apps/android/build/outputs/apk/dev/debug/android-dev-debug.apk",
+        "artifact": ".work/compose-android-resources-port-2026-11-14/artifacts/android-dev-debug.apk",
+        "bytes": 27090097,
+        "sha256": "460482d0055696722f69b7dc7bc4a8e5bddff5c6793330a5940b073b96e86b1f",
+        "resourceAssets": {
+          "composeResources/dev.fajar.starter.localization.resources/values/strings_en.commonMain.cvr": {
+            "bytes": 6977,
+            "sha256": "1e1eecf2141fe38257e2b2f69662f425460852a007486109a8b81e48374f6302"
+          },
+          "composeResources/dev.fajar.starter.localization.resources/values/strings_id.commonMain.cvr": {
+            "bytes": 7125,
+            "sha256": "78722a8b3986b14126f2f452bb41dd9899629312932cf3ddad74d23879f14de1"
+          }
+        }
+      },
+      {
+        "sourceArtifact": "apps/android/build/outputs/apk/staging/debug/android-staging-debug.apk",
+        "artifact": ".work/compose-android-resources-port-2026-11-14/artifacts/android-staging-debug.apk",
+        "bytes": 27090105,
+        "sha256": "5aef555dd7ef6b3c7715c250b3ebac4a5defb6ff5fdacb7b0fe1c7fd01b19fc8",
+        "resourceAssets": {
+          "composeResources/dev.fajar.starter.localization.resources/values/strings_en.commonMain.cvr": {
+            "bytes": 6977,
+            "sha256": "1e1eecf2141fe38257e2b2f69662f425460852a007486109a8b81e48374f6302"
+          },
+          "composeResources/dev.fajar.starter.localization.resources/values/strings_id.commonMain.cvr": {
+            "bytes": 7125,
+            "sha256": "78722a8b3986b14126f2f452bb41dd9899629312932cf3ddad74d23879f14de1"
+          }
+        }
+      },
+      {
+        "sourceArtifact": "apps/android/build/outputs/apk/prod/release/android-prod-release-unsigned.apk",
+        "artifact": ".work/compose-android-resources-port-2026-11-14/artifacts/android-prod-release-unsigned.apk",
+        "bytes": 20706013,
+        "sha256": "c9bc7579d03f2000e54368f4ff0486e737f72f51219a3dc1436b5fa0d4dad072",
+        "resourceAssets": {
+          "composeResources/dev.fajar.starter.localization.resources/values/strings_en.commonMain.cvr": {
+            "bytes": 6977,
+            "sha256": "1e1eecf2141fe38257e2b2f69662f425460852a007486109a8b81e48374f6302"
+          },
+          "composeResources/dev.fajar.starter.localization.resources/values/strings_id.commonMain.cvr": {
+            "bytes": 7125,
+            "sha256": "78722a8b3986b14126f2f452bb41dd9899629312932cf3ddad74d23879f14de1"
+          }
+        }
+      }
+    ],
+    "startup": {
+      "acceptedArtifact": true,
+      "artifact": ".work/compose-android-resources-port-2026-11-14/artifacts/starter-prod-release-local-startup.apk",
+      "sha256": "9bbbd897552c89f3989f788d6187c1dbc1ddd9ed529a4fecb8c55e11c72ce164",
+      "bytes": 20765388,
+      "sourceCommit": "bd13df78622b42a237ff5d847ba4a7034dc3dcfe",
+      "sourceManifestSha256": "47a1b986dc011fcb3537dbbfd9a975ee111bff963a61e80a5a337ce2d222161b",
+      "packageName": "dev.fajar.fluent.starter",
+      "versionCode": 1,
+      "debuggable": false,
+      "localSignatureOnly": true,
+      "unsignedEntriesUnchanged": true,
+      "resourceAssets": {
+        "composeResources/dev.fajar.starter.localization.resources/values/strings_en.commonMain.cvr": {
+          "bytes": 6977,
+          "sha256": "1e1eecf2141fe38257e2b2f69662f425460852a007486109a8b81e48374f6302"
+        },
+        "composeResources/dev.fajar.starter.localization.resources/values/strings_id.commonMain.cvr": {
+          "bytes": 7125,
+          "sha256": "78722a8b3986b14126f2f452bb41dd9899629312932cf3ddad74d23879f14de1"
+        }
+      }
+    }
+  },
+  "startup": {
+    "startedAt": "2026-11-14T17:04:01.933695+00:00",
+    "passed": true,
+    "sourceCommit": "bd13df78622b42a237ff5d847ba4a7034dc3dcfe",
+    "apkSha256": "9bbbd897552c89f3989f788d6187c1dbc1ddd9ed529a4fecb8c55e11c72ce164",
+    "versionCode": 1,
+    "memoryMiB": 2560,
+    "cores": 2,
+    "freshIsolatedUserdata": true,
+    "phoneTouched": false,
+    "authenticatedAccountUsed": false,
+    "chatSendAttempted": false,
+    "bootSeconds": 42.741,
+    "launches": [
+      {
+        "phase": "cold",
+        "pid": "2483",
+        "processStayedAlive": true,
+        "activityPresent": true,
+        "launchTimingMillis": {
+          "TotalTime": 5384,
+          "WaitTime": 5392
+        },
+        "screenshotSha256": "4416d1a0344fc163fe6faa1e6796a478345c70d9dbef624663ba76ccb3b43d35"
+      },
+      {
+        "phase": "reopened",
+        "pid": "3347",
+        "processStayedAlive": true,
+        "activityPresent": true,
+        "launchTimingMillis": {
+          "TotalTime": 2294,
+          "WaitTime": 2368
+        },
+        "screenshotSha256": "4416d1a0344fc163fe6faa1e6796a478345c70d9dbef624663ba76ccb3b43d35"
+      }
+    ],
+    "installedBytesMatch": true,
+    "noFatalExceptionObserved": true,
+    "sourcesUnchanged": true,
+    "apkUnchanged": true,
+    "emulatorStopped": true,
+    "elapsedSeconds": 87.283
+  },
+  "visual": {
+    "accepted": true,
+    "inspectedAt": "2026-11-14T17:06:04.890860+00:00",
+    "screenshotSha256": "4416d1a0344fc163fe6faa1e6796a478345c70d9dbef624663ba76ccb3b43d35",
+    "screenshots": {
+      "cold": "4416d1a0344fc163fe6faa1e6796a478345c70d9dbef624663ba76ccb3b43d35",
+      "reopened": "4416d1a0344fc163fe6faa1e6796a478345c70d9dbef624663ba76ccb3b43d35"
+    },
+    "observations": [
+      "Both cold and reopened screenshots were opened and inspected.",
+      "The localized Fluent onboarding renders Your workspace, descriptive text, Skip, pagination and Continue.",
+      "Neither capture is blank or showing an error dialog. Both PNGs are byte-identical."
+    ],
+    "authenticatedProductMeasured": false
+  },
+  "lint": {
+    "Fatal": 0,
+    "Error": 0,
+    "Warning": 48,
+    "Information": 0
+  },
+  "libraryRevision": "742a2d1c2285c720cef80ea3913195f3ece388cc",
+  "libraryPreexistingChange": "Preserved the pinned Inspector gradlew.bat line-ending difference and full input fingerprint.",
+  "newAppleRuntimeClaimed": false
+}

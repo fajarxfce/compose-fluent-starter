@@ -1,6 +1,12 @@
 # Architecture
 
 
+[Android Compose resources](android-compose-resources.md)
+
+Compose modules enable Android resources so generated locale assets enter every application variant.
+
+
+
 [Independent retained navigation stacks](navigation-stack-identity.md)
 
 Concurrent controllers use distinct stable owner keys under their window.
