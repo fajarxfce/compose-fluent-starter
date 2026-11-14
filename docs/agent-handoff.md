@@ -1,6 +1,20 @@
 # Agent continuation — Compose Fluent Starter
 
-Updated 14 November 2026, 17:06 UTC. This opening owns the current generic delta.
+Updated 14 November 2026, 20:39 UTC.
+
+## Exact published replica queries independently accepted
+
+Eight exact generic source/test paths from Mobile d889a9afdc3b3ebaa264222a0aca2a0775ab5443 are accepted here.
+1,060 cases (512 fresh / 548 exact unchanged), preserving all 1,052 prior IDs plus 8. Full/session63612 reaped 0.
+Source 681bbbffcfa9fb2d5bb639b7f28dc97243cd1e795fd0c515d47bfc044f374964; reports ba75e416e1c8f1ef3d846d4df5996516358d0b83d4f3c3dd2c6e5f29dd5f7753.
+Read [query contract and validation](replica-exact-queries.md).
+
+Continue recipient projection and canonical association in Mobile. No HRIS policy belongs in
+this port. Link this commit in Mobile/Group handoffs. Phone 93 remains installed; this raw query
+change does not create a new release or UI acceptance. Actual Apple runtime remains separate.
+Preserve blocked SQLite preparation, unsuccessful hosted Apple evidence and pinned Inspector
+742a2d1c including its existing gradlew.bat line-ending difference. Do not repeat accepted gates
+without a new source change, failure or unresolved concern.
 
 ## Android Compose resource packaging accepted
 

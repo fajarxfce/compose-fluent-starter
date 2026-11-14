@@ -1,5 +1,7 @@
 # Architecture
 
+[Exact published reads](replica-exact-queries.md) combine primary-key identities and bounded indexed pages in one owned raw transaction.
+
 
 [Android Compose resources](android-compose-resources.md)
 
